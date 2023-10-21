@@ -1,0 +1,30 @@
+{
+	"app": {
+		"page": {
+			"title": "דף בית"
+		},
+		"about": {
+			"page": {
+				"title": "אודות"
+			}
+		},
+		"contact": {
+			"page": {
+				"title": "צור קשר"
+			}
+		}
+	},
+	"shared": {
+		"Navbar": {
+			"pages": {
+				"home": "בית",
+				"about": "אודות",
+				"contact": "צור קשר"
+			},
+			"title": "עמוד"
+		},
+		"LocaleSwitcher": {
+			"Language": "שפה"
+		}
+	}
+}

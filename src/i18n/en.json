@@ -1,0 +1,30 @@
+{
+	"app": {
+		"page": {
+			"title": "Home page"
+		},
+		"about": {
+			"page": {
+				"title": "About page"
+			}
+		},
+		"contact": {
+			"page": {
+				"title": "Contact page"
+			}
+		}
+	},
+	"shared": {
+		"Navbar": {
+			"pages": {
+				"home": "Home",
+				"about": "About",
+				"contact": "Contact"
+			},
+			"title": "Page"
+		},
+		"LocaleSwitcher": {
+			"Language": "Language"
+		}
+	}
+}
