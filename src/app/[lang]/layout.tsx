@@ -1,8 +1,10 @@
 import { Locale, i18n } from '@/i18n.config';
-import Navbar from '@/shared/Navbar';
+import Navbar from '@shared/navbar/Navbar';
 import { getHtmlDirection } from '@/utils/getHtmlDirection';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import ThemeProvider from '@/context/ThemeProvider';
+import ThemeSwitcher from '@/components/shared/ThemeSwitcher';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -25,8 +27,11 @@ export default function RootLayout({
 	return (
 		<html lang={params.lang} dir={getHtmlDirection(params.lang)}>
 			<body className={inter.className}>
-				<Navbar params={params} />
-				{children}
+				<ThemeProvider>
+					<Navbar params={params} />
+					<ThemeSwitcher />
+					{children}
+				</ThemeProvider>
 			</body>
 		</html>
 	);

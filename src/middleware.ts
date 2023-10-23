@@ -3,6 +3,7 @@ import { match as matchLocale } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
+import { authMiddleware } from '@clerk/nextjs';
 
 function getLocale(request: NextRequest): string | undefined {
 	const negotiatorHeaders: Record<string, string> = {};
@@ -34,7 +35,15 @@ export function middleware(request: NextRequest) {
 	}
 }
 
+// export const config = {
+// 	// Matcher ignoring `/_next/` and `/api/`
+// 	matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+// };
+
+export default authMiddleware({
+	publicRoutes: ['/'],
+});
+
 export const config = {
-	// Matcher ignoring `/_next/` and `/api/`
-	matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+	matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
 };
