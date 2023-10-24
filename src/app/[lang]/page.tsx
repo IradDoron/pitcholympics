@@ -1,4 +1,6 @@
+import HomePage from '@/components/shared/HomePage';
 import Link from '@/components/core/link';
+
 import { LangParam } from '@/types';
 import { getDictionaryServer } from '@/utils/getDictionaryServer';
 import PageTitle from '@shared/PageTitle';
@@ -10,10 +12,8 @@ const Home = async ({ params: { lang } }: LangParam) => {
 	return (
 		<>
 			<PageTitle title={page.title} />
-		
+			<HomePage title={page.title} />
 			<Link label={'Taim'} url={`http://www.google.com`} shape="circle" />
-			
-			
 		</>
 	);
 };
