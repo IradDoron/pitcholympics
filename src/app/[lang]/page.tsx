@@ -14,7 +14,7 @@ const Home = async ({ params: { lang } }: LangParam) => {
 	return (
 		<>
 			<PageTitle title={page.title} />
-			<HomePage title={page.title} />
+			<HomePage title={page.title} lang={lang} />
 
 			{/* <Link label={'Taim'} url={`http://www.google.com`} shape="circle" />
 			<LevelsLinksContainer>
@@ -29,8 +29,7 @@ const Home = async ({ params: { lang } }: LangParam) => {
 			<LevelLink state={'current'} url={`http://www.google.com`} level={9}/>
 			<LevelLink state={'current'} url={`http://www.google.com`} level={10}/>
 			</LevelsLinksContainer> */}
-			<NotesCircle state={'notPlayed'}/>
-
+			<NotesCircle state={'notPlayed'} />
 		</>
 	);
 };
