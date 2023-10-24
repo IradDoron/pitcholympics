@@ -1,3 +1,4 @@
+import HomePage from '@/components/shared/HomePage';
 import { LangParam } from '@/types';
 import { getDictionaryServer } from '@/utils/getDictionaryServer';
 import PageTitle from '@shared/PageTitle';
@@ -9,6 +10,7 @@ const Home = async ({ params: { lang } }: LangParam) => {
 	return (
 		<>
 			<PageTitle title={page.title} />
+			<HomePage title={page.title} />
 		</>
 	);
 };

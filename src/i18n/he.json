@@ -12,19 +12,23 @@
 			"page": {
 				"title": "צור קשר"
 			}
-		}
-	},
-	"shared": {
-		"Navbar": {
-			"pages": {
-				"home": "בית",
-				"about": "אודות",
-				"contact": "צור קשר"
-			},
-			"title": "עמוד"
 		},
-		"LocaleSwitcher": {
-			"Language": "שפה"
+		"memo-the-melo": {
+			"page": {
+				"title": "תזכיר את המלו"
+			}
+		},
+		"shared": {
+			"Navbar": {
+				"pages": {
+					"home": "בית",
+					"about": "אודות",
+					"contact": "צור קשר"
+				},
+				"title": "עמוד"
+			},
+			"LocaleSwitcher": {
+				"Language": "שפה"
+			}
 		}
 	}
-}
