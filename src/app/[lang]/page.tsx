@@ -6,6 +6,7 @@ import { getDictionaryServer } from '@/utils/getDictionaryServer';
 import PageTitle from '@shared/PageTitle';
 import LevelLink from '@/components/core/level-link/levelLink';
 import LevelsLinksContainer from '@/components/core/levels-links-container';
+import NotesCircle from '@/components/core/notes-circle/notesCircle';
 
 const Home = async ({ params: { lang } }: LangParam) => {
 	const dict = await getDictionaryServer(lang);
@@ -15,7 +16,7 @@ const Home = async ({ params: { lang } }: LangParam) => {
 		<>
 			<PageTitle title={page.title} />
 			<HomePage title={page.title} />
-			<Link label={'Taim'} url={`http://www.google.com`} shape="circle" />
+			{/* <Link label={'Taim'} url={`http://www.google.com`} shape="circle" />
 			<LevelsLinksContainer>
 			<LevelLink state={'passed'} url={`http://www.google.com`} level={1}/>
 			<LevelLink state={'passed'} url={`http://www.google.com`} level={2}/>
@@ -27,8 +28,8 @@ const Home = async ({ params: { lang } }: LangParam) => {
 			<LevelLink state={'failed'} url={`http://www.google.com`} level={8}/>
 			<LevelLink state={'current'} url={`http://www.google.com`} level={9}/>
 			<LevelLink state={'current'} url={`http://www.google.com`} level={10}/>
-			</LevelsLinksContainer>
-			
+			</LevelsLinksContainer> */}
+			<NotesCircle state={'notPlayed'}/>
 		</>
 	);
 };
