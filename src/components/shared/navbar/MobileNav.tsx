@@ -8,13 +8,9 @@ import {
 } from '@/components/ui/sheet';
 import Image from 'next/image';
 import Link from 'next/link';
-import { SignedOut } from '@clerk/nextjs';
-import { Button } from '@/components/ui/button';
 import { usePathname } from 'next/navigation';
-import { SidebarLink } from '@/types';
 import { getDictionaryClient } from '@/utils/getDictionaryClient';
 import { Locale } from '@/i18n.config';
-import { type } from 'os';
 
 type NavContentProps = {
 	lang: Locale;
@@ -37,7 +33,7 @@ const NavContent = ({ lang }: NavContentProps) => {
 				return (
 					<SheetClose asChild key={item.route}>
 						<Link
-							href={`${lang}/${item.route}`}
+							href={`/${lang}/${item.route}`}
 							className={`${
 								isActive
 									? 'primary-gradient rounded-lg text-light-900'

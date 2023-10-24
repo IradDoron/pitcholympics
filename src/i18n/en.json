@@ -33,6 +33,16 @@
 						"imgURL": "/assets/icons/sun.svg",
 						"route": "/",
 						"label": "Home"
+					},
+					{
+						"imgURL": "/assets/icons/sun.svg",
+						"route": "/about",
+						"label": "About"
+					},
+					{
+						"imgURL": "/assets/icons/sun.svg",
+						"route": "/contact",
+						"label": "Contact"
 					}
 				]
 			}
