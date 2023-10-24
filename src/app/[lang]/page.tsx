@@ -11,7 +11,7 @@ const Home = async ({ params: { lang } }: LangParam) => {
 		<>
 			<PageTitle title={page.title} />
 		
-			<Link label={'Taim'} url={'www.google.com'} shape="circle" />
+			<Link label={'Taim'} url={`http://www.google.com`} shape="circle" />
 			
 			
 		</>
