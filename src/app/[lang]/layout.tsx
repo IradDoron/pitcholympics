@@ -28,7 +28,7 @@ export default function RootLayout({
 		<html lang={params.lang} dir={getHtmlDirection(params.lang)}>
 			<body className={inter.className}>
 				<ThemeProvider>
-					<Navbar params={params} />
+					{/* <Navbar params={params} /> */}
 					<ThemeSwitcher />
 					{children}
 				</ThemeProvider>
