@@ -25,6 +25,7 @@ export default function RootLayout({
 	params: { lang: Locale };
 }) {
 	return (
+
 		<ClerkProvider
 			appearance={{
 				elements: {
@@ -42,5 +43,6 @@ export default function RootLayout({
 				</body>
 			</html>
 		</ClerkProvider>
+
 	);
 }

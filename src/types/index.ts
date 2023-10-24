@@ -18,8 +18,19 @@ export type FormattedPalette = {
 	};
 };
 
-export interface SidebarLink {
+
+export type SidebarLink = {
 	imgURL: string;
 	route: string;
 	label: string;
 }
+
+export type MemoTheMeloLevel = {
+	notesAmount: number;
+	melody: number[];
+}
+
+export type MemoTheMeloStage = MemoTheMeloLevel[];
+
+export type MemoTheMeloGame = MemoTheMeloStage[];
+

@@ -9,9 +9,11 @@ type Props = {
 
 function Link({ label, url, shape }: Props) {
   return (
-    <div  className='w-24 h-24 rounded-full bg-red-500 text-white text-center flex justify-center items-center mt-[200px]'>
-      <NextLink href={url}>{label}</NextLink>
-    </div>
+    <NextLink
+      className="w-24 h-24 rounded-full bg-red-500 text-white text-center flex justify-center items-center mt-[200px]"
+      href={url}>
+      {label}
+    </NextLink>
   );
 }
 
