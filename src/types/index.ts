@@ -18,6 +18,13 @@ export type FormattedPalette = {
 	};
 };
 
+
+export type SidebarLink = {
+	imgURL: string;
+	route: string;
+	label: string;
+}
+
 export type MemoTheMeloLevel = {
 	notesAmount: number;
 	melody: number[];
@@ -26,3 +33,4 @@ export type MemoTheMeloLevel = {
 export type MemoTheMeloStage = MemoTheMeloLevel[];
 
 export type MemoTheMeloGame = MemoTheMeloStage[];
+

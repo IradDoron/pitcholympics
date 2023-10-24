@@ -20,13 +20,32 @@
 		}
 	},
 	"shared": {
-		"Navbar": {
+		"navbar": {
 			"pages": {
 				"home": "בית",
 				"about": "אודות",
 				"contact": "צור קשר"
 			},
-			"title": "עמוד"
+			"title": "עמוד",
+			"MobileNav": {
+				"sidebarLinks": [
+					{
+						"imgURL": "/assets/icons/sun.svg",
+						"route": "/",
+						"label": "בית"
+					},
+					{
+						"imgURL": "/assets/icons/sun.svg",
+						"route": "/about",
+						"label": "עלינו"
+					},
+					{
+						"imgURL": "/assets/icons/sun.svg",
+						"route": "/contact",
+						"label": "צרו קשר"
+					}
+				]
+			}
 		},
 		"LocaleSwitcher": {
 			"Language": "שפה"

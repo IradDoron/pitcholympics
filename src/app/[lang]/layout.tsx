@@ -4,8 +4,8 @@ import { getHtmlDirection } from '@/utils/getHtmlDirection';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import ThemeProvider from '@/context/ThemeProvider';
-import ThemeSwitcher from '@/components/shared/ThemeSwitcher';
 import '@/styles/globals.css';
+import { ClerkProvider } from '@clerk/nextjs';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -25,14 +25,24 @@ export default function RootLayout({
 	params: { lang: Locale };
 }) {
 	return (
-		<html lang={params.lang} dir={getHtmlDirection(params.lang)}>
-			<body className={inter.className}>
-				<ThemeProvider>
-					{/* <Navbar params={params} /> */}
-					<ThemeSwitcher />
-					{children}
-				</ThemeProvider>
-			</body>
-		</html>
+
+		<ClerkProvider
+			appearance={{
+				elements: {
+					formButtonPrimary: 'primary-gradient',
+					footerActionLink: 'primary-text-gradient hover:text-primary-500',
+				},
+			}}
+		>
+			<html lang={params.lang} dir={getHtmlDirection(params.lang)}>
+				<body className={inter.className}>
+					<ThemeProvider>
+						<Navbar params={params} />
+						{children}
+					</ThemeProvider>
+				</body>
+			</html>
+		</ClerkProvider>
+
 	);
 }

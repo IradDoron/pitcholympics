@@ -1,8 +1,9 @@
+import { SidebarLink } from '@/types';
+
 export const LANGS_FULL_NAMES = {
 	en: 'English',
 	he: 'עברית',
 };
-
 
 export const themes = [
 	{ value: 'light', label: 'Light', icon: '/assets/icons/sun.svg' },
