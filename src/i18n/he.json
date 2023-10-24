@@ -15,20 +15,21 @@
 		},
 		"memo-the-melo": {
 			"page": {
-				"title": "תזכיר את המלו"
-			}
-		},
-		"shared": {
-			"Navbar": {
-				"pages": {
-					"home": "בית",
-					"about": "אודות",
-					"contact": "צור קשר"
-				},
-				"title": "עמוד"
-			},
-			"LocaleSwitcher": {
-				"Language": "שפה"
+				"title": "test"
 			}
 		}
+	},
+	"shared": {
+		"Navbar": {
+			"pages": {
+				"home": "בית",
+				"about": "אודות",
+				"contact": "צור קשר"
+			},
+			"title": "עמוד"
+		},
+		"LocaleSwitcher": {
+			"Language": "שפה"
+		}
 	}
+}
