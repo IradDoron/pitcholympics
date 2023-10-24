@@ -29,7 +29,6 @@ export default function RootLayout({
 			<body className={inter.className}>
 				<ThemeProvider>
 					<Navbar params={params} />
-					<ThemeSwitcher />
 					{children}
 				</ThemeProvider>
 			</body>

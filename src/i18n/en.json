@@ -20,13 +20,22 @@
 		}
 	},
 	"shared": {
-		"Navbar": {
+		"navbar": {
 			"pages": {
 				"home": "Home",
 				"about": "About",
 				"contact": "Contact"
 			},
-			"title": "Page"
+			"title": "Page",
+			"MobileNav": {
+				"sidebarLinks": [
+					{
+						"imgURL": "/assets/icons/sun.svg",
+						"route": "/",
+						"label": "Home"
+					}
+				]
+			}
 		},
 		"LocaleSwitcher": {
 			"Language": "Language"

@@ -6,15 +6,16 @@ import Theme from './Theme';
 import LocaleSwitcher from './LocaleSwitcher';
 import { LangParam } from '@/types';
 import { getDictionaryServer } from '@/utils/getDictionaryServer';
+import MobileNav from '@/components/shared/navbar/MobileNav';
 
 const Navbar = async ({ params: { lang } }: LangParam) => {
 	const dict = await getDictionaryServer(lang);
-	const { Navbar } = dict.shared;
-	const pagesUrls = Object.entries(Navbar.pages);
+	const { navbar } = dict.shared;
+	const pagesUrls = Object.entries(navbar.pages);
 
 	return (
-		<nav className='flex justify-center items-center w-full flex-row dark:bg-dark-400'>
-			<ul className='flex justify-center items-center gap-5'>
+		<nav className='flex justify-center items-center w-full flex-row dark:bg-dark-400 '>
+			<ul className='justify-center items-center gap-5 hidden sm:flex'>
 				{pagesUrls.map(([url, title]) => {
 					const composedUrl = url === 'home' ? `/${lang}` : `/${lang}/${url}`;
 					return (
@@ -34,6 +35,7 @@ const Navbar = async ({ params: { lang } }: LangParam) => {
 			<div className='flex-between gap-5'>
 				<Theme />
 			</div>
+			<MobileNav lang={lang} />
 		</nav>
 	);
 };

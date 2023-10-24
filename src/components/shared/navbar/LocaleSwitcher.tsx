@@ -13,7 +13,7 @@ const LocaleSwitcher = ({ params: { lang } }: LangParam) => {
 	const dict = getDictionaryClient(lang);
 
 	return (
-		<div className='flex justify-center items-center gap-5'>
+		<div className='flex justify-center items-center gap-5 px-2'>
 			<p>{dict.shared.LocaleSwitcher.Language}</p>
 			<ul>
 				{i18n.locales.map((locale) => {

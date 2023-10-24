@@ -17,3 +17,9 @@ export type FormattedPalette = {
 		[key: string]: string;
 	};
 };
+
+export interface SidebarLink {
+	imgURL: string;
+	route: string;
+	label: string;
+}
