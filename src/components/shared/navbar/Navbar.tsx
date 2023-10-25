@@ -30,9 +30,18 @@ const Navbar = async ({ params: { lang } }: LangParam) => {
 				})}
 			</ul>
 			<LocaleSwitcher params={{ lang }} />
-			<SignedIn>
+			<div
+				style={{
+					border: 'solid salmon 2px',
+					padding: '10px',
+				}}
+			>
+				user
+				{/* <SignedIn>
 				<UserButton afterSignOutUrl='/' />
-			</SignedIn>
+			</SignedIn> */}
+			</div>
+
 			<div className='flex-between gap-5'>
 				<Theme />
 			</div>

@@ -4,7 +4,11 @@ import Negotiator from 'negotiator';
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 import { authMiddleware } from '@clerk/nextjs';
-import { request } from 'http';
+
+// TODO: fix the bug of the authMiddleware (mission for irad)
+// export default authMiddleware({
+// 	publicRoutes: ['/'],
+// });
 
 function getLocale(request: NextRequest): string | undefined {
 	const negotiatorHeaders: Record<string, string> = {};
@@ -35,10 +39,6 @@ export const middleware = (request: NextRequest) => {
 		);
 	}
 };
-
-export default authMiddleware({
-	publicRoutes: ['/'],
-});
 
 export const config = {
 	matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
