@@ -45,11 +45,14 @@ export default authMiddleware({
 		'/en/about',
 		'/he',
 		'/he/about',
+		'/he/memo-the-melo/1/1',
+		'/en/memo-the-melo/1/1'
 	],
 	ignoredRoutes: ['/((?!api|trpc))(_next.*|.+.[w]+$)'],
 	beforeAuth(req) {
 		return middleware1(req);
 	},
+	afterAuth() { }
 });
 
 export const config = {
