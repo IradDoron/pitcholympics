@@ -5,7 +5,7 @@ import LocaleSwitcher from './LocaleSwitcher';
 import { LangParam } from '@/types';
 import { getDictionaryServer } from '@/utils/getDictionaryServer';
 import MobileNav from '@/components/shared/navbar/MobileNav';
-import { UserButton } from '@clerk/nextjs';
+import { SignedIn, UserButton } from '@clerk/nextjs';
 
 const Navbar = async ({ params: { lang } }: LangParam) => {
 	const dict = await getDictionaryServer(lang);
@@ -32,12 +32,25 @@ const Navbar = async ({ params: { lang } }: LangParam) => {
 			<LocaleSwitcher params={{ lang }} />
 			<div
 				style={{
-					border: '1px solid black',
+					border: 'solid salmon 2px',
 					padding: '10px',
 				}}
 			>
-				<UserButton afterSignOutUrl='/' />
+				user
+				<SignedIn>
+					<UserButton
+						afterSignOutUrl='/'
+						appearance={{
+							elements: {
+								formButtonPrimary: 'primary-gradient',
+								footerActionLink:
+									'primary-text-gradient hover:text-primary-500',
+							},
+						}}
+					/>
+				</SignedIn>
 			</div>
+
 			<div className='flex-between gap-5'>
 				<Theme />
 			</div>

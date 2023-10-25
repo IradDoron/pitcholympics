@@ -15,8 +15,6 @@ const PageTitle = ({ title }: Props) => {
 		[mode]
 	);
 
-	console.log('memoMode', memoMode);
-
 	return <h1 className={memoMode}>{title}</h1>;
 };
 

@@ -3,6 +3,7 @@ import Link from '@/components/core/link';
 import { LangParam } from '@/types';
 import { getDictionaryServer } from '@/utils/getDictionaryServer';
 import PageTitle from '@shared/PageTitle';
+import { UserButton } from '@clerk/nextjs';
 import LevelLink from '@/components/core/levelLink/LevelLink';
 import LevelsLinksContainer from '@/components/core/levelsLinksContainer';
 import NotesCircle from '@/components/core/notesCircle/NotesCircle';
