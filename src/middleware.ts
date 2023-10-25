@@ -4,6 +4,7 @@ import Negotiator from 'negotiator';
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 import { authMiddleware } from '@clerk/nextjs';
+import { request } from 'http';
 
 function getLocale(request: NextRequest): string | undefined {
 	const negotiatorHeaders: Record<string, string> = {};
@@ -17,7 +18,7 @@ function getLocale(request: NextRequest): string | undefined {
 	return locale;
 }
 
-export function middleware(request: NextRequest) {
+export const middleware = (request: NextRequest) => {
 	const pathname = request.nextUrl.pathname;
 	const pathnameIsMissingLocale = i18n.locales.every(
 		(locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
@@ -33,12 +34,7 @@ export function middleware(request: NextRequest) {
 			)
 		);
 	}
-}
-
-// export const config = {
-// 	// Matcher ignoring `/_next/` and `/api/`
-// 	matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
-// };
+};
 
 export default authMiddleware({
 	publicRoutes: ['/'],

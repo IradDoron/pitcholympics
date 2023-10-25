@@ -6,6 +6,7 @@ import PageTitle from '@shared/PageTitle';
 import LevelLink from '@/components/core/level-link/levelLink';
 import LevelsLinksContainer from '@/components/core/levels-links-container';
 import NotesCircle from '@/components/core/notes-circle/notesCircle';
+import { UserButton } from '@clerk/nextjs';
 
 const Home = async ({ params: { lang } }: LangParam) => {
 	const dict = await getDictionaryServer(lang);
