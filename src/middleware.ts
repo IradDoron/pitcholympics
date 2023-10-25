@@ -3,12 +3,7 @@ import { match as matchLocale } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
-import { authMiddleware } from '@clerk/nextjs';
-
-// TODO: fix the bug of the authMiddleware (mission for irad)
-// export default authMiddleware({
-// 	publicRoutes: ['/'],
-// });
+import { authMiddleware, redirectToSignIn } from '@clerk/nextjs';
 
 function getLocale(request: NextRequest): string | undefined {
 	const negotiatorHeaders: Record<string, string> = {};
@@ -22,7 +17,8 @@ function getLocale(request: NextRequest): string | undefined {
 	return locale;
 }
 
-export const middleware = (request: NextRequest) => {
+const middleware1 = (request: NextRequest) => {
+	console.log('in middleware');
 	const pathname = request.nextUrl.pathname;
 	const pathnameIsMissingLocale = i18n.locales.every(
 		(locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
@@ -31,6 +27,7 @@ export const middleware = (request: NextRequest) => {
 	// Redirect if there is no locale
 	if (pathnameIsMissingLocale) {
 		const locale = getLocale(request);
+
 		return NextResponse.redirect(
 			new URL(
 				`/${locale}${pathname.startsWith('/') ? '' : '/'}${pathname}`,
@@ -39,6 +36,21 @@ export const middleware = (request: NextRequest) => {
 		);
 	}
 };
+
+export default authMiddleware({
+	publicRoutes: [
+		'/en/sign-in',
+		'/he/sign-in',
+		'/en',
+		'/en/about',
+		'/he',
+		'/he/about',
+	],
+	ignoredRoutes: ['/((?!api|trpc))(_next.*|.+.[w]+$)'],
+	beforeAuth(req) {
+		return middleware1(req);
+	},
+});
 
 export const config = {
 	matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],

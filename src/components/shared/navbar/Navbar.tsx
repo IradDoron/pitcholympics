@@ -37,9 +37,18 @@ const Navbar = async ({ params: { lang } }: LangParam) => {
 				}}
 			>
 				user
-				{/* <SignedIn>
-				<UserButton afterSignOutUrl='/' />
-			</SignedIn> */}
+				<SignedIn>
+					<UserButton
+						afterSignOutUrl='/'
+						appearance={{
+							elements: {
+								formButtonPrimary: 'primary-gradient',
+								footerActionLink:
+									'primary-text-gradient hover:text-primary-500',
+							},
+						}}
+					/>
+				</SignedIn>
 			</div>
 
 			<div className='flex-between gap-5'>
