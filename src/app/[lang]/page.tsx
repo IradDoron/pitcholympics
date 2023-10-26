@@ -8,6 +8,7 @@ import LevelLink from '@/components/core/levelLink/LevelLink';
 import LevelsLinksContainer from '@/components/core/levelsLinksContainer';
 import NotesCircle from '@/components/core/notesCircle/NotesCircle';
 import ArrowLink from '@/components/shared/arrowLink';
+import GameLevelsLinks from '@/components/shared/gameLevelsLinks';
 
 const Home = async ({ params: { lang } }: LangParam) => {
 	const dict = await getDictionaryServer(lang);
@@ -17,7 +18,8 @@ const Home = async ({ params: { lang } }: LangParam) => {
 		<>
 			<PageTitle title={page.title} />
 			<HomePage title={page.title} lang={lang} />
-			<ArrowLink url={'http://google.com'}/>
+			
+		
 		</>
 	);
 };
