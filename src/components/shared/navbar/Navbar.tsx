@@ -13,8 +13,35 @@ const Navbar = async ({ params: { lang } }: LangParam) => {
 	const pagesUrls = Object.entries(navbar.pages);
 
 	return (
-		<nav className='flex justify-center items-center w-full flex-row dark:bg-dark-400 '>
-			<ul className='justify-center items-center gap-5 hidden sm:flex'>
+		<nav className='grid w-full flex-row dark:bg-dark-400 relative grid-cols-3'>
+			<div className='flex justify-self-start'>
+				<div
+					style={{
+						border: 'solid salmon 2px',
+						padding: '10px',
+					}}
+				>
+					user
+					<SignedIn>
+						<UserButton
+							afterSignOutUrl='/'
+							appearance={{
+								elements: {
+									formButtonPrimary: 'primary-gradient',
+									footerActionLink:
+										'primary-text-gradient hover:text-primary-500',
+								},
+							}}
+						/>
+					</SignedIn>
+				</div>
+				<LocaleSwitcher params={{ lang }} />
+
+				<div className='flex-between gap-5'>
+					<Theme />
+				</div>
+			</div>
+			<ul className='gap-5 hidden sm:flex justify-self-center'>
 				{pagesUrls.map(([url, title]) => {
 					const composedUrl = url === 'home' ? `/${lang}` : `/${lang}/${url}`;
 					return (
@@ -24,31 +51,8 @@ const Navbar = async ({ params: { lang } }: LangParam) => {
 					);
 				})}
 			</ul>
-			<LocaleSwitcher params={{ lang }} />
-			<div
-				style={{
-					border: 'solid salmon 2px',
-					padding: '10px',
-				}}
-			>
-				user
-				<SignedIn>
-					<UserButton
-						afterSignOutUrl='/'
-						appearance={{
-							elements: {
-								formButtonPrimary: 'primary-gradient',
-								footerActionLink:
-									'primary-text-gradient hover:text-primary-500',
-							},
-						}}
-					/>
-				</SignedIn>
-			</div>
+			<div></div>
 
-			<div className='flex-between gap-5'>
-				<Theme />
-			</div>
 			<MobileNav lang={lang} />
 		</nav>
 	);
