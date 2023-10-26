@@ -2,10 +2,10 @@ import LevelLink from '@/components/core/levelLink/LevelLink';
 import LevelsLinksContainer from '@/components/core/levelsLinksContainer';
 import React from 'react';
 import memoTheMeloMockData from '@/mockData/memoTheMelo';
-import { MemoTheMeloGame } from '@/types';
+import { MemoTheMeloGame, PitchCatchGame } from '@/types';
 
 type Props = {
-  levelsData: MemoTheMeloGame | undefined;
+  levelsData: MemoTheMeloGame | PitchCatchGame;
   baseUrl: string;
 };
 
