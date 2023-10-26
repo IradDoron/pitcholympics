@@ -17,7 +17,7 @@ function getLocale(request: NextRequest): string | undefined {
 	return locale;
 }
 
-const middleware1 = (request: NextRequest) => {
+export const middleware = (request: NextRequest) => {
 	console.log('in middleware');
 	const pathname = request.nextUrl.pathname;
 	const pathnameIsMissingLocale = i18n.locales.every(
@@ -37,23 +37,23 @@ const middleware1 = (request: NextRequest) => {
 	}
 };
 
-export default authMiddleware({
-	publicRoutes: [
-		'/en/sign-in',
-		'/he/sign-in',
-		'/en',
-		'/en/about',
-		'/he',
-		'/he/about',
-		'/he/memo-the-melo/1/1',
-		'/en/memo-the-melo/1/1'
-	],
-	ignoredRoutes: ['/((?!api|trpc))(_next.*|.+.[w]+$)'],
-	beforeAuth(req) {
-		return middleware1(req);
-	},
-	afterAuth() { }
-});
+// export default authMiddleware({
+// 	publicRoutes: [
+// 		'/en/sign-in',
+// 		'/he/sign-in',
+// 		'/en',
+// 		'/en/about',
+// 		'/he',
+// 		'/he/about',
+// 		'/he/memo-the-melo/1/1',
+// 		'/en/memo-the-melo/1/1'
+// 	],
+// 	ignoredRoutes: ['/((?!api|trpc))(_next.*|.+.[w]+$)'],
+// 	beforeAuth(req) {
+// 		return middleware(req);
+// 	},
+// 	afterAuth() { }
+// });
 
 export const config = {
 	matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
