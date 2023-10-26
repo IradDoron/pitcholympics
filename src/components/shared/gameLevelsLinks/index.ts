@@ -1,2 +1,2 @@
-import GameLevelsLinks from "./gameLevelsLinks";
+import GameLevelsLinks from "./GameLevelsLinks";
 export default GameLevelsLinks;
