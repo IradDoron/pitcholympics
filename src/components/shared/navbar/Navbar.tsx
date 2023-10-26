@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import React from 'react';
 import Theme from './Theme';
 import LocaleSwitcher from './LocaleSwitcher';
@@ -6,6 +5,7 @@ import { LangParam } from '@/types';
 import { getDictionaryServer } from '@/utils/getDictionaryServer';
 import MobileNav from '@/components/shared/navbar/MobileNav';
 import { SignedIn, UserButton } from '@clerk/nextjs';
+import NavbarLink from './NavbarLink';
 
 const Navbar = async ({ params: { lang } }: LangParam) => {
 	const dict = await getDictionaryServer(lang);
@@ -19,12 +19,7 @@ const Navbar = async ({ params: { lang } }: LangParam) => {
 					const composedUrl = url === 'home' ? `/${lang}` : `/${lang}/${url}`;
 					return (
 						<li key={url}>
-							<Link
-								className='text-dark-100 dark:text-light-800'
-								href={composedUrl}
-							>
-								{title}
-							</Link>
+							<NavbarLink url={composedUrl} label={title} />
 						</li>
 					);
 				})}
