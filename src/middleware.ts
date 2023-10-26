@@ -3,6 +3,7 @@ import { match as matchLocale } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
+import { authMiddleware, redirectToSignIn } from '@clerk/nextjs';
 
 function getLocale(request: NextRequest): string | undefined {
 	const negotiatorHeaders: Record<string, string> = {};
@@ -16,7 +17,8 @@ function getLocale(request: NextRequest): string | undefined {
 	return locale;
 }
 
-export function middleware(request: NextRequest) {
+const middleware1 = (request: NextRequest) => {
+	console.log('in middleware');
 	const pathname = request.nextUrl.pathname;
 	const pathnameIsMissingLocale = i18n.locales.every(
 		(locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
@@ -25,6 +27,7 @@ export function middleware(request: NextRequest) {
 	// Redirect if there is no locale
 	if (pathnameIsMissingLocale) {
 		const locale = getLocale(request);
+
 		return NextResponse.redirect(
 			new URL(
 				`/${locale}${pathname.startsWith('/') ? '' : '/'}${pathname}`,
@@ -32,9 +35,26 @@ export function middleware(request: NextRequest) {
 			)
 		);
 	}
-}
+};
+
+export default authMiddleware({
+	publicRoutes: [
+		'/en/sign-in',
+		'/he/sign-in',
+		'/en',
+		'/en/about',
+		'/he',
+		'/he/about',
+		'/he/memo-the-melo/1/1',
+		'/en/memo-the-melo/1/1'
+	],
+	ignoredRoutes: ['/((?!api|trpc))(_next.*|.+.[w]+$)'],
+	beforeAuth(req) {
+		return middleware1(req);
+	},
+	afterAuth() { }
+});
 
 export const config = {
-	// Matcher ignoring `/_next/` and `/api/`
-	matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+	matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
 };

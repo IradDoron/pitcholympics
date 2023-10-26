@@ -12,16 +12,40 @@
 			"page": {
 				"title": "Contact page"
 			}
+		},
+		"memo-the-melo": {
+			"page": {
+				"title": "memo-the-melo"
+			}
 		}
 	},
 	"shared": {
-		"Navbar": {
+		"navbar": {
 			"pages": {
 				"home": "Home",
 				"about": "About",
 				"contact": "Contact"
 			},
-			"title": "Page"
+			"title": "Page",
+			"MobileNav": {
+				"sidebarLinks": [
+					{
+						"imgURL": "/assets/icons/sun.svg",
+						"route": "/",
+						"label": "Home"
+					},
+					{
+						"imgURL": "/assets/icons/sun.svg",
+						"route": "/about",
+						"label": "About"
+					},
+					{
+						"imgURL": "/assets/icons/sun.svg",
+						"route": "/contact",
+						"label": "Contact"
+					}
+				]
+			}
 		},
 		"LocaleSwitcher": {
 			"Language": "Language"
