@@ -1,9 +1,6 @@
 'use client';
 
-import React from 'react';
-
 import { useTheme } from '@/context/ThemeProvider';
-
 import Image from 'next/image';
 import { themes } from '@/constants';
 

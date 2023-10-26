@@ -7,20 +7,22 @@ import { UserButton } from '@clerk/nextjs';
 import LevelLink from '@/components/core/levelLink/LevelLink';
 import LevelsLinksContainer from '@/components/core/levelsLinksContainer';
 import NotesCircle from '@/components/core/notesCircle/NotesCircle';
-import ArrowLink from '@/components/shared/arrowLink';
-import GameLevelsLinks from '@/components/shared/gameLevelsLinks';
+import GameLink from '@/components/shared/gameLink/GameLink';
 
 const Home = async ({ params: { lang } }: LangParam) => {
 	const dict = await getDictionaryServer(lang);
 	const { page } = dict.app;
 
 	return (
-		<>
-			<PageTitle title={page.title} />
-			<HomePage title={page.title} lang={lang} />
-			
-		
-		</>
+		<div
+			style={{
+				height: '100%',
+			}}
+			className='border-4 flex flex-row justify-center items-center gap-20'
+		>
+			<GameLink href='memo-the-melo' colorType='peach' label='Memo the Melo' />
+			<GameLink href='pitch-catch' colorType='peach' label='Pitch Catch' />
+		</div>
 	);
 };
 
