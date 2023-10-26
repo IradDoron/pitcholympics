@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import ThemeProvider from '@/context/ThemeProvider';
 import '@/styles/globals.css';
-import { ClerkProvider } from '@clerk/nextjs';
+// import { ClerkProvider } from '@clerk/nextjs';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -25,14 +25,14 @@ export default function RootLayout({
 	params: { lang: Locale };
 }) {
 	return (
-		<ClerkProvider
-			appearance={{
-				elements: {
-					formButtonPrimary: 'primary-gradient',
-					footerActionLink: 'primary-text-gradient hover:text-primary-500',
-				},
-			}}
-		>
+		// <ClerkProvider
+		// 	appearance={{
+		// 		elements: {
+		// 			formButtonPrimary: 'primary-gradient',
+		// 			footerActionLink: 'primary-text-gradient hover:text-primary-500',
+		// 		},
+		// 	}}
+		// >
 			<html
 				lang={params.lang}
 				dir={getHtmlDirection(params.lang)}
@@ -47,7 +47,7 @@ export default function RootLayout({
 					</body>
 				</ThemeProvider>
 			</html>
-		</ClerkProvider>
+		// </ClerkProvider>
 	);
 }
 

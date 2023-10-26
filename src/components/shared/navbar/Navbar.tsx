@@ -4,7 +4,7 @@ import LocaleSwitcher from './LocaleSwitcher';
 import { LangParam } from '@/types';
 import { getDictionaryServer } from '@/utils/getDictionaryServer';
 import MobileNav from '@/components/shared/navbar/MobileNav';
-import { SignedIn, UserButton } from '@clerk/nextjs';
+// import { SignedIn, UserButton } from '@clerk/nextjs';
 import NavbarLink from './NavbarLink';
 
 const Navbar = async ({ params: { lang } }: LangParam) => {
@@ -22,7 +22,7 @@ const Navbar = async ({ params: { lang } }: LangParam) => {
 					}}
 				>
 					user
-					<SignedIn>
+					{/* <SignedIn>
 						<UserButton
 							afterSignOutUrl='/'
 							appearance={{
@@ -33,7 +33,7 @@ const Navbar = async ({ params: { lang } }: LangParam) => {
 								},
 							}}
 						/>
-					</SignedIn>
+					</SignedIn> */}
 				</div>
 				<LocaleSwitcher params={{ lang }} />
 
