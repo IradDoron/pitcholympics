@@ -33,8 +33,8 @@ export default function RootLayout({
 				},
 			}}
 		>
-			<html lang={params.lang} dir={getHtmlDirection(params.lang)}>
-				<body className={inter.className}>
+			<html lang={params.lang} dir={getHtmlDirection(params.lang)} className='min-h-screen'>
+				<body className={`${inter.className} min-h-screen`} >
 					<ThemeProvider>
 						<Navbar params={params} />
 						{children}

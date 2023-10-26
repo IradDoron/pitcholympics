@@ -1,8 +1,13 @@
+import LevelLink from '@/components/core/levelLink/LevelLink'
+import LevelsLinksContainer from '@/components/core/levelsLinksContainer'
 import React from 'react'
 
 const PitchCatch = () => {
     return (
-        <h1>כאן יהיה המשחק Pitch Catch</h1>
+        <>
+       <div className='w-full h-full bg-primary-500'></div>
+
+        </>
     )
 }
 
