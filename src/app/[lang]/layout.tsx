@@ -33,21 +33,16 @@ export default function RootLayout({
 		// 		},
 		// 	}}
 		// >
-			<html
-				lang={params.lang}
-				dir={getHtmlDirection(params.lang)}
-				className='min-h-screen'
-			>
-				<ThemeProvider>
-					<body
-						className={`${inter.className} min-h-screen bg-light-background-default dark:bg-dark-background-default`}
-					>
-						<Navbar params={params} />
-						{children}
-					</body>
-				</ThemeProvider>
-			</html>
+		<html lang={params.lang} dir={getHtmlDirection(params.lang)}>
+			<ThemeProvider>
+				<body
+					className={`${inter.className} bg-light-background-default dark:bg-dark-background-default`}
+				>
+					<Navbar params={params} />
+					{children}
+				</body>
+			</ThemeProvider>
+		</html>
 		// </ClerkProvider>
 	);
 }
-
