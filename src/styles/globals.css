@@ -3,3 +3,7 @@
 @tailwind utilities;
 @tailwind variants;
 
+html,
+body {
+	height: 100%;
+}

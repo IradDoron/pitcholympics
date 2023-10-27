@@ -1,11 +1,12 @@
 'use client';
 
 import { useTheme } from '@/context/ThemeProvider';
+import { ThemeMode } from '@/types';
 
 const ThemeSwitcher = () => {
 	const { setMode } = useTheme();
 
-	const handleThemeChange = (mode: string) => {
+	const handleThemeChange = (mode: ThemeMode) => {
 		setMode(mode);
 	};
 

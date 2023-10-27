@@ -19,9 +19,9 @@ import Image from 'next/image';
 const LocaleSwitcher = ({ params: { lang } }: LangParam) => {
 	const pathName = usePathname();
 	return (
-		<Menubar className='relative border-none bg-transparent shadow-none'>
+		<Menubar className='relative border-none bg-transparent shadow-none '>
 			<MenubarMenu>
-				<MenubarTrigger className='focus:bg-light-900 data-[state=open]:bg-light-900 dark:focus:bg-dark-200 dark:data-[state=open]:bg-dark-200'>
+				<MenubarTrigger className='focus:bg-light-900 data-[state=open]:bg-light-900 dark:focus:bg-dark-200 dark:data-[state=open]:bg-dark-200 w-12'>
 					{lang === 'he' ? (
 						<Image
 							src='/assets/icons/flags/israel-flag-icon.svg'
