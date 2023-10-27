@@ -13,7 +13,7 @@ const Navbar = async ({ params: { lang } }: LangParam) => {
 	const pagesUrls = Object.entries(navbar.pages);
 
 	return (
-		<nav className='grid w-full flex-row dark:bg-dark-400 relative grid-cols-3 p-2'>
+		<nav className='grid w-full flex-row dark:bg-dark-400  grid-cols-3 p-2 fixed'>
 			<div className='flex justify-self-start'>
 				<div
 					style={{
