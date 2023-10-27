@@ -1,16 +1,16 @@
 'use client';
 
 import React, { createContext, useState, useContext, useEffect } from 'react';
-
+import { ThemeMode } from '@/types';
 interface ThemeContextType {
-	mode: string;
-	setMode: (mode: string) => void;
+	mode: ThemeMode;
+	setMode: (mode: ThemeMode) => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-	const [mode, setMode] = useState('light');
+	const [mode, setMode] = useState<ThemeMode>('light');
 	const handleThemeChange = () => {
 		if (
 			localStorage.theme === 'dark' ||
