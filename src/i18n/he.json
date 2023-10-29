@@ -20,6 +20,9 @@
 		}
 	},
 	"shared": {
+		"gameLevelsLinks": {
+			"StageTitle": "רמה"
+		},
 		"navbar": {
 			"pages": {
 				"home": "בית",
