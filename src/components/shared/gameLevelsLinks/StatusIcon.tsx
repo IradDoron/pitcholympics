@@ -33,9 +33,6 @@ const StatusIcon = ({ status }: Props) => {
 					/>
 				);
 			}
-			case 'locked': {
-				return null;
-			}
 			default: {
 				return null;
 			}
@@ -51,9 +48,6 @@ const StatusIcon = ({ status }: Props) => {
 			}
 			case 'failed': {
 				return 'bg-red-800 dark:bg-red-500';
-			}
-			case 'locked': {
-				return '';
 			}
 			default: {
 				return '';

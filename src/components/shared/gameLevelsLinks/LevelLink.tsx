@@ -9,13 +9,24 @@ type Props = {
 
 const LevelLink = ({ levelNumber, url, status }: Props) => {
 	return (
-		<Link
-			href={url}
-			className='relative flex justify-center items-center rounded-[50%] w-[52px] h-[52px] bg-light-primary-main dark:bg-dark-primary-main text-light-primary-contrastText dark:text-dark-primary-contrastText text-xl font-bold'
-		>
-			<StatusIcon status={status} />
-			{levelNumber}
-		</Link>
+		<>
+			{status === 'locked' ? (
+				<Link
+					href={url}
+					className='relative flex justify-center items-center rounded-[50%] w-[52px] h-[52px] bg-grey-900 dark:bg-grey-500 text-grey-100 dark:text-grey-B00 text-xl font-bold'
+				>
+					{levelNumber}
+				</Link>
+			) : (
+				<Link
+					href={url}
+					className='relative flex justify-center items-center rounded-[50%] w-[52px] h-[52px] bg-light-primary-main dark:bg-dark-primary-main text-light-primary-contrastText dark:text-dark-primary-contrastText text-xl'
+				>
+					<StatusIcon status={status} />
+					{levelNumber}
+				</Link>
+			)}
+		</>
 	);
 };
 
