@@ -16,16 +16,20 @@ const Menubar = ({ content, trigger }: Props) => {
 		setIsOpen(false);
 	};
 
-	const handleFocus = () => {
-		console.log('focus');
+	const handleBlur = () => {
+		setTimeout(() => {
+			setIsOpen(false);
+		}, 100);
 	};
 
 	return (
-		<button className='relative flex justify-center items-center'>
+		<button
+			className='relative flex justify-center items-center'
+			onBlur={handleBlur}
+		>
 			<div
-				className='cursor-pointer p-2 w-fit h-12'
+				className='cursor-pointer p-2 mx-3 w-8 h-12'
 				onClick={handleTriggerClick}
-				onFocus={handleFocus}
 			>
 				{trigger}
 			</div>
