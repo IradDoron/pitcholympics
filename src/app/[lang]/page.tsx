@@ -5,7 +5,6 @@ import { getDictionaryServer } from '@/utils/getDictionaryServer';
 import PageTitle from '@shared/pageTitle';
 import { UserButton } from '@clerk/nextjs';
 import LevelLink from '@/components/core/levelLink/LevelLink';
-import LevelsLinksContainer from '@/components/core/levelsLinksContainer';
 import NotesCircle from '@/components/core/notesCircle/NotesCircle';
 import GameLink from '@/components/shared/gameLink/GameLink';
 
