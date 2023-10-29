@@ -3,22 +3,21 @@
 import { useTheme } from '@/context/ThemeProvider';
 import Image from 'next/image';
 import { themes } from '@/constants';
-
+import Menubar from '@/components/core/menubar';
 import {
-	Menubar,
+	MenubarTrigger,
 	MenubarContent,
 	MenubarItem,
 	MenubarMenu,
-	MenubarTrigger,
-} from '@/components/ui/menubar';
+} from '@radix-ui/react-menubar';
 
 const Theme = () => {
 	const { mode, setMode } = useTheme();
 
 	return (
-		<Menubar className='relative border-none bg-transparent shadow-none'>
-			<MenubarMenu>
-				<MenubarTrigger className='focus:bg-light-900 data-[state=open]:bg-light-900 dark:focus:bg-dark-200 dark:data-[state=open]:bg-dark-200 w-12'>
+		<Menubar
+			trigger={
+				<div>
 					{mode === 'light' ? (
 						<Image
 							src='/assets/icons/sun.svg'
@@ -36,10 +35,12 @@ const Theme = () => {
 							className='active-theme'
 						/>
 					)}
-				</MenubarTrigger>
-				<MenubarContent className='absolute right-[-3rem] mt-3 min-w-[120px] rounded border py-2 dark:border-dark-400 dark:bg-dark-300'>
+				</div>
+			}
+			content={
+				<div className='absolute right-[-3rem] mt-3 min-w-[120px] rounded border py-2 dark:border-dark-400 dark:bg-dark-300'>
 					{themes.map((item) => (
-						<MenubarItem
+						<div
 							key={item.value}
 							className='flex items-center gap-4 px-2.5 py-2 dark:focus:bg-dark-400'
 							onClick={() => {
@@ -67,11 +68,11 @@ const Theme = () => {
 							>
 								{item.label}
 							</p>
-						</MenubarItem>
+						</div>
 					))}
-				</MenubarContent>
-			</MenubarMenu>
-		</Menubar>
+				</div>
+			}
+		></Menubar>
 	);
 };
 
