@@ -20,6 +20,9 @@
 		}
 	},
 	"shared": {
+		"gameLevelsLinks": {
+			"StageTitle": "Stage"
+		},
 		"navbar": {
 			"pages": {
 				"home": "Home",
