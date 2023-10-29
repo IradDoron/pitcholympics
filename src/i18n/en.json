@@ -23,6 +23,7 @@
 		"navbar": {
 			"pages": {
 				"home": "Home",
+				"stats": "Stats",
 				"about": "About",
 				"contact": "Contact"
 			},
@@ -33,6 +34,11 @@
 						"imgURL": "/assets/icons/sun.svg",
 						"route": "/",
 						"label": "Home"
+					},
+					{
+						"imgURL": "/assets/icons/sun.svg",
+						"route": "/stats",
+						"label": "Stats"
 					},
 					{
 						"imgURL": "/assets/icons/sun.svg",

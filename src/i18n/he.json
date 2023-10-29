@@ -23,6 +23,7 @@
 		"navbar": {
 			"pages": {
 				"home": "בית",
+				"stats": "סטטיסטיקה",
 				"about": "אודות",
 				"contact": "צור קשר"
 			},
@@ -33,6 +34,11 @@
 						"imgURL": "/assets/icons/sun.svg",
 						"route": "/",
 						"label": "בית"
+					},
+					{
+						"imgURL": "/assets/icons/sun.svg",
+						"route": "/stats",
+						"label": "סטטיסטיקה"
 					},
 					{
 						"imgURL": "/assets/icons/sun.svg",
