@@ -14,7 +14,7 @@ type Props = {
 const GameLevelsLinks = ({ levelsData, baseUrl }: Props) => {
 	return (
 		<>
-			<div className='mt-[400px] '>
+			<div className='mt-[100px] sm:mt-[400px]'>
 				<LevelsLinksContainer>
 					{levelsData?.map((stage, stageIndex) => {
 						return (
