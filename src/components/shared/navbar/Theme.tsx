@@ -38,7 +38,7 @@ const Theme = () => {
 				</div>
 			}
 			content={
-				<div className='absolute right-[-3rem] mt-3 min-w-[120px] rounded border py-2 dark:border-dark-400 dark:bg-dark-300'>
+				<div>
 					{themes.map((item) => (
 						<div
 							key={item.value}

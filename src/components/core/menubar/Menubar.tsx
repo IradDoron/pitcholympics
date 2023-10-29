@@ -34,7 +34,9 @@ const Menubar = ({ content, trigger }: Props) => {
 				{trigger}
 			</div>
 			<div
-				className={`absolute ${isOpen ? 'block' : 'hidden'}`}
+				className={`absolute ${
+					isOpen ? 'block' : 'hidden'
+				} bg-light-surface-primary dark:bg-dark-surface-primary text-light-surface-onPrimary dark:text-dark-surface-onPrimary absolute top-9 mt-3 min-w-[120px] rounded border py-2`}
 				onClick={handleContentClick}
 			>
 				{content}

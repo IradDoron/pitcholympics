@@ -15,7 +15,7 @@ const LocaleSwitcher = ({ params: { lang } }: LangParam) => {
 	return (
 		<Menubar
 			trigger={
-				<div className='focus:bg-light-900 data-[state=open]:bg-light-900 dark:focus:bg-dark-200 dark:data-[state=open]:bg-dark-200 w-12'>
+				<div className='w-12'>
 					{lang === 'he' ? (
 						<Image
 							src='/assets/icons/flags/israel-flag-icon.svg'
@@ -36,7 +36,7 @@ const LocaleSwitcher = ({ params: { lang } }: LangParam) => {
 				</div>
 			}
 			content={
-				<div className='absolute right-[-3rem] mt-3 min-w-[120px] rounded border py-2 dark:border-dark-400 dark:bg-dark-300'>
+				<div>
 					{i18n.locales.map((locale) => {
 						return (
 							<div key={locale}>
