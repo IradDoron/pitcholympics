@@ -1,0 +1,93 @@
+import { Achievement } from '@/types';
+
+const achievements: Achievement[] = [
+	{
+		id: '1',
+		name: 'Daily Streak',
+		description: 'Maintain a daily gameplay streak',
+		criteria: 'Play daily for a week',
+		image: 'streak-image.png', // Image URL
+		category: 'Streak',
+		streakType: 'Daily',
+	},
+	{
+		id: '2',
+		name: 'Weekly Champion',
+		description: 'Achieve the highest weekly score',
+		criteria: 'Get the highest score in any game for a week',
+		image: 'weekly-champion-image.png',
+		category: 'LeaderboardClimber',
+		leaderboardType: 'HighScore',
+	},
+	{
+		id: '3',
+		name: 'Explorer',
+		description: 'Visit all regions on the map',
+		criteria: 'Explore every location on the map',
+		image: 'explorer-image.png',
+		category: 'Playtime',
+	},
+	{
+		id: '4',
+		name: 'Music Theorist',
+		description: 'Complete all music theory lessons',
+		criteria: 'Finish all music theory lessons on the platform',
+		image: 'music-theorist-image.png',
+		category: 'TotalGamesPlayed',
+		count: 5,
+	},
+	{
+		id: '5',
+		name: 'Master Composer',
+		description: 'Compose 10 original pieces of music',
+		criteria: 'Create and save 10 original compositions',
+		image: 'composer-image.png',
+		category: 'GameMarathon',
+		gameName: 'Music Composer',
+	},
+	{
+		id: '6',
+		name: 'Game Enthusiast',
+		description: 'Play a variety of games on the platform',
+		criteria: 'Play 20 different games',
+		image: 'enthusiast-image.png',
+		category: 'GameCount',
+	},
+	{
+		id: '7',
+		name: 'Social Butterfly',
+		description: 'Interact with the community',
+		criteria: 'Post 50 comments on the community forum',
+		image: 'social-butterfly-image.png',
+		category: 'GameCount',
+	},
+	{
+		id: '8',
+		name: 'Weekend Warrior',
+		description: 'Play every weekend for a month',
+		criteria: 'Play on Saturdays and Sundays for a month',
+		image: 'weekend-warrior-image.png',
+		category: 'Streak',
+		streakType: 'Weekly',
+	},
+	{
+		id: '9',
+		name: 'High Achiever',
+		description: 'Unlock 50 achievements',
+		criteria: 'Complete 50 different achievements on the platform',
+		image: 'high-achiever-image.png',
+		category: 'TotalGamesPlayed',
+		count: 50,
+	},
+	{
+		id: '10',
+		name: 'Speed Demon',
+		description: 'Complete a game in record time',
+		criteria: 'Finish a game with the fastest time on record',
+		image: 'speed-demon-image.png',
+		category: 'GameMarathon',
+		gameName: 'Speed Runner',
+	},
+];
+
+export default achievements;
