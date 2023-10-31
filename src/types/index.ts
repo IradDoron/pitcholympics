@@ -45,3 +45,7 @@ export type PitchCatchQuestion = {
 };
 
 export type ThemeMode = 'light' | 'dark' | 'system';
+
+export * from './gameItems';
+export * from './achievements';
+export * from './gameLogic';
