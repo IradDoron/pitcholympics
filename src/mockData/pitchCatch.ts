@@ -2,8 +2,12 @@ import { PitchCatchGame } from '@/types';
 
 const pitchCatchData: PitchCatchGame = [
   [
-    [{ pitch: [4], options: [[4], [2], [5]] }],
-    [{ pitch: [4], options: [[4], [5], [2]] }],
+    [
+      { currPitch: [130.81], userOptions: [[130.81], [146.83], [440.0]] },
+      { currPitch: [130.81], userOptions: [[130.81], [146.83], [440.0]] },
+      { currPitch: [130.81], userOptions: [[130.81], [146.83], [440.0]] },
+    ],
+    [{ currPitch: [220.0], userOptions: [[277.18], [220.0], [130.81]] }],
   ],
 ];
 
