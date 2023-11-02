@@ -17,6 +17,16 @@
 			"page": {
 				"title": "memo-the-melo"
 			}
+		},
+		"stats": {
+			"page": {
+				"title": "Stats",
+				"resources": {
+					"coins": "Coins",
+					"gems": "Gems",
+					"musicalTreasures": "Musical Treasures"
+				}
+			}
 		}
 	},
 	"shared": {
