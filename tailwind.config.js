@@ -233,6 +233,10 @@ module.exports = {
           'linear-gradient(208deg, #E31F76 -13.56%, #792B8B 91.39%)',
         'peach-dark':
           'linear-gradient(208deg, #FFAED3 -13.56%, #FF5E98 91.39%)',
+        'gold-dark':
+          'linear-gradient(46deg, #FCAF6D 12.83%, #FFD36E 86.47%)',
+          'gold-light':
+          'linear-gradient(46deg, #FFD76E 12.83%, #FCAF6D 86.47%)',
         'lambada-light':
           'linear-gradient(208deg, #66E175 -20.27%, #5387E9 95.68%)',
         'lambada-dark':
@@ -240,7 +244,7 @@ module.exports = {
         'gradient3-light':
           'linear-gradient(47deg, #472C72 15.93%, #A32E8D 84.6%)',
         'gradient3-dark':
-          'linear-gradient(46deg, #FF66A7 12.83%, #F89FD4 86.47%)',
+          'linear-gradient(46deg, #8d160b 12.83%, #F89FD4 86.47%)',
         'gradient4-light':
           'linear-gradient(47deg, #580EAD 15.93%, #8B33FB 84.6%)',
         'gradient4-dark':

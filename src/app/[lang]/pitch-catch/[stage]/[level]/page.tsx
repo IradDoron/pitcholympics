@@ -49,28 +49,57 @@ const Page = ({ params }: Props) => {
   }
 
   function checkIfCorrect(
-    userChoiceIndex: number|null,
+    userChoiceIndex: number | null,
     pitchCatchLevel: PitchCatchLevel,
     indexOfQuestion: number
   ) {
-    if(userChoiceIndex === null) return 
+    if (userChoiceIndex === null) return;
     const choices = pitchCatchLevel[indexOfQuestion].userOptions;
     const chosenValue = choices[userChoiceIndex];
     const correctAnswer = pitchCatchLevel[indexOfQuestion].currPitch;
-    console.log(chosenValue, correctAnswer,'i have been clicked');
-     return arrCheck(chosenValue,correctAnswer);
+    console.log(chosenValue, correctAnswer, 'i have been clicked');
+    return arrCheck(chosenValue, correctAnswer);
+  }
+  function handleCheckMeClick() {
+    const isCorrect = checkIfCorrect(
+      useChoiceIndex,
+      currentLevel,
+      currQuestion - 1
+    );
+
+    if (isCorrect) {
+      console.log('correct');
+      if (currQuestion <= currentLevel.length - 1) {
+        setCurrQuestion(currQuestion + 1);
+        console.log('currquestion', currQuestion);
+      }
+      if (currQuestion > currentLevel.length - 1) {
+        console.log('move to the next level');
+      }
+
+      console.log('currquestion', currQuestion);
+    } else {
+      console.log('move to result page');
+    }
   }
   return (
     <>
       <div className="container mx-auto h-screen flex flex-col justify-center gap-10 items-center">
         <div className="flex flex-row gap-2">
           {currentLevel.map((_, index) => {
-            return (
-              <NoteStep
-                state="NotPlayed"
-                key={index}
-              />
-            );
+            const getState = () => {
+              if (index + 1 < currQuestion) return 'Played';
+              if (index + 1 === currQuestion) return 'Current';
+              if (index + 1 > currQuestion) return 'NotPlayed';
+            };
+            const state = getState();
+            if (state)
+              return (
+                <NoteStep
+                  state={state}
+                  key={index}
+                />
+              );
           })}
         </div>
         <PitchButton pitches={currentLevel[currQuestion - 1].currPitch} />
@@ -80,8 +109,8 @@ const Page = ({ params }: Props) => {
           setChoiceIndex={setChoiceIndex}
         />
         <Button
-          label="Check Me"
-          onClick={() => checkIfCorrect(useChoiceIndex,currentLevel,currQuestion - 1)}
+          label="This is the pitch"
+          onClick={() => handleCheckMeClick()}
         />
       </div>
     </>

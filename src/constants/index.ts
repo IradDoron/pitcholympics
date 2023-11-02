@@ -16,3 +16,4 @@ export const themes = [
 	{ value: 'dark', label: 'Dark', icon: '/assets/icons/moon.svg' },
 	{ value: 'system', label: 'System', icon: '/assets/icons/computer.svg' },
 ] as ThemesObject[];
+
