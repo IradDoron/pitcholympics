@@ -17,6 +17,16 @@
 			"page": {
 				"title": "test"
 			}
+		},
+		"stats": {
+			"page": {
+				"title": "סטטיסטיקה",
+				"resources": {
+					"coins": "מטבעות",
+					"gems": "יהלומים",
+					"musicalTreasures": "אוצרות מוזיקליים"
+				}
+			}
 		}
 	},
 	"shared": {
