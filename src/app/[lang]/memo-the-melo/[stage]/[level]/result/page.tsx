@@ -24,6 +24,7 @@ const Page = ({ params }: Props) => {
 
     const handleNextLevel = (stage: number) => {
         const nextLevel = +params.level + 1
+        console.log(nextLevel);
         const currentStageLevels = memoTheMeloMockData[params.stage - 1].length;
         if (nextLevel > currentStageLevels) {
             const nextStage = +params.stage + 1;
