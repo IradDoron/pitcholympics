@@ -227,6 +227,8 @@ module.exports = {
       boxShadow: {
         'large-light': '0px 6px 16px 0px rgba(0, 0, 0, 0.25)',
         'large-dark': '0px 6px 16px 0px rgba(255, 255, 255, 0.25)',
+        'medium-light': '0px 6px 16px rgba(0, 0, 0, 0.25)',
+				'medium-dark': '0px 6px 16px rgba(255, 255, 255, 0.25)'
       },
       backgroundImage: {
         'peach-light':
