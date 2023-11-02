@@ -23,9 +23,22 @@
 				"titleCompleteLevel": "רמה",
 				"dataScoreLevel": "נקודות"
 			}
+		},
+		"stats": {
+			"page": {
+				"title": "סטטיסטיקה",
+				"resources": {
+					"coins": "מטבעות",
+					"gems": "יהלומים",
+					"musicalTreasures": "אוצרות מוזיקליים"
+				}
+			}
 		}
 	},
 	"shared": {
+		"gameLevelsLinks": {
+			"StageTitle": "רמה"
+		},
 		"navbar": {
 			"pages": {
 				"home": "בית",

@@ -1,4 +1,4 @@
-import PitchCatch from '@/components/shared/pitchCatch';
+
 import GameLevelsLinks from '@/components/shared/gameLevelsLinks';
 import pitchCatchData from '@/mockData/pitchCatch';
 import { LangParam } from '@/types';

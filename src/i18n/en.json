@@ -23,9 +23,22 @@
 				"titleCompleteLevel": "level",
 				"dataScoreLevel": "Xp"
 			}
+		},
+		"stats": {
+			"page": {
+				"title": "Stats",
+				"resources": {
+					"coins": "Coins",
+					"gems": "Gems",
+					"musicalTreasures": "Musical Treasures"
+				}
+			}
 		}
 	},
 	"shared": {
+		"gameLevelsLinks": {
+			"StageTitle": "Stage"
+		},
 		"navbar": {
 			"pages": {
 				"home": "Home",
