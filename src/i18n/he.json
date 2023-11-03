@@ -22,9 +22,16 @@
 			"page": {
 				"title": "סטטיסטיקה",
 				"resources": {
+					"title": "משאבים",
 					"coins": "מטבעות",
 					"gems": "יהלומים",
-					"musicalTreasures": "אוצרות מוזיקליים"
+					"musicalTreasure": "אוצרות מוזיקליים"
+				},
+				"gamesStats": {
+					"title": "נתוני משחקים",
+					"totalGamesPlayed": "Total Games Played",
+					"memoTheMeloGames": "Memo The Melo Games",
+					"pitchCatchGames": "Pitch Catch Games"
 				}
 			}
 		}

@@ -1,7 +1,7 @@
 import { AchievementStatus, GameItem } from '@/types';
 
 export type GameAnalytics = {
-	gameName: 'memoTheMelo' | 'pitchCatch';
+	gameName: GameNames;
 	level: number;
 	stage: number;
 	status: 'passed' | 'failed';
@@ -9,12 +9,20 @@ export type GameAnalytics = {
 	startDate: string;
 };
 
+export type GameNames = 'memoTheMelo' | 'pitchCatch';
+
 export type Resources = {
 	coins: number;
 	musicalTreasure: number;
 	gems: number;
 	health: number;
 };
+
+export type GamesStats = {
+	"memoTheMeloGames": number;
+	"pitchCatchGames": number;
+	"totalGamesPlayed": number;
+}
 
 export type Price = {
 	[resource in keyof Resources]: number;
