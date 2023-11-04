@@ -3,7 +3,6 @@ import { match as matchLocale } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
-import { authMiddleware, redirectToSignIn } from '@clerk/nextjs';
 
 function getLocale(request: NextRequest): string | undefined {
 	const negotiatorHeaders: Record<string, string> = {};
@@ -19,6 +18,9 @@ function getLocale(request: NextRequest): string | undefined {
 
 export const middleware = (request: NextRequest) => {
 	const pathname = request.nextUrl.pathname;
+	console.log(pathname);
+	const firstSegment = pathname.split('/')[1];
+	console.log(firstSegment);
 	const pathnameIsMissingLocale = i18n.locales.every(
 		(locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
 	);
@@ -35,11 +37,6 @@ export const middleware = (request: NextRequest) => {
 		);
 	}
 };
-
-// This example protects all routes including api/trpc routes
-// Please edit this to allow other routes to be public as needed.
-// See https://clerk.com/docs/references/nextjs/auth-middleware for more information about configuring your Middleware
-export default authMiddleware({});
 
 export const config = {
 	matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],

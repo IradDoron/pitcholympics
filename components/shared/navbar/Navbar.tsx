@@ -3,7 +3,6 @@ import LocaleSwitcher from './LocaleSwitcher';
 import { LangParam } from '@/types';
 import { getDictionaryServer } from '@/utils/getDictionaryServer';
 import MobileNav from '@/components/shared/navbar/MobileNav';
-import { SignedIn, UserButton } from '@clerk/nextjs';
 import NavbarLink from './NavbarLink';
 
 const Navbar = async ({ params: { lang } }: LangParam) => {
@@ -15,18 +14,14 @@ const Navbar = async ({ params: { lang } }: LangParam) => {
 		<div className='flex justify-center'>
 			<nav className='grid w-full grid-cols-3 p-2 fixed max-w-[1400px] '>
 				<div className='flex justify-self-start'>
-					<div>
-						<UserButton
-							afterSignOutUrl='/'
-							appearance={{
-								elements: {
-									formButtonPrimary: 'primary-gradient',
-									footerActionLink:
-										'primary-text-gradient hover:text-primary-500',
-								},
-							}}
-						/>
-					</div>
+					<div
+						style={{
+							border: 'solid salmon 2px',
+							padding: '12px',
+							width: '0px',
+							height: '0px',
+						}}
+					></div>
 					<LocaleSwitcher params={{ lang }} />
 
 					<div className='flex-between gap-5'>

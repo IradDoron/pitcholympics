@@ -4,7 +4,6 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import ThemeProvider from '@/context/ThemeProvider';
 import '@/styles/globals.css';
-import { ClerkProvider } from '@clerk/nextjs';
 import Navbar from '@/components/shared/navbar';
 const inter = Inter({ subsets: ['latin'] });
 
@@ -25,17 +24,15 @@ export default function RootLayout({
 	params: { lang: Locale };
 }) {
 	return (
-		<ClerkProvider>
-			<html lang={params.lang} dir={getHtmlDirection(params.lang)}>
-				<ThemeProvider>
-					<body
-						className={`${inter.className} bg-light-background-default dark:bg-dark-background-default`}
-					>
-						<Navbar params={params} />
-						{children}
-					</body>
-				</ThemeProvider>
-			</html>
-		</ClerkProvider>
+		<html lang={params.lang} dir={getHtmlDirection(params.lang)}>
+			<ThemeProvider>
+				<body
+					className={`${inter.className} bg-light-background-default dark:bg-dark-background-default`}
+				>
+					<Navbar params={params} />
+					{children}
+				</body>
+			</ThemeProvider>
+		</html>
 	);
 }
