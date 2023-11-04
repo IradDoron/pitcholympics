@@ -1,36 +1,32 @@
-import React from 'react';
-import { colorVariants } from '@/components/core/circleGradient/CircleGradient';
-import { ColorVariants } from '@/components/core/circleGradient/CircleGradient';
-import { divideItemsByLightAndDark } from '@/utils/divideItemsByLightAndDark';
+import React from "react";
+import { colorVariants } from "@/components/core/circleGradient/CircleGradient";
+import { divideItemsByLightAndDark } from "@/utils/divideItemsByLightAndDark";
 type Props = {
   pitches: number[] | number[][];
   useChoiceIndex: number | null;
   setChoiceIndex: React.Dispatch<React.SetStateAction<number | null>>;
-
 };
 
-const UserOptions = ({
-  pitches,
-  useChoiceIndex,
-  setChoiceIndex,
-
-}: Props) => {
+const UserOptions = ({ pitches, useChoiceIndex, setChoiceIndex }: Props) => {
   function handleChoiceClick(index: number) {
     setChoiceIndex(index);
-    console.log('index', index);
+    console.log("index", index);
   }
   const bgColorsArr = Object.values(colorVariants);
-  console.log(bgColorsArr, 'bgColorsArr');
+  console.log(bgColorsArr, "bgColorsArr");
   const { light, dark } = divideItemsByLightAndDark(bgColorsArr);
-  console.log(dark)
-  console.log(light)
+  console.log(dark);
+  console.log(light);
   return (
     <div className="w-full h-fit mx-auto  flex items-center justify-center">
       {pitches.map((pitch, index) => (
         <div
           key={index}
           onClick={() => handleChoiceClick(index)}
-          className={`w-20 h-20 ${index % 2 === 0 ? light[index]: 'bg-peach-light'} dark:bg-lambada-dark text-white rounded-full mx-2 shadow-sm hover:shadow-md transform hover:scale-202 transition-transform duration-600  hover:text-white flex items-center justify-center duration-300  hover:scale-105`}>
+          className={`w-20 h-20 ${
+            index % 2 === 0 ? light[index] : "bg-peach-light"
+          } dark:bg-lambada-dark text-white rounded-full mx-2 shadow-sm hover:shadow-md transform hover:scale-202 transition-transform duration-600  hover:text-white flex items-center justify-center duration-300  hover:scale-105`}
+        >
           {pitch}
         </div>
       ))}
