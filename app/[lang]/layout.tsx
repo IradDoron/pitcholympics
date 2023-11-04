@@ -1,11 +1,11 @@
 import { Locale, i18n } from '@/i18n.config';
-import Navbar from '@shared/navbar/Navbar';
 import { getHtmlDirection } from '@/utils/getHtmlDirection';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import ThemeProvider from '@/context/ThemeProvider';
 import '@/styles/globals.css';
-import { ClerkProvider, UserButton } from '@clerk/nextjs';
+import { ClerkProvider } from '@clerk/nextjs';
+import Navbar from '@/components/shared/navbar';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -31,10 +31,6 @@ export default function RootLayout({
 					<body
 						className={`${inter.className} bg-light-background-default dark:bg-dark-background-default`}
 					>
-						<UserButton afterSignOutUrl='/' />
-						<UserButton afterSignOutUrl='/' />
-						<UserButton afterSignOutUrl='/' />
-						<UserButton afterSignOutUrl='/' />
 						<Navbar params={params} />
 						{children}
 					</body>
