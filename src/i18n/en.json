@@ -28,9 +28,16 @@
 			"page": {
 				"title": "Stats",
 				"resources": {
+					"title": "Resources",
 					"coins": "Coins",
 					"gems": "Gems",
-					"musicalTreasures": "Musical Treasures"
+					"musicalTreasure": "Musical Treasures"
+				},
+				"gamesStats": {
+					"title": "Games stats",
+					"totalGamesPlayed": "Total Games Played",
+					"memoTheMeloGames": "Memo The Melo Games",
+					"pitchCatchGames": "Pitch Catch Games"
 				}
 			}
 		}
