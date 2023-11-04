@@ -227,6 +227,8 @@ module.exports = {
       boxShadow: {
         "large-light": "0px 6px 16px 0px rgba(0, 0, 0, 0.25)",
         "large-dark": "0px 6px 16px 0px rgba(255, 255, 255, 0.25)",
+        'medium-light': '0px 6px 16px rgba(0, 0, 0, 0.25)',
+				'medium-dark': '0px 6px 16px rgba(255, 255, 255, 0.25)'
       },
       backgroundImage: {
         "peach-light": "linear-gradient(47deg, #472C72 15.93%, #A32E8D 84.6%)",
@@ -244,7 +246,7 @@ module.exports = {
         "violateSky-dark":
           "linear-gradient(47deg, #BD6CFD 15.93%, #FFBDE1 84.6%)",
         // "circle-wave":
-        //   "radial-gradient(circle, rgba(2,0,36,0) 0%, rgba(9,9,121,0) 52%, rgba(2,169,227,1) 78%, rgba(0,212,255,0) 100%)",
+        //   "radial-gradient(circle, rgba(2,0,36,0) 0%, rgba(9,9,121,0) 52%, rgba(2,169,227,1) 78%, rgba(0,212,255,0) 100%)"
       },
       screens: {
         xs: "420px",

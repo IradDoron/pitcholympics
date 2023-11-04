@@ -1,7 +1,9 @@
+
 "use client";
 import { useEffect, useState } from "react";
 
-type ColorVariants = {
+
+export type ColorVariants = {
   peachLight: string;
   peachDark: string;
   lambadaLight: string;
@@ -24,6 +26,7 @@ const colorVariants: ColorVariants = {
   violateSkyDark: "bg-violateSky-dark",
   radial1: "bg-circle-wave",
 };
+
 
 interface CircleGradientProps {
   color: keyof ColorVariants;

@@ -40,8 +40,8 @@ export type PitchCatchStage = PitchCatchLevel[];
 export type PitchCatchGame = PitchCatchStage[];
 
 export type PitchCatchQuestion = {
-	pitch: number[];
-	options: number[][];
+	currPitch: number[];
+	userOptions: number[][];
 };
 
 export type ThemeMode = 'light' | 'dark' | 'system';
