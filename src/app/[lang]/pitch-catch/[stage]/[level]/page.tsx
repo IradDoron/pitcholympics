@@ -20,7 +20,7 @@ const getLevelData = (
   level: number,
   levelsData: PitchCatchGame
 ) => {
-  console.log(stage, level, levelsData);
+
   return levelsData[stage - 1][level - 1];
 };
 
@@ -38,7 +38,6 @@ const Page = ({ params }: Props) => {
   //   currentLevel[currQuestion - 1].currPitch
   // );
 
-  console.log(currentLevel);
   function arrCheck(arrOne: number[], arrTwo: number[]) {
     for (let i = 0; i < arrOne.length; i++) {
       if (arrTwo[i] !== arrOne[i]) {
@@ -57,7 +56,7 @@ const Page = ({ params }: Props) => {
     const choices = pitchCatchLevel[indexOfQuestion].userOptions;
     const chosenValue = choices[userChoiceIndex];
     const correctAnswer = pitchCatchLevel[indexOfQuestion].currPitch;
-    console.log(chosenValue, correctAnswer, 'i have been clicked');
+
     return arrCheck(chosenValue, correctAnswer);
   }
   function handleCheckMeClick() {
@@ -68,13 +67,13 @@ const Page = ({ params }: Props) => {
     );
 
     if (isCorrect) {
-      console.log('correct');
+
       if (currQuestion <= currentLevel.length - 1) {
         setCurrQuestion(currQuestion + 1);
-        console.log('currquestion', currQuestion);
+   
       }
       if (currQuestion > currentLevel.length - 1) {
-        console.log('move to the next level');
+      
       }
 
       console.log('currquestion', currQuestion);
