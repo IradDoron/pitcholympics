@@ -29,11 +29,11 @@ const Card = ({ title, subTitle, color }: Props) => {
   }
 
   return (
-    <div className={`m-10 p-5 w-full h-32 ${colorVariants[color].bg} flex-col rounded-lg flex items-center justify-center gap-2`} >
+    <div className={`m-10 p-5 w-full h-32 flex-col rounded-lg flex items-center justify-center gap-2 ${colorVariants[color].bg} `} >
       <p className={`font-inter text-lg font-bold font ${colorVariants[color].text}`}>
         {title}
       </p >
-      <p className={`font-bold  ${colorVariants[color].subtext} `}>
+      <p className={`font-bold ${colorVariants[color].subtext}`}>
         {subTitle}
       </p>
     </div >

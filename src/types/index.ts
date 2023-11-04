@@ -1,4 +1,5 @@
 import { Locale } from '@/i18n.config';
+import { GameNames } from '.';
 
 export type LangParam = {
 	params: { lang: Locale };
@@ -27,6 +28,11 @@ export type SidebarLink = {
 export type MemoTheMeloLevel = {
 	notesAmount: number;
 	melody: number[];
+};
+
+export type Game = {
+	name: GameNames;
+	game: MemoTheMeloGame | PitchCatchGame;
 };
 
 export type MemoTheMeloStage = MemoTheMeloLevel[];
