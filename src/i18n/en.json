@@ -16,6 +16,22 @@
 		"memo-the-melo": {
 			"page": {
 				"title": "memo-the-melo"
+			},
+			"result": {
+				"actionButtonLabel": "Next Level",
+				"titleComplete": "Complete!",
+				"titleCompleteLevel": "level",
+				"dataScoreLevel": "Xp"
+			}
+		},
+		"stats": {
+			"page": {
+				"title": "Stats",
+				"resources": {
+					"coins": "Coins",
+					"gems": "Gems",
+					"musicalTreasures": "Musical Treasures"
+				}
 			}
 		}
 	},

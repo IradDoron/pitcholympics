@@ -16,6 +16,22 @@
 		"memo-the-melo": {
 			"page": {
 				"title": "test"
+			},
+			"result": {
+				"actionButtonLabel": "לשלב הבא",
+				"titleComplete": "הושלמה",
+				"titleCompleteLevel": "רמה",
+				"dataScoreLevel": "נקודות"
+			}
+		},
+		"stats": {
+			"page": {
+				"title": "סטטיסטיקה",
+				"resources": {
+					"coins": "מטבעות",
+					"gems": "יהלומים",
+					"musicalTreasures": "אוצרות מוזיקליים"
+				}
 			}
 		}
 	},
