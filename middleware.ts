@@ -36,23 +36,10 @@ export const middleware = (request: NextRequest) => {
 	}
 };
 
-// export default authMiddleware({
-// 	publicRoutes: [
-// 		'/en/sign-in',
-// 		'/he/sign-in',
-// 		'/en',
-// 		'/en/about',
-// 		'/he',
-// 		'/he/about',
-// 		'/he/memo-the-melo/1/1',
-// 		'/en/memo-the-melo/1/1'
-// 	],
-// 	ignoredRoutes: ['/((?!api|trpc))(_next.*|.+.[w]+$)'],
-// 	beforeAuth(req) {
-// 		return middleware(req);
-// 	},
-// 	afterAuth() { }
-// });
+// This example protects all routes including api/trpc routes
+// Please edit this to allow other routes to be public as needed.
+// See https://clerk.com/docs/references/nextjs/auth-middleware for more information about configuring your Middleware
+export default authMiddleware({});
 
 export const config = {
 	matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
