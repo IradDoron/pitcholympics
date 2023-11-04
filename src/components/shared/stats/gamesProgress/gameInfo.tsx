@@ -1,4 +1,5 @@
 
+import { splitCamelCaseToString } from "@/lib/utils";
 import { Game, User } from "@/types";
 
 type Props = {
@@ -8,7 +9,7 @@ type Props = {
 
 const GameInfo = ({ game, user }: Props) => {
 
-  const name = game.name.replace(/([a-z])([A-Z])/g, '$1 $2').replace(/\b\w/g, l => l.toUpperCase()); // Convert the game name to a readable format
+  const name = splitCamelCaseToString(game.name); // Get the game name
   const gameProgress = user.gameProgress[game.name]?.filter(level => level.status === "passed"); // Get the user's progress in the game (only the levels that are passed)
   const levelsCleared = gameProgress?.reduce((count, stage) => count + stage.level, 0); // Count the number of levels cleared in the game by the user
   const levelCount = game.game.reduce((count, stage) => count + stage.length, 0); // Count the number of levels in the game

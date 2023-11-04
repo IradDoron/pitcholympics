@@ -19,9 +19,9 @@ export type Resources = {
 };
 
 export type GamesStats = {
-	"memoTheMeloGames": number;
-	"pitchCatchGames": number;
-	"totalGamesPlayed": number;
+	memoTheMeloGames: number;
+	pitchCatchGames: number;
+	totalGamesPlayed: number;
 }
 
 export type Price = {

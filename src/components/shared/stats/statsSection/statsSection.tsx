@@ -1,7 +1,7 @@
 
 import Card from "@/components/core/card";
 import type { User } from '@/types';
-import type { GameAnalytics, GameNames } from '@/types/gameLogic';
+import type { GameAnalytics, GameNames, GamesStats, Resources } from '@/types/gameLogic';
 import { getDictionaryServer } from '@/utils/getDictionaryServer';
 import users from '@/mockData/users';
 import { Locale } from "@/i18n.config";
@@ -29,22 +29,19 @@ const StatsSection = async ({ type, lang, color }: Props) => {
 
 
   const stats = {
-    "resources": { ...user.resources },
-    "gamesStats": {
-      "memoTheMeloGames": memoTheMeloGamesCount,
-      "pitchCatchGames": pitchCatchGamesCount,
-      "totalGamesPlayed": memoTheMeloGamesCount + pitchCatchGamesCount,
+    resources: { ...user.resources },
+    gamesStats: {
+      memoTheMeloGames: memoTheMeloGamesCount,
+      pitchCatchGames: pitchCatchGamesCount,
+      totalGamesPlayed: memoTheMeloGamesCount + pitchCatchGamesCount,
     }
   }
   const dict = await getDictionaryServer(lang);
   const { page } = dict.app.stats;
   const selectedPage = page[type];
-  const keyValues = Object.entries(selectedPage).filter(([key, value]) => {
-    return value !== "" && key !== "title";
-  });
+  const keyValues = Object.entries(selectedPage).filter(([key, v]) => key !== 'title');
 
   return (
-
     <div className="w-full items-center place-self-center">
       <h1 className="text-center text-light-background-onDefault dark:text-dark-background-onDefault font-inter text-xl font-bold">
         {page[type].title}
@@ -52,16 +49,18 @@ const StatsSection = async ({ type, lang, color }: Props) => {
       <div className="flex flex-col sm:flex-row items-center gap-x-0">
         {
           keyValues.map(([key, value]) => {
+            // Use type assertions to tell TypeScript the expected type
+            const title = type === "resources" ? stats.resources[key as keyof Resources] : stats.gamesStats[key as keyof GamesStats]
             return (
               <Card
                 key={key}
-                title={stats[type][key]}
+                title={title.toString()}
                 subTitle={value}
                 color={color}
               />
             )
-          }
-          )}
+          })
+        }
       </div>
     </div>
   )
