@@ -4,10 +4,10 @@ type BtnSize = "small" | "medium" | "large";
 type Props = {
   label: string;
   onClick: () => void;
-  size: BtnSize
+  size?: BtnSize
 }
 
-const Button = ({ label, onClick, size }: Props) => {
+const Button = ({ label, onClick, size = "medium" }: Props) => {
 
   const getSize = (size: BtnSize) => {
     switch (size) {
