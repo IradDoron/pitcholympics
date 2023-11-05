@@ -43,7 +43,13 @@
           "coins": "Coins",
           "gems": "Gems",
           "musicalTreasures": "Musical Treasures"
-        }
+        }	,
+        "gamesStats": {
+					"title": "Games Stats",
+					"totalGamesPlayed": "Total Games Played",
+					"memoTheMeloGames": "Memo The Melo Games",
+					"pitchCatchGames": "Pitch Catch Games"
+				}
       }
     }
   },
