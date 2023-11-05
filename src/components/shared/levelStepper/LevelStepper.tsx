@@ -19,7 +19,7 @@ const getStepStatus = (currentStep: number, index: number) => {
 const LevelStepper = ({ currentStep, totalSteps }: Props) => {
 	const arr = Array(totalSteps).fill(0);
 	return (
-		<Card border={true} shadow='large'>
+		<Card border={true} shadow='large' isWrap={true} width='fit'>
 			{arr.map((_, index) => {
 				const status = getStepStatus(currentStep, index);
 				return <Step key={index} number={index + 1} status={status} />;

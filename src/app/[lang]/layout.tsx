@@ -34,7 +34,7 @@ export default async function RootLayout({
 					<NextAuthProvider>
 						<Navbar params={params} />
 						{children}
-						<LevelStepper currentStep={3} totalSteps={10} />
+						<LevelStepper currentStep={3} totalSteps={100} />
 					</NextAuthProvider>
 				</body>
 			</ThemeProvider>

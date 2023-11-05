@@ -1,11 +1,14 @@
 type CardShadow = 'none' | 'medium' | 'large';
 type CardColor = 'primary' | 'secondary' | 'tertiary';
 type CardBorder = boolean;
+type CardWidth = 'fit' | 'full' | number;
 
 type Props = {
 	color?: CardColor;
 	shadow?: CardShadow;
 	border?: CardBorder;
+	width?: CardWidth;
+	isWrap?: boolean;
 	children: React.ReactNode;
 };
 
@@ -46,18 +49,44 @@ const getBorder = (border: CardBorder) => {
 	}
 };
 
+const getWrap = (isWrap: boolean) => {
+	switch (isWrap) {
+		case true:
+			return 'flex-wrap';
+		case false:
+			return '';
+		default:
+			return '';
+	}
+};
+
+const getWidth = (width: CardWidth) => {
+	switch (width) {
+		case 'fit':
+			return 'w-fit';
+		case 'full':
+			return 'w-full';
+		default:
+			return `w-[${width}]px`;
+	}
+};
+
 const Card = ({
 	color = 'primary',
 	shadow = 'none',
 	border = false,
+	width = 'fit',
+	isWrap = false,
 	children,
 }: Props) => {
 	const shadowClass = getShadow(shadow);
 	const backgroundClass = getBackground(color);
 	const borderClass = getBorder(border);
+	const wrapClass = getWrap(isWrap);
+	const widthClass = getWidth(width);
 	return (
 		<div
-			className={`p-4 rounded-lg flex w-fit items-center justify-center gap-2 ${shadowClass} ${borderClass} ${backgroundClass}`}
+			className={`p-4 rounded-lg flex w-fit items-center justify-center gap-2 ${shadowClass} ${borderClass} ${backgroundClass} ${wrapClass} ${widthClass}`}
 		>
 			{children}
 		</div>
