@@ -1,13 +1,21 @@
+import { type } from 'os';
+
 // Define a type for the achievement's completion status
 export type AchievementStatus = 'NotStarted' | 'InProgress' | 'Completed';
+
+export type AchievementCriteria = {
+	description: string;
+	isDone: boolean;
+};
 
 // Define a base achievement type
 export type BaseAchievement = {
 	id: string;
 	name: string;
 	description: string;
-	criteria: string;
+	criteria: AchievementCriteria[];
 	image: string;
+	maxAmount: number | 'infinite';
 };
 
 // Define specific achievement categories using type
