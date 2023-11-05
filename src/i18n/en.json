@@ -1,79 +1,90 @@
 {
-	"app": {
-		"page": {
-			"title": "Home page"
-		},
-		"about": {
-			"page": {
-				"title": "About page"
-			}
-		},
-		"contact": {
-			"page": {
-				"title": "Contact page"
-			}
-		},
-		"memo-the-melo": {
-			"page": {
-				"title": "memo-the-melo"
-			},
-			"result": {
-				"actionButtonLabel": "Next Level",
-				"titleComplete": "Complete!",
-				"titleCompleteLevel": "level",
-				"dataScoreLevel": "Xp"
-			}
-		},
-		"stats": {
-			"page": {
-				"title": "Stats",
-				"resources": {
-					"coins": "Coins",
-					"gems": "Gems",
-					"musicalTreasures": "Musical Treasures"
-				}
-			}
-		}
-	},
-	"shared": {
-		"gameLevelsLinks": {
-			"StageTitle": "Stage"
-		},
-		"navbar": {
-			"pages": {
-				"home": "Home",
-				"stats": "Stats",
-				"about": "About",
-				"contact": "Contact"
-			},
-			"title": "Page",
-			"MobileNav": {
-				"sidebarLinks": [
-					{
-						"imgURL": "/assets/icons/sun.svg",
-						"route": "/",
-						"label": "Home"
-					},
-					{
-						"imgURL": "/assets/icons/sun.svg",
-						"route": "/stats",
-						"label": "Stats"
-					},
-					{
-						"imgURL": "/assets/icons/sun.svg",
-						"route": "/about",
-						"label": "About"
-					},
-					{
-						"imgURL": "/assets/icons/sun.svg",
-						"route": "/contact",
-						"label": "Contact"
-					}
-				]
-			}
-		},
-		"LocaleSwitcher": {
-			"Language": "Language"
-		}
-	}
+  "app": {
+    "page": {
+      "title": "Home page"
+    },
+    "about": {
+      "page": {
+        "title": "About page"
+      }
+    },
+    "contact": {
+      "page": {
+        "title": "Contact page"
+      }
+    },
+    "memo-the-melo": {
+      "page": {
+        "title": "memo-the-melo"
+      },
+      "result": {
+        "actionButtonLabel": "Next Level",
+        "titleComplete": "Complete!",
+        "titleCompleteLevel": "level",
+        "dataScoreLevel": "Xp"
+      }
+    },
+    "game-result-page": {
+      "actionButtonLabel": "Next Level",
+      "titleComplete": "Complete!",
+      "titleCompleteLevel": "level",
+      "dataScoreLevel": "Xp",
+	    "titleForFailed": "Failed!",
+	    "titleForFailedLevel": "level",
+	    "tryAgainButtonLabel": "Try Again"
+
+	
+    },
+    "stats": {
+      "page": {
+        "title": "Stats",
+        "resources": {
+          "coins": "Coins",
+          "gems": "Gems",
+          "musicalTreasures": "Musical Treasures"
+        }
+      }
+    }
+  },
+  "shared": {
+    "gameLevelsLinks": {
+      "StageTitle": "Stage"
+    },
+    "navbar": {
+      "pages": {
+        "home": "Home",
+        "stats": "Stats",
+        "about": "About",
+        "contact": "Contact"
+      },
+      "title": "Page",
+      "MobileNav": {
+        "sidebarLinks": [
+          {
+            "imgURL": "/assets/icons/sun.svg",
+            "route": "/",
+            "label": "Home"
+          },
+          {
+            "imgURL": "/assets/icons/sun.svg",
+            "route": "/stats",
+            "label": "Stats"
+          },
+          {
+            "imgURL": "/assets/icons/sun.svg",
+            "route": "/about",
+            "label": "About"
+          },
+          {
+            "imgURL": "/assets/icons/sun.svg",
+            "route": "/contact",
+            "label": "Contact"
+          }
+        ]
+      }
+    },
+    "LocaleSwitcher": {
+      "Language": "Language"
+    }
+  }
 }
