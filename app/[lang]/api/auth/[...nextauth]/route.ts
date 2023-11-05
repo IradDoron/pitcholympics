@@ -3,6 +3,8 @@ import GitHubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
 
 export const authOptions: NextAuthOptions = {
+	secret: process.env.NEXTAUTH_SECRET,
+
 	providers: [
 		GitHubProvider({
 			clientId: process.env.GITHUB_ID ?? '',
@@ -14,19 +16,8 @@ export const authOptions: NextAuthOptions = {
 		}),
 	],
 	callbacks: {
-		async session({ session, user, token }) {
-			console.log('session', session, user, token);
-			return session;
-		},
-		async redirect({ url, baseUrl }) {
-			console.log('redirect', url, baseUrl);
-			return baseUrl;
-		},
-		async jwt({ token, user, account, profile, isNewUser }) {
-			return token;
-		},
-		async signIn({ user, account, profile, email, credentials }) {
-			return true;
+		async session(params) {
+			return params.session;
 		},
 	},
 };

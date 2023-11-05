@@ -6,8 +6,7 @@ import ThemeProvider from '@/context/ThemeProvider';
 import '@/styles/globals.css';
 import Navbar from '@/components/shared/navbar';
 const inter = Inter({ subsets: ['latin'] });
-import { getServerSession } from 'next-auth';
-import SessionProvider from '@/context/SessionProvider';
+import NextAuthProvider from '@/context/SessionProvider';
 
 export const metadata: Metadata = {
 	title: 'Next.js 13 & i18n Template',
@@ -25,17 +24,16 @@ export default async function RootLayout({
 	children: React.ReactNode;
 	params: { lang: Locale };
 }) {
-	const session = await getServerSession();
 	return (
 		<html lang={params.lang} dir={getHtmlDirection(params.lang)}>
 			<ThemeProvider>
 				<body
 					className={`${inter.className} bg-light-background-default dark:bg-dark-background-default`}
 				>
-					<SessionProvider session={session}>
+					<NextAuthProvider>
 						<Navbar params={params} />
 						{children}
-					</SessionProvider>
+					</NextAuthProvider>
 				</body>
 			</ThemeProvider>
 		</html>
