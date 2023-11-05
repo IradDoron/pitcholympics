@@ -10,6 +10,7 @@ import Button from '@/components/core/button';
 import pitchCatchData from '@/mockData/pitchCatch';
 
 import { useRouter } from 'next/navigation';
+import LevelStepper from '@/components/shared/levelStepper';
 
 type Props = {
   params: {
@@ -89,21 +90,14 @@ const Page = ({ params }: Props) => {
     <>
       <div className="container mx-auto h-screen flex flex-col justify-center gap-10 items-center">
         <div className="flex flex-row gap-2">
-          {currentLevel.map((_, index) => {
-            const getState = () => {
-              if (index + 1 < currQuestion) return 'Played';
-              if (index + 1 === currQuestion) return 'Current';
-              if (index + 1 > currQuestion) return 'NotPlayed';
-            };
-            const state = getState();
-            if (state)
-              return (
-                <NoteStep
-                  state={state}
-                  key={index}
-                />
-              );
-          })}
+     
+       
+       
+                <LevelStepper currentStep={currQuestion} totalSteps={currentLevel.length}/>
+                
+             
+          
+          
         </div>
         <PitchButton pitches={currentLevel[currQuestion - 1].currPitch} />
         <UserOptions
