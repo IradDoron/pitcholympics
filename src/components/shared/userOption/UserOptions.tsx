@@ -1,7 +1,6 @@
-import React from 'react';
-import { colorVariants } from '@/components/core/circleGradient/CircleGradient';
-import { ColorVariants } from '@/components/core/circleGradient/CircleGradient';
-import { divideItemsByLightAndDark } from '@/utils/divideItemsByLightAndDark';
+import React from "react";
+import { colorVariants } from "@/components/core/circleGradient/CircleGradient";
+import { divideItemsByLightAndDark } from "@/utils/divideItemsByLightAndDark";
 type Props = {
   pitches: number[] | number[][];
   useChoiceIndex: number | null;
@@ -11,6 +10,7 @@ type Props = {
 const UserOptions = ({ pitches, useChoiceIndex, setChoiceIndex }: Props) => {
   function handleChoiceClick(index: number) {
     setChoiceIndex(index);
+
 
   }
   const bgColorsArr = Object.values(colorVariants);
@@ -38,6 +38,7 @@ const UserOptions = ({ pitches, useChoiceIndex, setChoiceIndex }: Props) => {
           </div>
         );
       })}
+
     </div>
   );
 };
