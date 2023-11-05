@@ -27,26 +27,25 @@ const Navbar = ({ params: { lang } }: LangParam) => {
 					</div>
 					<LocaleSwitcher params={{ lang }} />
 
-					<div className='flex-between gap-5'>
-						<Theme />
-					</div>
-				</div>
-				<ul className='gap-5 hidden sm:flex justify-self-center'>
-					{pagesUrls.map(([url, title]) => {
-						const composedUrl = url === 'home' ? `/${lang}` : `/${lang}/${url}`;
-						return (
-							<li key={url}>
-								<NavbarLink url={composedUrl} label={title} />
-							</li>
-						);
-					})}
-				</ul>
-				<div></div>
-
-				<MobileNav lang={lang} />
-			</nav>
-		</div>
-	);
+          <div className="flex-between gap-5">
+            <Theme />
+          </div>
+        </div>
+        <ul className="gap-5 hidden sm:flex justify-self-center">
+          {pagesUrls.map(([url, title]) => {
+            const composedUrl = url === "home" ? `/${lang}` : `/${lang}/${url}`;
+            return (
+              <li key={url}>
+                <NavbarLink url={composedUrl} label={title} />
+              </li>
+            );
+          })}
+        </ul>
+        <div></div>
+        <MobileNav lang={lang} />
+      </nav>
+    </div>
+  );
 };
 
 export default Navbar;
