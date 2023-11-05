@@ -3,11 +3,13 @@
 import { useState, useEffect } from 'react';
 import NoteStep from '@/components/shared/noteStep';
 import { PitchCatchGame, PitchCatchLevel } from '@/types';
-import memoTheMeloMockData from '@/mockData/memoTheMelo';
+
 import PitchButton from '@/components/shared/pitchButton';
 import UserOptions from '@/components/shared/userOption';
 import Button from '@/components/core/button';
 import pitchCatchData from '@/mockData/pitchCatch';
+
+import { useRouter } from 'next/navigation';
 
 type Props = {
   params: {
@@ -20,7 +22,6 @@ const getLevelData = (
   level: number,
   levelsData: PitchCatchGame
 ) => {
-  console.log(stage, level, levelsData);
   return levelsData[stage - 1][level - 1];
 };
 
@@ -33,12 +34,18 @@ const Page = ({ params }: Props) => {
     Number(level),
     pitchCatchData
   );
+  const router = useRouter();
+  const handleWin = () => {
+    const scoreWinning = params.stage + params.level * 2;
+    console.log('iam here handleWin');
+    localStorage.setItem('score', scoreWinning.toString());
+    // redirect(`${params.level}/result`);
+    router.push(`${params.level}/result`);
+  };
+  const handleLose = () => {
+    router.push(`${params.level}/result`);
+  };
 
-  // const [currPitch, setCurrPitch] = useState(
-  //   currentLevel[currQuestion - 1].currPitch
-  // );
-
-  console.log(currentLevel);
   function arrCheck(arrOne: number[], arrTwo: number[]) {
     for (let i = 0; i < arrOne.length; i++) {
       if (arrTwo[i] !== arrOne[i]) {
@@ -57,7 +64,7 @@ const Page = ({ params }: Props) => {
     const choices = pitchCatchLevel[indexOfQuestion].userOptions;
     const chosenValue = choices[userChoiceIndex];
     const correctAnswer = pitchCatchLevel[indexOfQuestion].currPitch;
-    console.log(chosenValue, correctAnswer, 'i have been clicked');
+
     return arrCheck(chosenValue, correctAnswer);
   }
   function handleCheckMeClick() {
@@ -68,18 +75,14 @@ const Page = ({ params }: Props) => {
     );
 
     if (isCorrect) {
-      console.log('correct');
-      if (currQuestion <= currentLevel.length - 1) {
+      if (currQuestion < currentLevel.length) {
         setCurrQuestion(currQuestion + 1);
-        console.log('currquestion', currQuestion);
+      } else {
+        handleWin();
       }
-      if (currQuestion > currentLevel.length - 1) {
-        console.log('move to the next level');
-      }
-
-      console.log('currquestion', currQuestion);
     } else {
-      console.log('move to result page');
+      localStorage.setItem('score', '0'); 
+      handleLose();
     }
   }
   return (
