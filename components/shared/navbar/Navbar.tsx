@@ -1,12 +1,15 @@
+'use client';
+
 import Theme from './Theme';
 import LocaleSwitcher from './LocaleSwitcher';
 import { LangParam } from '@/types';
-import { getDictionaryServer } from '@/utils/getDictionaryServer';
+import { getDictionaryClient } from '@/utils/getDictionaryClient';
 import MobileNav from '@/components/shared/navbar/MobileNav';
 import NavbarLink from './NavbarLink';
+import AuthButton from './AuthButton';
 
-const Navbar = async ({ params: { lang } }: LangParam) => {
-	const dict = await getDictionaryServer(lang);
+const Navbar = ({ params: { lang } }: LangParam) => {
+	const dict = getDictionaryClient(lang);
 	const { navbar } = dict.shared;
 	const pagesUrls = Object.entries(navbar.pages);
 
@@ -18,10 +21,10 @@ const Navbar = async ({ params: { lang } }: LangParam) => {
 						style={{
 							border: 'solid salmon 2px',
 							padding: '12px',
-							width: '0px',
-							height: '0px',
 						}}
-					></div>
+					>
+						<AuthButton />
+					</div>
 					<LocaleSwitcher params={{ lang }} />
 
 					<div className='flex-between gap-5'>
