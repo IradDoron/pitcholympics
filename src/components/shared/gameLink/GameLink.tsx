@@ -23,34 +23,22 @@ const GameLink = ({ href, label, colorType, lang }: Props) => {
 		alignItems: 'center',
 	};
 
-	switch (colorType) {
-		case 'peach': {
-			return (
-				<Link
-					href={`${lang}/${href}`}
-					style={{
-						...commonStyles,
-					}}
-					className='text-xl font-bold rounded-[50%] text-light-background-default dark:text-dark-background-default bg-peach-light dark:bg-peach-dark shadow-large-light dark:shadow-large-dark'
-				>
-					{label}
-				</Link>
-			);
-		}
-		case 'lambada': {
-			return (
-				<Link
-					href={`${lang}/${href}`}
-					style={{
-						...commonStyles,
-					}}
-					className='text-xl font-bold rounded-[50%] text-light-background-default dark:text-dark-background-default bg-lambada-light dark:bg-lambada-dark shadow-large-light dark:shadow-large-dark'
-				>
-					{label}
-				</Link>
-			);
-		}
+	const colorVarients = {
+		"peach": "bg-peach-light dark:bg-peach-dark",
+		"lambada": "bg-lambada-light dark:bg-lambada-dark",
 	}
+
+	return (
+		<Link
+			href={href}
+			style={{
+				...commonStyles,
+			}}
+			className={`shadow-large-light dark:shadow-large-dark text-light-background-default dark:text-dark-background-default text-center text-xl font-bold rounded-[50%] ${colorVarients[colorType]}`}
+		>
+			{label}
+		</Link>
+	);
 };
 
 export default GameLink;

@@ -9,23 +9,23 @@ import NavbarLink from './NavbarLink';
 import AuthButton from './AuthButton';
 
 const Navbar = ({ params: { lang } }: LangParam) => {
-	const dict = getDictionaryClient(lang);
-	const { navbar } = dict.shared;
-	const pagesUrls = Object.entries(navbar.pages);
+  const dict = getDictionaryClient(lang);
+  const { navbar } = dict.shared;
+  const pagesUrls = Object.entries(navbar.pages);
 
-	return (
-		<div className='flex justify-center'>
-			<nav className='grid w-full grid-cols-3 p-2 fixed max-w-[1400px] '>
-				<div className='flex justify-self-start'>
-					<div
-						style={{
-							border: 'solid salmon 2px',
-							padding: '12px',
-						}}
-					>
-						<AuthButton />
-					</div>
-					<LocaleSwitcher params={{ lang }} />
+  return (
+    <div className='h-16 flex justify-center'>
+      <nav className='grid w-full grid-cols-3 p-2 fixed max-w-[1400px] '>
+        <div className='flex justify-self-start'>
+          <div
+            style={{
+              border: 'solid salmon 2px',
+              padding: '12px',
+            }}
+          >
+            <AuthButton />
+          </div>
+          <LocaleSwitcher params={{ lang }} />
 
           <div className="flex-between gap-5">
             <Theme />
