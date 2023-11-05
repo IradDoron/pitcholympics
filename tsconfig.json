@@ -19,9 +19,9 @@
 			}
 		],
 		"paths": {
-			"@/*": ["./*"],
-			"@core/*": ["./components/core/*"],
-			"@shared/*": ["./components/shared/*"]
+			"@/*": ["./src/*"],
+			"@core/*": ["./src/components/core/*"],
+			"@shared/*": ["./src/components/shared/*"]
 		},
 		"forceConsistentCasingInFileNames": true
 	},
