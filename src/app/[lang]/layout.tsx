@@ -1,12 +1,12 @@
 import { Locale, i18n } from '@/i18n.config';
-import Navbar from '@shared/navbar/Navbar';
 import { getHtmlDirection } from '@/utils/getHtmlDirection';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import ThemeProvider from '@/context/ThemeProvider';
 import '@/styles/globals.css';
-// import { ClerkProvider } from '@clerk/nextjs';
+import Navbar from '@/components/shared/navbar';
 const inter = Inter({ subsets: ['latin'] });
+import NextAuthProvider from '@/context/SessionProvider';
 
 export const metadata: Metadata = {
 	title: 'Next.js 13 & i18n Template',
@@ -17,7 +17,7 @@ export async function generateStaticParams() {
 	return i18n.locales.map((locale) => ({ lang: locale }));
 }
 
-export default function RootLayout({
+export default async function RootLayout({
 	children,
 	params,
 }: {
@@ -25,24 +25,17 @@ export default function RootLayout({
 	params: { lang: Locale };
 }) {
 	return (
-		// <ClerkProvider
-		// 	appearance={{
-		// 		elements: {
-		// 			formButtonPrimary: 'primary-gradient',
-		// 			footerActionLink: 'primary-text-gradient hover:text-primary-500',
-		// 		},
-		// 	}}
-		// >
 		<html lang={params.lang} dir={getHtmlDirection(params.lang)}>
 			<ThemeProvider>
 				<body
 					className={`${inter.className} bg-light-background-default dark:bg-dark-background-default`}
 				>
-					<Navbar params={params} />
-					{children}
+					<NextAuthProvider>
+						<Navbar params={params} />
+						{children}
+					</NextAuthProvider>
 				</body>
 			</ThemeProvider>
 		</html>
-		// </ClerkProvider>
 	);
 }

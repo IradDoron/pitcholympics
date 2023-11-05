@@ -1,42 +1,31 @@
-import React from "react";
-import Theme from "./Theme";
-import LocaleSwitcher from "./LocaleSwitcher";
-import { LangParam } from "@/types";
-import { getDictionaryServer } from "@/utils/getDictionaryServer";
-import MobileNav from "@/components/shared/navbar/MobileNav";
-// import { SignedIn, UserButton } from '@clerk/nextjs';
-import NavbarLink from "./NavbarLink";
+'use client';
 
-const Navbar = async ({ params: { lang } }: LangParam) => {
-  const dict = await getDictionaryServer(lang);
-  const { navbar } = dict.shared;
-  const pagesUrls = Object.entries(navbar.pages);
+import Theme from './Theme';
+import LocaleSwitcher from './LocaleSwitcher';
+import { LangParam } from '@/types';
+import { getDictionaryClient } from '@/utils/getDictionaryClient';
+import MobileNav from '@/components/shared/navbar/MobileNav';
+import NavbarLink from './NavbarLink';
+import AuthButton from './AuthButton';
 
-  return (
-    <div className="flex justify-center">
-      <nav className="grid w-full grid-cols-3 p-2 fixed max-w-[1400px] ">
-        <div className="flex justify-self-start">
-          <div
-            style={{
-              border: "solid salmon 2px",
-              padding: "10px",
-            }}
-          >
-            user
-            {/* <SignedIn>
-						<UserButton
-							afterSignOutUrl='/'
-							appearance={{
-								elements: {
-									formButtonPrimary: 'primary-gradient',
-									footerActionLink:
-										'primary-text-gradient hover:text-primary-500',
-								},
-							}}
-						/>
-					</SignedIn> */}
-          </div>
-          <LocaleSwitcher params={{ lang }} />
+const Navbar = ({ params: { lang } }: LangParam) => {
+	const dict = getDictionaryClient(lang);
+	const { navbar } = dict.shared;
+	const pagesUrls = Object.entries(navbar.pages);
+
+	return (
+		<div className='flex justify-center'>
+			<nav className='grid w-full grid-cols-3 p-2 fixed max-w-[1400px] '>
+				<div className='flex justify-self-start'>
+					<div
+						style={{
+							border: 'solid salmon 2px',
+							padding: '12px',
+						}}
+					>
+						<AuthButton />
+					</div>
+					<LocaleSwitcher params={{ lang }} />
 
           <div className="flex-between gap-5">
             <Theme />
@@ -53,7 +42,6 @@ const Navbar = async ({ params: { lang } }: LangParam) => {
           })}
         </ul>
         <div></div>
-
         <MobileNav lang={lang} />
       </nav>
     </div>
