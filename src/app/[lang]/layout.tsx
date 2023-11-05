@@ -7,6 +7,7 @@ import '@/styles/globals.css';
 import Navbar from '@/components/shared/navbar';
 const inter = Inter({ subsets: ['latin'] });
 import NextAuthProvider from '@/context/SessionProvider';
+import LevelStepper from '@/components/shared/levelStepper';
 
 export const metadata: Metadata = {
 	title: 'Next.js 13 & i18n Template',
@@ -33,6 +34,7 @@ export default async function RootLayout({
 					<NextAuthProvider>
 						<Navbar params={params} />
 						{children}
+						<LevelStepper currentStep={3} totalSteps={10} />
 					</NextAuthProvider>
 				</body>
 			</ThemeProvider>
