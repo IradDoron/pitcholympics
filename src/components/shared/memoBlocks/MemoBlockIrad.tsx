@@ -1,25 +1,14 @@
 "use client"
+import { getMatrixWithZeros } from '@/components/shared/memoBlocks/helpers';
+import { Coordinate, MemoBlockCardNote } from '@/components/shared/memoBlocks/types';
 import React, { useState } from 'react';
 
 type Matrix = { value: string; color: string }[][];
 type Colors = { [key: string]: string };
-interface Coordinate {
-    row: number;
-    col: number;
-}
 
-type MemoBlockCardNote = { coordinate: Coordinate, haveNote: boolean, haveTie: boolean }
 
-const getMatrixWithZeros = (rows: number, cols: number) => {
-    const rowAmount = Array(rows).fill(0)
-    const matrix: number[][] = []
-    rowAmount.forEach((_, i) => {
-        const newRow = new Array(cols).fill(0)
-        matrix.push(newRow)
-    })
-    return matrix
-}
-console.log(getMatrixWithZeros(4, 5))
+
+
 
 const getCardMatrix = (matrix: number[][], melody: MemoBlockCardNote[]) => {
     melody.forEach(note => {
