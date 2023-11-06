@@ -5,6 +5,7 @@ import NoteStep from '@/components/shared/noteStep';
 import { MemoTheMeloGame } from '@/types';
 import memoTheMeloMockData from '@/mockData/memoTheMelo';
 import ButtonMelody from '@/components/shared/buttonMelody';
+import LevelStepper from '@/components/shared/levelStepper';
 
 type Props = {
 	params: {
@@ -58,14 +59,7 @@ const Page = ({ params }: Props) => {
 	return (
 		<>
 			<div className='flex flex-row gap-2 justify-center'>
-				{melody.map((_, index) => {
-					const notePosition = currentNote - (index + 1);
-					if (notePosition < 0)
-						return <NoteStep state='NotPlayed' key={index} />;
-					if (notePosition === 0)
-						return <NoteStep state='Current' key={index} />;
-					if (notePosition > 0) return <NoteStep state='Played' key={index} />;
-				})}
+				<LevelStepper currentStep={1} totalSteps={notesAmount}/>
 			</div>
 
 			<div>

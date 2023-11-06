@@ -1,43 +1,96 @@
+type CardShadow = 'none' | 'medium' | 'large';
+type CardColor = 'primary' | 'secondary' | 'tertiary';
+type CardBorder = boolean;
+type CardWidth = 'fit' | 'full' | number;
+
 type Props = {
-  title: string;
-  subTitle: string;
-  color: "primary" | "secondary" | "tertiary";
-}
+	color?: CardColor;
+	shadow?: CardShadow;
+	border?: CardBorder;
+	width?: CardWidth;
+	isWrap?: boolean;
+	children: React.ReactNode;
+};
 
-const Card = ({ title, subTitle, color }: Props) => {
+const getShadow = (shadow: CardShadow) => {
+	switch (shadow) {
+		case 'none':
+			return '';
+		case 'medium':
+			return 'shadow-medium-light dark:shadow-medium-dark';
+		case 'large':
+			return 'shadow-large-light dark:shadow-large-dark';
+		default:
+			return '';
+	}
+};
 
-  function capitalize(s: string) {
-    return s && s[0].toUpperCase() + s.slice(1);
-  }
+const getBackground = (color: CardColor) => {
+	switch (color) {
+		case 'primary':
+			return 'bg-light-surface-primary dark:bg-dark-surface-primary';
+		case 'secondary':
+			return 'bg-light-surface-secondary dark:bg-dark-surface-secondary';
+		case 'tertiary':
+			return 'bg-light-surface-tertiary dark:bg-dark-surface-tertiary';
+		default:
+			return '';
+	}
+};
 
-  const colorVariants = {
-    primary: {
-      bg: 'bg-light-surface-primary dark:bg-dark-surface-primary',
-      text: 'text-light-primary-main text-dark-primary-main',
-      subtext: 'text-light-surface-onPrimary dark:text-dark-surface-onPrimary',
-    },
-    secondary: {
-      bg: 'bg-light-surface-secondary dark:bg-dark-surface-secondary',
-      text: 'text-light-secondary-main text-dark-secondary-main',
-      subtext: 'text-light-surface-onSecondary dark:text-dark-surface-onSecondary',
-    },
-    tertiary: {
-      bg: 'bg-light-surface-tertiary dark:bg-dark-surface-tertiary',
-      text: 'text-light-tertiary-main text-dark-tertiary-main',
-      subtext: 'text-light-surface-onTertiary dark:text-dark-surface-onTertiary',
-    }
-  }
+const getBorder = (border: CardBorder) => {
+	switch (border) {
+		case true:
+			return 'border-[3px] border-light-primary-light dark:border-dark-primary-main';
+		case false:
+			return '';
+		default:
+			return '';
+	}
+};
 
-  return (
-    <div className={`drop-shadow-xl	m-10 p-5 w-full h-32 flex-col rounded-lg flex items-center justify-center gap-2 ${colorVariants[color].bg} `} >
-      <p className={`font-inter text-lg font-bold font ${colorVariants[color].text}`}>
-        {title}
-      </p >
-      <p className={`font-bold ${colorVariants[color].subtext}`}>
-        {subTitle}
-      </p>
-    </div >
-  )
-}
+const getWrap = (isWrap: boolean) => {
+	switch (isWrap) {
+		case true:
+			return 'flex-wrap';
+		case false:
+			return '';
+		default:
+			return '';
+	}
+};
 
-export default Card
+const getWidth = (width: CardWidth) => {
+	switch (width) {
+		case 'fit':
+			return 'w-fit';
+		case 'full':
+			return 'w-full';
+		default:
+			return `w-[${width}]px`;
+	}
+};
+
+const Card = ({
+	color = 'primary',
+	shadow = 'none',
+	border = false,
+	width = 'fit',
+	isWrap = false,
+	children,
+}: Props) => {
+	const shadowClass = getShadow(shadow);
+	const backgroundClass = getBackground(color);
+	const borderClass = getBorder(border);
+	const wrapClass = getWrap(isWrap);
+	const widthClass = getWidth(width);
+	return (
+		<div
+			className={`p-4 rounded-lg flex w-fit items-center justify-center gap-2 ${shadowClass} ${borderClass} ${backgroundClass} ${wrapClass} ${widthClass}`}
+		>
+			{children}
+		</div>
+	);
+};
+
+export default Card;

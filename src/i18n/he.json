@@ -23,7 +23,15 @@
 				"titleCompleteLevel": "רמה",
 				"dataScoreLevel": "נקודות"
 			}
-		},
+		}, "game-result-page": {
+			"actionButtonLabel": "לשלב הבא",
+			"titleComplete": "הושלמה",
+			"titleCompleteLevel": "רמה",
+			"dataScoreLevel": "נקודות",
+			"titleForFailed": " אופס לא עברת את ",
+			"titleForFailedLevel": "רמה",
+			"tryAgainButtonLabel": "נסה שוב"
+		  },
 		"stats": {
 			"page": {
 				"title": "סטטיסטיקה",

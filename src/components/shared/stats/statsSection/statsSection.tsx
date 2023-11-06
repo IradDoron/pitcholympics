@@ -1,16 +1,16 @@
 'use client'
-import Card from "@/components/core/card";
 import type { User } from '@/types';
 import type { GameAnalytics, GameNames, GamesStats, Resources } from '@/types/gameLogic';
 import { getDictionaryClient } from '@/utils/getDictionaryClient';
+import StatsCard from '@/components/core/statsCard';
 import users from '@/mockData/users';
-import { Locale } from "@/i18n.config";
+import { Locale } from '@/i18n.config';
 
 type Props = {
-  type: "resources" | "gamesStats";
+  type: 'resources' | 'gamesStats';
   lang: Locale;
-  color: "primary" | "secondary" | "tertiary";
-}
+  color: 'primary' | 'secondary' | 'tertiary';
+};
 
 const StatsSection = ({ type, lang, color }: Props) => {
   const user = users[0];
@@ -24,9 +24,8 @@ const StatsSection = ({ type, lang, color }: Props) => {
     }, 0);
   }
 
-  const memoTheMeloGamesCount = countGames(user, "memoTheMelo");
-  const pitchCatchGamesCount = countGames(user, "pitchCatch");
-
+  const memoTheMeloGamesCount = countGames(user, 'memoTheMelo');
+  const pitchCatchGamesCount = countGames(user, 'pitchCatch');
 
   const stats = {
     resources: { ...user.resources },
@@ -34,36 +33,46 @@ const StatsSection = ({ type, lang, color }: Props) => {
       memoTheMeloGames: memoTheMeloGamesCount,
       pitchCatchGames: pitchCatchGamesCount,
       totalGamesPlayed: memoTheMeloGamesCount + pitchCatchGamesCount,
+
     }
   }
   const dict = getDictionaryClient(lang);
   const { page } = dict.app.stats;
-  const selectedPage = page[type];
-  const keyValues = Object.entries(selectedPage).filter(([key, v]) => key !== 'title');
+  let selectedPage;
+  if (type === 'resources') {
+    selectedPage = page.resources;
+  } else {
+	selectedPage = page.gamesStats;
+  }
+
+  const keyValues = Object.entries(selectedPage).filter(
+    ([key, v]) => key !== 'title'
+  );
 
   return (
     <div className="w-full items-center place-self-center">
       <h1 className="text-center text-light-background-onDefault dark:text-dark-background-onDefault font-inter text-xl font-bold">
-        {page[type].title}
+        {page.title}
       </h1>
       <div className="flex flex-col sm:flex-row items-center gap-x-0">
-        {
-          keyValues.map(([key, value]) => {
-            // Use type assertions to tell TypeScript the expected type
-            const title = type === "resources" ? stats.resources[key as keyof Resources] : stats.gamesStats[key as keyof GamesStats]
-            return (
-              <Card
-                key={key}
-                title={title.toString()}
-                subTitle={value}
-                color={color}
-              />
-            )
-          })
-        }
+        {keyValues.map(([key, value]) => {
+          // Use type assertions to tell TypeScript the expected type
+          const title =
+            type === 'resources'
+              ? stats.resources[key as keyof Resources]
+              : stats.gamesStats[key as keyof GamesStats];
+          return (
+            <StatsCard
+              key={key}
+              title={page.title}
+              subTitle={value}
+              color={color}
+            />
+          );
+        })}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default StatsSection
+export default StatsSection;
