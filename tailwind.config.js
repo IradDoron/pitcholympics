@@ -160,7 +160,7 @@ module.exports = {
             secondary: "#F7EFFF",
             onSecondary: "#180030",
             tertiary: "#EFFDFF",
-            onTertiary: "#002930",
+            onTertiary: "#0D1B3F",
           },
         },
         dark: {
@@ -193,7 +193,7 @@ module.exports = {
             onPrimary: "#EFF1FF",
             secondary: "#290050",
             onSecondary: "#F7EFFF",
-            tertiary: "#002930",
+            tertiary: "#0D1B3F",
             onTertiary: "#EFFDFF",
           },
         },
@@ -228,7 +228,7 @@ module.exports = {
         "large-light": "0px 6px 16px 0px rgba(0, 0, 0, 0.25)",
         "large-dark": "0px 6px 16px 0px rgba(255, 255, 255, 0.25)",
         'medium-light': '0px 6px 16px rgba(0, 0, 0, 0.25)',
-				'medium-dark': '0px 6px 16px rgba(255, 255, 255, 0.25)'
+        'medium-dark': '0px 6px 16px rgba(255, 255, 255, 0.25)'
       },
       backgroundImage: {
         "peach-light": "linear-gradient(47deg, #472C72 15.93%, #A32E8D 84.6%)",

@@ -48,12 +48,8 @@ const users: User[] = [
 		},
 		achievements: {
 			'1': {
-				currentStatus: 'Completed',
+				criteriaStatus: [true, true, true, true, true, false],
 				completeAmount: 1,
-			},
-			achievement2: {
-				currentStatus: 'InProgress',
-				completeAmount: 3,
 			},
 		},
 		resources: {
@@ -172,12 +168,8 @@ const users: User[] = [
 		},
 		achievements: {
 			'1': {
-				currentStatus: 'InProgress',
-				completeAmount: 2,
-			},
-			'3': {
-				currentStatus: 'NotStarted',
-				completeAmount: 0,
+				criteriaStatus: [true, true, true, true, true, false],
+				completeAmount: 9,
 			},
 		},
 		resources: {

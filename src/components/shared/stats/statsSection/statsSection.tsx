@@ -1,8 +1,8 @@
-
+'use client'
 import Card from "@/components/core/card";
 import type { User } from '@/types';
 import type { GameAnalytics, GameNames, GamesStats, Resources } from '@/types/gameLogic';
-import { getDictionaryServer } from '@/utils/getDictionaryServer';
+import { getDictionaryClient } from '@/utils/getDictionaryClient';
 import users from '@/mockData/users';
 import { Locale } from "@/i18n.config";
 
@@ -12,7 +12,7 @@ type Props = {
   color: "primary" | "secondary" | "tertiary";
 }
 
-const StatsSection = async ({ type, lang, color }: Props) => {
+const StatsSection = ({ type, lang, color }: Props) => {
   const user = users[0];
 
   function countGames(user: User, gameName: GameNames): number {
@@ -36,7 +36,7 @@ const StatsSection = async ({ type, lang, color }: Props) => {
       totalGamesPlayed: memoTheMeloGamesCount + pitchCatchGamesCount,
     }
   }
-  const dict = await getDictionaryServer(lang);
+  const dict = getDictionaryClient(lang);
   const { page } = dict.app.stats;
   const selectedPage = page[type];
   const keyValues = Object.entries(selectedPage).filter(([key, v]) => key !== 'title');
