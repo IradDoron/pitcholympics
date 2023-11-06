@@ -23,8 +23,11 @@ const Button = ({ label, onClick, size = "medium" }: Props) => {
   }
   const buttonSize = getSize(size);
   return (
+
     <button onClick={onClick} className={`bg-light-primary-main dark:bg-dark-primary-main rounded-[12px] text-light-primary-contrastText dark:text-dark-primary-contrastText ${buttonSize}`}>
+
       {label}
+
     </button>
   )
 }
