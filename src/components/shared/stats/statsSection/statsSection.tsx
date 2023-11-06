@@ -1,12 +1,8 @@
-import StatsCard from '@/components/core/statsCard';
+'use client'
 import type { User } from '@/types';
-import type {
-  GameAnalytics,
-  GameNames,
-  GamesStats,
-  Resources,
-} from '@/types/gameLogic';
-import { getDictionaryServer } from '@/utils/getDictionaryServer';
+import type { GameAnalytics, GameNames, GamesStats, Resources } from '@/types/gameLogic';
+import { getDictionaryClient } from '@/utils/getDictionaryClient';
+import StatsCard from '@/components/core/statsCard';
 import users from '@/mockData/users';
 import { Locale } from '@/i18n.config';
 
@@ -16,7 +12,7 @@ type Props = {
   color: 'primary' | 'secondary' | 'tertiary';
 };
 
-const StatsSection = async ({ type, lang, color }: Props) => {
+const StatsSection = ({ type, lang, color }: Props) => {
   const user = users[0];
 
   function countGames(user: User, gameName: GameNames): number {
@@ -37,9 +33,10 @@ const StatsSection = async ({ type, lang, color }: Props) => {
       memoTheMeloGames: memoTheMeloGamesCount,
       pitchCatchGames: pitchCatchGamesCount,
       totalGamesPlayed: memoTheMeloGamesCount + pitchCatchGamesCount,
-    },
-  };
-  const dict = await getDictionaryServer(lang);
+
+    }
+  }
+  const dict = getDictionaryClient(lang);
   const { page } = dict.app.stats;
   let selectedPage;
   if (type === 'resources') {

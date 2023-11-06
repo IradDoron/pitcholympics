@@ -1,2 +1,2 @@
-import statsSection from "./statsSection";
-export default statsSection;
+import StatsSection from "./statsSection";
+export default StatsSection;

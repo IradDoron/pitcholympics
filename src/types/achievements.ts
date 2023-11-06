@@ -5,7 +5,6 @@ export type AchievementStatus = 'NotStarted' | 'InProgress' | 'Completed';
 
 export type AchievementCriteria = {
 	description: string;
-	isDone: boolean;
 };
 
 // Define a base achievement type
