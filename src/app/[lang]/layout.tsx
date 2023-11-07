@@ -33,7 +33,7 @@ export default async function RootLayout({
 				>
 					<NextAuthProvider>
 						<Navbar params={params} />
-						{/* {children} */}
+						{children}
 					</NextAuthProvider>
 				</body>
 			</ThemeProvider>
