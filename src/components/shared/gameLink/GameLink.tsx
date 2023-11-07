@@ -1,5 +1,6 @@
 'use client';
 
+import { Locale } from '@/i18n.config';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
@@ -8,10 +9,11 @@ type ColorType = 'peach' | 'lambada';
 type Props = {
 	href: string;
 	label: string;
+	lang: Locale;
 	colorType: ColorType;
 };
 
-const GameLink = ({ href, label, colorType }: Props) => {
+const GameLink = ({ href, label, colorType, lang }: Props) => {
 	const commonStyles = {
 		width: '218px',
 		height: '218px',
@@ -25,7 +27,7 @@ const GameLink = ({ href, label, colorType }: Props) => {
 		case 'peach': {
 			return (
 				<Link
-					href={href}
+					href={`${lang}/${href}`}
 					style={{
 						...commonStyles,
 					}}
@@ -38,7 +40,7 @@ const GameLink = ({ href, label, colorType }: Props) => {
 		case 'lambada': {
 			return (
 				<Link
-					href={href}
+					href={`${lang}/${href}`}
 					style={{
 						...commonStyles,
 					}}
