@@ -14,7 +14,7 @@ export const authOptions: NextAuthOptions = {
         async session({ session }) {
             // store the user id from MongoDB to session
             const sessionUser = await User.findOne({ email: session?.user?.email });
-            //@ts-ignore
+            // TODO: fix the session error
             session.user.id = sessionUser._id.toString()
 
             return session;
