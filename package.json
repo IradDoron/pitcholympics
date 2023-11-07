@@ -21,6 +21,8 @@
 		"clsx": "^2.0.0",
 		"i": "^0.3.7",
 		"lucide-react": "^0.288.0",
+		"mongodb": "^6.2.0",
+		"mongoose": "^8.0.0",
 		"next": "latest",
 		"next-auth": "^4.24.4",
 		"react": "latest",
