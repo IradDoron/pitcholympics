@@ -8,34 +8,36 @@ import { Locale } from '@/i18n.config';
 import pitchCatchData from '@/mockData/pitchCatch';
 
 type Props = {
-    stage: number;
-    level: number;
-    lang: Locale;
+    params: {
+        stage: number;
+        level: number;
+        lang: Locale;
+    };
 };
 
 
-const Page = ({ stage, level, lang }: Props) => {
+const Page = ({ params }: Props) => {
     const router = useRouter();
     const [score, setScore] = useState<number>(0);
-    const dict = getDictionaryClient(lang);
+    const dict = getDictionaryClient(params.lang);
     const { actionButtonLabel, tryAgainButtonLabel } = dict.app['game-result-page']
 
     const handleNextLevel = () => {
-        const nextLevel = +level + 1
+        const nextLevel = params.level + 1
         console.log(nextLevel);
-        const currentStageLevels = pitchCatchData[stage - 1].length;
+        const currentStageLevels = pitchCatchData[params.stage - 1].length;
         if (nextLevel > currentStageLevels) {
-            const nextStage = +stage + 1;
+            const nextStage = +params.stage + 1;
             if (nextStage > pitchCatchData.length) {
             } else {
-                router.push(`${lang}/pitch-catch/${nextStage}/1`);
+                router.push(`${params.lang}/pitch-catch/${nextStage}/1`);
             }
         } else {
-            router.push(`${lang}/pitch-catch/${stage}/${nextLevel}`);
+            router.push(`${params.lang}/pitch-catch/${params.stage}/${nextLevel}`);
         }
     };
     const handleTryAgain = () => {
-        router.push(`${lang}/pitch-catch/${stage}/${level}`);
+        router.push(`${params.lang}/pitch-catch/${params.stage}/${params.level}`);
 
     }
 
@@ -49,7 +51,13 @@ const Page = ({ stage, level, lang }: Props) => {
 
     return (
         <div className='flex items-center justify-center h-screen'>
-            <LevelResult level={level} score={score} actionButtonLabel={actionButtonLabel} actionButtonOnClick={() => handleNextLevel()} lang={params.lang} tryAgainButtonLabel={tryAgainButtonLabel} tryAgainButtonOnClick={handleTryAgain} />
+            <LevelResult
+                level={params.level}
+                score={score}
+                lang={params.lang}
+                actionButtonLabel={actionButtonLabel}
+                actionButtonOnClick={() => handleNextLevel()}
+                tryAgainButtonLabel={tryAgainButtonLabel} tryAgainButtonOnClick={handleTryAgain} />
         </div>
 
     )
