@@ -38,21 +38,18 @@ const StatsSection = ({ type, lang, color }: Props) => {
   }
   const dict = getDictionaryClient(lang);
   const { page } = dict.app.stats;
-  let selectedPage;
-  if (type === 'resources') {
-    selectedPage = page.resources;
-  } else {
-	selectedPage = page.gamesStats;
-  }
+  const selectedPage = type === 'resources' ? page.resources : page.gamesStats;
 
   const keyValues = Object.entries(selectedPage).filter(
     ([key, v]) => key !== 'title'
   );
 
+  console.log(keyValues);
+
   return (
     <div className="w-full items-center place-self-center">
       <h1 className="text-center text-light-background-onDefault dark:text-dark-background-onDefault font-inter text-xl font-bold">
-        {page.title}
+        {selectedPage.title}
       </h1>
       <div className="flex flex-col sm:flex-row items-center gap-x-0">
         {keyValues.map(([key, value]) => {
@@ -64,7 +61,7 @@ const StatsSection = ({ type, lang, color }: Props) => {
           return (
             <StatsCard
               key={key}
-              title={page.title}
+              title={title?.toString()}
               subTitle={value}
               color={color}
             />

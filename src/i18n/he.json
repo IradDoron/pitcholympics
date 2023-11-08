@@ -23,7 +23,8 @@
 				"titleCompleteLevel": "רמה",
 				"dataScoreLevel": "נקודות"
 			}
-		}, "game-result-page": {
+		},
+		"game-result-page": {
 			"actionButtonLabel": "לשלב הבא",
 			"titleComplete": "הושלמה",
 			"titleCompleteLevel": "רמה",
@@ -31,7 +32,7 @@
 			"titleForFailed": " אופס לא עברת את ",
 			"titleForFailedLevel": "רמה",
 			"tryAgainButtonLabel": "נסה שוב"
-		  },
+		},
 		"stats": {
 			"page": {
 				"title": "סטטיסטיקה",
@@ -39,13 +40,13 @@
 					"title": "משאבים",
 					"coins": "מטבעות",
 					"gems": "יהלומים",
-					"musicalTreasure": "אוצרות מוזיקליים"
+					"musicalTreasures": "אוצרות מוזיקליים"
 				},
 				"gamesStats": {
 					"title": "נתוני משחקים",
-					"totalGamesPlayed": "Total Games Played",
 					"memoTheMeloGames": "Memo The Melo Games",
-					"pitchCatchGames": "Pitch Catch Games"
+					"pitchCatchGames": "Pitch Catch Games",
+					"totalGamesPlayed": "סך משחקים ששוחקו"
 				}
 			}
 		}

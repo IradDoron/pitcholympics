@@ -1,5 +1,4 @@
 {
-
   "app": {
     "page": {
       "title": "Home page"
@@ -30,26 +29,25 @@
       "titleComplete": "Complete!",
       "titleCompleteLevel": "level",
       "dataScoreLevel": "Xp",
-	    "titleForFailed": "Failed!",
-	    "titleForFailedLevel": "level",
-	    "tryAgainButtonLabel": "Try Again"
-
-	
+      "titleForFailed": "Failed!",
+      "titleForFailedLevel": "level",
+      "tryAgainButtonLabel": "Try Again"
     },
     "stats": {
       "page": {
         "title": "Stats",
         "resources": {
+          "title": "Resources",
           "coins": "Coins",
           "gems": "Gems",
           "musicalTreasures": "Musical Treasures"
-        }	,
+        },
         "gamesStats": {
-					"title": "Games Stats",
-					"totalGamesPlayed": "Total Games Played",
-					"memoTheMeloGames": "Memo The Melo Games",
-					"pitchCatchGames": "Pitch Catch Games"
-				}
+          "title": "Games Stats",
+          "memoTheMeloGames": "Memo The Melo Games",
+          "pitchCatchGames": "Pitch Catch Games",
+          "totalGamesPlayed": "Total Games Played"
+        }
       }
     }
   },
