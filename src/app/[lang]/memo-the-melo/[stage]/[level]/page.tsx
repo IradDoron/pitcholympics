@@ -58,32 +58,32 @@ const Page = ({ params }: Props) => {
 
 	return (
 		<>
-			<div className='flex flex-row gap-2 justify-center'>
-				<LevelStepper currentStep={1} totalSteps={notesAmount}/>
+			<div className='h-5/6 justify-center items-center flex flex-col gap-1'>
+				<LevelStepper currentStep={1} totalSteps={notesAmount} />
+				<div>
+					{userGuess.map((note, index) => {
+						return <p className=' text-light-background-onDefault dark:text-dark-background-onDefault' key={index}>{note}</p>;
+					})}
+				</div>
+				<div className='flex flex-row justify-center items-center gap-5 flex-wrap w-60'>
+					{new Array(notesAmount).fill(0).map((_, index) => {
+						return (
+							<ButtonMelody
+								key={index}
+								noteId={index + 1}
+								setUserGuess={setUserGuess}
+								currentNote={currentNote}
+								userGuess={userGuess}
+							/>
+						);
+					})}
+				</div>
+				{/* change button to coponenets peleg */}
+				<button className='mt-3 px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-transform duration-300 hover:bg-indigo-700 hover:text-white' onClick={() => checkUserGuess(userGuess, melody)}>
+					check user guess
+				</button>
 			</div>
 
-			<div>
-				{userGuess.map((note, index) => {
-					return <p key={index}>{note}</p>;
-				})}
-			</div>
-			<div className='flex flex-row justify-center items-center gap-5 flex-wrap w-60 m-auto'>
-				{new Array(notesAmount).fill(0).map((_, index) => {
-					return (
-						<ButtonMelody
-							key={index}
-							noteId={index + 1}
-							setUserGuess={setUserGuess}
-							currentNote={currentNote}
-							userGuess={userGuess}
-						/>
-					);
-				})}
-			</div>
-			{/* change button to coponenets peleg */}
-			<button className='px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-transform duration-300 hover:bg-indigo-700 hover:text-white' onClick={() => checkUserGuess(userGuess, melody)}>
-				check user guess
-			</button>
 		</>
 	);
 };

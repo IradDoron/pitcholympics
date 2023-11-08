@@ -14,8 +14,8 @@ const Home = async ({ params: { lang } }: LangParam) => {
 
   return (
     <div className="h-5/6 flex flex-col justify-center items-center gap-10 sm:flex-row sm:gap-20">
-      <GameLink href="memo-the-melo" colorType="peach" label="Memo the Melo" />
-      <GameLink href="pitch-catch" colorType="lambada" label="Pitch Catch" />
+      <GameLink href="memo-the-melo" colorType="peach" label="Memo the Melo" lang={lang} />
+      <GameLink href="pitch-catch" colorType="lambada" label="Pitch Catch" lang={lang} />
     </div>
   );
 };
