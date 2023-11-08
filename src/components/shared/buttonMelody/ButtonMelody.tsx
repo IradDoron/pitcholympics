@@ -13,6 +13,7 @@ const ButtonMelody = ({
   setUserGuess,
   currentNote,
   userGuess,
+
 }: Props) => {
   const bgColorsArr = Object.values(colorVariants);
 
