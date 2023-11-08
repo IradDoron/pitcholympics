@@ -30,10 +30,10 @@ const Page = ({ params }: Props) => {
             const nextStage = +params.stage + 1;
             if (nextStage > pitchCatchData.length) {
             } else {
-                router.push(`${params.lang}/pitch-catch/${nextStage}/1`);
+                router.push(`/pitch-catch/${params.lang}/${nextStage}/1`);
             }
         } else {
-            router.push(`${params.lang}/pitch-catch/${params.stage}/${nextLevel}`);
+            router.push(`/pitch-catch/${params.lang}/${params.stage}/${nextLevel}`);
         }
     };
     const handleTryAgain = () => {
