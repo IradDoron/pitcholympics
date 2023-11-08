@@ -1,16 +1,17 @@
 'use client';
 import { useRouter } from 'next/navigation';
-import { useState, useEffect } from 'react';
-import NoteStep from '@/components/shared/noteStep';
+import { useState } from 'react';
 import { MemoTheMeloGame } from '@/types';
 import memoTheMeloMockData from '@/mockData/memoTheMelo';
 import ButtonMelody from '@/components/shared/buttonMelody';
 import LevelStepper from '@/components/shared/levelStepper';
+import { Locale } from '@/i18n.config';
 
 type Props = {
 	params: {
 		stage: number;
 		level: number;
+		lang: Locale;
 	};
 };
 const getLevelData = (
@@ -28,7 +29,7 @@ const Page = ({ params }: Props) => {
 	const handleWin = () => {
 		const scoreWinning = params.stage + params.level * 2
 		localStorage.setItem('score', scoreWinning.toString());
-		router.push(`${params.level}/result`);
+		router.push(`${params.level}/${params.lang}/result`);
 	};
 
 	const [currentNote, setCurrentNote] = useState(1);
@@ -57,17 +58,19 @@ const Page = ({ params }: Props) => {
 	};
 
 	return (
-		<>
-			<div className='flex flex-row gap-2 justify-center'>
+		<div className='container mx-auto h-full flex flex-col justify-center items-center gap-2 border-red-600 border-solid border-2'>
+			
 				<LevelStepper currentStep={1} totalSteps={notesAmount}/>
-			</div>
+			
 
-			<div>
+			{/* <div>
 				{userGuess.map((note, index) => {
+					console.log(note);
 					return <p key={index}>{note}</p>;
 				})}
-			</div>
-			<div className='flex flex-row justify-center items-center gap-5 flex-wrap w-60 m-auto'>
+				<h1>haim</h1>
+			</div> */}
+			<div className='flex flex-row justify-center items-center gap-5 flex-wrap w-60'>
 				{new Array(notesAmount).fill(0).map((_, index) => {
 					return (
 						<ButtonMelody
@@ -84,7 +87,7 @@ const Page = ({ params }: Props) => {
 			<button className='px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-transform duration-300 hover:bg-indigo-700 hover:text-white' onClick={() => checkUserGuess(userGuess, melody)}>
 				check user guess
 			</button>
-		</>
+		</div>
 	);
 };
 
