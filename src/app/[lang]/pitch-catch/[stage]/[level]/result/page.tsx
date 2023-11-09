@@ -30,16 +30,15 @@ const Page = ({ params }: Props) => {
             const nextStage = +params.stage + 1;
             if (nextStage > pitchCatchData.length) {
             } else {
-                router.push(`/pitch-catch/${params.lang}/${nextStage}/1`);
+                router.push(`/${params.lang}/pitch-catch/${nextStage}/1`);
             }
         } else {
-            router.push(`/pitch-catch/${params.lang}/${params.stage}/${nextLevel}`);
+            router.push(`/${params.lang}/pitch-catch/${params.stage}/${nextLevel}`);
         }
     };
     const handleTryAgain = () => {
-        router.push(`${params.lang}/pitch-catch/${params.stage}/${params.level}`);
-
-    }
+        router.push(`/${params.lang}/pitch-catch/${params.stage}/${params.level}`);
+        }
 
     useEffect(() => {
         const storedScore = localStorage.getItem('score');
