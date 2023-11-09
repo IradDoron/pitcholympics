@@ -1,13 +1,21 @@
 import { LangParam } from '@/types';
-import { getDictionaryServer } from '@/utils/getDictionaryServer';
+import CollaboratorCard from '@/components/shared/collaboratorCard';
+import collaborators from '@/data/collaborators';
 
 const Page = async ({ params: { lang } }: LangParam) => {
-	const dict = await getDictionaryServer(lang);
-	const { page } = dict.app.about;
 	return (
-		<>
-			<h1>{page.title}</h1>
-		</>
+		<div className='flex flex-col w-full items-center'>
+			<div
+				style={{
+					marginTop: '140px',
+				}}
+			></div>
+			<div>
+				{collaborators.map((collaborator) => (
+					<CollaboratorCard key={collaborator.id} collaborator={collaborator} />
+				))}
+			</div>
+		</div>
 	);
 };
 
