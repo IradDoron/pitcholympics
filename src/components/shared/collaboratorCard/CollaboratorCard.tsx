@@ -6,9 +6,10 @@ import Links from './Links';
 
 type Props = {
 	collaborator: Collaborator;
+	color: 'primary' | 'secondary' | 'tertiary';
 };
 
-const CollaboratorCard = ({ collaborator }: Props) => {
+const CollaboratorCard = ({ collaborator, color }: Props) => {
 	const {
 		firstName,
 		lastName,
@@ -42,14 +43,14 @@ const CollaboratorCard = ({ collaborator }: Props) => {
 	const rolesString = getRolesString(roles);
 
 	return (
-		<Card color='primary' shadow='large'>
+		<Card color={color} shadow='large'>
 			<Image image={image} alt={firstName} />
 			<div className='flex flex-col gap-4'>
 				<section className='flex flex-col gap-4'>
-					<TextInfo text={fullName} />
-					<TextInfo text={rolesString} />
-					<TextInfo text={city} />
-					<TextInfo text={lookingFor} />
+					<TextInfo text={fullName} color={color} />
+					<TextInfo text={rolesString} color={color} />
+					<TextInfo text={city} color={color} />
+					<TextInfo text={lookingFor} color={color} />
 				</section>
 				<Links github={github} linkedin={linkedin} portfolio={portfolio} />
 			</div>

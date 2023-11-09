@@ -19,6 +19,18 @@ const collaborators: Collaborator[] = [
 		github: 'https://github.com/IradDoron',
 		portfolio: 'https://iraddoron.com/',
 	},
+	{
+		id: '2',
+		firstName: 'Amit',
+		lastName: 'Halevi',
+		roles: ['full-stack-developer'],
+		city: 'Kfar Saba',
+		lookingFor: 'Looking for Full Stack Developer Position',
+		image: CollaboratorsImages['irad-doron'],
+		linkedin: 'https://www.linkedin.com/in/amit-halevi',
+		github: 'https://github.com/HaleviAmit',
+		portfolio: 'http://www.haleviamit.com/',
+	},
 ];
 
 export default collaborators;
