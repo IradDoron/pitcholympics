@@ -44,15 +44,17 @@ const CollaboratorCard = ({ collaborator, color }: Props) => {
 
 	return (
 		<Card color={color} shadow='large'>
-			<Image image={image} alt={firstName} />
-			<div className='flex flex-col gap-4'>
-				<section className='flex flex-col gap-4'>
-					<TextInfo text={fullName} color={color} />
-					<TextInfo text={rolesString} color={color} />
-					<TextInfo text={city} color={color} />
-					<TextInfo text={lookingFor} color={color} />
-				</section>
-				<Links github={github} linkedin={linkedin} portfolio={portfolio} />
+			<div className='flex flex-row gap-6'>
+				<Image image={image} alt={firstName} />
+				<div className='flex flex-col gap-4'>
+					<section className='flex flex-col gap-4'>
+						<TextInfo text={fullName} color={color} />
+						<TextInfo text={rolesString} color={color} />
+						<TextInfo text={city} color={color} />
+						<TextInfo text={lookingFor} color={color} />
+					</section>
+					<Links github={github} linkedin={linkedin} portfolio={portfolio} />
+				</div>
 			</div>
 		</Card>
 	);

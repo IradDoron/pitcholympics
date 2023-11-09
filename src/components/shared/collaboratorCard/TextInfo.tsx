@@ -16,7 +16,7 @@ const getTextColor = (color: 'primary' | 'secondary' | 'tertiary') => {
 const TextInfo = ({ text, color }: Props) => {
 	if (!text) return null;
 	const textColor = getTextColor(color);
-	return <p className={`${textColor}`}>{text}</p>;
+	return <p className={`text-[1.2rem] ${textColor}`}>{text}</p>;
 };
 
 export default TextInfo;
