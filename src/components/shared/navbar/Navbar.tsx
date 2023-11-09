@@ -14,17 +14,9 @@ const Navbar = ({ params: { lang } }: LangParam) => {
   const pagesUrls = Object.entries(navbar.pages);
 
   return (
-    <div className="h-16 flex justify-center">
-      <nav className="grid w-full grid-cols-3 p-2 fixed max-w-[1400px] ">
+    <div className="flex flex-row justify-center">
+      <nav className="grid grid-cols-3 p-2 fixed w-full">
         <div className="flex justify-self-start">
-          <div
-            style={{
-              border: 'solid salmon 2px',
-              padding: '12px',
-            }}
-          >
-            <AuthButton />
-          </div>
           <LocaleSwitcher params={{ lang }} />
 
           <div className="flex-between gap-5">
@@ -41,7 +33,9 @@ const Navbar = ({ params: { lang } }: LangParam) => {
             );
           })}
         </ul>
-        <div></div>
+        <div className="flex justify-self-end">
+          <AuthButton />
+        </div>
         <MobileNav lang={lang} />
       </nav>
     </div>
