@@ -87,7 +87,7 @@ const UserSchema = new Schema({
             coins: {
                 type: Number,
             },
-            musicalTreasure: {
+            musicalTreasures: {
                 type: Number,
             },
             gems: {

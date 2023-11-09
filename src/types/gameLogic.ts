@@ -11,7 +11,7 @@ export type GameNames = 'memoTheMelo' | 'pitchCatch';
 
 export type Resources = {
 	coins: number;
-	musicalTreasure: number;
+	musicalTreasures: number;
 	gems: number;
 	health: number;
 };

@@ -54,7 +54,7 @@ const users: User[] = [
 		},
 		resources: {
 			coins: 1000,
-			musicalTreasure: 10,
+			musicalTreasures: 10,
 			gems: 40,
 			health: 5,
 		},
@@ -174,7 +174,7 @@ const users: User[] = [
 		},
 		resources: {
 			coins: 500,
-			musicalTreasure: 5,
+			musicalTreasures: 5,
 			gems: 20,
 			health: 3,
 		},

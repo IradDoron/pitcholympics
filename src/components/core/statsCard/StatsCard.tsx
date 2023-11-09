@@ -6,10 +6,6 @@ type Props = {
 
 const StatsCard = ({ title, subTitle, color }: Props) => {
 
-  function capitalize(s: string) {
-    return s && s[0].toUpperCase() + s.slice(1);
-  }
-
   const colorVariants = {
     primary: {
       bg: 'bg-light-surface-primary dark:bg-dark-surface-primary',

@@ -55,7 +55,6 @@ const Page = ({ params }: Props) => {
     setUserGuess([]);
     return true;
   };
-
   return (
     <div className="container mx-auto h-full flex flex-col justify-center items-center gap-10 border-red-600 border-solid border-2">
       <LevelStepper
