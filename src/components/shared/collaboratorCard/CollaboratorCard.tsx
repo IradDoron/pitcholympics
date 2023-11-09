@@ -2,6 +2,7 @@ import TextInfo from '@/components/shared/collaboratorCard/TextInfo';
 import { Collaborator, CollaboratorRoles } from '@/types';
 import Card from '@/components/core/card';
 import Image from './Image';
+import Links from './Links';
 
 type Props = {
 	collaborator: Collaborator;
@@ -44,10 +45,13 @@ const CollaboratorCard = ({ collaborator }: Props) => {
 		<Card color='primary' shadow='large'>
 			<Image image={image} alt={firstName} />
 			<div className='flex flex-col gap-4'>
-				<TextInfo text={fullName} />
-				<TextInfo text={rolesString} />
-				<TextInfo text={city} />
-				<TextInfo text={lookingFor} />
+				<section className='flex flex-col gap-4'>
+					<TextInfo text={fullName} />
+					<TextInfo text={rolesString} />
+					<TextInfo text={city} />
+					<TextInfo text={lookingFor} />
+				</section>
+				<Links github={github} linkedin={linkedin} portfolio={portfolio} />
 			</div>
 		</Card>
 	);
