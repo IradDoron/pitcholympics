@@ -19,7 +19,7 @@ const Page = ({ params }: Props) => {
   const router = useRouter();
   const [score, setScore] = useState<number>(0);
   const dict = getDictionaryClient(params.lang);
-  const { actionButtonLabel,tryAgainButtonLabel } = dict.app['game-result-page'];
+  const { actionButtonLabel, tryAgainButtonLabel } = dict.app['game-result-page'];
 
   const handleNextLevel = (stage: number) => {
     const nextLevel = +params.level + 1;
@@ -47,7 +47,7 @@ const Page = ({ params }: Props) => {
   }, []);
 
   return (
-    <div className="flex items-center justify-center h-screen">
+    <div className="m-3 flex items-center justify-center">
       <LevelResult
         level={params.level}
         score={score}

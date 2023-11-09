@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { signIn, signOut, useSession, getProviders, ClientSafeProvider } from 'next-auth/react';
+import Image from 'next/image';
 
 function AuthButton() {
 	const { data: session } = useSession();
@@ -19,14 +20,14 @@ function AuthButton() {
 	if (session?.user) {
 		return (
 			<>
-				{session?.user?.name} <br />
-				<div className="flex gap-3 md:gap-5">
-					<Link href="/statistics"
-						className="rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover-bg-white hover-text-black text-center text-sm font-inter flex items-center justify-center;">
-						statistics
-					</Link>
-				</div>
 				<button onClick={() => signOut()}>Sign out</button>
+				<Image
+					className="m-0.5 inline-block h-auto w-auto rounded-full ring-2 ring-white"
+					src={session.user.image ?? ""}
+					alt=""
+					width={64}
+					height={64}
+				/>
 			</>
 		);
 	}
@@ -43,7 +44,6 @@ function AuthButton() {
 						Sign In
 					</button>
 				))}
-			Not signed in <br />
 		</>
 	);
 }
