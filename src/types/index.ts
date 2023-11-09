@@ -1,5 +1,6 @@
 import { Locale } from '@/i18n.config';
 import { GameNames } from '.';
+import { StaticImageData } from 'next/image';
 
 export type LangParam = {
 	params: { lang: Locale };
@@ -51,6 +52,24 @@ export type PitchCatchQuestion = {
 };
 
 export type ThemeMode = 'light' | 'dark' | 'system';
+
+export type CollaboratorRoles =
+	| 'full-stack-developer'
+	| 'designer'
+	| 'project-manager';
+
+export type Collaborator = {
+	id: string;
+	firstName: string;
+	lastName: string;
+	roles: CollaboratorRoles[];
+	city: string;
+	image: StaticImageData;
+	lookingFor?: string;
+	github?: string;
+	linkedin?: string;
+	portfolio?: string;
+};
 
 export * from './gameItems';
 export * from './achievements';
