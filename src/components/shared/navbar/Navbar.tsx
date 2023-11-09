@@ -16,7 +16,7 @@ const Navbar = ({ params: { lang } }: LangParam) => {
   return (
     <div className="flex flex-row justify-center">
       <nav className="grid grid-cols-3 p-2 fixed w-full">
-        <div className="flex justify-self-start">
+        <div className="flex justify-self-start px-10">
           <LocaleSwitcher params={{ lang }} />
 
           <div className="flex-between gap-5">
@@ -33,7 +33,7 @@ const Navbar = ({ params: { lang } }: LangParam) => {
             );
           })}
         </ul>
-        <div className="flex justify-self-end">
+        <div className="flex justify-self-end pe-10">
           <AuthButton />
         </div>
         <MobileNav lang={lang} />
