@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import NoteStep from '@/components/shared/noteStep';
 import { PitchCatchGame, PitchCatchLevel } from '@/types';
 
 import PitchButton from '@/components/shared/pitchButton';
@@ -11,6 +10,7 @@ import pitchCatchData from '@/mockData/pitchCatch';
 
 import { useRouter } from 'next/navigation';
 import LevelStepper from '@/components/shared/levelStepper';
+import * as Tone from 'tone';
 
 type Props = {
   params: {
@@ -30,6 +30,8 @@ const Page = ({ params }: Props) => {
   const [useChoiceIndex, setChoiceIndex] = useState<number | null>(null);
   const [currQuestion, setCurrQuestion] = useState(1);
   const { stage, level } = params;
+  const synth = new Tone.Synth().toDestination();
+
   const currentLevel = getLevelData(
     Number(stage),
     Number(level),
@@ -74,7 +76,7 @@ const Page = ({ params }: Props) => {
       currentLevel,
       currQuestion - 1
     );
-
+   
     if (isCorrect) {
       if (currQuestion < currentLevel.length) {
         setCurrQuestion(currQuestion + 1);
@@ -82,7 +84,7 @@ const Page = ({ params }: Props) => {
         handleWin();
       }
     } else {
-      localStorage.setItem('score', '0'); 
+      localStorage.setItem('score', '0');
       handleLose();
     }
   }
@@ -90,16 +92,12 @@ const Page = ({ params }: Props) => {
     <>
       <div className="container mx-auto h-screen flex flex-col justify-center gap-10 items-center">
         <div className="flex flex-row gap-2">
-     
-       
-       
-                <LevelStepper currentStep={currQuestion} totalSteps={currentLevel.length}/>
-                
-             
-          
-          
+          <LevelStepper
+            currentStep={currQuestion}
+            totalSteps={currentLevel.length}
+          />
         </div>
-        <PitchButton pitches={currentLevel[currQuestion - 1].currPitch} />
+        <PitchButton pitches={currentLevel[currQuestion - 1].currPitch}  />
         <UserOptions
           pitches={currentLevel[currQuestion - 1].userOptions}
           useChoiceIndex={useChoiceIndex}
