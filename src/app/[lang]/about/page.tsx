@@ -42,6 +42,7 @@ const Page = async ({ params: { lang } }: LangParam) => {
 							key={collaborator.id}
 							collaborator={collaborator}
 							color={getColorByIndex(index)}
+							cardIndex={index}
 						/>
 					);
 				})}
