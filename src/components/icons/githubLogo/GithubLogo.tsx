@@ -1,28 +1,25 @@
 import { IconProps } from '@/types';
+import { ICON_COLORS, ICON_SIZES } from '@/constants';
 
-const GithubLogo = ({ color }: IconProps) => {
+const GithubLogo = ({ color = 'primary', size = 'medium' }: IconProps) => {
 	return (
 		<svg
-			width='50px'
-			height='50px'
+			width='800px'
+			height='800px'
 			viewBox='0 0 20 20'
 			version='1.1'
 			xmlns='http://www.w3.org/2000/svg'
+			className={`${ICON_COLORS[color]}  ${ICON_SIZES[size]}`}
 		>
 			<title>github [#142]</title>
 			<desc>Created with Sketch.</desc>
 			<defs></defs>
-			<g
-				id='Page-1'
-				stroke='none'
-				stroke-width='1'
-				fill='none'
-				fill-rule='evenodd'
-			>
+			<g id='Page-1' stroke='none' stroke-width='1' fill-rule='evenodd'>
 				<g
 					id='Dribbble-Light-Preview'
 					transform='translate(-140.000000, -7559.000000)'
-					fill={color}
+					fill-rule='nonzero'
+					fill='inherit'
 				>
 					<g id='icons' transform='translate(56.000000, 160.000000)'>
 						<path

@@ -62,7 +62,12 @@ const CollaboratorCard = ({ collaborator, color, cardIndex }: Props) => {
 						<TextInfo text={city} color={color} />
 						<TextInfo text={lookingFor} color={color} />
 					</section>
-					<Links github={github} linkedin={linkedin} portfolio={portfolio} />
+					<Links
+						github={github}
+						linkedin={linkedin}
+						portfolio={portfolio}
+						color={color}
+					/>
 				</div>
 			</div>
 		</Card>
