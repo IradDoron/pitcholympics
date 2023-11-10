@@ -10,6 +10,7 @@ type Props = {
 	width?: CardWidth;
 	isWrap?: boolean;
 	children: React.ReactNode;
+	className?: string;
 };
 
 const getShadow = (shadow: CardShadow) => {
@@ -78,15 +79,17 @@ const Card = ({
 	width = 'fit',
 	isWrap = false,
 	children,
+	className = '',
 }: Props) => {
 	const shadowClass = getShadow(shadow);
 	const backgroundClass = getBackground(color);
 	const borderClass = getBorder(border);
 	const wrapClass = getWrap(isWrap);
 	const widthClass = getWidth(width);
+
 	return (
 		<div
-			className={`p-4 rounded-lg flex w-fit items-center justify-center gap-2 ${shadowClass} ${borderClass} ${backgroundClass} ${wrapClass} ${widthClass}`}
+			className={`rounded-lg flex w-fit items-center justify-center ${shadowClass} ${borderClass} ${backgroundClass} ${wrapClass} ${widthClass} ${className}`}
 		>
 			{children}
 		</div>
