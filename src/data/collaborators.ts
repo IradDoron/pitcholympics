@@ -46,6 +46,17 @@ const collaborators: Collaborator[] = [
 		linkedin: 'https://www.linkedin.com/in/gal-eindor/',
 		github: 'https://github.com/galeindor',
 	},
+	{
+		id: '4',
+		firstName: 'Peleg',
+		lastName: 'Mazuz',
+		roles: ['full-stack-developer'],
+		city: 'Ramle',
+		lookingFor: 'Looking for Full Stack Developer Position',
+		image: CollaboratorsImages['gal-ein-dor'],
+		linkedin: 'https://www.linkedin.com/in/gal-eindor/',
+		github: 'https://github.com/pelegsch666',
+	},
 ];
 
 export default collaborators;
