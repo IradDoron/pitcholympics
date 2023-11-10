@@ -1,14 +1,21 @@
 import type { Collaborator } from '@/types';
 import NextImage from 'next/image';
+import { CardComponentsColor } from './types';
 
 type Props = {
 	image: Collaborator['image'];
 	alt: Collaborator['firstName'];
+	color: CardComponentsColor;
 };
 
-const Image = ({ image, alt }: Props) => {
+const getStyles = (color: CardComponentsColor) => {
+	const styles = `flex justify-center border-[8px] rounded-[50%] border-light-${color}-main dark:border-dark-${color}-main`;
+	return styles;
+};
+
+const Image = ({ image, alt, color }: Props) => {
 	return (
-		<div className='flex justify-center border-[8px] border-light-primary-main dark:border-dark-primary-main rounded-[50%]'>
+		<div className={` ${getStyles(color)}`}>
 			<NextImage src={image} alt={alt} width={200} height={200} />
 		</div>
 	);

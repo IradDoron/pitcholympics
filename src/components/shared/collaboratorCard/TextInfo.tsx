@@ -9,7 +9,6 @@ const getTextColor = (color: 'primary' | 'secondary' | 'tertiary') => {
 	const firstLetter = color.charAt(0).toUpperCase();
 	const rest = color.slice(1);
 	const textColor = `text-light-surface-on${firstLetter}${rest} dark:text-dark-surface-on${firstLetter}${rest}`;
-	console.log(textColor);
 	return textColor;
 };
 

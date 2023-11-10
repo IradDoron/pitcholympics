@@ -3,10 +3,11 @@ import { Collaborator, CollaboratorRoles } from '@/types';
 import Card from '@/components/core/card';
 import Image from './Image';
 import Links from './Links';
+import { CardComponentsColor } from './types';
 
 type Props = {
 	collaborator: Collaborator;
-	color: 'primary' | 'secondary' | 'tertiary';
+	color: CardComponentsColor;
 };
 
 const CollaboratorCard = ({ collaborator, color }: Props) => {
@@ -45,7 +46,7 @@ const CollaboratorCard = ({ collaborator, color }: Props) => {
 	return (
 		<Card color={color} shadow='large'>
 			<div className='flex flex-row gap-6'>
-				<Image image={image} alt={firstName} />
+				<Image image={image} alt={firstName} color={color} />
 				<div className='flex flex-col gap-4'>
 					<section className='flex flex-col gap-4'>
 						<TextInfo text={fullName} color={color} />
