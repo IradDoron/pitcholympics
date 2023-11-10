@@ -72,8 +72,11 @@ export type Collaborator = {
 };
 
 export type IconProps = {
-	color?: string;
+	color?: MainColorCategories;
+	size?: 'small' | 'medium' | 'large';
 };
+
+export type MainColorCategories = 'primary' | 'secondary' | 'tertiary';
 
 export * from './gameItems';
 export * from './achievements';
