@@ -1,41 +1,22 @@
-import React from 'react';
+'use client';
+
 import Theme from './Theme';
 import LocaleSwitcher from './LocaleSwitcher';
 import { LangParam } from '@/types';
-import { getDictionaryServer } from '@/utils/getDictionaryServer';
+import { getDictionaryClient } from '@/utils/getDictionaryClient';
 import MobileNav from '@/components/shared/navbar/MobileNav';
-// import { SignedIn, UserButton } from '@clerk/nextjs';
 import NavbarLink from './NavbarLink';
+import AuthButton from './AuthButton';
 
-const Navbar = async ({ params: { lang } }: LangParam) => {
-	const dict = await getDictionaryServer(lang);
+const Navbar = ({ params: { lang } }: LangParam) => {
+	const dict = getDictionaryClient(lang);
 	const { navbar } = dict.shared;
 	const pagesUrls = Object.entries(navbar.pages);
 
 	return (
-		<div className='flex justify-center'>
-			<nav className='grid w-full grid-cols-3 p-2 fixed max-w-[1400px] '>
-				<div className='flex justify-self-start'>
-					<div
-						style={{
-							border: 'solid salmon 2px',
-							padding: '10px',
-						}}
-					>
-						user
-						{/* <SignedIn>
-						<UserButton
-							afterSignOutUrl='/'
-							appearance={{
-								elements: {
-									formButtonPrimary: 'primary-gradient',
-									footerActionLink:
-										'primary-text-gradient hover:text-primary-500',
-								},
-							}}
-						/>
-					</SignedIn> */}
-					</div>
+		<div className='flex flex-row justify-center '>
+			<nav className='grid grid-cols-3 p-2 fixed w-full bg-light-background-defaultBlur dark:bg-dark-background-defaultBlur '>
+				<div className='flex justify-self-start px-10'>
 					<LocaleSwitcher params={{ lang }} />
 
 					<div className='flex-between gap-5'>
@@ -52,8 +33,9 @@ const Navbar = async ({ params: { lang } }: LangParam) => {
 						);
 					})}
 				</ul>
-				<div></div>
-
+				<div className='flex justify-self-end pe-10'>
+					<AuthButton />
+				</div>
 				<MobileNav lang={lang} />
 			</nav>
 		</div>

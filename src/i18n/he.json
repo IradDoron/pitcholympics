@@ -16,13 +16,49 @@
 		"memo-the-melo": {
 			"page": {
 				"title": "test"
+			},
+			"result": {
+				"actionButtonLabel": "לשלב הבא",
+				"titleComplete": "הושלמה",
+				"titleCompleteLevel": "רמה",
+				"dataScoreLevel": "נקודות"
+			}
+		},
+		"game-result-page": {
+			"actionButtonLabel": "לשלב הבא",
+			"titleComplete": "הושלמה",
+			"titleCompleteLevel": "רמה",
+			"dataScoreLevel": "נקודות",
+			"titleForFailed": " אופס לא עברת את ",
+			"titleForFailedLevel": "רמה",
+			"tryAgainButtonLabel": "נסה שוב"
+		},
+		"stats": {
+			"page": {
+				"title": "סטטיסטיקה",
+				"resources": {
+					"title": "משאבים",
+					"coins": "מטבעות",
+					"gems": "יהלומים",
+					"musicalTreasures": "אוצרות מוזיקליים"
+				},
+				"gamesStats": {
+					"title": "נתוני משחקים",
+					"memoTheMeloGames": "Memo The Melo Games",
+					"pitchCatchGames": "Pitch Catch Games",
+					"totalGamesPlayed": "סך משחקים ששוחקו"
+				}
 			}
 		}
 	},
 	"shared": {
+		"gameLevelsLinks": {
+			"StageTitle": "רמה"
+		},
 		"navbar": {
 			"pages": {
 				"home": "בית",
+				"stats": "סטטיסטיקה",
 				"about": "אודות",
 				"contact": "צור קשר"
 			},
@@ -33,6 +69,11 @@
 						"imgURL": "/assets/icons/sun.svg",
 						"route": "/",
 						"label": "בית"
+					},
+					{
+						"imgURL": "/assets/icons/sun.svg",
+						"route": "/stats",
+						"label": "סטטיסטיקה"
 					},
 					{
 						"imgURL": "/assets/icons/sun.svg",

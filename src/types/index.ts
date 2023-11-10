@@ -1,4 +1,6 @@
 import { Locale } from '@/i18n.config';
+import { GameNames } from '.';
+import { StaticImageData } from 'next/image';
 
 export type LangParam = {
 	params: { lang: Locale };
@@ -29,6 +31,11 @@ export type MemoTheMeloLevel = {
 	melody: number[];
 };
 
+export type Game = {
+	name: GameNames;
+	game: MemoTheMeloGame | PitchCatchGame;
+};
+
 export type MemoTheMeloStage = MemoTheMeloLevel[];
 
 export type MemoTheMeloGame = MemoTheMeloStage[];
@@ -40,8 +47,37 @@ export type PitchCatchStage = PitchCatchLevel[];
 export type PitchCatchGame = PitchCatchStage[];
 
 export type PitchCatchQuestion = {
-	pitch: number[];
-	options: number[][];
+	currPitch: number[];
+	userOptions: number[][];
 };
 
 export type ThemeMode = 'light' | 'dark' | 'system';
+
+export type CollaboratorRoles =
+	| 'full-stack-developer'
+	| 'designer'
+	| 'project-manager';
+
+export type Collaborator = {
+	id: string;
+	firstName: string;
+	lastName: string;
+	roles: CollaboratorRoles[];
+	city: string;
+	image: StaticImageData;
+	lookingFor?: string;
+	github?: string;
+	linkedin?: string;
+	portfolio?: string;
+};
+
+export type IconProps = {
+	color?: MainColorCategories;
+	size?: 'small' | 'medium' | 'large';
+};
+
+export type MainColorCategories = 'primary' | 'secondary' | 'tertiary';
+
+export * from './gameItems';
+export * from './achievements';
+export * from './gameLogic';

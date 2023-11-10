@@ -10,38 +10,32 @@ type Props = {
 
 const CurrentLink = ({ url, label }: Props) => {
 	return (
-		<Link
-			className='text-light-primary-main dark:text-dark-primary-main font-bold text-xl '
-			href={url}
-		>
+		<div className='text-light-primary-light dark:text-dark-primary-light font-bold text-xl '>
 			{label}
-			<div className='h-1 bg-light-primary-main dark:bg-dark-primary-main'></div>
-		</Link>
+			<div className='h-1 bg-light-primary-light dark:bg-dark-primary-light'></div>
+		</div>
 	);
 };
 
 const NotCurrentLink = ({ url, label }: Props) => {
 	return (
-		<Link
-			className='text-common-greyScale-600 dark:text-common-greyScale-100 font-bold text-xl '
-			href={url}
-		>
+		<div className='text-light-surface-onNatural dark:text-dark-surface-onNatural font-bold text-xl '>
 			{label}
-			<div className='h-1 bg-common-greyScale-600 dark:bg-common-greyScale-100'></div>
-		</Link>
+			<div className='h-1 bg-light-surface-onNatural dark:bg-dark-surface-onNatural'></div>
+		</div>
 	);
 };
 
 const NavbarLink = ({ url, label }: Props) => {
 	const isCurrent = url === usePathname();
 	return (
-		<>
+		<Link href={url}>
 			{isCurrent ? (
 				<CurrentLink url={url} label={label} />
 			) : (
 				<NotCurrentLink url={url} label={label} />
 			)}
-		</>
+		</Link>
 	);
 };
 
