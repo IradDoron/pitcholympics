@@ -53,7 +53,7 @@ const CollaboratorCard = ({ collaborator, color, cardIndex }: Props) => {
 
 	return (
 		<Card color={color} shadow='large'>
-			<div className={`flex gap-6 ${flexDirection}`}>
+			<div className={`flex flex-col sm:flex-row gap-6 ${flexDirection}`}>
 				<Image image={image} alt={firstName} color={color} />
 				<div className='flex flex-col gap-4'>
 					<section className='flex flex-col gap-4'>

@@ -13,7 +13,7 @@ type Props = {
 
 const Links = ({ github, linkedin, portfolio, color }: Props) => {
 	return (
-		<div className='flex flex-row gap-4 items-center '>
+		<div className='flex flex-row gap-4 items-center justify-center sm:justify-start'>
 			{github && (
 				<Link href={github} target='_blank' rel='noopener noreferrer'>
 					<GithubLogo color={color} />
