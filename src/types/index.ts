@@ -71,6 +71,10 @@ export type Collaborator = {
 	portfolio?: string;
 };
 
+export type IconProps = {
+	color?: string;
+};
+
 export * from './gameItems';
 export * from './achievements';
 export * from './gameLogic';
