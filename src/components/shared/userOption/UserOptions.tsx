@@ -26,10 +26,6 @@ const UserOptions = ({ pitches, useChoiceIndex, setChoiceIndex }: Props) => {
       now + pitches.length / 4
     );
 
-    //   synth.triggerAttack(pitch.toString(), now + index / 2);
-    // });
-    // synth.triggerRelease(convertNumberArrayToStringArray(pitches), now + pitches.length / 2);
-
     setChoiceIndex(index);
   }
   const bgColorsArr = Object.values(colorVariants);
@@ -65,4 +61,3 @@ const UserOptions = ({ pitches, useChoiceIndex, setChoiceIndex }: Props) => {
 };
 
 export default UserOptions;
-//"w-20 h-20 bg-gradient-to-r from-purple-400 to-indigo-400 text-white rounded-full mx-2 shadow-sm hover:shadow-md transform hover:scale-202 transition-transform duration-600 hover:bg-indigo-500 hover:text-white flex items-center justify-center duration-300  hover:scale-105"
