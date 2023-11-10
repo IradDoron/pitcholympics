@@ -28,7 +28,8 @@
 		"react": "latest",
 		"react-dom": "latest",
 		"tailwind-merge": "^1.14.0",
-		"tailwindcss-animate": "^1.0.7"
+		"tailwindcss-animate": "^1.0.7",
+		"tone": "^14.7.77"
 	},
 	"devDependencies": {
 		"@formatjs/intl-localematcher": "^0.4.2",
