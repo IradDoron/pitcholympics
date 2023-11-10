@@ -7,6 +7,10 @@ import { getDictionaryClient } from '@/utils/getDictionaryClient';
 import { Locale } from '@/i18n.config';
 import pitchCatchData from '@/mockData/pitchCatch';
 
+
+
+
+
 type Props = {
     params: {
         stage: number;
