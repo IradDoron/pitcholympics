@@ -9,37 +9,37 @@ import NavbarLink from './NavbarLink';
 import AuthButton from './AuthButton';
 
 const Navbar = ({ params: { lang } }: LangParam) => {
-  const dict = getDictionaryClient(lang);
-  const { navbar } = dict.shared;
-  const pagesUrls = Object.entries(navbar.pages);
+	const dict = getDictionaryClient(lang);
+	const { navbar } = dict.shared;
+	const pagesUrls = Object.entries(navbar.pages);
 
-  return (
-    <div className="flex flex-row justify-center">
-      <nav className="grid grid-cols-3 p-2 fixed w-full">
-        <div className="flex justify-self-start px-10">
-          <LocaleSwitcher params={{ lang }} />
+	return (
+		<div className='flex flex-row justify-center '>
+			<nav className='grid grid-cols-3 p-2 fixed w-full bg-light-background-defaultBlur dark:bg-dark-background-defaultBlur '>
+				<div className='flex justify-self-start px-10'>
+					<LocaleSwitcher params={{ lang }} />
 
-          <div className="flex-between gap-5">
-            <Theme />
-          </div>
-        </div>
-        <ul className="gap-5 hidden sm:flex justify-self-center">
-          {pagesUrls.map(([url, title]) => {
-            const composedUrl = url === "home" ? `/${lang}` : `/${lang}/${url}`;
-            return (
-              <li key={url}>
-                <NavbarLink url={composedUrl} label={title} />
-              </li>
-            );
-          })}
-        </ul>
-        <div className="flex justify-self-end pe-10">
-          <AuthButton />
-        </div>
-        <MobileNav lang={lang} />
-      </nav>
-    </div>
-  );
+					<div className='flex-between gap-5'>
+						<Theme />
+					</div>
+				</div>
+				<ul className='gap-5 hidden sm:flex justify-self-center'>
+					{pagesUrls.map(([url, title]) => {
+						const composedUrl = url === 'home' ? `/${lang}` : `/${lang}/${url}`;
+						return (
+							<li key={url}>
+								<NavbarLink url={composedUrl} label={title} />
+							</li>
+						);
+					})}
+				</ul>
+				<div className='flex justify-self-end pe-10'>
+					<AuthButton />
+				</div>
+				<MobileNav lang={lang} />
+			</nav>
+		</div>
+	);
 };
 
 export default Navbar;
