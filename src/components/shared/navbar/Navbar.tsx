@@ -44,6 +44,7 @@ const Navbar = ({ params: { lang } }: LangParam) => {
 					<SettingsMenu
 						isOpen={isSettingsMenuOpen}
 						setIsOpen={setIsSettingsMenuOpen}
+						lang={lang}
 					/>
 				</div>
 				<MobileNav lang={lang} />

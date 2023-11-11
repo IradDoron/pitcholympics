@@ -1,6 +1,7 @@
 'use client';
 
 import Card from '@/components/core/card';
+import { useRouter } from 'next/navigation';
 import MenuSection from './MenuSection';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import UserImage from './UserImage';
@@ -13,13 +14,16 @@ import {
 } from 'next-auth/react';
 import MenuItem from './MenuItem';
 import GithubLogo from '@/components/icons/githubLogo';
+import { Locale } from '@/i18n.config';
 
 type Props = {
 	isOpen: boolean;
 	setIsOpen: Dispatch<SetStateAction<boolean>>;
+	lang: Locale;
 };
 
-const SettingsMenu = ({ isOpen, setIsOpen }: Props) => {
+const SettingsMenu = ({ isOpen, setIsOpen, lang }: Props) => {
+	const router = useRouter()
 	const { data: session } = useSession();
 
 	const [providers, setProviders] = useState<Record<
@@ -42,6 +46,12 @@ const SettingsMenu = ({ isOpen, setIsOpen }: Props) => {
 		setIsOpen(false);
 	};
 
+	const handleProfile = () => {
+		router.push(`${lang}/profile`)
+
+	}
+
+
 	return (
 		<Card
 			className='absolute top-20 right-6 flex flex-col'
@@ -58,6 +68,11 @@ const SettingsMenu = ({ isOpen, setIsOpen }: Props) => {
 				<MenuItem
 					label='Sign Out'
 					onClick={handleSignOut}
+					icon={<GithubLogo />}
+				/>
+				<MenuItem
+					label='Enter Profile'
+					onClick={handleProfile}
 					icon={<GithubLogo />}
 				/>
 			</MenuSection>
