@@ -4,7 +4,7 @@ import Card from '@/components/core/card';
 import { useRouter } from 'next/navigation';
 import MenuSection from './MenuSection';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import UserImage from './UserImage';
+import UserImage from '@/components/shared/userImage';
 import UserName from './UserName';
 import {
 	ClientSafeProvider,
@@ -47,7 +47,7 @@ const SettingsMenu = ({ isOpen, setIsOpen, lang }: Props) => {
 	};
 
 	const handleProfile = () => {
-		router.push(`${lang}/profile`)
+		router.push(`/${lang}/profile`)
 
 	}
 
