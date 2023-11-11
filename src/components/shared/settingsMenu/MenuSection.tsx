@@ -9,7 +9,9 @@ type Props = {
 const MenuSection = ({ children, isLast = false, className = '' }: Props) => {
 	return (
 		<>
-			<div className={`flex flex-col gap-2 p-4 ${className}`}>{children}</div>
+			<div className={`flex flex-col gap-2 w-full ${className}`}>
+				{children}
+			</div>
 			{!isLast && <Divider />}
 		</>
 	);

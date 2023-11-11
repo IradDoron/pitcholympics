@@ -2,10 +2,17 @@
 
 import Card from '@/components/core/card';
 import MenuSection from './MenuSection';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import UserImage from './UserImage';
 import UserName from './UserName';
-import { useSession } from 'next-auth/react';
+import {
+	ClientSafeProvider,
+	getProviders,
+	useSession,
+	signOut,
+} from 'next-auth/react';
+import MenuItem from './MenuItem';
+import GithubLogo from '@/components/icons/githubLogo';
 
 type Props = {
 	isOpen: boolean;
@@ -14,16 +21,44 @@ type Props = {
 
 const SettingsMenu = ({ isOpen, setIsOpen }: Props) => {
 	const { data: session } = useSession();
+
+	const [providers, setProviders] = useState<Record<
+		string,
+		ClientSafeProvider
+	> | null>(null);
+
+	useEffect(() => {
+		(async () => {
+			const response = await getProviders();
+			setProviders(response);
+		})();
+	}, []);
+
 	if (!isOpen) return null;
 	console.log(session);
+
+	const handleSignOut = () => {
+		signOut();
+		setIsOpen(false);
+	};
+
 	return (
-		<Card className='absolute top-20 right-6 flex flex-col w-[360px]'>
-			<MenuSection className='items-center justify-center'>
+		<Card
+			className='absolute top-20 right-6 flex flex-col'
+			style={{
+				width: '360px',
+			}}
+		>
+			<MenuSection className='items-center justify-center p-4'>
 				<UserImage />
 				<UserName label={session?.user?.name ?? ''} />
 			</MenuSection>
 			<MenuSection isLast={true}>
-				<p>sign out</p>
+				<MenuItem
+					label='Sign Out'
+					onClick={handleSignOut}
+					icon={<GithubLogo />}
+				/>
 			</MenuSection>
 		</Card>
 	);

@@ -8,12 +8,13 @@ type Props = {
 
 const MenuItem = ({ label, icon, onClick }: Props) => {
 	return (
-		<div>
-			<button onClick={onClick} className='flex flex-row gap-2'>
-				{icon}
-				<span>{label}</span>
-			</button>
-		</div>
+		<button
+			onClick={onClick}
+			className='p-4 flex flex-row gap-2 flex-start w-full items-center hover:bg-blue-100'
+		>
+			{icon}
+			<span>{label}</span>
+		</button>
 	);
 };
 
