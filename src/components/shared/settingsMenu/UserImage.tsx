@@ -10,7 +10,7 @@ const UserImage = () => {
 		return (
 			<>
 				<Image
-					className='m-0.5 inline-block rounded-full ring-2 ring-white'
+					className='m-0.5 inline-block rounded-full '
 					src={session.user.image ?? ''}
 					alt=''
 					width={64}

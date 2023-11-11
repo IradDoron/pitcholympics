@@ -3,7 +3,11 @@ type Props = {
 };
 
 const UserName = ({ label }: Props) => {
-	return <p className='text-lg'>{label}</p>;
+	return (
+		<p className='text-lg text-light-surface-onPrimary dark:text-dark-surface-onPrimary'>
+			{label}
+		</p>
+	);
 };
 
 export default UserName;

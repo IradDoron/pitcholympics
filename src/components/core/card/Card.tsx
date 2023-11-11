@@ -1,3 +1,5 @@
+import style from 'styled-jsx/style';
+
 type CardShadow = 'none' | 'medium' | 'large';
 type CardColor = 'primary' | 'secondary' | 'tertiary';
 type CardBorder = boolean;
@@ -11,6 +13,7 @@ type Props = {
 	isWrap?: boolean;
 	children: React.ReactNode;
 	className?: string;
+	style?: React.CSSProperties;
 };
 
 const getShadow = (shadow: CardShadow) => {
@@ -72,6 +75,10 @@ const getWidth = (width: CardWidth) => {
 	}
 };
 
+const getCustomClass = (customClass: string) => {
+	return customClass;
+};
+
 const Card = ({
 	color = 'primary',
 	shadow = 'none',
@@ -80,16 +87,19 @@ const Card = ({
 	isWrap = false,
 	children,
 	className = '',
+	style = {},
 }: Props) => {
 	const shadowClass = getShadow(shadow);
 	const backgroundClass = getBackground(color);
 	const borderClass = getBorder(border);
 	const wrapClass = getWrap(isWrap);
 	const widthClass = getWidth(width);
+	const customClass = getCustomClass(className);
 
 	return (
 		<div
-			className={`rounded-lg flex w-fit items-center justify-center ${shadowClass} ${borderClass} ${backgroundClass} ${wrapClass} ${widthClass} ${className}`}
+			className={`rounded-lg flex items-center justify-center ${shadowClass} ${borderClass} ${backgroundClass} ${wrapClass} ${widthClass} ${customClass}`}
+			style={style}
 		>
 			{children}
 		</div>

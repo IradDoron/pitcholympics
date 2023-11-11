@@ -1,10 +1,8 @@
 'use client';
 
-import Link from 'next/link';
 import { useState, useEffect, Dispatch, SetStateAction } from 'react';
 import {
 	signIn,
-	signOut,
 	useSession,
 	getProviders,
 	ClientSafeProvider,
@@ -34,9 +32,8 @@ function AuthButton({ isSettingsMenuOpen, setIsSettingsMenuOpen }: Props) {
 	if (session?.user) {
 		return (
 			<>
-				<button onClick={() => signOut()}>Sign out</button>
 				<Image
-					className='m-0.5 inline-block h-auto w-auto rounded-full ring-2 ring-white'
+					className='m-0.5 inline-block h-auto w-auto rounded-full ring-4 ring-light-primary-main hover:ring-light-secondary-main duration-300 dark:ring-dark-primary-light hover:dark:ring-dark-secondary-light cursor-pointer'
 					src={session.user.image ?? ''}
 					alt=''
 					width={64}

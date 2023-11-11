@@ -53,7 +53,7 @@ const collaborators: Collaborator[] = [
 		firstName: 'Peleg',
 		lastName: 'Mazuz',
 		roles: ['full-stack-developer'],
-		city: 'Ramle',
+		city: 'Tel Aviv',
 		lookingFor: 'Looking for Full Stack Developer Position',
 		image: CollaboratorsImages['peleg-mazuz'],
 		linkedin: 'https://www.linkedin.com/in/gal-eindor/',
