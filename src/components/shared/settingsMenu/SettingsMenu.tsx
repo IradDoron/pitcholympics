@@ -45,6 +45,7 @@ const SettingsMenu = ({ isOpen, setIsOpen }: Props) => {
 	return (
 		<Card
 			className='absolute top-20 right-6 flex flex-col'
+			shadow='large'
 			style={{
 				width: '360px',
 			}}
