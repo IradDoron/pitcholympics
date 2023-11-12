@@ -32,11 +32,11 @@ const Page = ({ params }: Props) => {
         router.push(`/memo-the-melo/${nextStage}/1`);
       }
     } else {
-      router.push(`/memo-the-melo/${params.stage}/${nextLevel}`);
+      router.push(`/${params.lang}/memo-the-melo/${params.stage}/${nextLevel}`);
     }
   };
   const handleTryAgain = () => {
-    router.push(`/memo-the-melo/${params.stage}/${params.level}`);
+    router.push(`/${params.lang}/memo-the-melo/${params.stage}/${params.level}`);
   };
 
   useEffect(() => {
