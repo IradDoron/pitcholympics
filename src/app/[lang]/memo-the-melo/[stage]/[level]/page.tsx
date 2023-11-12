@@ -84,7 +84,7 @@ const Page = ({ params }: Props) => {
     <div className="container mx-auto h-full flex flex-col justify-center items-center gap-10 border-red-600 border-solid border-2">
       <LevelStepper
         currentStep={1}
-        totalSteps={pitchOptions.length}
+        totalSteps={currentLevel.melody.length}
       />
 
       <div className="flex flex-row justify-center items-center gap-5 flex-wrap w-60">
