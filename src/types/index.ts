@@ -27,7 +27,7 @@ export type SidebarLink = {
 };
 
 export type MemoTheMeloLevel = {
-	notesAmount: number;
+	pitchOptions: string[];
 	melody: number[];
 };
 

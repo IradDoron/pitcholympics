@@ -3,30 +3,31 @@ import { MemoTheMeloGame } from '@/types';
 const memoTheMeloMockData: MemoTheMeloGame = [
  [
   {
-   notesAmount: 2,
-   melody: [1, 2, 2, 1, 1],
+   pitchOptions: ['440','228'],
+   melody: [0, 1, 1, 1, 1],
+
   },
   {
-   notesAmount: 3,
-   melody: [1, 2, 3, 1, 3, 2],
+   pitchOptions: ['180','120','220'],
+   melody: [1, 2, 0, 1, 0, 2],
   },
   {
-   notesAmount: 3,
-   melody: [1, 2, 3, 1, 3, 2, 2, 1, 3],
+   pitchOptions:  ['180','120','220'],
+   melody: [1, 2, 0, 1, 0, 2, 2, 1, 0],
   },
  ],
  [
   {
-   notesAmount: 4,
-   melody: [1, 2, 3, 1, 4, 3, 4],
+   pitchOptions: ['180','120','220','440'],
+   melody: [1, 2, 3, 0, 2, 3, 2],
   },
   {
-   notesAmount: 4,
-   melody: [1, 2, 3, 2, 4],
+   pitchOptions: ['180','120','220','440'],
+   melody: [1, 2, 3, 2, 0],
   },
   {
-   notesAmount: 4,
-   melody: [1, 2, 3, 4, 3, 1],
+   pitchOptions: ['180','120','220','440'],
+   melody: [1, 2, 3, 0, 3, 1],
   },
  ],
 ];
