@@ -23,7 +23,7 @@ type Props = {
 };
 
 const SettingsMenu = ({ isOpen, setIsOpen, lang }: Props) => {
-	const router = useRouter()
+	const router = useRouter();
 	const { data: session } = useSession();
 
 	const [providers, setProviders] = useState<Record<
@@ -47,14 +47,12 @@ const SettingsMenu = ({ isOpen, setIsOpen, lang }: Props) => {
 	};
 
 	const handleProfile = () => {
-		router.push(`/${lang}/profile`)
-
-	}
-
+		router.push(`/${lang}/profile`);
+	};
 
 	return (
 		<Card
-			className='absolute top-20 right-6 flex flex-col'
+			className='absolute top-20 end-6 flex flex-col'
 			shadow='large'
 			style={{
 				width: '360px',
