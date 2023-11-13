@@ -15,6 +15,7 @@ import {
 import MenuItem from './MenuItem';
 import GithubLogo from '@/components/icons/githubLogo';
 import { Locale } from '@/i18n.config';
+import TransparentBg from './TransparentBg';
 
 type Props = {
 	isOpen: boolean;
@@ -52,11 +53,13 @@ const SettingsMenu = ({ isOpen, setIsOpen, lang }: Props) => {
 
 	return (
 		<Card
-			className='absolute top-20 end-6 flex flex-col'
+			className='fixed w-screen h-screen top-0 end-0 sm:absolute sm:top-20 sm:end-6 sm:max-w-[360px] flex flex-col'
 			shadow='large'
-			style={{
-				width: '360px',
-			}}
+			style={
+				{
+					// width: '360px',
+				}
+			}
 		>
 			<MenuSection className='items-center justify-center p-4'>
 				<UserImage />
@@ -74,6 +77,7 @@ const SettingsMenu = ({ isOpen, setIsOpen, lang }: Props) => {
 					icon={<GithubLogo />}
 				/>
 			</MenuSection>
+			<div></div>
 		</Card>
 	);
 };
