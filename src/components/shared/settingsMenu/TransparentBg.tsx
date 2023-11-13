@@ -1,16 +1,16 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction } from 'react'
 
 type Props = {
-	setIsOpen: Dispatch<SetStateAction<boolean>>;
-};
+    setIsOpen: Dispatch<SetStateAction<boolean>>
+}
 
 const TransparentBg = ({ setIsOpen }: Props) => {
-	return (
-		<div
-			className='fixed w-screen h-screen top-0 end-0'
-			onClick={() => setIsOpen(false)}
-		></div>
-	);
-};
+    return (
+        <div
+            className="fixed w-screen h-screen top-0 end-0 -z-50"
+            onClick={() => setIsOpen(false)}
+        ></div>
+    )
+}
 
-export default TransparentBg;
+export default TransparentBg
