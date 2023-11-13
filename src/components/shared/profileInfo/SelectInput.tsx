@@ -4,10 +4,11 @@ import React from 'react'
 type Props = {
     onChange: (value: any) => void,
     options: string[]
+    value?: string
 }
-const SelectInput = ({ onChange, options }: Props) => {
+const SelectInput = ({ onChange, options, value }: Props) => {
     return (
-        <select onChange={onChange}>
+        <select value={value} onChange={onChange}>
             {options.map((option) => {
                 return <option key={option} value={option}>{option}</option>
             })}
