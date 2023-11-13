@@ -1,7 +1,7 @@
 import React from 'react';
 import * as Tone from 'tone';
 type Props = {
-  pitches: number[];
+  pitches: string[];
 };
 
 const PitchButton = ({ pitches }: Props) => {
@@ -16,7 +16,7 @@ const PitchButton = ({ pitches }: Props) => {
       console.log(pitch);
       synth.triggerAttack(pitch.toString(), now + index/2);
     });
-    synth.triggerRelease(convertNumberArrayToStringArray(pitches), now + pitches.length/2);
+    synth.triggerRelease(pitches, now + pitches.length/2);
   }
 
   return (

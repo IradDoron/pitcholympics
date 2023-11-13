@@ -4,25 +4,23 @@ import { divideItemsByLightAndDark } from '@/utils/divideItemsByLightAndDark';
 
 import * as Tone from 'tone';
 type Props = {
-  pitches: number[][];
+  pitches: string[][];
   useChoiceIndex: number | null;
   setChoiceIndex: React.Dispatch<React.SetStateAction<number | null>>;
 };
 
 const UserOptions = ({ pitches, useChoiceIndex, setChoiceIndex }: Props) => {
-  function convertNumberArrayToStringArray(arr: number[]) {
-    return arr.map(num => num.toString());
-  }
+
   function handleChoiceClick(index: number) {
     const synth = new Tone.PolySynth(Tone.Synth).toDestination();
 
     const now = Tone.now();
 
     pitches[index].forEach((pitch, index) => {
-      synth.triggerAttack(pitch.toString(), now + index / 2);
+      synth.triggerAttack(pitch, now + index / 2);
     });
     synth.triggerRelease(
-      convertNumberArrayToStringArray(pitches[index]),
+    pitches[index],
       now + pitches.length / 4
     );
 
