@@ -49,7 +49,7 @@ const Page = ({ params }: Props) => {
     router.push(`${params.level}/result`);
   };
 
-  function arrCheck(arrOne: number[], arrTwo: number[]) {
+  function arrCheck(arrOne: string[], arrTwo: string[]) {
     for (let i = 0; i < arrOne.length; i++) {
       if (arrTwo[i] !== arrOne[i]) {
         return false;
