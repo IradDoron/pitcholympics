@@ -32,7 +32,7 @@ const Page = ({ params }: Props) => {
   };
 
   const [currentNote, setCurrentNote] = useState(1);
-
+  const [pitchIndexPlaying, setPitchIndexPlaying] = useState(-1);
   const { stage, level } = params;
   const currentLevel = getLevelData(
     Number(stage),
@@ -42,7 +42,7 @@ const Page = ({ params }: Props) => {
 
   const { pitchOptions } = currentLevel;
   const [userGuess, setUserGuess] = useState<number[]>([]);
-
+  const [isActive, setIsActive] = useState(false);
   const pitchesIndexes = currentLevel.melody;
   const pitchesOptions = currentLevel.pitchOptions;
 
@@ -58,8 +58,22 @@ const Page = ({ params }: Props) => {
 
     currPitches.forEach((pitch, index) => {
       synth.triggerAttack(pitch, now + index / 2);
+      console.log(now);
     });
     synth.triggerRelease(currPitches, now + currPitches.length / 2);
+    
+    const setUpActivePitch = (activeIndex:number,pitchesIndexes:string[]) => { 
+      console.log('hello, world!');
+
+    }
+    currPitches.forEach((pitch, index) => {
+    setTimeout(setUpActivePitch, 1000 * index);
+      
+    });
+ 
+
+  
+   
   };
 
   const handleLose = () => {
@@ -73,7 +87,7 @@ const Page = ({ params }: Props) => {
     for (let i = 0; i < userGuess.length; i++) {
       if (userGuess[i] === melody[i]) {
         handleLose();
-        console.log('lose')
+        console.log('lose');
       }
     }
     if (currentNote < melody.length) {
@@ -86,13 +100,13 @@ const Page = ({ params }: Props) => {
     return true;
   };
   return (
-    <div className="container mx-auto h-full flex flex-col justify-center items-center gap-10 border-red-600 border-solid border-2">
+    <div className="container mx-auto h-full flex flex-col justify-center items-center gap-8 border-red-600 border-solid border-2">
       <LevelStepper
         currentStep={currentNote}
         totalSteps={currentLevel.melody.length}
       />
 
-      <div className="flex flex-row justify-center items-center gap-5 flex-wrap w-60">
+      <div className="flex flex-row justify-center items-center gap-2 flex-wrap">
         {pitchOptions.map((_, index) => {
           return (
             <ButtonMelody
@@ -102,18 +116,22 @@ const Page = ({ params }: Props) => {
               currentNote={currentNote}
               userGuess={userGuess}
               pitchOptions={pitchOptions}
+              isActive={isActive}
+              setIsActive={setIsActive}
             />
           );
         })}
       </div>
-      <Button
-        label="start melody"
-        onClick={startMelody}
-      />
-      <Button
-        label="Check Guess"
-        onClick={() => checkUserGuess(userGuess, currentLevel.melody)}
-      />
+      <div className="flex flex-row gap-2">
+        <Button
+          label="start melody"
+          onClick={startMelody}
+        />
+        <Button
+          label="Check Guess"
+          onClick={() => checkUserGuess(userGuess, currentLevel.melody)}
+        />
+      </div>
     </div>
   );
 };
