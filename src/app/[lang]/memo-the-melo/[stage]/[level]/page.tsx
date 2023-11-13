@@ -50,28 +50,33 @@ const Page = ({ params }: Props) => {
     return pitchesOptions[pitchIndex];
   });
 
-  // useEffect(() => {
-  //   checkUserGuess(userGuess, currentLevel.melody);
-  // }, [currentNote,userGuess]);
-
   const startMelody = () => {
     const synth = new Tone.PolySynth(Tone.Synth).toDestination();
     const now = Tone.now();
 
-    pitches.forEach((pitch, index) => {
+    const currPitches = pitches.slice(0, currentNote);
+
+    currPitches.forEach((pitch, index) => {
       synth.triggerAttack(pitch, now + index / 2);
     });
-    synth.triggerRelease(pitches, now + pitches.length / 2);
+    synth.triggerRelease(currPitches, now + currPitches.length / 2);
+  };
+
+  const handleLose = () => {
+    router.push(
+      `/${params.lang}/memo-the-melo/${params.stage}/${params.level}/result`
+    );
   };
 
   const checkUserGuess = (userGuess: number[], melody: number[]) => {
     if (userGuess.length === 0) return;
     for (let i = 0; i < userGuess.length; i++) {
-      if (!(userGuess[i] === melody[i])) {
+      if (userGuess[i] === melody[i]) {
+        handleLose();
+        console.log('lose')
       }
     }
     if (currentNote < melody.length) {
-      console.log(currentNote + 'current Note');
       setCurrentNote(currentNote + 1);
     }
     if (currentNote === melody.length) {
@@ -83,7 +88,7 @@ const Page = ({ params }: Props) => {
   return (
     <div className="container mx-auto h-full flex flex-col justify-center items-center gap-10 border-red-600 border-solid border-2">
       <LevelStepper
-        currentStep={1}
+        currentStep={currentNote}
         totalSteps={currentLevel.melody.length}
       />
 
@@ -105,9 +110,9 @@ const Page = ({ params }: Props) => {
         label="start melody"
         onClick={startMelody}
       />
-      <Button 
-      label='Check Guess'
-      onClick={() => checkUserGuess(userGuess, currentLevel.melody)}
+      <Button
+        label="Check Guess"
+        onClick={() => checkUserGuess(userGuess, currentLevel.melody)}
       />
     </div>
   );
