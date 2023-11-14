@@ -1,3 +1,3 @@
-import MemoBlockAmit from "./MemoBlockAmit";
+import MemoBlock from "./MemoBlock";
 
-export default MemoBlockAmit
+export default MemoBlock

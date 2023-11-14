@@ -83,3 +83,4 @@ export type MainColorCategories = 'primary' | 'secondary' | 'tertiary';
 export * from './gameItems';
 export * from './achievements';
 export * from './gameLogic';
+export * from './memo-blocks';
