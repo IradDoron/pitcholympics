@@ -287,4 +287,4 @@ module.exports = {
         require('tailwindcss-animate'),
         require('@tailwindcss/typography'),
     ],
-}
+};
