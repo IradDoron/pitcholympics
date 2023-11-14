@@ -1,5 +1,3 @@
-import { AchievementStatus, GameItem } from '@/types';
-
 export type GameAnalytics = {
 	gameName: GameNames;
 	level: number;
@@ -13,7 +11,7 @@ export type GameNames = 'memoTheMelo' | 'pitchCatch';
 
 export type Resources = {
 	coins: number;
-	musicalTreasure: number;
+	musicalTreasures: number;
 	gems: number;
 	health: number;
 };
@@ -56,7 +54,7 @@ export type User = {
 	};
 	achievements: {
 		[achievementId: string]: {
-			currentStatus: AchievementStatus;
+			criteriaStatus: boolean[];
 			completeAmount: number;
 		};
 	};

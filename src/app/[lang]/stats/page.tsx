@@ -1,8 +1,9 @@
 import StatsSection from "@/components/shared/stats/statsSection";
 import GameProgress from "@/components/shared/stats/gamesProgress";
 import { LangParam } from '@/types';
+import Achievements from '@/components/shared/stats/achievements';
 
-const Page = async ({ params: { lang } }: LangParam) => {
+const Page = ({ params: { lang } }: LangParam) => {
 
 	return (
 		<div className="p-4">
@@ -12,7 +13,9 @@ const Page = async ({ params: { lang } }: LangParam) => {
 				<StatsSection type="gamesStats" lang={lang} color="secondary" />
 			</div>
 			<GameProgress />
+			<Achievements />
 		</div>
+
 	);
 };
 

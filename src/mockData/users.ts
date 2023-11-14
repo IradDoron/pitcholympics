@@ -48,17 +48,13 @@ const users: User[] = [
 		},
 		achievements: {
 			'1': {
-				currentStatus: 'Completed',
+				criteriaStatus: [true, true, true, true, true, false],
 				completeAmount: 1,
-			},
-			achievement2: {
-				currentStatus: 'InProgress',
-				completeAmount: 3,
 			},
 		},
 		resources: {
 			coins: 1000,
-			musicalTreasure: 10,
+			musicalTreasures: 10,
 			gems: 40,
 			health: 5,
 		},
@@ -172,17 +168,13 @@ const users: User[] = [
 		},
 		achievements: {
 			'1': {
-				currentStatus: 'InProgress',
-				completeAmount: 2,
-			},
-			'3': {
-				currentStatus: 'NotStarted',
-				completeAmount: 0,
+				criteriaStatus: [true, true, true, true, true, false],
+				completeAmount: 9,
 			},
 		},
 		resources: {
 			coins: 500,
-			musicalTreasure: 5,
+			musicalTreasures: 5,
 			gems: 20,
 			health: 3,
 		},

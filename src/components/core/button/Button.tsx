@@ -3,7 +3,7 @@ type BtnSize = "small" | "medium" | "large";
 
 type Props = {
   label: string;
-  onClick: () => void;
+  onClick: () => void ;
   size?: BtnSize
 }
 

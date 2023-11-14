@@ -27,18 +27,18 @@ const LevelResult = ({
       {' '}
       {score === 0 ? (
         <div className="items-center flex flex-col gap-10">
-            <ResultTitle level={level} lang={lang} score={score}/>
-            <ResultData score={score} lang={lang} />
-            <div className='flex flex-row gap-6'>
+          <ResultTitle level={level} lang={lang} score={score} />
+          <ResultData score={score} lang={lang} />
+          <div className='flex flex-row gap-6'>
             <Button label={tryAgainButtonLabel} onClick={tryAgainButtonOnClick} />
             <Button label={actionButtonLabel} onClick={actionButtonOnClick} />
-            </div>
+          </div>
         </div>
       ) : (
-<div className="items-center flex flex-col gap-10">
-            <ResultTitle level={level} lang={lang} score={score}/>
-            <ResultData score={score} lang={lang} />
-            <Button label={actionButtonLabel} onClick={actionButtonOnClick} />
+        <div className="items-center flex flex-col gap-10">
+          <ResultTitle level={level} lang={lang} score={score} />
+          <ResultData score={score} lang={lang} />
+          <Button label={actionButtonLabel} onClick={actionButtonOnClick} />
 
         </div>
       )}

@@ -1,12 +1,8 @@
-import StatsCard from '@/components/core/statsCard';
+'use client'
 import type { User } from '@/types';
-import type {
-  GameAnalytics,
-  GameNames,
-  GamesStats,
-  Resources,
-} from '@/types/gameLogic';
-import { getDictionaryServer } from '@/utils/getDictionaryServer';
+import type { GameAnalytics, GameNames, GamesStats, Resources } from '@/types/gameLogic';
+import { getDictionaryClient } from '@/utils/getDictionaryClient';
+import StatsCard from '@/components/core/statsCard';
 import users from '@/mockData/users';
 import { Locale } from '@/i18n.config';
 
@@ -16,7 +12,7 @@ type Props = {
   color: 'primary' | 'secondary' | 'tertiary';
 };
 
-const StatsSection = async ({ type, lang, color }: Props) => {
+const StatsSection = ({ type, lang, color }: Props) => {
   const user = users[0];
 
   function countGames(user: User, gameName: GameNames): number {
@@ -37,25 +33,23 @@ const StatsSection = async ({ type, lang, color }: Props) => {
       memoTheMeloGames: memoTheMeloGamesCount,
       pitchCatchGames: pitchCatchGamesCount,
       totalGamesPlayed: memoTheMeloGamesCount + pitchCatchGamesCount,
-    },
-  };
-  const dict = await getDictionaryServer(lang);
-  const { page } = dict.app.stats;
-  let selectedPage;
-  if (type === 'resources') {
-    selectedPage = page.resources;
-  } else {
-	selectedPage = page.gamesStats;
+
+    }
   }
+  const dict = getDictionaryClient(lang);
+  const { page } = dict.app.stats;
+  const selectedPage = type === 'resources' ? page.resources : page.gamesStats;
 
   const keyValues = Object.entries(selectedPage).filter(
     ([key, v]) => key !== 'title'
   );
 
+  console.log(keyValues);
+
   return (
     <div className="w-full items-center place-self-center">
       <h1 className="text-center text-light-background-onDefault dark:text-dark-background-onDefault font-inter text-xl font-bold">
-        {page.title}
+        {selectedPage.title}
       </h1>
       <div className="flex flex-col sm:flex-row items-center gap-x-0">
         {keyValues.map(([key, value]) => {
@@ -67,7 +61,7 @@ const StatsSection = async ({ type, lang, color }: Props) => {
           return (
             <StatsCard
               key={key}
-              title={page.title}
+              title={title?.toString()}
               subTitle={value}
               color={color}
             />
