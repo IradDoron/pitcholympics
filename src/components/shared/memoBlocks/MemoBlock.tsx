@@ -6,10 +6,10 @@ import { colorsTemplateMatrix } from '@/constants';
 /**
  * Mirror the matrix (flip it vertically - up to down)
  * @param matrix  - the matrix to mirror
- * @param refMatrix - the matrix to mirror the letters from
  * @returns 
  */
-function mirrorMatrix(refMatrix: Matrix, matrix: Matrix) {
+function mirrorMatrix(matrix: Matrix) {
+  const refMatrix = colorsTemplateMatrix;
   let copyMatrix: Matrix = [];
   const rows = refMatrix.length;
   const cols = refMatrix[0].length;
@@ -88,7 +88,7 @@ const MemoBlock = () => {
         ))}
       </div>
       <div className='flex-row gap-0 justify-center items-center'>
-        <button className="m-3 w-16 h-10 rounded-full bg-dark-background-onDefault text-dark-background-default" onClick={() => setMatrix(mirrorMatrix(colorsTemplateMatrix, matrix))}>Mirror</button>
+        <button className="m-3 w-16 h-10 rounded-full bg-dark-background-onDefault text-dark-background-default" onClick={() => setMatrix(mirrorMatrix(matrix))}>Mirror</button>
         <button className="m-3 w-16 h-10 rounded-full bg-dark-background-onDefault text-dark-background-defau" onClick={() => setMatrix(flipMatrix(matrix))}>Flip</button>
       </div>
     </div >

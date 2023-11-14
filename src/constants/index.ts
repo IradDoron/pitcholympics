@@ -30,19 +30,16 @@ export const ICON_COLORS = {
 };
 
 function setColorsMatrix() {
-	const rows = 8;
-	const columns = 4;
-	const letters = ['C', 'B', 'A', 'G', 'F', 'E', 'D', 'C'];
-	let colorsMatrix: Matrix = [];
+    const rows = 8;
+    const columns = 4;
+    const letters = ['C', 'B', 'A', 'G', 'F', 'E', 'D', 'C'];
+    let colorsMatrix: Matrix = [];
 
-	for (let i = 0; i < rows; i++) {
-		colorsMatrix.push([]);
-		for (let j = 0; j < columns; j++) {
-			colorsMatrix[i].push(letters[i % letters.length]);
-		}
-	}
+    for (let i = 0; i < rows; i++) {
+        colorsMatrix.push(Array(columns).fill(letters[i]));
+    }
 
-	return colorsMatrix;
+    return colorsMatrix;
 };
 
 export const colorsTemplateMatrix = setColorsMatrix();
