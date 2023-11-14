@@ -1,4 +1,4 @@
-import { Matrix, SidebarLink, ThemeMode } from '@/types';
+import { Colors, Matrix, SidebarLink, ThemeMode } from '@/types';
 
 export const LANGS_FULL_NAMES = {
     en: 'English',
@@ -36,11 +36,22 @@ function setColorsMatrix() {
     let colorsMatrix: Matrix = [];
 
     for (let i = 0; i < rows; i++) {
-        colorsMatrix.push(Array(columns).fill(letters[i]));
+        colorsMatrix.push(Array(columns).fill({ note: letters[i], isActive: true, isTied: false }));
     }
 
     return colorsMatrix;
 };
 
 export const colorsTemplateMatrix = setColorsMatrix();
+
+export const colors: Colors = {
+    C: 'bg-green-400',
+    B: 'bg-yellow-400',
+    A: 'bg-red-400',
+    G: 'bg-purple-400',
+    F: 'bg-blue-600',
+    E: 'bg-blue-400',
+    D: 'bg-green-600',
+};
+
 export const BIG_NUMBER_FOR_MEMO_THE_MELO = 1000;

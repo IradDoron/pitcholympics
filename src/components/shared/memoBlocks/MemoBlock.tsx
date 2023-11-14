@@ -1,8 +1,8 @@
 "use client"
 import React, { useState } from 'react';
 import type { Colors, Matrix } from '@/types';
-import { colorsTemplateMatrix } from '@/constants';
-
+import { colorsTemplateMatrix, colors } from '@/constants';
+import MemoBlocksCard from './MemoBlocksCard';
 /**
  * Mirror the matrix (flip it vertically - up to down)
  * @param matrix  - the matrix to mirror
@@ -17,8 +17,8 @@ function mirrorMatrix(matrix: Matrix) {
   for (let i = 0; i < rows; i++) {
     copyMatrix.push([]);
     for (let j = 0; j < cols; j++) {
-      if (matrix[rows - 1 - i][j] === '')
-        copyMatrix[i].push('');
+      if (!matrix[rows - 1 - i][j].isActive)
+        copyMatrix[i].push({ note: refMatrix[i][j].note, isActive: false, isTied: false });
       else
         copyMatrix[i].push(refMatrix[i][j]);
     }
@@ -27,11 +27,20 @@ function mirrorMatrix(matrix: Matrix) {
 }
 
 function setInitialMatrix() {
-  let initialMatrix: Matrix = Array(8).fill(Array(4).fill(''));
+  let initialMatrix: Matrix = Array(8).fill(Array(4).fill({ note: 'D', isActive: false }));
 
-  initialMatrix[2] = ['A', 'A', '', ''];
-  initialMatrix[4] = ['', '', 'G', 'B'];
-
+  initialMatrix[1] = [
+    { note: 'D', isActive: false, isTied: false },
+    { note: 'D', isActive: false, isTied: false },
+    { note: 'D', isActive: true, isTied: false },
+    { note: 'D', isActive: false, isTied: false },
+  ]
+  initialMatrix[2] = [
+    { note: 'C', isActive: true, isTied: false },
+    { note: 'C', isActive: false, isTied: false },
+    { note: 'C', isActive: true, isTied: false },
+    { note: 'C', isActive: false, isTied: false },
+  ]
   return initialMatrix;
 }
 
@@ -50,43 +59,17 @@ function flipMatrix(matrix: Matrix) {
       copyMatrix[i].push(matrix[i][cols - 1 - j]);
     }
   }
+  console.log('copyMatrix', copyMatrix);
   return copyMatrix;
 }
 
 const MemoBlock = () => {
   const [matrix, setMatrix] = useState<Matrix>(setInitialMatrix);
-
-  const colors: Colors = {
-    C: 'bg-green-400',
-    B: 'bg-yellow-400',
-    A: 'bg-red-400',
-    G: 'bg-purple-400',
-    F: 'bg-blue-600',
-    E: 'bg-blue-400',
-    D: 'bg-green-600'
-  };
-
-  const handleCellClick = (rowIndex: number, colIndex: number) => {
-    // on click cell hear the sound
-  };
+  console.log('matrix', matrix);
 
   return (
     <div className="h-screen flex items-center justify-center">
-      <div>
-        {matrix.map((row, rowIndex) => (
-          <div key={rowIndex} className="flex flex-row">
-            {row.map((value, colIndex) => (
-              <div
-                key={colIndex}
-                className={`w-11 h-10 flex items-center justify-center rounded-3xl cursor-pointer ${colors[value]}`}
-                onClick={() => handleCellClick(rowIndex, colIndex)}
-              >
-                {value}
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
+      <MemoBlocksCard matrix={matrix} />
       <div className='flex-row gap-0 justify-center items-center'>
         <button className="m-3 w-16 h-10 rounded-full bg-dark-background-onDefault text-dark-background-default" onClick={() => setMatrix(mirrorMatrix(matrix))}>Mirror</button>
         <button className="m-3 w-16 h-10 rounded-full bg-dark-background-onDefault text-dark-background-defau" onClick={() => setMatrix(flipMatrix(matrix))}>Flip</button>
