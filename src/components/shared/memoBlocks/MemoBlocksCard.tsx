@@ -15,7 +15,7 @@ const MemoBlocksCard = ({ matrix }: Props) => {
 
 
     return (
-        <div>
+        <div className='shadow-lg drop-shadow-lg rounded-lg p-1.5 bg-light-surface-primary dark:bg-dark-surface-primary '>
             {matrix.map((row, rowIndex) => (
                 <div key={rowIndex} className="flex flex-row">
                     {row.map((cell, colIndex) => (

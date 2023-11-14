@@ -163,6 +163,20 @@ module.exports = {
                         tertiary: '#EFFDFF',
                         onTertiary: '#0D1B3F',
                     },
+                    notes: {
+                        C: '#00AF4A',
+                        'C#': '#008F3C',
+                        D: '#00702F',
+                        'D#': '#0096AF',
+                        E: '#3045FF',
+                        F: '#0015CF',
+                        'F#': '#6A00CF',
+                        G: '#AA37B8',
+                        'G#': '#91309C',
+                        A: '#C3100C',
+                        'A#': '#CF8900',
+                        B: '#CFC700',
+                    }
                 },
                 dark: {
                     background: {
@@ -198,6 +212,20 @@ module.exports = {
                         tertiary: '#0D1B3F',
                         onTertiary: '#EFFDFF',
                     },
+                    notes: {
+                        C: '#70FFAC',
+                        'C#': '#10FF74',
+                        D: '#00CF57',
+                        'D#': '#50E6FF',
+                        E: '#AFB7FF',
+                        F: '#707EFF',
+                        'F#': '#B970FF',
+                        G: '#D585DE',
+                        'G#': '#C357D0',
+                        A: '#F55D5A',
+                        'A#': '#FFC450',
+                        B: '#FFF970',
+                    }
                 },
             },
             fontFamily: {

@@ -31,7 +31,7 @@ export const ICON_COLORS = {
 
 function setColorsMatrix() {
     const rows = 8;
-    const columns = 4;
+    const columns = 4
     const letters = ['C', 'B', 'A', 'G', 'F', 'E', 'D', 'C'];
     let colorsMatrix: Matrix = [];
 
@@ -45,13 +45,13 @@ function setColorsMatrix() {
 export const colorsTemplateMatrix = setColorsMatrix();
 
 export const colors: Colors = {
-    C: 'bg-green-400',
-    B: 'bg-yellow-400',
-    A: 'bg-red-400',
-    G: 'bg-purple-400',
-    F: 'bg-blue-600',
-    E: 'bg-blue-400',
-    D: 'bg-green-600',
+    C: 'bg-light-notes-C dark:bg-dark-notes-C',
+    D: 'bg-light-notes-D dark:bg-dark-notes-D',
+    E: 'bg-light-notes-E dark:bg-dark-notes-E',
+    F: 'bg-light-notes-F dark:bg-dark-notes-F',
+    G: 'bg-light-notes-G dark:bg-dark-notes-G',
+    A: 'bg-light-notes-A dark:bg-dark-notes-A',
+    B: 'bg-light-notes-B dark:bg-dark-notes-B',
 };
 
 export const BIG_NUMBER_FOR_MEMO_THE_MELO = 1000;
