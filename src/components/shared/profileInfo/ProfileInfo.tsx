@@ -18,7 +18,7 @@ const ProfileInfo = ({ label, isDisabled = false, inputType, options = [], onCha
 
     return (
         <Label label={label}>
-            {inputType === 'text' ? (<TextInput onChange={onChange} value={value} />) : <SelectInput value={value} onChange={onChange} options={options} />}
+            {inputType === 'text' ? (<TextInput onChange={onChange} value={value} />) : <SelectInput onChange={onChange} options={options} />}
         </Label>
     )
 }

@@ -4,8 +4,3 @@ export const getXpForLevel = (level: number): number => {
 	// formula: ( level / x ) ^ y
 	return Math.floor(Math.pow(level / x, y));
 };
-
-export const getTimeZone = (): string => {
-	return /\((.*)\)/.exec(new Date().toString())![1];
-};
-
