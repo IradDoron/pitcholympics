@@ -24,15 +24,12 @@ const getLevelData = (
 };
 
 const Page = ({ params }: Props) => {
-  const router = useRouter();
-  const handleWin = () => {
-    const scoreWinning = params.stage + params.level * 2;
-    localStorage.setItem('score', scoreWinning.toString());
-    router.push(`${params.level}/result`);
-  };
-
   const [currentNote, setCurrentNote] = useState(1);
   const [pitchIndexPlaying, setPitchIndexPlaying] = useState(-1);
+  const [userGuess, setUserGuess] = useState<number[]>([]);
+
+  const router = useRouter();
+
   const { stage, level } = params;
   const currentLevel = getLevelData(
     Number(stage),
@@ -41,8 +38,6 @@ const Page = ({ params }: Props) => {
   );
 
   const { pitchOptions } = currentLevel;
-  const [userGuess, setUserGuess] = useState<number[]>([]);
-  const [isActive, setIsActive] = useState(false);
   const pitchesIndexes = currentLevel.melody;
   const pitchesOptions = currentLevel.pitchOptions;
 
@@ -50,7 +45,21 @@ const Page = ({ params }: Props) => {
     return pitchesOptions[pitchIndex];
   });
 
-  const startMelody = () => {
+  /**
+   * @description handleWin is a function that handles the win situation
+   */
+  const handleWin = () => {
+    const scoreWinning = params.stage + params.level * 2;
+    localStorage.setItem('score', scoreWinning.toString());
+    router.push(`${params.level}/result`);
+  };
+
+  /**
+   *
+   * @description startMelody is a function that plays the melody and changes the style of the active pitch button
+   */
+
+  const startMelody = (pitches: string[]) => {
     const synth = new Tone.PolySynth(Tone.Synth).toDestination();
     const now = Tone.now();
 
@@ -61,19 +70,19 @@ const Page = ({ params }: Props) => {
       console.log(now);
     });
     synth.triggerRelease(currPitches, now + currPitches.length / 2);
-    
-    const setUpActivePitch = (activeIndex:number,pitchesIndexes:string[]) => { 
-      console.log('hello, world!');
 
-    }
+    const setUpActivePitch = (
+      activeIndex: number,
+      pitchesIndexes: number[]
+    ) => {
+      setPitchIndexPlaying(pitchesIndexes[activeIndex]);
+    };
     currPitches.forEach((pitch, index) => {
-    setTimeout(setUpActivePitch, 1000 * index);
-      
+      setTimeout(setUpActivePitch, 1000 * index);
     });
- 
-
-  
-   
+  };
+  const getIndexOfPitch = (pitch: string, pitches: string[]) => {
+    return pitches.indexOf(pitch);
   };
 
   const handleLose = () => {
@@ -116,16 +125,14 @@ const Page = ({ params }: Props) => {
               currentNote={currentNote}
               userGuess={userGuess}
               pitchOptions={pitchOptions}
-              isActive={isActive}
-              setIsActive={setIsActive}
             />
           );
         })}
       </div>
       <div className="flex flex-row gap-2">
         <Button
-          label="start melody"
-          onClick={startMelody}
+          label="Start The Melody"
+          onClick={() => startMelody(pitches)}
         />
         <Button
           label="Check Guess"

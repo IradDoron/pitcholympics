@@ -1,6 +1,6 @@
 import { colorVariants } from '@/components/core/circleGradient/CircleGradient';
 import { divideItemsByLightAndDark } from '@/utils/divideItemsByLightAndDark';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import * as Tone from 'tone';
 type Props = {
   noteId: number;
@@ -8,8 +8,7 @@ type Props = {
   currentNote: number;
   userGuess: number[];
   pitchOptions: string[];
-  isActive: boolean;
-  setIsActive: Dispatch<SetStateAction<boolean>>;
+  
 };
 const ButtonMelody = ({
   noteId,
@@ -17,10 +16,10 @@ const ButtonMelody = ({
   currentNote,
   userGuess,
   pitchOptions,
-  isActive,
-  setIsActive
+ 
 
 }: Props) => {
+  const [isActive, setIsActive] = useState(false);
   const bgColorsArr = Object.values(colorVariants);
 
   const { light, dark } = divideItemsByLightAndDark(bgColorsArr);
