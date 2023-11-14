@@ -1,12 +1,10 @@
 "use client"
 import { getMatrixWithZeros } from '@/components/shared/memoBlocks/helpers';
-import { Coordinate, MemoBlockCardNote } from '@/components/shared/memoBlocks/types';
+import { Coordinate, MemoBlockCardNote } from '@/types';
 import React, { useState } from 'react';
 
 type Matrix = { value: string; color: string }[][];
 type Colors = { [key: string]: string };
-
-
 
 
 

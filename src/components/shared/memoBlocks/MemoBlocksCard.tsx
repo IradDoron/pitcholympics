@@ -1,5 +1,5 @@
 import React from 'react'
-import { MemoBlockCardMelody } from './types'
+import { MemoBlockCardMelody } from '@/types'
 import { getMatrixWithZeros } from './helpers'
 
 type Props = {
