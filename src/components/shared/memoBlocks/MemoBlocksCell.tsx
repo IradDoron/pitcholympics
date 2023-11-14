@@ -19,7 +19,7 @@ const MemoBlocksMatCell = ({ rowIndex, colIndex, cell }: Props) => {
             className={`w-11 h-10 flex items-center justify-center rounded-3xl cursor-pointer ${cell.isActive && colors[cell.note]}`}
             onClick={() => handleCellClick(rowIndex, colIndex)}
         >
-            {cell.isActive && cell.note}
+            <p className='text-light-primary-contrastText dark:text-dark-primary-contrastText'>{cell.isActive && cell.note}</p>
         </div>
     )
 }
