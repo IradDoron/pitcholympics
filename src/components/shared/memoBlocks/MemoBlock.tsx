@@ -13,7 +13,6 @@ function mirrorMatrix(matrix: Matrix) {
   let copyMatrix: Matrix = [];
   const rows = refMatrix.length;
   const cols = refMatrix[0].length;
-  console.log('refMatrix', refMatrix);
   for (let i = 0; i < rows; i++) {
     copyMatrix.push([]);
     for (let j = 0; j < cols; j++) {
@@ -65,7 +64,6 @@ function flipMatrix(matrix: Matrix) {
 
 const MemoBlock = () => {
   const [matrix, setMatrix] = useState<Matrix>(setInitialMatrix);
-  console.log('matrix', matrix);
 
   return (
     <div className="h-screen flex items-center justify-center">
