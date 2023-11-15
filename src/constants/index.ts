@@ -31,16 +31,22 @@ export const ICON_COLORS = {
 
 function setColorsMatrix() {
     const rows = 8;
-    const columns = 4
+    const columns = 4;
     const letters = ['C', 'B', 'A', 'G', 'F', 'E', 'D', 'C'];
     let colorsMatrix: Matrix = [];
 
     for (let i = 0; i < rows; i++) {
-        colorsMatrix.push(Array(columns).fill({ note: letters[i], isActive: true, isTied: false }));
+        colorsMatrix.push(
+            Array(columns).fill({
+                note: letters[i],
+                isActive: true,
+                isTied: false,
+            }),
+        );
     }
 
     return colorsMatrix;
-};
+}
 
 export const colorsTemplateMatrix = setColorsMatrix();
 

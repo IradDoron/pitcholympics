@@ -9,8 +9,8 @@ import LevelStepper from '@/components/shared/levelStepper';
 import { Locale } from '@/i18n.config';
 import Button from '@/components/core/button';
 import { isTwoArraysEqual } from '@/utils';
-import * as Tone from 'tone';
-import { BIG_NUMBER_FOR_MEMO_THE_MELO } from '@/constants';
+import { handleEndLevel } from '@/utils';
+import { convertPitchesToIndexes } from '@/utils';
 
 type Props = {
     params: {
@@ -28,50 +28,22 @@ const getLevelData = (
 };
 
 const Page = ({ params }: Props) => {
-    const [currentNote, setCurrentNote] = useState(1);
-    const [pitchIndexPlaying, setPitchIndexPlaying] = useState(-1);
-    const [pitchIndexActive, setPitchIndexActive] = useState(-1);
+    const [currentNote, setCurrentNote] = useState(1); // The current note of the melody. For example, if the melody is [440, 880, 220] and the current note is 2, then the melody is [440, 880]
+    const [pitchIndexPlaying, setPitchIndexPlaying] = useState(-1); // The index of the pitch that is currently playing and active
     const [userGuess, setUserGuess] = useState<number[]>([]); // Array of indexes. Each index is the index of the pitch in the pitch options array
-    const [isUserTurn, setIsUserTurn] = useState(false);
-    const router = useRouter();
-    const { stage, level } = params;
-    const currentLevel = getLevelData(
-        Number(stage),
-        Number(level),
-        memoTheMeloMockData,
-    );
-    const { pitchOptions } = currentLevel;
-    const pitchesIndexes = currentLevel.melody;
-    const pitchesOptions = currentLevel.pitchOptions;
+    const [isUserTurn, setIsUserTurn] = useState(false); // Is it the user turn to guess
+    const router = useRouter(); // Next.js router
+    const { stage, level, lang } = params; // The current stage, level and language
+    const currentLevel = getLevelData(stage, level, memoTheMeloMockData); // The current level data
+    const { pitchOptions, melody: pitchesIndexes } = currentLevel; // The pitch options and the melody. Pitch options is an array of pitches, for example ['440', '880', '220']. Melody is an array of indexes, for example [0, 1, 2, 0, 1, 2]
     const pitches = pitchesIndexes.map(pitchIndex => {
-        return pitchesOptions[pitchIndex];
-    });
-
-    /**
-     * @description handleWin is a function that handles the win situation
-     */
-    const handleWin = () => {
-        const scoreWinning = params.stage + params.level * 2;
-        localStorage.setItem('score', scoreWinning.toString());
-        router.push(`${params.level}/result`);
-    };
+        return pitchOptions[pitchIndex];
+    }); // The melody as pitches, for example ['440', '880', '220', '440', '880', '220']
 
     /**
      * @param pitches array of pitches, for example ['440', '880', '220', '440', '880', '220']
-     * @param pitchesOptions array of pitches options, for example ['440', '880', '220']
-     * @returns array of indexes, for example [0, 1, 2, 0, 1, 2]
-     */
-    const convertPitchesToIndexes = (
-        pitches: string[],
-        pitchesOptions: string[],
-    ) => {
-        return pitches.map(pitch => {
-            return pitchesOptions.indexOf(pitch);
-        });
-    };
-
-    /**
-     * @param pitches array of pitches, for example ['440', '880', '220', '440', '880', '220']
+     * @param pitchOptions array of pitches, for example ['440', '880', '220']
+     * @param currentNote the current note of the melody. For example, if the melody is [440, 880, 220] and the current note is 2, then the melody is [440, 880]
      */
     const playMelody = (
         pitches: string[],
@@ -82,27 +54,14 @@ const Page = ({ params }: Props) => {
         const partOfMelodyIndexes = indexesOfPitches.slice(0, currentNote);
         partOfMelodyIndexes.forEach((indexOfPitch, index) => {
             setTimeout(() => {
-                if (indexOfPitch === pitchIndexPlaying) {
-                    setPitchIndexPlaying(
-                        indexOfPitch + BIG_NUMBER_FOR_MEMO_THE_MELO,
-                    );
-                }
-                setPitchIndexActive(indexOfPitch);
                 setPitchIndexPlaying(indexOfPitch);
             }, 1000 * index);
         });
 
         setTimeout(() => {
-            setPitchIndexActive(-1);
             setPitchIndexPlaying(-1);
             setIsUserTurn(true);
         }, 1000 * partOfMelodyIndexes.length);
-    };
-
-    const handleLose = () => {
-        router.push(
-            `/${params.lang}/memo-the-melo/${params.stage}/${params.level}/result`,
-        );
     };
 
     const checkUserGuess = (userGuess: number[], melody: number[]) => {
@@ -110,7 +69,7 @@ const Page = ({ params }: Props) => {
         const guessResult = isTwoArraysEqual(userGuess, melodyPart);
         // If the user guessed the whole melody
         if (guessResult && userGuess.length === melody.length) {
-            handleWin();
+            handleEndLevel(stage, level, lang, 'memo-the-melo', 'win', router);
             setUserGuess([]);
             return;
         }
@@ -120,14 +79,16 @@ const Page = ({ params }: Props) => {
             setCurrentNote(prev => prev + 1);
             setUserGuess([]);
             setIsUserTurn(false);
+            setPitchIndexPlaying(-1);
             return;
         }
 
         // If the user guessed wrong
-        handleLose();
+        handleEndLevel(stage, level, lang, 'memo-the-melo', 'lose', router);
     };
+
     return (
-        <div className='container mx-auto h-full flex flex-col justify-center items-center gap-8 border-red-600 border-solid border-2'>
+        <div className='container mx-auto h-full flex flex-col justify-center items-center gap-8'>
             <LevelStepper
                 currentStep={currentNote}
                 totalSteps={currentLevel.melody.length}
@@ -135,18 +96,17 @@ const Page = ({ params }: Props) => {
 
             <div className='flex flex-row justify-center items-center gap-2 flex-wrap'>
                 {pitchOptions.map((_, index) => {
-                    const isCurrNoteActive = pitchIndexActive === index;
                     const isCurrNotePlaying = pitchIndexPlaying === index;
                     return (
                         <ButtonMelody
                             key={index}
-                            isActive={isCurrNoteActive}
                             isPlaying={isCurrNotePlaying}
                             pitch={pitchOptions[index]}
                             isUserTurn={isUserTurn}
                             pitchOptionIndex={index}
                             setUserGuess={setUserGuess}
                             userGuess={userGuess}
+                            setPitchIndexPlaying={setPitchIndexPlaying}
                         />
                     );
                 })}
