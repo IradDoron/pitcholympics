@@ -5,11 +5,19 @@ import { useState, useEffect } from 'react';
 import memoTheMeloMockData from '@/mockData/memoTheMelo';
 import LevelResult from '@/components/shared/levelResult';
 import { getDictionaryClient } from '@/utils/getDictionaryClient';
+import { Locale } from '@/i18n.config';
 
-const Page = ({ ...params }) => {
+type Props = {
+    lang: Locale;
+    stage: string;
+    level: string;
+    result: string;
+};
+
+const Page = ({ params }: { params: Props }) => {
     const router = useRouter();
     const [score, setScore] = useState<number>(0);
-    const { lang, stage, level } = params.params;
+    const { lang, stage, level } = params;
     const dict = getDictionaryClient(lang);
     const { actionButtonLabel, tryAgainButtonLabel } =
         dict.app['game-result-page'];
@@ -42,10 +50,10 @@ const Page = ({ ...params }) => {
     return (
         <div className='m-3 flex items-center justify-center h-full w-full'>
             <LevelResult
-                level={level}
+                level={Number(level)}
                 score={score}
                 actionButtonLabel={actionButtonLabel}
-                actionButtonOnClick={() => handleNextLevel(stage)}
+                actionButtonOnClick={() => handleNextLevel(Number(stage))}
                 lang={lang}
                 tryAgainButtonOnClick={handleTryAgain}
                 tryAgainButtonLabel={tryAgainButtonLabel}
