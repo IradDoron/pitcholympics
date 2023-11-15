@@ -1,4 +1,4 @@
-import { Matrix, SidebarLink, ThemeMode } from '@/types';
+import { Colors, Matrix, SidebarLink, ThemeMode } from '@/types';
 
 export const LANGS_FULL_NAMES = {
     en: 'English',
@@ -31,16 +31,27 @@ export const ICON_COLORS = {
 
 function setColorsMatrix() {
     const rows = 8;
-    const columns = 4;
+    const columns = 4
     const letters = ['C', 'B', 'A', 'G', 'F', 'E', 'D', 'C'];
     let colorsMatrix: Matrix = [];
 
     for (let i = 0; i < rows; i++) {
-        colorsMatrix.push(Array(columns).fill(letters[i]));
+        colorsMatrix.push(Array(columns).fill({ note: letters[i], isActive: true, isTied: false }));
     }
 
     return colorsMatrix;
 };
 
 export const colorsTemplateMatrix = setColorsMatrix();
+
+export const colors: Colors = {
+    C: 'bg-light-notes-C dark:bg-dark-notes-C',
+    D: 'bg-light-notes-D dark:bg-dark-notes-D',
+    E: 'bg-light-notes-E dark:bg-dark-notes-E',
+    F: 'bg-light-notes-F dark:bg-dark-notes-F',
+    G: 'bg-light-notes-G dark:bg-dark-notes-G',
+    A: 'bg-light-notes-A dark:bg-dark-notes-A',
+    B: 'bg-light-notes-B dark:bg-dark-notes-B',
+};
+
 export const BIG_NUMBER_FOR_MEMO_THE_MELO = 1000;

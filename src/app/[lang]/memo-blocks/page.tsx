@@ -1,7 +1,6 @@
 
 import GameLevelsLinks from '@/components/shared/gameLevelsLinks';
 import MemoBlock from '@/components/shared/memoBlocks/MemoBlock';
-import MemoBlockIrad from '@/components/shared/memoBlocks/MemoBlockIrad';
 import memoTheMeloMockData from '@/mockData/memoTheMelo';
 import { LangParam } from '@/types';
 import { getDictionaryServer } from '@/utils/getDictionaryServer';
