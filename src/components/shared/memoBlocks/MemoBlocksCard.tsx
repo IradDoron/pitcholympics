@@ -1,7 +1,7 @@
 import React from 'react'
 import { Matrix, MemoBlockCardMelody } from '@/types'
 import MemoBlocksMatCell from './MemoBlocksCell';
-
+import PlayIcon from '@/components/icons/playIcon'
 type Props = {
     matrix: Matrix // matrix of the card (8x4), each cell is a contains a note and isActive & isTied flags
 }
@@ -24,7 +24,7 @@ const MemoBlocksCard = ({ matrix }: Props) => {
                 </div>
             ))}
             <div className="flex flex-row justify-center">
-                <button className="rounded-full w-1/3 h-10 bg-slate-300 fixed self-center" onClick={handlePlayMelody}>Play</button>
+                <PlayIcon onClick={handlePlayMelody} className='cursor-pointer' />
             </div>
         </div>
     )
