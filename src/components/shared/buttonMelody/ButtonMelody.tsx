@@ -45,7 +45,7 @@ const ButtonMelody = ({
             setIsButtonActive(true);
             setInterval(() => {
                 setIsButtonActive(false);
-            }, 500);
+            }, 1000);
         }
     }, [isActive]);
 
@@ -56,13 +56,14 @@ const ButtonMelody = ({
     }, [isPlaying]);
 
     const handleButtonMelodyClick = () => {
+        console.log('button melody click');
         if (!isUserTurn) return;
         playNote(pitch);
         handleUserGuessClick(setUserGuess, userGuess, pitchOptionIndex);
         setIsButtonActive(true);
         setInterval(() => {
             setIsButtonActive(false);
-        }, 500);
+        }, 1000);
     };
 
     return isButtonActive ? (
