@@ -55,15 +55,11 @@ const ButtonMelody = ({
     return isPlaying ? (
         <div
             onClick={handleButtonMelodyClick}
-            className={`w-24 h-24 rounded-full hover:shadow-2xl flex flex-row items-center justify-center ${light[pitchOptionIndex]} dark:${dark[pitchOptionIndex]} text-white text-center mt-[20px]  border-light-primary-main dark:border-dark-primary-main border-solid border-8`}>
-            <p>O</p>
-        </div>
+            className={`w-24 h-24 rounded-full hover:shadow-2xl flex flex-row items-center justify-center ${light[pitchOptionIndex]} dark:${dark[pitchOptionIndex]} text-white text-center mt-[20px]  border-light-primary-main dark:border-dark-primary-main border-solid border-8`}></div>
     ) : (
         <div
             onClick={handleButtonMelodyClick}
-            className={`w-24 h-24 rounded-full hover:shadow-2xl flex flex-row items-center justify-center ${light[pitchOptionIndex]} dark:${dark[pitchOptionIndex]} text-white text-center mt-[20px]`}>
-            <p>X</p>
-        </div>
+            className={`w-24 h-24 rounded-full hover:shadow-2xl flex flex-row items-center justify-center ${light[pitchOptionIndex]} dark:${dark[pitchOptionIndex]} text-white text-center mt-[20px]`}></div>
     );
 };
 

@@ -9,7 +9,7 @@ import { getDictionaryClient } from '@/utils/getDictionaryClient';
 const Page = ({ ...params }) => {
     const router = useRouter();
     const [score, setScore] = useState<number>(0);
-    const { lang, stage, level } = params;
+    const { lang, stage, level } = params.params;
     const dict = getDictionaryClient(lang);
     const { actionButtonLabel, tryAgainButtonLabel } =
         dict.app['game-result-page'];
@@ -18,8 +18,9 @@ const Page = ({ ...params }) => {
         const nextLevel = +level + 1;
         const currentStageLevels = memoTheMeloMockData[stage - 1].length;
         if (nextLevel > currentStageLevels) {
-            const nextStage = +stage + 1;
+            const nextStage = stage + 1;
             if (nextStage > memoTheMeloMockData.length) {
+                router.push(`/${lang}/memo-the-melo`);
             } else {
                 router.push(`/memo-the-melo/${nextStage}/1`);
             }
@@ -39,7 +40,7 @@ const Page = ({ ...params }) => {
     }, []);
 
     return (
-        <div className='m-3 flex items-center justify-center'>
+        <div className='m-3 flex items-center justify-center h-full w-full'>
             <LevelResult
                 level={level}
                 score={score}
