@@ -53,7 +53,7 @@ const ButtonMelody = ({
         if (isPlaying) {
             playNote(pitch);
         }
-    }, [isPlaying]);
+    }, [isPlaying, pitch]);
 
     const handleButtonMelodyClick = () => {
         console.log('button melody click');
