@@ -4,39 +4,39 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 type Props = {
-	url: string;
-	label: string;
+    url: string;
+    label: string;
 };
 
-const CurrentLink = ({ url, label }: Props) => {
-	return (
-		<div className='text-light-primary-light dark:text-dark-primary-light font-bold text-xl '>
-			{label}
-			<div className='h-1 bg-light-primary-light dark:bg-dark-primary-light'></div>
-		</div>
-	);
+const CurrentLink = ({ label }: Props) => {
+    return (
+        <div className='text-light-primary-light dark:text-dark-primary-light font-bold text-xl '>
+            {label}
+            <div className='h-1 bg-light-primary-light dark:bg-dark-primary-light'></div>
+        </div>
+    );
 };
 
-const NotCurrentLink = ({ url, label }: Props) => {
-	return (
-		<div className='text-light-surface-onNatural dark:text-dark-surface-onNatural font-bold text-xl '>
-			{label}
-			<div className='h-1 bg-light-surface-onNatural dark:bg-dark-surface-onNatural'></div>
-		</div>
-	);
+const NotCurrentLink = ({ label }: Props) => {
+    return (
+        <div className='text-light-surface-onNatural dark:text-dark-surface-onNatural font-bold text-xl '>
+            {label}
+            <div className='h-1 bg-light-surface-onNatural dark:bg-dark-surface-onNatural'></div>
+        </div>
+    );
 };
 
 const NavbarLink = ({ url, label }: Props) => {
-	const isCurrent = url === usePathname();
-	return (
-		<Link href={url}>
-			{isCurrent ? (
-				<CurrentLink url={url} label={label} />
-			) : (
-				<NotCurrentLink url={url} label={label} />
-			)}
-		</Link>
-	);
+    const isCurrent = url === usePathname();
+    return (
+        <Link href={url}>
+            {isCurrent ? (
+                <CurrentLink url={url} label={label} />
+            ) : (
+                <NotCurrentLink url={url} label={label} />
+            )}
+        </Link>
+    );
 };
 
 export default NavbarLink;

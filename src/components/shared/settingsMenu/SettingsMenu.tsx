@@ -41,7 +41,6 @@ const SettingsMenu = ({ isOpen, setIsOpen, lang }: Props) => {
     }, []);
 
     if (!isOpen) return null;
-    console.log(session);
 
     const handleSignOut = () => {
         signOut();
@@ -55,7 +54,6 @@ const SettingsMenu = ({ isOpen, setIsOpen, lang }: Props) => {
 
     const handleCardClick = (e: any) => {
         e.stopPropagation();
-        console.log('card clicked');
     };
 
     return (

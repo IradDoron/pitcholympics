@@ -1,3 +1,3 @@
-import PlayIcon from './PlayIcon'
+import PlayIcon from './PlayIcon';
 
-export default PlayIcon
+export default PlayIcon;

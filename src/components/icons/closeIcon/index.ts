@@ -1,3 +1,3 @@
-import CloseIcon from './CloseIcon'
+import CloseIcon from './CloseIcon';
 
-export default CloseIcon
+export default CloseIcon;

@@ -1,5 +1,3 @@
-import style from 'styled-jsx/style';
-
 type CardShadow = 'none' | 'medium' | 'large';
 type CardColor = 'primary' | 'secondary' | 'tertiary';
 type CardBorder = boolean;
@@ -14,6 +12,7 @@ type Props = {
     children: React.ReactNode;
     className?: string;
     style?: React.CSSProperties;
+    // eslint-disable-next-line no-unused-vars
     onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
 };
 
@@ -89,7 +88,7 @@ const Card = ({
     children,
     className = '',
     style = {},
-    onClick
+    onClick,
 }: Props) => {
     const shadowClass = getShadow(shadow);
     const backgroundClass = getBackground(color);
