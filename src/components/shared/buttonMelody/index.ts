@@ -1,3 +1,3 @@
-import ButtonMelody from './ButtonMelody'
+import ButtonMelody from './ButtonMelody';
 
-export default ButtonMelody
+export default ButtonMelody;

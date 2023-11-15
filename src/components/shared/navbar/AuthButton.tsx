@@ -1,14 +1,26 @@
-"use client"
+'use client';
 
-import Link from 'next/link';
-import { useState, useEffect } from 'react';
-import { signIn, signOut, useSession, getProviders, ClientSafeProvider } from 'next-auth/react';
+import { useState, useEffect, Dispatch, SetStateAction } from 'react';
+import {
+	signIn,
+	useSession,
+	getProviders,
+	ClientSafeProvider,
+} from 'next-auth/react';
 import Image from 'next/image';
 
-function AuthButton() {
+type Props = {
+	isSettingsMenuOpen: boolean;
+	setIsSettingsMenuOpen: Dispatch<SetStateAction<boolean>>;
+};
+
+function AuthButton({ isSettingsMenuOpen, setIsSettingsMenuOpen }: Props) {
 	const { data: session } = useSession();
 
-	const [providers, setProviders] = useState<Record<string, ClientSafeProvider> | null>(null);
+	const [providers, setProviders] = useState<Record<
+		string,
+		ClientSafeProvider
+	> | null>(null);
 
 	useEffect(() => {
 		(async () => {
@@ -20,13 +32,13 @@ function AuthButton() {
 	if (session?.user) {
 		return (
 			<>
-				<button onClick={() => signOut()}>Sign out</button>
 				<Image
-					className="m-0.5 inline-block h-auto w-auto rounded-full ring-2 ring-white"
-					src={session.user.image ?? ""}
-					alt=""
+					className='m-0.5 inline-block h-auto w-auto rounded-full ring-4 ring-light-primary-main hover:ring-light-secondary-main duration-300 dark:ring-dark-primary-light hover:dark:ring-dark-secondary-light cursor-pointer'
+					src={session.user.image ?? ''}
+					alt=''
 					width={64}
 					height={64}
+					onClick={() => setIsSettingsMenuOpen(!isSettingsMenuOpen)}
 				/>
 			</>
 		);
@@ -40,7 +52,8 @@ function AuthButton() {
 						type='button'
 						key={provider.name}
 						onClick={() => signIn(provider.id)}
-						className='rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover-bg-white hover-text-black text-center text-sm font-inter flex items-center justify-center'>
+						className='rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover-bg-white hover-text-black text-center text-sm font-inter flex items-center justify-center'
+					>
 						Sign In
 					</button>
 				))}

@@ -7,8 +7,11 @@ import { getDictionaryClient } from '@/utils/getDictionaryClient';
 import MobileNav from '@/components/shared/navbar/MobileNav';
 import NavbarLink from './NavbarLink';
 import AuthButton from './AuthButton';
+import { useState } from 'react';
+import SettingsMenu from '@/components/shared/settingsMenu';
 
 const Navbar = ({ params: { lang } }: LangParam) => {
+	const [isSettingsMenuOpen, setIsSettingsMenuOpen] = useState(false);
 	const dict = getDictionaryClient(lang);
 	const { navbar } = dict.shared;
 	const pagesUrls = Object.entries(navbar.pages);
@@ -33,8 +36,16 @@ const Navbar = ({ params: { lang } }: LangParam) => {
 						);
 					})}
 				</ul>
-				<div className='flex justify-self-end pe-10'>
-					<AuthButton />
+				<div className='flex justify-self-end pe-10 relative'>
+					<AuthButton
+						isSettingsMenuOpen={isSettingsMenuOpen}
+						setIsSettingsMenuOpen={setIsSettingsMenuOpen}
+					/>
+					<SettingsMenu
+						isOpen={isSettingsMenuOpen}
+						setIsOpen={setIsSettingsMenuOpen}
+						lang={lang}
+					/>
 				</div>
 				<MobileNav lang={lang} />
 			</nav>
