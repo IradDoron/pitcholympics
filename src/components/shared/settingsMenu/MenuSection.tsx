@@ -4,6 +4,7 @@ type Props = {
     children: React.ReactNode;
     isLast?: boolean;
     className?: string;
+    // eslint-disable-next-line no-unused-vars
     onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
 };
 
@@ -11,7 +12,7 @@ const MenuSection = ({
     children,
     isLast = false,
     className = '',
-    onClick
+    onClick,
 }: Props) => {
     return (
         <>

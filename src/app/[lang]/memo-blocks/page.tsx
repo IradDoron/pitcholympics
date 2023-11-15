@@ -1,4 +1,3 @@
-
 import GameLevelsLinks from '@/components/shared/gameLevelsLinks';
 import MemoBlock from '@/components/shared/memoBlocks/MemoBlock';
 import memoTheMeloMockData from '@/mockData/memoTheMelo';
@@ -15,10 +14,7 @@ const Page = async ({ params: { lang } }: LangParam) => {
             <MemoBlock />
             {/* <MemoBlockIrad initialCoordinates={initialCoordinates} /> */}
         </>
-    )
-}
+    );
+};
 
-export default Page
-
-
-
+export default Page;
