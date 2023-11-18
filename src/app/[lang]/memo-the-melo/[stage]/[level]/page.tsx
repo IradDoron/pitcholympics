@@ -47,10 +47,6 @@ const Page = ({ params }: Props) => {
     }); // The melody as pitches, for example ['440', '880', '220', '440', '880', '220']
 
     const handleWin = async () => {
-        const scoreWinning = params.stage + params.level * 2;
-        localStorage.setItem('score', scoreWinning.toString());
-        router.push(`${params.level}/result`);
-
         // update the status level and stage to database
         try {
             // TODO: fix the session error
@@ -65,6 +61,35 @@ const Page = ({ params }: Props) => {
                     },
                     body: JSON.stringify({
                         status: 'passed',
+                        stage: params.stage,
+                        level: params.level,
+                    }),
+                },
+            );
+
+            if (!res.ok) {
+                throw new Error('Failed to update');
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const handleLose = async () => {
+        // update the status level and stage to database
+        try {
+            // TODO: fix the session error
+            //@ts-ignore
+            const res = await fetch(
+                //@ts-ignore
+                `http://localhost:3000/api/auth/games/${session?.user?.id}`,
+                {
+                    method: 'PUT',
+                    headers: {
+                        'Content-type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        status: 'failed',
                         stage: params.stage,
                         level: params.level,
                     }),
@@ -106,43 +131,25 @@ const Page = ({ params }: Props) => {
     const checkUserGuess = (userGuess: number[], melody: number[]) => {
         const melodyPart = melody.slice(0, userGuess.length); // The part of the melody that the user guessed
         const guessResult = isTwoArraysEqual(userGuess, melodyPart);
+        console.log('melodyPart', melodyPart);
+        console.log('userGuess', userGuess);
         // If the user guessed the whole melody
         if (guessResult && userGuess.length === melody.length) {
+            handleWin();
             handleEndLevel(stage, level, lang, 'memo-the-melo', 'win', router);
             setUserGuess([]);
             return;
-        }
-    };
-
-    const handleLose = async () => {
-        router.push(
-            `/${params.lang}/memo-the-melo/${params.stage}/${params.level}/result`,
-        );
-        // update the status level and stage to database
-        try {
-            // TODO: fix the session error
-            //@ts-ignore
-            const res = await fetch(
-                //@ts-ignore
-                `http://localhost:3000/api/auth/games/${session?.user?.id}`,
-                {
-                    method: 'PUT',
-                    headers: {
-                        'Content-type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        status: 'failed',
-                        stage: params.stage,
-                        level: params.level,
-                    }),
-                },
-            );
-
-            if (!res.ok) {
-                throw new Error('Failed to update');
-            }
-        } catch (error) {
-            console.log(error);
+        } else if (guessResult) {
+            setCurrentNote(prevState => prevState + 1);
+            setUserGuess([]);
+            setIsUserTurn(false);
+            playMelody(pitches, pitchOptions, currentNote + 1);
+            return;
+        } else {
+            handleLose();
+            handleEndLevel(stage, level, lang, 'memo-the-melo', 'lose', router);
+            setUserGuess([]);
+            return;
         }
     };
 
@@ -181,6 +188,21 @@ const Page = ({ params }: Props) => {
                     label='Check Guess'
                     onClick={() =>
                         checkUserGuess(userGuess, currentLevel.melody)
+                    }
+                />
+                <Button
+                    label='Debug Win'
+                    onClick={() =>
+                        checkUserGuess(currentLevel.melody, currentLevel.melody)
+                    }
+                />
+                <Button
+                    label='Debug Lose'
+                    onClick={() =>
+                        checkUserGuess(
+                            currentLevel.melody,
+                            new Array(currentLevel.melody.length).fill(0),
+                        )
                     }
                 />
             </div>
