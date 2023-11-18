@@ -131,8 +131,6 @@ const Page = ({ params }: Props) => {
     const checkUserGuess = (userGuess: number[], melody: number[]) => {
         const melodyPart = melody.slice(0, userGuess.length); // The part of the melody that the user guessed
         const guessResult = isTwoArraysEqual(userGuess, melodyPart);
-        console.log('melodyPart', melodyPart);
-        console.log('userGuess', userGuess);
         // If the user guessed the whole melody
         if (guessResult && userGuess.length === melody.length) {
             handleWin();

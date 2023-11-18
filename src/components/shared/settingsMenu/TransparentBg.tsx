@@ -7,7 +7,6 @@ type Props = {
 const TransparentBg = ({ setIsOpen }: Props) => {
     const handleClick = (e: any) => {
         e.stopPropagation(); // Stop the event propagation
-        console.log('transparent bg clicked');
         setIsOpen(false);
     };
 
