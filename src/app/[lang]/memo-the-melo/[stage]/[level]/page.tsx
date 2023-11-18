@@ -11,11 +11,14 @@ import Button from '@/components/core/button';
 import { isTwoArraysEqual } from '@/utils';
 import { handleEndLevel } from '@/utils';
 import { convertPitchesToIndexes } from '@/utils';
+import * as Tone from 'tone';
+import { useSession } from 'next-auth/react';
 
 type Props = {
     params: {
         stage: number;
         level: number;
+        status: string;
         lang: Locale;
     };
 };
@@ -28,17 +31,53 @@ const getLevelData = (
 };
 
 const Page = ({ params }: Props) => {
+    const router = useRouter(); // Next.js router
+    const { data: session } = useSession();
+    const { stage, level, lang } = params; // The current stage, level and language
+    const currentLevel = getLevelData(stage, level, memoTheMeloMockData); // The current level data
+    const [isActive, setIsActive] = useState(false);
+    const pitchesOptions = currentLevel.pitchOptions;
     const [currentNote, setCurrentNote] = useState(1); // The current note of the melody. For example, if the melody is [440, 880, 220] and the current note is 2, then the melody is [440, 880]
     const [pitchIndexPlaying, setPitchIndexPlaying] = useState(-1); // The index of the pitch that is currently playing and active
     const [userGuess, setUserGuess] = useState<number[]>([]); // Array of indexes. Each index is the index of the pitch in the pitch options array
     const [isUserTurn, setIsUserTurn] = useState(false); // Is it the user turn to guess
-    const router = useRouter(); // Next.js router
-    const { stage, level, lang } = params; // The current stage, level and language
-    const currentLevel = getLevelData(stage, level, memoTheMeloMockData); // The current level data
     const { pitchOptions, melody: pitchesIndexes } = currentLevel; // The pitch options and the melody. Pitch options is an array of pitches, for example ['440', '880', '220']. Melody is an array of indexes, for example [0, 1, 2, 0, 1, 2]
     const pitches = pitchesIndexes.map(pitchIndex => {
         return pitchOptions[pitchIndex];
     }); // The melody as pitches, for example ['440', '880', '220', '440', '880', '220']
+
+    const handleWin = async () => {
+        const scoreWinning = params.stage + params.level * 2;
+        localStorage.setItem('score', scoreWinning.toString());
+        router.push(`${params.level}/result`);
+
+        // update the status level and stage to database
+        try {
+            // TODO: fix the session error
+            //@ts-ignore
+            const res = await fetch(
+                //@ts-ignore
+                `http://localhost:3000/api/auth/games/${session?.user?.id}`,
+                {
+                    method: 'PUT',
+                    headers: {
+                        'Content-type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        status: 'passed',
+                        stage: params.stage,
+                        level: params.level,
+                    }),
+                },
+            );
+
+            if (!res.ok) {
+                throw new Error('Failed to update');
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     /**
      * @param pitches array of pitches, for example ['440', '880', '220', '440', '880', '220']
@@ -73,18 +112,38 @@ const Page = ({ params }: Props) => {
             setUserGuess([]);
             return;
         }
+    };
 
-        // If the user guessed the current part of the melody
-        if (guessResult) {
-            setCurrentNote(prev => prev + 1);
-            setUserGuess([]);
-            setIsUserTurn(false);
-            setPitchIndexPlaying(-1);
-            return;
+    const handleLose = async () => {
+        router.push(
+            `/${params.lang}/memo-the-melo/${params.stage}/${params.level}/result`,
+        );
+        // update the status level and stage to database
+        try {
+            // TODO: fix the session error
+            //@ts-ignore
+            const res = await fetch(
+                //@ts-ignore
+                `http://localhost:3000/api/auth/games/${session?.user?.id}`,
+                {
+                    method: 'PUT',
+                    headers: {
+                        'Content-type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        status: 'failed',
+                        stage: params.stage,
+                        level: params.level,
+                    }),
+                },
+            );
+
+            if (!res.ok) {
+                throw new Error('Failed to update');
+            }
+        } catch (error) {
+            console.log(error);
         }
-
-        // If the user guessed wrong
-        handleEndLevel(stage, level, lang, 'memo-the-melo', 'lose', router);
     };
 
     return (

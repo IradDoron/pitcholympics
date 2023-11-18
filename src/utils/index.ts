@@ -1,3 +1,4 @@
+import { LevelData } from '@/types';
 import { Locale } from '@/i18n.config';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 
@@ -17,6 +18,20 @@ export const calcLevelScore = (stage: number, level: number) => {
     const score = stage * 4 + level * 2;
     return score;
 };
+
+
+
+
+
+
+export const isLevelExisting = (stage: number, level: number, gameData: LevelData[]) => {
+	for (let i = 0; i < gameData.length; i++) {
+		if (stage === gameData[i].stage && level === gameData[i].level) {
+			return i
+		}
+	}
+	return -1
+}
 
 export const handleEndLevel = (
     stage: number,
@@ -49,3 +64,4 @@ export const convertPitchesToIndexes = (
         return pitchOptions.indexOf(pitch);
     });
 };
+
