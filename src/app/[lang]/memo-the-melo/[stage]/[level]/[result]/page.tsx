@@ -17,7 +17,7 @@ type Props = {
 const Page = ({ params }: { params: Props }) => {
     const router = useRouter();
     const [score, setScore] = useState<number>(0);
-    const { lang, stage, level } = params;
+    const { lang, stage, level, result } = params;
     const dict = getDictionaryClient(lang);
     const { actionButtonLabel, tryAgainButtonLabel } =
         dict.app['game-result-page'];

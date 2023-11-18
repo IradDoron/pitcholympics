@@ -19,19 +19,18 @@ export const calcLevelScore = (stage: number, level: number) => {
     return score;
 };
 
-
-
-
-
-
-export const isLevelExisting = (stage: number, level: number, gameData: LevelData[]) => {
-	for (let i = 0; i < gameData.length; i++) {
-		if (stage === gameData[i].stage && level === gameData[i].level) {
-			return i
-		}
-	}
-	return -1
-}
+export const isLevelExisting = (
+    stage: number,
+    level: number,
+    gameData: LevelData[],
+) => {
+    for (let i = 0; i < gameData.length; i++) {
+        if (stage === gameData[i].stage && level === gameData[i].level) {
+            return i;
+        }
+    }
+    return -1;
+};
 
 export const handleEndLevel = (
     stage: number,
@@ -64,4 +63,3 @@ export const convertPitchesToIndexes = (
         return pitchOptions.indexOf(pitch);
     });
 };
-
