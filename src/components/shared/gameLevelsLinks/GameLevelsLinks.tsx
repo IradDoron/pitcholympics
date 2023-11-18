@@ -43,6 +43,7 @@ const GameLevelsLinks = ({ levelsData, baseUrl }: Props) => {
             try {
                 //@ts-ignore
                 const response = await fetch(
+                    //@ts-ignore
                     `/api/auth/games/${session?.user?.id}`,
                 );
                 const data = await response.json();
