@@ -1,20 +1,22 @@
-import React from 'react'
-
+import React from 'react';
 
 type Props = {
-    onChange: (value: any) => void,
-    options: string[]
-    value?: string
-}
-const SelectInput = ({ onChange, options, value }: Props) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-unused-vars
+    onChange: (value: any) => void;
+    options: string[];
+};
+const SelectInput = ({ onChange, options }: Props) => {
     return (
-        <select value={value} onChange={onChange}>
-            {options.map((option) => {
-                return <option key={option} value={option}>{option}</option>
+        <select onChange={onChange}>
+            {options.map(option => {
+                return (
+                    <option key={option} value={option}>
+                        {option}
+                    </option>
+                );
             })}
-
         </select>
-    )
-}
+    );
+};
 
-export default SelectInput
+export default SelectInput;

@@ -1,70 +1,65 @@
 import { colorVariants } from '@/components/core/circleGradient/CircleGradient';
 import { divideItemsByLightAndDark } from '@/utils/divideItemsByLightAndDark';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useEffect } from 'react';
 import * as Tone from 'tone';
-type Props = {
-  noteId: number;
-  setUserGuess: Dispatch<SetStateAction<number[]>>;
-  currentNote: number;
-  userGuess: number[];
-  pitchOptions: string[];
-  isActive: boolean;
-  setIsActive: Dispatch<SetStateAction<boolean>>;
+
+const playNote = (pitch: string) => {
+    const synth = new Tone.PolySynth(Tone.Synth).toDestination();
+    synth.triggerAttackRelease(pitch, '4n');
 };
-const ButtonMelody = ({
-  noteId,
-  setUserGuess,
-  currentNote,
-  userGuess,
-  pitchOptions,
-  isActive,
-  setIsActive
 
-}: Props) => {
-  const bgColorsArr = Object.values(colorVariants);
-
-  const { light, dark } = divideItemsByLightAndDark(bgColorsArr);
-  const synth = new Tone.PolySynth(Tone.Synth).toDestination();
-
-  // console.log(pitchOptions)
-  //  if(currentNote === noteId) setIsActive(true)
-
-
-  const clickHandler = () => {
-    if (userGuess.length === currentNote) return;
+const handleUserGuessClick = (
+    setUserGuess: Dispatch<SetStateAction<number[]>>,
+    userGuess: number[],
+    newPitchIndexGuess: number,
+) => {
     const newGuess = [...userGuess];
-    console.log(noteId);
-    newGuess.push(noteId);
+    newGuess.push(newPitchIndexGuess);
     setUserGuess(newGuess);
 
-    synth.triggerAttackRelease(pitchOptions[noteId - 1], '4n')
+type Props = {
+    isPlaying: boolean; // If the button is playing play the button pitch
+    pitch: string; // Which pitch to play
+    isUserTurn: boolean; // If it's the user turn to play
+    pitchOptionIndex: number; // The index of the pitch in the pitch options array (from the memo the melo game data)
+    setUserGuess: Dispatch<SetStateAction<number[]>>; // If it's the user turn to play, add the pitchOptionIndex to the user guess array
+    userGuess: number[]; // The user guess array
+    setPitchIndexPlaying: Dispatch<SetStateAction<number>>; // Set the pitch index that is currently playing
+};
+const ButtonMelody = ({
+    isPlaying,
+    pitch,
+    isUserTurn,
+    pitchOptionIndex,
+    setUserGuess,
+    userGuess,
+    setPitchIndexPlaying,
+}: Props) => {
+    const bgColorsArr = Object.values(colorVariants);
+    const { light, dark } = divideItemsByLightAndDark(bgColorsArr);
 
+    useEffect(() => {
+        if (isPlaying) {
+            playNote(pitch);
+        }
+    }, [isPlaying, pitch]);
 
-  };
+    const handleButtonMelodyClick = () => {
+        if (!isUserTurn) return;
+        playNote(pitch);
+        handleUserGuessClick(setUserGuess, userGuess, pitchOptionIndex);
+        setPitchIndexPlaying(pitchOptionIndex);
+    };
 
-  return (
-    !isActive ? (
-      <div
-        onClick={clickHandler}
-        className={`w-24 h-24 rounded-full hover:shadow-2xl flex flex-row items-center justify-center ${light[noteId - 1]
-          } dark:${dark[noteId - 1]} text-white text-center mt-[20px]`}
-      >
-        Number{noteId}
-      </div>
+    return isPlaying ? (
+        <div
+            onClick={handleButtonMelodyClick}
+            className={`w-24 h-24 rounded-full hover:shadow-2xl flex flex-row items-center justify-center ${light[pitchOptionIndex]} dark:${dark[pitchOptionIndex]} text-white text-center mt-[20px]  border-light-primary-main dark:border-dark-primary-main border-solid border-8`}></div>
     ) : (
-      <div
-        onClick={clickHandler}
-        className={`w-24 h-24 rounded-full hover:shadow-2xl flex flex-row items-center justify-center ${light[noteId - 1]
-          } dark:${dark[noteId - 1]} text-white text-center mt-[20px]  border-light-primary-main dark:border-dark-primary-main border-solid border-8`}
-      >
-        Number{noteId}
-      </div>
-
-
-
-
-    )
-  );
+        <div
+            onClick={handleButtonMelodyClick}
+            className={`w-24 h-24 rounded-full hover:shadow-2xl flex flex-row items-center justify-center ${light[pitchOptionIndex]} dark:${dark[pitchOptionIndex]} text-white text-center mt-[20px]`}></div>
+    );
 };
 
 export default ButtonMelody;

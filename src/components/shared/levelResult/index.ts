@@ -1,3 +1,3 @@
-import LevelResult from "@/components/shared/levelResult/LevelResult";
+import LevelResult from '@/components/shared/levelResult/LevelResult';
 
-export default LevelResult
+export default LevelResult;

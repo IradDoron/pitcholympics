@@ -10,8 +10,8 @@ import LevelLink from './LevelLink';
 import { useSession } from 'next-auth/react';
 
 type Props = {
-	levelsData: MemoTheMeloGame | PitchCatchGame;
-	baseUrl: string;
+    levelsData: MemoTheMeloGame | PitchCatchGame;
+    baseUrl: string;
 };
 type UserProgressEntry = {
 	stage: number;
@@ -20,6 +20,10 @@ type UserProgressEntry = {
 };
 
 const GameLevelsLinks = ({ levelsData, baseUrl }: Props) => {
+
+  
+  
+  
 	const { data: session } = useSession()
 	const [userProgress, setUserProgress] = useState<UserProgressEntry[]>([]);
 

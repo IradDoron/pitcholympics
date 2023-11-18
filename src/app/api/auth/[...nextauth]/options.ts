@@ -1,7 +1,7 @@
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
-import User from '@/models/user'
-import { connectToDB } from '@/utils/database'
+import User from '@/models/user';
+import { connectToDB } from '@/utils/database';
 
 export const authOptions: NextAuthOptions = {
     providers: [
@@ -13,10 +13,12 @@ export const authOptions: NextAuthOptions = {
     callbacks: {
         async session({ session }) {
             // store the user id from MongoDB to session
-            const sessionUser = await User.findOne({ email: session?.user?.email });
+            const sessionUser = await User.findOne({
+                email: session?.user?.email,
+            });
             // TODO: fix the session error
             //@ts-ignore
-            session.user.id = sessionUser._id.toString()
+            session.user.id = sessionUser._id.toString();
 
             return session;
         },
@@ -25,21 +27,27 @@ export const authOptions: NextAuthOptions = {
                 await connectToDB();
 
                 // check if user already exists
-                const userExists = await User.findOne({ email: profile?.email });
+                const userExists = await User.findOne({
+                    email: profile?.email,
+                });
 
                 // if not, create a new document and save user in MongoDB
                 if (!userExists) {
                     await User.create({
                         email: profile?.email,
-                        username: profile?.name?.replace(" ", "").toLowerCase(),
+                        username: profile?.name?.replace(' ', '').toLowerCase(),
                     });
                 }
 
-                return true
+                return true;
             } catch (error) {
-                console.log(`Error checking if user exists: ${error instanceof Error ? error.message : error}`);
-                return false
+                console.log(
+                    `Error checking if user exists: ${
+                        error instanceof Error ? error.message : error
+                    }`,
+                );
+                return false;
             }
         },
-    }
+    },
 };
