@@ -16,17 +16,21 @@ export async function PUT(request: NextRequest, { params }: any) {
 
     await connectToDB();
 
-
     try {
-        const user = await User.findOne({ _id: id })
-        const levelIndex = isLevelExisting(stage, level, user.gameProgress.memoTheMelo)
+        const user = await User.findOne({ _id: id });
+        const levelIndex = isLevelExisting(
+            stage,
+            level,
+            user.gameProgress.memoTheMelo,
+        );
         if (levelIndex === -1) {
             // If the entry does not exist, create a new one
             await User.findByIdAndUpdate(id, {
                 $push: { 'gameProgress.memoTheMelo': { status, stage, level } },
             });
         } else {
-            if (user.gameProgress.memoTheMelo[levelIndex].status === 'passed') return
+            if (user.gameProgress.memoTheMelo[levelIndex].status === 'passed')
+                return;
             await User.updateOne(
                 {
                     _id: id,
@@ -38,20 +42,21 @@ export async function PUT(request: NextRequest, { params }: any) {
                     $set: {
                         'gameProgress.memoTheMelo.$.status': status,
                     },
-                }
+                },
             );
         }
 
-        return NextResponse.json({ message: "memoTheMelo updated" }, { status: 200 });
-
+        return NextResponse.json(
+            { message: 'memoTheMelo updated' },
+            { status: 200 },
+        );
     } catch (error) {
-        return NextResponse.json({ message: "Invalid input data" }, { status: 400 });
+        return NextResponse.json(
+            { message: 'Invalid input data' },
+            { status: 400 },
+        );
     }
 }
-
-
-
-
 
 /**
  *  get the user status,level,stage by id
@@ -68,8 +73,9 @@ export async function GET(request: NextRequest, { params }: any) {
 
         return NextResponse.json({ memoTheMeloObjects }, { status: 200 });
     } else {
-        return NextResponse.json({ message: "User not found" }, { status: 404 });
+        return NextResponse.json(
+            { message: 'User not found' },
+            { status: 404 },
+        );
     }
 }
-
-

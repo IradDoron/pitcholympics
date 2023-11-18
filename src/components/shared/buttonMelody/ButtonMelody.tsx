@@ -16,6 +16,7 @@ const handleUserGuessClick = (
     const newGuess = [...userGuess];
     newGuess.push(newPitchIndexGuess);
     setUserGuess(newGuess);
+};
 
 type Props = {
     isPlaying: boolean; // If the button is playing play the button pitch
