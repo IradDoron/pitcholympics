@@ -8,10 +8,12 @@ import LevelStepper from '@/components/shared/levelStepper';
 import { Locale } from '@/i18n.config';
 import Button from '@/components/core/button';
 import * as Tone from 'tone';
+import { useSession } from 'next-auth/react';
 type Props = {
   params: {
     stage: number;
     level: number;
+    status: string;
     lang: Locale;
   };
 };
@@ -25,10 +27,34 @@ const getLevelData = (
 
 const Page = ({ params }: Props) => {
   const router = useRouter();
-  const handleWin = () => {
+  const { data: session } = useSession()
+
+  const handleWin = async () => {
     const scoreWinning = params.stage + params.level * 2;
     localStorage.setItem('score', scoreWinning.toString());
     router.push(`${params.level}/result`);
+
+    // update the status level and stage to database
+    try {
+      // TODO: fix the session error
+      //@ts-ignore
+      const res = await fetch(`http://localhost:3000/api/auth/games/${session?.user?.id}`, {
+        method: 'PUT',
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({ status: 'passed', stage: params.stage, level: params.level })
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to update")
+      }
+    } catch (error) {
+      console.log(error)
+
+    }
+
+
   };
 
   const [currentNote, setCurrentNote] = useState(1);
@@ -61,25 +87,45 @@ const Page = ({ params }: Props) => {
       console.log(now);
     });
     synth.triggerRelease(currPitches, now + currPitches.length / 2);
-    
-    const setUpActivePitch = (activeIndex:number,pitchesIndexes:string[]) => { 
+
+    const setUpActivePitch = (activeIndex: number, pitchesIndexes: string[]) => {
       console.log('hello, world!');
 
     }
     currPitches.forEach((pitch, index) => {
-    setTimeout(setUpActivePitch, 1000 * index);
-      
-    });
- 
+      setTimeout(setUpActivePitch, 1000 * index);
 
-  
-   
+    });
+
+
+
+
   };
 
-  const handleLose = () => {
+  const handleLose = async () => {
     router.push(
       `/${params.lang}/memo-the-melo/${params.stage}/${params.level}/result`
     );
+    // update the status level and stage to database
+    try {
+      // TODO: fix the session error
+      //@ts-ignore
+      const res = await fetch(`http://localhost:3000/api/auth/games/${session?.user?.id}`, {
+        method: 'PUT',
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({ status: 'failed', stage: params.stage, level: params.level })
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to update")
+      }
+    } catch (error) {
+      console.log(error)
+
+    }
+
   };
 
   const checkUserGuess = (userGuess: number[], melody: number[]) => {
