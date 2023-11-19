@@ -17,7 +17,7 @@ type Props = {
 const Page = ({ params }: { params: Props }) => {
     const router = useRouter();
     const [score, setScore] = useState<number>(0);
-    const { lang, stage, level } = params;
+    const { lang, stage, level, result } = params;
     const dict = getDictionaryClient(lang);
     const { actionButtonLabel, tryAgainButtonLabel } =
         dict.app['game-result-page'];
@@ -28,16 +28,16 @@ const Page = ({ params }: { params: Props }) => {
         if (nextLevel > currentStageLevels) {
             const nextStage = stage + 1;
             if (nextStage > memoTheMeloMockData.length) {
-                router.push(`/${lang}/memo-the-melo`);
+                router.push(`/${lang}/games/memo-the-melo`);
             } else {
-                router.push(`/memo-the-melo/${nextStage}/1`);
+                router.push(`/${lang}/games//memo-the-melo/${nextStage}/1`);
             }
         } else {
-            router.push(`/${lang}/memo-the-melo/${stage}/${nextLevel}`);
+            router.push(`/${lang}/games//memo-the-melo/${stage}/${nextLevel}`);
         }
     };
     const handleTryAgain = () => {
-        router.push(`/${lang}/memo-the-melo/${stage}/${level}`);
+        router.push(`/${lang}/games//memo-the-melo/${stage}/${level}`);
     };
 
     useEffect(() => {

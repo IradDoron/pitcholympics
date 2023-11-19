@@ -14,6 +14,7 @@
         "module": "es2015",
         "target": "es2015",
         "moduleResolution": "node",
+        "downlevelIteration": true,
         "plugins": [
             {
                 "name": "next"

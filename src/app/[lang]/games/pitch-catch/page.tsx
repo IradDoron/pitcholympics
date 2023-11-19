@@ -7,7 +7,8 @@ const Page = async ({ params: { lang } }: LangParam) => {
         <div className='h-full'>
             <GameLevelsLinks
                 levelsData={pitchCatchData}
-                baseUrl={`/${lang}/pitch-catch`}
+                lang={lang}
+                game='pitch-catch'
             />
         </div>
     );

@@ -4,12 +4,11 @@ import { LangParam } from '@/types';
 
 const Page = async ({ params: { lang } }: LangParam) => {
     return (
-        <>
-            <GameLevelsLinks
-                levelsData={memoTheMeloMockData}
-                baseUrl={`/${lang}/memo-the-melo`}
-            />
-        </>
+        <GameLevelsLinks
+            levelsData={memoTheMeloMockData}
+            lang={lang}
+            game='memo-the-melo'
+        />
     );
 };
 

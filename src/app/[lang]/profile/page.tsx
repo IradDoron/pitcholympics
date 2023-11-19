@@ -18,7 +18,6 @@ const Page = () => {
     };
 
     const timeZone: string = getTimeZone();
-    console.log(timeZone);
 
     const handleGenderChange = (e: any) => {
         setGender(e.target.value);
@@ -26,7 +25,6 @@ const Page = () => {
     // TODO: fix the first choice not to be "male"
     const handleLocaleChange = (e: any) => {
         setLocale(e.target.value);
-        console.log(locale);
     };
 
     return (
