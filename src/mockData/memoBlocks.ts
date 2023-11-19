@@ -7,8 +7,7 @@ export function getRandomNumber(min: number, max: number) {
 export const demoCell: MatrixCell = { note: 'C', isActive: false, isTied: false };
 export const demoActiveCell: MatrixCell = { note: 'D', isActive: true, isTied: false };
 
-export const memoBlocksMockData: Matrix[] = [
-  [...Array(8).fill(Array(4).fill(demoCell))],
+export const memoBlocksMockDataLevel: Matrix[] = [
   [...Array(8).fill(Array(4).fill(demoCell))],
   [...Array(8).fill(Array(4).fill(demoCell))],
   [...Array(2).fill([demoCell, demoActiveCell, demoCell, demoActiveCell]), ...Array(6).fill(Array(4).fill(demoCell))],
@@ -20,3 +19,17 @@ export const memoBlocksMockData: Matrix[] = [
   ],
 
 ];
+
+export const memoBlocksMockDataGuesses: Matrix[] = [
+  [...Array(2).fill([demoCell, demoActiveCell, demoCell, demoActiveCell]), ...Array(6).fill(Array(4).fill(demoCell))],
+  [...Array(8).fill(Array(4).fill(demoCell))],
+  [
+    ...Array(2).fill([demoCell, demoActiveCell, demoActiveCell, demoActiveCell]),
+    ...Array(3).fill(Array(4).fill(demoCell)),
+    ...Array(2).fill([demoActiveCell, demoActiveCell, demoCell, demoCell]),
+    Array(4).fill(demoCell),
+  ],
+  [...Array(8).fill(Array(4).fill(demoCell))],
+
+];
+

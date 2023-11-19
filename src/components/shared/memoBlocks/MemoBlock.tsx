@@ -1,9 +1,9 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import type { Colors, Matrix } from '@/types';
 import { colorsTemplateMatrix, colors } from '@/constants';
 import MemoBlocksCard from './MemoBlocksCard';
-import { memoBlocksMockData } from '@/mockData/memoBlocks';
+import { memoBlocksMockDataGuesses, memoBlocksMockDataLevel } from '@/mockData/memoBlocks';
 import { FlipHorizontal2, FlipVertical2 } from 'lucide-react';
 
 /**
@@ -28,12 +28,12 @@ function mirrorMatrix(matrix: Matrix) {
   return copyMatrix;
 }
 
-function setInitialMatrix() {
-  return memoBlocksMockData[4].map((row,rowIndex) => {
-    return row.map((block,colIndex) => {
+function setInitialMatrixs(matArr: Matrix[]): Matrix[] {
+  return matArr.map(matrix => matrix.map((row, rowIndex) => {
+    return row.map((block, colIndex) => {
       return { note: colorsTemplateMatrix[rowIndex][colIndex].note, isActive: block.isActive, isTied: block.isTied };
     });
-  })
+  }));
 }
 
 /**
@@ -55,16 +55,38 @@ function flipMatrix(matrix: Matrix) {
 }
 
 const MemoBlock = () => {
-  const [matrix, setMatrix] = useState<Matrix>(setInitialMatrix);
+  const [levelMatrixes, setLevelMatrixes] = useState<Matrix[]>(setInitialMatrixs(memoBlocksMockDataLevel));
+  const [guesses, setGuesses] = useState<Matrix[]>(setInitialMatrixs(memoBlocksMockDataGuesses)); // TODO: get the guesses from the server
+  const [activeMatrixIndex, setActiveMatrixIndex] = useState<number>(0);
+
+  const activeMatrix = guesses[activeMatrixIndex];
+
+  function setActiveMatrix(index: number) {
+    setActiveMatrixIndex(index);
+  }
+  function changeMatrix(matrix: Matrix) {
+    const newMatrixes = [...guesses];
+    newMatrixes[activeMatrixIndex] = matrix;
+    setGuesses(newMatrixes);
+  }
 
   return (
-    <div className="h-screen flex items-center justify-center">
-      <MemoBlocksCard matrix={matrix} />
-      <div className='flex-row gap-0 justify-center items-center'>
-        <FlipHorizontal2 className='w-10 h-10' onClick={() => setMatrix(flipMatrix(matrix))} />
-        <FlipVertical2 className='w-10 h-10' onClick={() => setMatrix(mirrorMatrix(matrix))} />
-
+    <div className="mt-32 h-screen flex items-center justify-center flex-col">
+      <div className='m-1 flex flex-row gap-2 justify-center items-center'>
+        <FlipHorizontal2 className='w-10 h-10' onClick={() => changeMatrix(flipMatrix(activeMatrix))} />
+        <FlipVertical2 className='w-10 h-10' onClick={() => changeMatrix(mirrorMatrix(activeMatrix))} />
       </div>
+      <div className='flex flex-row'>
+        {levelMatrixes.map((matrix, index) => (
+          <MemoBlocksCard key={index} matrix={matrix} isActive={false} />
+        ))}
+      </div>
+      <div className='flex flex-row'>
+        {guesses.map((matrix, index) => (
+          <MemoBlocksCard key={index} matrix={matrix} onClick={() => setActiveMatrix(index)} isActive={index === activeMatrixIndex} />
+        ))}
+      </div>
+
     </div >
   );
 };
