@@ -35,8 +35,6 @@ const Page = ({ params }: Props) => {
     const { data: session } = useSession();
     const { stage, level, lang } = params; // The current stage, level and language
     const currentLevel = getLevelData(stage, level, memoTheMeloMockData); // The current level data
-    const [isActive, setIsActive] = useState(false);
-    const pitchesOptions = currentLevel.pitchOptions;
     const [currentNote, setCurrentNote] = useState(1); // The current note of the melody. For example, if the melody is [440, 880, 220] and the current note is 2, then the melody is [440, 880]
     const [pitchIndexPlaying, setPitchIndexPlaying] = useState(-1); // The index of the pitch that is currently playing and active
     const [userGuess, setUserGuess] = useState<number[]>([]); // Array of indexes. Each index is the index of the pitch in the pitch options array
@@ -116,16 +114,23 @@ const Page = ({ params }: Props) => {
     ) => {
         const indexesOfPitches = convertPitchesToIndexes(pitches, pitchOptions);
         const partOfMelodyIndexes = indexesOfPitches.slice(0, currentNote);
+        const timeConstant = 100;
         partOfMelodyIndexes.forEach((indexOfPitch, index) => {
-            setTimeout(() => {
-                setPitchIndexPlaying(indexOfPitch);
-            }, 1000 * index);
+            setTimeout(
+                () => {
+                    setPitchIndexPlaying(indexOfPitch);
+                },
+                1000 * index + timeConstant,
+            );
         });
 
-        setTimeout(() => {
-            setPitchIndexPlaying(-1);
-            setIsUserTurn(true);
-        }, 1000 * partOfMelodyIndexes.length);
+        setTimeout(
+            () => {
+                setPitchIndexPlaying(-1);
+                setIsUserTurn(true);
+            },
+            1000 * partOfMelodyIndexes.length + timeConstant,
+        );
     };
 
     const checkUserGuess = (userGuess: number[], melody: number[]) => {
@@ -141,7 +146,7 @@ const Page = ({ params }: Props) => {
             setCurrentNote(prevState => prevState + 1);
             setUserGuess([]);
             setIsUserTurn(false);
-            playMelody(pitches, pitchOptions, currentNote + 1);
+            setPitchIndexPlaying(-1);
             return;
         } else {
             handleLose();
@@ -161,6 +166,7 @@ const Page = ({ params }: Props) => {
             <div className='flex flex-row justify-center items-center gap-2 flex-wrap'>
                 {pitchOptions.map((_, index) => {
                     const isCurrNotePlaying = pitchIndexPlaying === index;
+
                     return (
                         <ButtonMelody
                             key={index}
