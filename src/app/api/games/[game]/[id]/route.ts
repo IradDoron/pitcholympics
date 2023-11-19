@@ -3,40 +3,47 @@ import User from '@/models/user';
 import { NextResponse } from 'next/server';
 import { NextRequest } from 'next/server';
 import { isLevelExisting } from '@/utils';
+import { convertKebabCaseToCamelCase, mapToObject } from '@/utils';
+import { LevelStatus } from '@/types';
 
 /**
  *  update and add the user stage level and status with the id of the user
  * @param params: any command
  */
 export async function PUT(request: NextRequest, { params }: any) {
-    const { id } = params;
+    const { id, game } = params;
     const { status, stage, level } = await request.json();
+    const gameName = convertKebabCaseToCamelCase(game);
 
     await connectToDB();
 
     try {
         const user = await User.findOne({ _id: id });
-        const isLevelExist = isLevelExisting(
-            stage,
-            level,
-            user.gameProgress.memoTheMelo,
-        );
+        const gameDataObject = mapToObject(user.gameProgress[gameName]);
+        const isLevelExist = isLevelExisting(stage, level, gameDataObject);
         const levelKey = `${stage}_${level}`;
+
+        console.log('status', status);
 
         if (!isLevelExist) {
             // If the entry does not exist, create a new one
-            const newKey = `gameProgress.memoTheMelo.${levelKey}`;
+            const newKey = `gameProgress.${gameName}.${levelKey}`;
             await User.findByIdAndUpdate(id, {
                 $set: { [newKey]: status },
             });
         }
 
-        const levelCurrentStatus = user.gameProgress.memoTheMelo[levelKey];
+        const entries = Object.entries(gameDataObject);
 
-        if (isLevelExist && levelCurrentStatus === 'passed') {
-            return;
-        } else {
-            const newKey = `gameProgress.memoTheMelo.${levelKey}`;
+        const currStatus = gameDataObject[levelKey];
+
+        const levelCurrentStatus = gameDataObject[levelKey] as LevelStatus;
+
+        if (
+            isLevelExist &&
+            (levelCurrentStatus === 'failed' || levelCurrentStatus === 'locked')
+        ) {
+            const newKey = `gameProgress.${gameName}.${levelKey}`;
 
             await User.findByIdAndUpdate(id, {
                 $set: { [newKey]: status },
@@ -44,7 +51,7 @@ export async function PUT(request: NextRequest, { params }: any) {
         }
 
         return NextResponse.json(
-            { message: 'memoTheMelo updated' },
+            { message: 'User updated successfully' },
             { status: 200 },
         );
     } catch (error) {
@@ -60,15 +67,17 @@ export async function PUT(request: NextRequest, { params }: any) {
  * @param params: any
  */
 export async function GET(request: NextRequest, { params }: any) {
-    const { id } = params;
+    const { id, game } = params;
+
+    const gameName = convertKebabCaseToCamelCase(game);
 
     await connectToDB();
     const user = await User.findOne({ _id: id });
 
     if (user) {
-        const memoTheMeloObjects = user.gameProgress.memoTheMelo;
+        const gameData = user.gameProgress[gameName];
 
-        return NextResponse.json({ memoTheMeloObjects }, { status: 200 });
+        return NextResponse.json({ gameData }, { status: 200 });
     } else {
         return NextResponse.json(
             { message: 'User not found' },
