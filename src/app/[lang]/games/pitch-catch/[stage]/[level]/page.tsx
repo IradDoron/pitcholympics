@@ -8,11 +8,15 @@ import Button from '@/components/core/button';
 import pitchCatchData from '@/mockData/pitchCatch';
 import { useRouter } from 'next/navigation';
 import LevelStepper from '@/components/shared/levelStepper';
+import { useSession } from 'next-auth/react';
+import { handleEndLevel } from '@/utils';
+import { Locale } from '@/i18n.config';
 
 type Props = {
     params: {
         stage: number;
         level: number;
+        lang: Locale;
     };
 };
 const getLevelData = (
@@ -26,21 +30,80 @@ const getLevelData = (
 const Page = ({ params }: Props) => {
     const [useChoiceIndex, setChoiceIndex] = useState<number | null>(null);
     const [currQuestion, setCurrQuestion] = useState(1);
-    const { stage, level } = params;
-
-    const currentLevel = getLevelData(
-        Number(stage),
-        Number(level),
-        pitchCatchData,
-    );
+    const { stage, level, lang } = params;
+    const { data: session } = useSession();
+    const currentLevel = getLevelData(stage, level, pitchCatchData);
     const router = useRouter();
+
+    const updateDbWin = async () => {
+        // update the status level and stage to database
+        try {
+            // TODO: fix the session error
+            //@ts-ignore
+            const res = await fetch(
+                //@ts-ignore
+                `http://localhost:3000/api/games/pitch-catch/${session?.user?.id}`,
+                {
+                    method: 'PUT',
+                    headers: {
+                        'Content-type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        status: 'passed',
+                        stage: stage,
+                        level: level,
+                    }),
+                },
+            );
+
+            if (!res.ok) {
+                throw new Error('Failed to update');
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const updateDbLose = async () => {
+        // update the status level and stage to database
+        try {
+            // TODO: fix the session error
+            const user = session?.user;
+            //@ts-ignore
+            const res = await fetch(
+                //@ts-ignore
+                `http://localhost:3000/api/games/pitch-catch/${session?.user?.id}`,
+                {
+                    method: 'PUT',
+                    headers: {
+                        'Content-type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        status: 'failed',
+                        stage: params.stage,
+                        level: params.level,
+                    }),
+                },
+            );
+
+            if (!res.ok) {
+                throw new Error('Failed to update');
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     const handleWin = () => {
+        updateDbWin();
         const scoreWinning = params.stage + params.level * 2;
         localStorage.setItem('score', scoreWinning.toString());
-        router.push(`${params.level}/result`);
+        handleEndLevel(stage, level, lang, 'pitch-catch', 'win', router);
     };
     const handleLose = () => {
-        router.push(`${params.level}/result`);
+        updateDbLose();
+        localStorage.setItem('score', '0');
+        handleEndLevel(stage, level, lang, 'pitch-catch', 'lose', router);
     };
 
     function arrCheck(arrOne: string[], arrTwo: string[]) {
@@ -96,10 +159,9 @@ const Page = ({ params }: Props) => {
                 useChoiceIndex={useChoiceIndex}
                 setChoiceIndex={setChoiceIndex}
             />
-            <Button
-                label='This is the pitch'
-                onClick={() => handleCheckMeClick()}
-            />
+            <Button label='This is the pitch' onClick={handleCheckMeClick} />
+            <Button label='Debug Win' onClick={handleWin} />
+            <Button label='Debug Lose' onClick={handleLose} />
         </div>
     );
 };

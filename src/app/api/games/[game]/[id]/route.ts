@@ -3,7 +3,8 @@ import User from '@/models/user';
 import { NextResponse } from 'next/server';
 import { NextRequest } from 'next/server';
 import { isLevelExisting } from '@/utils';
-import { convertKebabCaseToCamelCase } from '@/utils';
+import { convertKebabCaseToCamelCase, mapToObject } from '@/utils';
+import { LevelStatus } from '@/types';
 
 /**
  *  update and add the user stage level and status with the id of the user
@@ -18,12 +19,11 @@ export async function PUT(request: NextRequest, { params }: any) {
 
     try {
         const user = await User.findOne({ _id: id });
-        const isLevelExist = isLevelExisting(
-            stage,
-            level,
-            user.gameProgress[gameName],
-        );
+        const gameDataObject = mapToObject(user.gameProgress[gameName]);
+        const isLevelExist = isLevelExisting(stage, level, gameDataObject);
         const levelKey = `${stage}_${level}`;
+
+        console.log('status', status);
 
         if (!isLevelExist) {
             // If the entry does not exist, create a new one
@@ -33,11 +33,16 @@ export async function PUT(request: NextRequest, { params }: any) {
             });
         }
 
-        const levelCurrentStatus = user.gameProgress[gameName][levelKey];
+        const entries = Object.entries(gameDataObject);
 
-        if (isLevelExist && levelCurrentStatus === 'passed') {
-            return;
-        } else {
+        const currStatus = gameDataObject[levelKey];
+
+        const levelCurrentStatus = gameDataObject[levelKey] as LevelStatus;
+
+        if (
+            isLevelExist &&
+            (levelCurrentStatus === 'failed' || levelCurrentStatus === 'locked')
+        ) {
             const newKey = `gameProgress.${gameName}.${levelKey}`;
 
             await User.findByIdAndUpdate(id, {

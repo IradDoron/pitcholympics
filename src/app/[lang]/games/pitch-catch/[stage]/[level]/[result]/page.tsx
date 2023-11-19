@@ -28,16 +28,16 @@ const Page = ({ params }: { params: Props }) => {
         if (nextLevel > currentStageLevels) {
             const nextStage = stage + 1;
             if (nextStage > pitchCatchData.length) {
-                router.push(`/${lang}/pitch-catch`);
+                router.push(`/${lang}/games/pitch-catch`);
             } else {
-                router.push(`/pitch-catch/${nextStage}/1`);
+                router.push(`${lang}/games/pitch-catch/${nextStage}/1`);
             }
         } else {
-            router.push(`/${lang}/pitch-catch/${stage}/${nextLevel}`);
+            router.push(`/${lang}/games/pitch-catch/${stage}/${nextLevel}`);
         }
     };
     const handleTryAgain = () => {
-        router.push(`/${lang}/pitch-catch/${stage}/${level}`);
+        router.push(`/${lang}/games/pitch-catch/${stage}/${level}`);
     };
 
     useEffect(() => {

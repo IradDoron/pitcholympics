@@ -72,3 +72,11 @@ export const convertKebabCaseToCamelCase = (str: string) => {
         return g[1].toUpperCase();
     });
 };
+
+export const mapToObject = (map: Map<any, any>) => {
+    const obj = Object.create(null);
+    for (const [k, v] of map) {
+        obj[k] = v;
+    }
+    return obj;
+};
