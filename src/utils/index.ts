@@ -1,4 +1,4 @@
-import { LevelData } from '@/types';
+import { LevelStatus } from '@/types';
 import { Locale } from '@/i18n.config';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 
@@ -22,14 +22,17 @@ export const calcLevelScore = (stage: number, level: number) => {
 export const isLevelExisting = (
     stage: number,
     level: number,
-    gameData: LevelData[],
+    gameData: {
+        [key: string]: LevelStatus;
+    },
 ) => {
-    for (let i = 0; i < gameData.length; i++) {
-        if (stage === gameData[i].stage && level === gameData[i].level) {
-            return i;
-        }
+    const levelKey = `${stage}_${level}`;
+
+    if (gameData[levelKey]) {
+        return true;
+    } else {
+        return false;
     }
-    return -1;
 };
 
 export const handleEndLevel = (

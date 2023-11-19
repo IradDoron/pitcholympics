@@ -2,39 +2,43 @@
 
 import LevelsLinksContainer from './LevelsLinksContainer';
 import React, { useEffect, useState } from 'react';
-import memoTheMeloMockData from '@/mockData/memoTheMelo';
 import { MemoTheMeloGame, PitchCatchGame } from '@/types';
 import StageTitle from './StageTitle';
 import StageLevelsContainer from './StageLevelsContainer';
 import LevelLink from './LevelLink';
 import { useSession } from 'next-auth/react';
+import { LevelStatus } from '@/types';
 
 type Props = {
     levelsData: MemoTheMeloGame | PitchCatchGame;
     baseUrl: string;
 };
 type UserProgressEntry = {
-    stage: number;
-    level: number;
-    status: 'passed' | 'failed' | 'locked';
+    [key: string]: LevelStatus;
 };
 
 const GameLevelsLinks = ({ levelsData, baseUrl }: Props) => {
     const { data: session } = useSession();
-    const [userProgress, setUserProgress] = useState<UserProgressEntry[]>([]);
+    const [userProgress, setUserProgress] = useState<UserProgressEntry>({});
 
     const getStatus = (
-        userProgress: UserProgressEntry[],
+        userProgress: UserProgressEntry | null | undefined,
         levelIndex: number,
         stageIndex: number,
-    ): 'passed' | 'failed' | 'locked' => {
-        return (
-            userProgress.find(
-                entry =>
-                    entry.stage === stageIndex + 1 &&
-                    entry.level === levelIndex + 1,
-            )?.status || 'locked'
-        );
+    ): LevelStatus => {
+        if (!userProgress) {
+            return 'locked';
+        }
+
+        const levelKey = `${stageIndex + 1}_${levelIndex + 1}`;
+        const isKeyInUserProgress =
+            Object.keys(userProgress).includes(levelKey);
+
+        if (!isKeyInUserProgress) {
+            return 'locked';
+        } else {
+            return userProgress[levelKey];
+        }
     };
 
     useEffect(() => {
