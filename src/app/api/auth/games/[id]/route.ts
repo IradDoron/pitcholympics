@@ -2,8 +2,6 @@ import { connectToDB } from '@/utils/database';
 import User from '@/models/user';
 import { NextResponse } from 'next/server';
 import { NextRequest } from 'next/server';
-import { NextApiRequest } from 'next';
-import { LevelData } from '@/types';
 import { isLevelExisting } from '@/utils';
 
 /**
@@ -18,32 +16,31 @@ export async function PUT(request: NextRequest, { params }: any) {
 
     try {
         const user = await User.findOne({ _id: id });
-        const levelIndex = isLevelExisting(
+        const isLevelExist = isLevelExisting(
             stage,
             level,
             user.gameProgress.memoTheMelo,
         );
-        if (levelIndex === -1) {
+        const levelKey = `${stage}_${level}`;
+
+        if (!isLevelExist) {
             // If the entry does not exist, create a new one
+            const newKey = `gameProgress.memoTheMelo.${levelKey}`;
             await User.findByIdAndUpdate(id, {
-                $push: { 'gameProgress.memoTheMelo': { status, stage, level } },
+                $set: { [newKey]: status },
             });
+        }
+
+        const levelCurrentStatus = user.gameProgress.memoTheMelo[levelKey];
+
+        if (isLevelExist && levelCurrentStatus === 'passed') {
+            return;
         } else {
-            if (user.gameProgress.memoTheMelo[levelIndex].status === 'passed')
-                return;
-            await User.updateOne(
-                {
-                    _id: id,
-                    'gameProgress.memoTheMelo': {
-                        $elemMatch: { stage, level },
-                    },
-                },
-                {
-                    $set: {
-                        'gameProgress.memoTheMelo.$.status': status,
-                    },
-                },
-            );
+            const newKey = `gameProgress.memoTheMelo.${levelKey}`;
+
+            await User.findByIdAndUpdate(id, {
+                $set: { [newKey]: status },
+            });
         }
 
         return NextResponse.json(

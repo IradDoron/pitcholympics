@@ -52,8 +52,6 @@ const StatsSection = ({ type, lang, color }: Props) => {
         ([key, v]) => key !== 'title',
     );
 
-    console.log(keyValues);
-
     return (
         <div className='w-full items-center place-self-center'>
             <h1 className='text-center text-light-background-onDefault dark:text-dark-background-onDefault font-inter text-xl font-bold'>

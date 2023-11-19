@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { MemoTheMeloGame } from '@/types';
 import memoTheMeloMockData from '@/mockData/memoTheMelo';
 import ButtonMelody from '@/components/shared/buttonMelody';
@@ -11,7 +11,6 @@ import Button from '@/components/core/button';
 import { isTwoArraysEqual } from '@/utils';
 import { handleEndLevel } from '@/utils';
 import { convertPitchesToIndexes } from '@/utils';
-import * as Tone from 'tone';
 import { useSession } from 'next-auth/react';
 
 type Props = {
@@ -35,8 +34,6 @@ const Page = ({ params }: Props) => {
     const { data: session } = useSession();
     const { stage, level, lang } = params; // The current stage, level and language
     const currentLevel = getLevelData(stage, level, memoTheMeloMockData); // The current level data
-    const [isActive, setIsActive] = useState(false);
-    const pitchesOptions = currentLevel.pitchOptions;
     const [currentNote, setCurrentNote] = useState(1); // The current note of the melody. For example, if the melody is [440, 880, 220] and the current note is 2, then the melody is [440, 880]
     const [pitchIndexPlaying, setPitchIndexPlaying] = useState(-1); // The index of the pitch that is currently playing and active
     const [userGuess, setUserGuess] = useState<number[]>([]); // Array of indexes. Each index is the index of the pitch in the pitch options array
@@ -45,6 +42,12 @@ const Page = ({ params }: Props) => {
     const pitches = pitchesIndexes.map(pitchIndex => {
         return pitchOptions[pitchIndex];
     }); // The melody as pitches, for example ['440', '880', '220', '440', '880', '220']
+    const [checkUserButtonState, setCheckUserButtonState] = useState<
+        'disabled' | 'default'
+    >('default');
+    const [startMelodyButtonState, setStartMelodyButtonState] = useState<
+        'disabled' | 'default'
+    >('default');
 
     const handleWin = async () => {
         // update the status level and stage to database
@@ -116,23 +119,31 @@ const Page = ({ params }: Props) => {
     ) => {
         const indexesOfPitches = convertPitchesToIndexes(pitches, pitchOptions);
         const partOfMelodyIndexes = indexesOfPitches.slice(0, currentNote);
+        const timeConstant = 100;
         partOfMelodyIndexes.forEach((indexOfPitch, index) => {
-            setTimeout(() => {
-                setPitchIndexPlaying(indexOfPitch);
-            }, 1000 * index);
+            setTimeout(
+                () => {
+                    setPitchIndexPlaying(indexOfPitch);
+                },
+                1000 * index + timeConstant,
+            );
         });
 
-        setTimeout(() => {
-            setPitchIndexPlaying(-1);
-            setIsUserTurn(true);
-        }, 1000 * partOfMelodyIndexes.length);
+        setTimeout(
+            () => {
+                setPitchIndexPlaying(-1);
+                setIsUserTurn(true);
+            },
+            1000 * partOfMelodyIndexes.length + timeConstant,
+        );
     };
 
     const checkUserGuess = (userGuess: number[], melody: number[]) => {
+        if (userGuess.length === 0) {
+            return;
+        }
         const melodyPart = melody.slice(0, userGuess.length); // The part of the melody that the user guessed
         const guessResult = isTwoArraysEqual(userGuess, melodyPart);
-        console.log('melodyPart', melodyPart);
-        console.log('userGuess', userGuess);
         // If the user guessed the whole melody
         if (guessResult && userGuess.length === melody.length) {
             handleWin();
@@ -143,7 +154,7 @@ const Page = ({ params }: Props) => {
             setCurrentNote(prevState => prevState + 1);
             setUserGuess([]);
             setIsUserTurn(false);
-            playMelody(pitches, pitchOptions, currentNote + 1);
+            setPitchIndexPlaying(-1);
             return;
         } else {
             handleLose();
@@ -152,6 +163,16 @@ const Page = ({ params }: Props) => {
             return;
         }
     };
+
+    useEffect(() => {
+        if (!isUserTurn) {
+            setCheckUserButtonState('disabled');
+            setStartMelodyButtonState('default');
+        } else {
+            setCheckUserButtonState('default');
+            setStartMelodyButtonState('disabled');
+        }
+    }, [isUserTurn]);
 
     return (
         <div className='container mx-auto h-full flex flex-col justify-center items-center gap-8'>
@@ -163,6 +184,7 @@ const Page = ({ params }: Props) => {
             <div className='flex flex-row justify-center items-center gap-2 flex-wrap'>
                 {pitchOptions.map((_, index) => {
                     const isCurrNotePlaying = pitchIndexPlaying === index;
+
                     return (
                         <ButtonMelody
                             key={index}
@@ -180,12 +202,14 @@ const Page = ({ params }: Props) => {
             <div className='flex flex-row gap-2'>
                 <Button
                     label='Start The Melody'
+                    state={startMelodyButtonState}
                     onClick={() =>
                         playMelody(pitches, pitchOptions, currentNote)
                     }
                 />
                 <Button
                     label='Check Guess'
+                    state={checkUserButtonState}
                     onClick={() =>
                         checkUserGuess(userGuess, currentLevel.melody)
                     }
