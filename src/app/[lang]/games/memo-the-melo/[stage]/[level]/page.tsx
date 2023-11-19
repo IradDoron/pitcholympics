@@ -56,7 +56,7 @@ const Page = ({ params }: Props) => {
             //@ts-ignore
             const res = await fetch(
                 //@ts-ignore
-                `http://localhost:3000/api/auth/games/${session?.user?.id}`,
+                `http://localhost:3000/api/games/memo-the-melo/${session?.user?.id}`,
                 {
                     method: 'PUT',
                     headers: {
@@ -85,7 +85,7 @@ const Page = ({ params }: Props) => {
             //@ts-ignore
             const res = await fetch(
                 //@ts-ignore
-                `http://localhost:3000/api/auth/games/${session?.user?.id}`,
+                `http://localhost:3000/api/games/memo-the-melo/${session?.user?.id}`,
                 {
                     method: 'PUT',
                     headers: {

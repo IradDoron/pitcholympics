@@ -46,10 +46,10 @@ export const handleEndLevel = (
     if (status === 'win') {
         const score = calcLevelScore(stage, level);
         localStorage.setItem('score', score.toString());
-        router.push(`/${lang}/${game}/${stage}/${level}/win`);
+        router.push(`/${lang}/games/${game}/${stage}/${level}/win`);
     } else {
         localStorage.setItem('score', '0');
-        router.push(`/${lang}/${game}/${stage}/${level}/lose`);
+        router.push(`/${lang}/games/${game}/${stage}/${level}/lose`);
     }
 };
 
@@ -64,5 +64,11 @@ export const convertPitchesToIndexes = (
 ) => {
     return pitches.map(pitch => {
         return pitchOptions.indexOf(pitch);
+    });
+};
+
+export const convertKebabCaseToCamelCase = (str: string) => {
+    return str.replace(/-([a-z])/g, function (g) {
+        return g[1].toUpperCase();
     });
 };
