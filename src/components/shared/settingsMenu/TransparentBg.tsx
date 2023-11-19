@@ -12,7 +12,7 @@ const TransparentBg = ({ setIsOpen }: Props) => {
 
     return (
         <div
-            className='fixed w-screen h-screen top-0 end-0 -z-40 bg-red-300'
+            className='fixed w-screen h-screen top-0 end-0 -z-40'
             onClick={handleClick}></div>
     );
 };

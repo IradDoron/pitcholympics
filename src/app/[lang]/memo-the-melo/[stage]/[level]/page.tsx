@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { MemoTheMeloGame } from '@/types';
 import memoTheMeloMockData from '@/mockData/memoTheMelo';
 import ButtonMelody from '@/components/shared/buttonMelody';
@@ -11,7 +11,6 @@ import Button from '@/components/core/button';
 import { isTwoArraysEqual } from '@/utils';
 import { handleEndLevel } from '@/utils';
 import { convertPitchesToIndexes } from '@/utils';
-import * as Tone from 'tone';
 import { useSession } from 'next-auth/react';
 
 type Props = {
@@ -43,6 +42,12 @@ const Page = ({ params }: Props) => {
     const pitches = pitchesIndexes.map(pitchIndex => {
         return pitchOptions[pitchIndex];
     }); // The melody as pitches, for example ['440', '880', '220', '440', '880', '220']
+    const [checkUserButtonState, setCheckUserButtonState] = useState<
+        'disabled' | 'default'
+    >('default');
+    const [startMelodyButtonState, setStartMelodyButtonState] = useState<
+        'disabled' | 'default'
+    >('default');
 
     const handleWin = async () => {
         // update the status level and stage to database
@@ -134,6 +139,9 @@ const Page = ({ params }: Props) => {
     };
 
     const checkUserGuess = (userGuess: number[], melody: number[]) => {
+        if (userGuess.length === 0) {
+            return;
+        }
         const melodyPart = melody.slice(0, userGuess.length); // The part of the melody that the user guessed
         const guessResult = isTwoArraysEqual(userGuess, melodyPart);
         // If the user guessed the whole melody
@@ -155,6 +163,16 @@ const Page = ({ params }: Props) => {
             return;
         }
     };
+
+    useEffect(() => {
+        if (!isUserTurn) {
+            setCheckUserButtonState('disabled');
+            setStartMelodyButtonState('default');
+        } else {
+            setCheckUserButtonState('default');
+            setStartMelodyButtonState('disabled');
+        }
+    }, [isUserTurn]);
 
     return (
         <div className='container mx-auto h-full flex flex-col justify-center items-center gap-8'>
@@ -184,12 +202,14 @@ const Page = ({ params }: Props) => {
             <div className='flex flex-row gap-2'>
                 <Button
                     label='Start The Melody'
+                    state={startMelodyButtonState}
                     onClick={() =>
                         playMelody(pitches, pitchOptions, currentNote)
                     }
                 />
                 <Button
                     label='Check Guess'
+                    state={checkUserButtonState}
                     onClick={() =>
                         checkUserGuess(userGuess, currentLevel.melody)
                     }

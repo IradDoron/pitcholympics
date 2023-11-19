@@ -30,7 +30,7 @@ const Page = ({ params }: { params: Props }) => {
             if (nextStage > memoTheMeloMockData.length) {
                 router.push(`/${lang}/memo-the-melo`);
             } else {
-                router.push(`/memo-the-melo/${nextStage}/1`);
+                router.push(`/${lang}/memo-the-melo/${nextStage}/1`);
             }
         } else {
             router.push(`/${lang}/memo-the-melo/${stage}/${nextLevel}`);
