@@ -13,7 +13,7 @@ const StageTitle = ({ stageNumber }: Props) => {
     const dict = getDictionaryClient(lang);
     const { StageTitle } = dict.shared.gameLevelsLinks;
     return (
-        <h2 className=' text-light-background-onDefault dark:text-dark-background-onDefault text-lg mb-4'>
+        <h2 className='text-light-background-onDefault dark:text-dark-background-onDefault text-lg sm:text-xl mb-4'>
             <span>{StageTitle}</span> <span>{stageNumber}</span>
         </h2>
     );
