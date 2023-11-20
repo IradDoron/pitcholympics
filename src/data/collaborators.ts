@@ -1,10 +1,10 @@
 import { Collaborator } from '@/types';
 import { StaticImageData } from 'next/image';
-import IRAD_DORON from 'pitcholympics/public/assets/collaborators/irad-doron.png';
-import AMIT_HALEVI from 'pitcholympics/public/assets/collaborators/amit-halevi.png';
-import GAL_EIN_DOR from 'pitcholympics/public/assets/collaborators/gal-ein-dor.png';
-import PELEG_MAZUZ from 'pitcholympics/public/assets/collaborators/peleg-mazuz.png';
-import ASAF_LEVI from 'pitcholympics/public/assets/collaborators/asaf-levi.png';
+import IRAD_DORON from '@/assets/collaborators/irad-doron.png';
+import AMIT_HALEVI from '@/assets/collaborators/amit-halevi.png';
+import GAL_EIN_DOR from '@/assets/collaborators/gal-ein-dor.png';
+import PELEG_MAZUZ from '@/assets/collaborators/peleg-mazuz.png';
+import ASAF_LEVI from '@/assets/collaborators/asaf-levi.png';
 
 const CollaboratorsImages: { [key: string]: StaticImageData } = {
     'irad-doron': IRAD_DORON,
