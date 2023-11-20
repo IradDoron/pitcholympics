@@ -32,16 +32,14 @@ function AuthButton({ isSettingsMenuOpen, setIsSettingsMenuOpen }: Props) {
 
     if (session?.user) {
         return (
-            <>
-                <Image
-                    className='m-0.5 inline-block h-auto w-auto rounded-full ring-4 ring-light-primary-main hover:ring-light-secondary-main duration-300 dark:ring-dark-primary-light hover:dark:ring-dark-secondary-light cursor-pointer'
-                    src={session.user.image ?? ''}
-                    alt=''
-                    width={64}
-                    height={64}
-                    onClick={() => setIsSettingsMenuOpen(!isSettingsMenuOpen)}
-                />
-            </>
+            <Image
+                className='m-0.5 inline-block h-auto w-auto rounded-full ring-4 ring-light-primary-main hover:ring-light-secondary-main duration-300 dark:ring-dark-primary-light hover:dark:ring-dark-secondary-light cursor-pointer'
+                src={session.user.image ?? ''}
+                alt=''
+                width={48}
+                height={48}
+                onClick={() => setIsSettingsMenuOpen(!isSettingsMenuOpen)}
+            />
         );
     }
 
