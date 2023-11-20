@@ -2,6 +2,8 @@
 
 import { useTheme } from '@/context/ThemeProvider';
 import Image from 'next/image';
+import VMark from '@/components/icons/vMark';
+import XMark from '@/components/icons/xMark';
 
 type Props = {
     status: 'passed' | 'failed' | 'locked';
@@ -13,24 +15,10 @@ const StatusIcon = ({ status }: Props) => {
     const getIconComponent = () => {
         switch (status) {
             case 'passed': {
-                return (
-                    <Image
-                        src={`/assets/icons/v-mark-${mode}.svg`}
-                        alt='passed'
-                        width={20}
-                        height={20}
-                    />
-                );
+                return <VMark size='small' />;
             }
             case 'failed': {
-                return (
-                    <Image
-                        src={`/assets/icons/x-mark-${mode}.svg`}
-                        alt='passed'
-                        width={20}
-                        height={20}
-                    />
-                );
+                return <XMark size='small' />;
             }
             default: {
                 return null;
