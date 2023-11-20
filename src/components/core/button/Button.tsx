@@ -42,7 +42,7 @@ const Button = ({
     return (
         <button
             onClick={onClick}
-            className={`bg-light-primary-main dark:bg-dark-primary-main text-light-primary-contrastText dark:text-dark-primary-contrastText rounded-[12px] ${buttonSize} ${buttonColor}`}>
+            className={`bg-light-primary-main dark:bg-dark-primary-main text-light-primary-contrastText dark:text-dark-primary-contrastText shadow-large-light dark:shadow-large-dark rounded-[12px] ${buttonSize} ${buttonColor}`}>
             {label}
         </button>
     );
