@@ -18,9 +18,9 @@ const MemoBlocksCard = ({ matrix, onClick, isActive }: Props) => {
     const border = isActive ? "border-blue-600 border-2" : "border-gray-300"
 
     return (
-        <div className={`shadow-lg drop-shadow-lg rounded-lg p-1.5 m-1 bg-light-surface-primary dark:bg-dark-surface-primary ${border}`} onClick={onClick}>
+        <div className={`w-full shadow-lg drop-shadow-lg rounded-lg p-1.5 m-1 bg-light-surface-primary dark:bg-dark-surface-primary ${border}`} onClick={onClick}>
             {matrix.map((row, rowIndex) => (
-                <div key={rowIndex} className="flex flex-row">
+                <div key={rowIndex} className="flex flex-row w-full">
                     {row.map((cell, colIndex) => (
                         <MemoBlocksMatCell key={cell.note + rowIndex + colIndex} cell={cell} colIndex={colIndex} rowIndex={rowIndex} />
                     ))}

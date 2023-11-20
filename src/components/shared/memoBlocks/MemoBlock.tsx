@@ -71,17 +71,17 @@ const MemoBlock = () => {
   }
 
   return (
-    <div className="mt-32 h-screen flex items-center justify-center flex-col">
+    <div className="h-full flex items-center justify-center flex-col">
       <div className='m-1 flex flex-row gap-2 justify-center items-center'>
         <FlipHorizontal2 className='w-10 h-10' onClick={() => changeMatrix(flipMatrix(activeMatrix))} />
         <FlipVertical2 className='w-10 h-10' onClick={() => changeMatrix(mirrorMatrix(activeMatrix))} />
       </div>
-      <div className='flex flex-row'>
+      <div className='w-full flex-nowrap flex sm:w-fit sm:flex-row'>
         {levelMatrixes.map((matrix, index) => (
           <MemoBlocksCard key={index} matrix={matrix} isActive={false} />
         ))}
       </div>
-      <div className='flex flex-row'>
+      <div className='w-full flex-nowrap flex sm:w-fit sm:flex-row'>
         {guesses.map((matrix, index) => (
           <MemoBlocksCard key={index} matrix={matrix} onClick={() => setActiveMatrix(index)} isActive={index === activeMatrixIndex} />
         ))}
