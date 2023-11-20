@@ -10,7 +10,7 @@ type Props = {
 
 const CurrentLink = ({ label }: Props) => {
     return (
-        <div className='text-light-primary-light dark:text-dark-primary-light font-bold text-xl '>
+        <div className='text-light-primary-light dark:text-dark-primary-light font-bold text-big '>
             {label}
             <div className='h-1 bg-light-primary-light dark:bg-dark-primary-light'></div>
         </div>
@@ -19,7 +19,7 @@ const CurrentLink = ({ label }: Props) => {
 
 const NotCurrentLink = ({ label }: Props) => {
     return (
-        <div className='text-light-surface-onNatural dark:text-dark-surface-onNatural font-bold text-xl '>
+        <div className='text-light-surface-onNatural dark:text-dark-surface-onNatural font-bold text-big '>
             {label}
             <div className='h-1 bg-light-surface-onNatural dark:bg-dark-surface-onNatural'></div>
         </div>

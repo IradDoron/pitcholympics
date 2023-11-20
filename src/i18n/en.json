@@ -59,8 +59,7 @@
             "pages": {
                 "home": "Home",
                 "stats": "Stats",
-                "about": "About",
-                "contact": "Contact"
+                "about": "About"
             },
             "title": "Page",
             "MobileNav": {
