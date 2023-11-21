@@ -8,6 +8,16 @@
                 "title": "אודות"
             }
         },
+        "profile": {
+            "gender": "מין",
+            "genderOptions": {
+                "male": "זכר",
+                "female": "נקבה"
+            },
+            "email": "אימייל",
+            "locale": "שפה",
+            "timeZone": "אזור זמן"
+        },
         "contact": {
             "page": {
                 "title": "צור קשר"

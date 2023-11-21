@@ -8,6 +8,16 @@
                 "title": "About page"
             }
         },
+        "profile": {
+            "gender": "Gender",
+            "genderOptions": {
+                "male": "Male",
+                "female": "Female"
+            },
+            "email": "Email",
+            "locale": "Locale",
+            "timeZone": "Time Zone"
+        },
         "contact": {
             "page": {
                 "title": "Contact page"
