@@ -8,6 +8,16 @@
                 "title": "About page"
             }
         },
+        "profile": {
+            "gender": "Gender",
+            "genderOptions": {
+                "male": "Male",
+                "female": "Female"
+            },
+            "email": "Email",
+            "locale": "Locale",
+            "timeZone": "Time Zone"
+        },
         "contact": {
             "page": {
                 "title": "Contact page"
@@ -52,6 +62,7 @@
         }
     },
     "shared": {
+        "comingSoonSection": "Coming Soon",
         "gameLevelsLinks": {
             "StageTitle": "Stage"
         },
@@ -59,8 +70,7 @@
             "pages": {
                 "home": "Home",
                 "stats": "Stats",
-                "about": "About",
-                "contact": "Contact"
+                "about": "About"
             },
             "title": "Page",
             "MobileNav": {

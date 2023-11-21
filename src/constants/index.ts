@@ -1,4 +1,7 @@
-import { Colors, Matrix, SidebarLink, ThemeMode } from '@/types';
+import { Colors, IconProps, Matrix, SidebarLink, ThemeMode } from '@/types';
+import SunIcon from '@/components/icons/sunIcon';
+import MoonIcon from '@/components/icons/moonIcon/MoonIcon';
+import GearIcon from '@/components/icons/gearIcon';
 
 export const LANGS_FULL_NAMES = {
     en: 'English',
@@ -8,13 +11,14 @@ export const LANGS_FULL_NAMES = {
 type ThemesObject = {
     value: ThemeMode;
     label: string;
-    icon: string;
+    // eslint-disable-next-line no-unused-vars
+    icon: ({ color, size }: IconProps) => JSX.Element;
 };
 
 export const themes = [
-    { value: 'light', label: 'Light', icon: '/assets/icons/sun.svg' },
-    { value: 'dark', label: 'Dark', icon: '/assets/icons/moon.svg' },
-    { value: 'system', label: 'System', icon: '/assets/icons/computer.svg' },
+    { value: 'light', label: 'Light', icon: SunIcon },
+    { value: 'dark', label: 'Dark', icon: MoonIcon },
+    { value: 'system', label: 'System', icon: GearIcon },
 ] as ThemesObject[];
 
 export const ICON_SIZES = {

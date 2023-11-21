@@ -66,7 +66,7 @@ const GameLevelsLinks = ({ levelsData, lang, game }: Props) => {
     }, [session]);
 
     return (
-        <div className='mt-[100px] sm:mt-[250px]'>
+        <div className='h-full flex justify-center items-center'>
             <LevelsLinksContainer>
                 {levelsData?.map((stage, stageIndex) => {
                     return (
