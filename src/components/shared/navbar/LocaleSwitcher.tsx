@@ -8,6 +8,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Menubar from '@/components/core/menubar';
 import Image from 'next/image';
+import FlagIsrael from '@/assets/icons/flags/israel-flag-icon.svg';
+import FlagUnitedStates from '@/assets/icons/flags/united-states-flag-icon.svg';
 
 const LocaleSwitcher = ({ params: { lang } }: LangParam) => {
     const pathName = usePathname();
@@ -17,7 +19,7 @@ const LocaleSwitcher = ({ params: { lang } }: LangParam) => {
                 <div className='w-12'>
                     {lang === 'he' ? (
                         <Image
-                            src='/assets/icons/flags/israel-flag-icon.svg'
+                            src={FlagIsrael}
                             alt='israel'
                             width={24}
                             height={24}
@@ -25,7 +27,7 @@ const LocaleSwitcher = ({ params: { lang } }: LangParam) => {
                         />
                     ) : (
                         <Image
-                            src='/assets/icons/flags/united-states-flag-icon.svg'
+                            src={FlagUnitedStates}
                             alt='usa'
                             width={24}
                             height={24}
