@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Matrix, MemoBlockCardMelody } from '@/types';
 import MemoBlocksMatCell from '../memoBlocks/MemoBlocksCell';
 import PlayIcon from '@/components/icons/playIcon';
@@ -14,18 +14,19 @@ const MemoBlocksCard = ({ matrix }: Props) => {
 
     return (
         <div className='shadow-lg drop-shadow-lg rounded-lg p-1.5 bg-light-surface-primary dark:bg-dark-surface-primary '>
-            {matrix.data.map((row, rowIndex) => (
-                <div key={rowIndex} className='flex flex-row'>
-                    {row.map((cell, colIndex) => (
-                        <MemoBlocksMatCell
-                            key={cell.note + rowIndex + colIndex}
-                            cell={cell}
-                            colIndex={colIndex}
-                            rowIndex={rowIndex}
-                        />
-                    ))}
-                </div>
-            ))}
+            {matrix.data &&
+                matrix.data.map((row, rowIndex) => (
+                    <div key={rowIndex} className='flex flex-row'>
+                        {row.map((cell, colIndex) => (
+                            <MemoBlocksMatCell
+                                key={cell.note + rowIndex + colIndex}
+                                cell={cell}
+                                colIndex={colIndex}
+                                rowIndex={rowIndex}
+                            />
+                        ))}
+                    </div>
+                ))}
             <div className='flex flex-row justify-center'>
                 <PlayIcon
                     onClick={handlePlayMelody}

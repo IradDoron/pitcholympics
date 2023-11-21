@@ -25,7 +25,7 @@ const SortableCard = ({ card }: Props) => {
     };
 
     function setInitialMatrix() {
-        let initialMatrix: Matrix = {
+        const initialMatrix: Matrix = {
             id: Math.random(),
             data: Array(8).fill(Array(4).fill({ note: 'D', isActive: false })),
         };
@@ -47,7 +47,7 @@ const SortableCard = ({ card }: Props) => {
 
     function mirrorMatrix(matrix: Matrix) {
         const refMatrix = colorsTemplateMatrix;
-        let copyMatrix: Matrix = { id: Math.random(), data: matrix.data };
+        const copyMatrix: Matrix = { id: Math.random(), data: matrix.data };
         const rows = refMatrix.data.length;
         const cols = refMatrix.data[0].length;
         for (let i = 0; i < rows; i++) {
@@ -66,7 +66,7 @@ const SortableCard = ({ card }: Props) => {
     }
 
     function flipMatrix(matrix: Matrix) {
-        let copyMatrix: Matrix = { id: Math.random(), data: matrix.data };
+        const copyMatrix: Matrix = { id: Math.random(), data: matrix.data };
         const rows = matrix.data.length;
         const cols = matrix.data[0].length;
         for (let i = 0; i < rows; i++) {
@@ -79,15 +79,15 @@ const SortableCard = ({ card }: Props) => {
         return copyMatrix;
     }
 
-    const colors: Colors = {
-        C: 'bg-green-400',
-        B: 'bg-yellow-400',
-        A: 'bg-red-400',
-        G: 'bg-purple-400',
-        F: 'bg-blue-600',
-        E: 'bg-blue-400',
-        D: 'bg-green-600',
-    };
+    // const colors: Colors = {
+    //     C: 'bg-green-400',
+    //     B: 'bg-yellow-400',
+    //     A: 'bg-red-400',
+    //     G: 'bg-purple-400',
+    //     F: 'bg-blue-600',
+    //     E: 'bg-blue-400',
+    //     D: 'bg-green-600',
+    // };
 
     const handleCellClick = (rowIndex: number, colIndex: number) => {
         // on click cell hear the sound

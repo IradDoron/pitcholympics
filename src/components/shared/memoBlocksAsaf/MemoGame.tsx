@@ -2,37 +2,62 @@ import { closestCenter, DndContext } from '@dnd-kit/core';
 import {
     arrayMove,
     SortableContext,
-    useSortable,
+    //useSortable,
     verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
-import { CSS } from '@dnd-kit/utilities';
-import { useState } from 'react';
+//import { CSS } from '@dnd-kit/utilities';
+import { useEffect, useState } from 'react';
 import { Matrix } from '@/types';
-import { colorsTemplateMatrix } from '@/constants';
+//import { colorsTemplateMatrix } from '@/constants';
 import SortableCard from './SortableCard';
+//import { DragEndEvent } from '@dnd-kit/core';
 
-function mirrorMatrix(matrix: Matrix) {
-    const refMatrix = colorsTemplateMatrix;
-    let copyMatrix: Matrix = { id: Math.random(), data: matrix.data };
-    const rows = refMatrix.data.length;
-    const cols = refMatrix.data[0].length;
-    for (let i = 0; i < rows; i++) {
-        copyMatrix.data.push([]);
-        for (let j = 0; j < cols; j++) {
-            if (!matrix.data[rows - 1 - i][j].isActive)
-                copyMatrix.data[i].push({
-                    note: refMatrix.data[i][j].note,
-                    isActive: false,
-                    isTied: false,
-                });
-            else copyMatrix.data[i].push(refMatrix.data[i][j]);
-        }
-    }
-    return copyMatrix;
-}
+type Props = {
+    activatorEvent: PointerEvent;
+    active: {
+        id: number; // Assuming id is a number
+        data: any; // The data structure might be more specific
+        rect: any; // Rect structure could have specific properties
+    };
+    collisions: any[]; // Specify the structure of collisions if needed
+    delta: {
+        x: number;
+        y: number;
+        scaleX: number;
+        scaleY: number;
+    };
+    over: {
+        id: number; // Assuming id is a number
+        rect: any; // Rect structure could have specific properties
+        data: any; // The data structure might be more specific
+        disabled: boolean;
+    };
+    // Add other properties if present in your event
+};
+
+// function mirrorMatrix(matrix: Matrix) {
+//     const refMatrix = colorsTemplateMatrix;
+//     const copyMatrix: Matrix = { id: Math.random(), data: matrix.data };
+//     const rows = refMatrix.data.length;
+//     const cols = refMatrix.data[0].length;
+//     for (let i = 0; i < rows; i++) {
+//         copyMatrix.data.push([]);
+//         for (let j = 0; j < cols; j++) {
+//             if (!matrix.data[rows - 1 - i][j].isActive)
+//                 copyMatrix.data[i].push({
+//                     note: refMatrix.data[i][j].note,
+//                     isActive: false,
+//                     isTied: false,
+//                 });
+//             else copyMatrix.data[i].push(refMatrix.data[i][j]);
+//         }
+//     }
+//     return copyMatrix;
+// }
+
 //{ id: number; data: MatrixCell[][] }
 function setInitialMatrix() {
-    let initialMatrix: Matrix = {
+    const initialMatrix: Matrix = {
         id: Math.random(),
         data: Array(8).fill(Array(4).fill({ note: 'D', isActive: false })),
     };
@@ -60,19 +85,19 @@ const InitialMatrix2 = setInitialMatrix();
  * @param matrix - the matrix to flip
  * @returns
  */
-function flipMatrix(matrix: Matrix) {
-    let copyMatrix: Matrix = { id: Math.random(), data: matrix.data };
-    const rows = matrix.data.length;
-    const cols = matrix.data[0].length;
-    for (let i = 0; i < rows; i++) {
-        copyMatrix.data.push([]);
-        for (let j = 0; j < cols; j++) {
-            copyMatrix.data[i].push(matrix.data[i][cols - 1 - j]);
-        }
-    }
-    console.log('copyMatrix', copyMatrix);
-    return copyMatrix;
-}
+// function flipMatrix(matrix: Matrix) {
+//     const copyMatrix: Matrix = { id: Math.random(), data: matrix.data };
+//     const rows = matrix.data.length;
+//     const cols = matrix.data[0].length;
+//     for (let i = 0; i < rows; i++) {
+//         copyMatrix.data.push([]);
+//         for (let j = 0; j < cols; j++) {
+//             copyMatrix.data[i].push(matrix.data[i][cols - 1 - j]);
+//         }
+//     }
+//     console.log('copyMatrix', copyMatrix);
+//     return copyMatrix;
+// }
 
 const MemoGame = () => {
     const [cards, setCards] = useState<Matrix[]>([
@@ -80,7 +105,7 @@ const MemoGame = () => {
         InitialMatrix2,
     ]);
 
-    const onDragEnd = e => {
+    const onDragEnd = (e: Props) => {
         //console.log("drag end ", e);
         const { active, over } = e;
         if (active.id === over.id) {
