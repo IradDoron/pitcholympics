@@ -13,7 +13,7 @@ const Page = ({ params: { lang } }: LangParam) => {
                 <StatsSection type='gamesStats' lang={lang} color='secondary' />
             </div>
             <GameProgress />
-            <Achievements />
+            <Achievements lang={lang} />
         </div>
     );
 };

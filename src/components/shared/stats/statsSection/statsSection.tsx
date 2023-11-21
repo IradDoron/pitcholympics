@@ -54,9 +54,9 @@ const StatsSection = ({ type, lang, color }: Props) => {
 
     return (
         <div className='w-full items-center place-self-center'>
-            <h1 className='text-center text-light-background-onDefault dark:text-dark-background-onDefault font-inter text-xl font-bold'>
+            <h2 className='text-center text-light-background-onDefault dark:text-dark-background-onDefault font-inter text-xl font-bold'>
                 {selectedPage.title}
-            </h1>
+            </h2>
             <div className='flex flex-col sm:flex-row items-center gap-x-0'>
                 {keyValues.map(([key, value]) => {
                     // Use type assertions to tell TypeScript the expected type

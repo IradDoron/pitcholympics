@@ -62,6 +62,7 @@
         }
     },
     "shared": {
+        "comingSoonSection": "Coming Soon",
         "gameLevelsLinks": {
             "StageTitle": "Stage"
         },
