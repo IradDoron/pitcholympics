@@ -9,8 +9,13 @@ import { useState } from 'react';
 import { colorsTemplateMatrix } from '@/constants';
 import MemoBlocksCard from './MemoBlocksCard';
 import { MatrixCell } from '@/types';
+import { type } from 'os';
 
-const SortableCard = (card: Matrix) => {
+type Props = {
+    card: Matrix;
+};
+
+const SortableCard = ({ card }: Props) => {
     const [matrix, setMatrix] = useState<Matrix>(setInitialMatrix);
     const { attributes, listeners, setNodeRef, transform, transition } =
         useSortable({ id: card.id });

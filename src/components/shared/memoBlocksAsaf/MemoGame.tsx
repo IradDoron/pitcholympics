@@ -75,7 +75,10 @@ function flipMatrix(matrix: Matrix) {
 }
 
 const MemoGame = () => {
-    const [cards, setCards] = useState([InitialMatrix1, InitialMatrix2]);
+    const [cards, setCards] = useState<Matrix[]>([
+        InitialMatrix1,
+        InitialMatrix2,
+    ]);
 
     const onDragEnd = e => {
         //console.log("drag end ", e);
