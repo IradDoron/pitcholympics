@@ -1,12 +1,15 @@
 # Pitch Olympics
 
+<a href="https://pitcholympics.vercel.app/en">
 <img src="pitch-catch-image.png"/>
+
+</a>
 
 ⭐ Star us on GitHub — it motivates us a lot!
 
 ## Introduction
 
-[Pitch Olympics](https://nextjs-13-app-router-i18n-template-irad.vercel.app) is a website designed to enhance pitch recognition and musical skills, featuring two games: Memo The Melo and Pitch Catch.
+[Pitch Olympics](https://pitcholympics.vercel.app/en) is a website designed to enhance pitch recognition and musical skills, featuring two games: Memo The Melo and Pitch Catch.
 
 ## Table of Contents
 
