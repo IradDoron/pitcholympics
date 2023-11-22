@@ -16,7 +16,8 @@
             },
             "email": "Email",
             "locale": "Locale",
-            "timeZone": "Time Zone"
+            "timeZone": "Time Zone",
+            "submitButton": "Save changes"
         },
         "contact": {
             "page": {
