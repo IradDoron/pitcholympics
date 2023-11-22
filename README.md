@@ -1,6 +1,6 @@
 # Pitch Olympics
 
-<a href="https://pitcholympics.vercel.app/en">
+<a href="https://pitcholympics.vercel.app/en" target="_blanck">
 <img src="pitch-catch-image.png"/>
 
 </a>
