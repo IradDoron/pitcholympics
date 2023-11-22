@@ -12,6 +12,7 @@ import { isTwoArraysEqual } from '@/utils';
 import { handleEndLevel } from '@/utils';
 import { convertPitchesToIndexes } from '@/utils';
 import { useSession } from 'next-auth/react';
+import { CURRENT_DOMAIN } from '@/constants';
 
 type Props = {
     params: {
@@ -56,7 +57,7 @@ const Page = ({ params }: Props) => {
             //@ts-ignore
             const res = await fetch(
                 //@ts-ignore
-                `http://localhost:3000/api/games/memo-the-melo/${session?.user?.id}`,
+                `${CURRENT_DOMAIN}/api/games/memo-the-melo/${session?.user?.id}`,
                 {
                     method: 'PUT',
                     headers: {
@@ -85,7 +86,7 @@ const Page = ({ params }: Props) => {
             //@ts-ignore
             const res = await fetch(
                 //@ts-ignore
-                `http://localhost:3000/api/games/memo-the-melo/${session?.user?.id}`,
+                `${CURRENT_DOMAIN}/api/games/memo-the-melo/${session?.user?.id}`,
                 {
                     method: 'PUT',
                     headers: {
