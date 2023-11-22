@@ -7,7 +7,7 @@ type Props = {
 	status: 'passed' | 'failed' | 'locked';
 };
 
-const LevelLink = ({ levelNumber, url, status }: Props) => {
+const LevelLink = ({ levelNumber, url, status = 'locked' }: Props) => {
 	return (
 		<>
 			{status === 'locked' ? (

@@ -176,7 +176,7 @@ module.exports = {
                         A: '#C3100C',
                         'A#': '#CF8900',
                         B: '#CFC700',
-                    }
+                    },
                 },
                 dark: {
                     background: {
@@ -225,7 +225,7 @@ module.exports = {
                         A: '#F55D5A',
                         'A#': '#FFC450',
                         B: '#FFF970',
-                    }
+                    },
                 },
             },
             fontFamily: {
@@ -233,15 +233,15 @@ module.exports = {
                 spaceGrotesk: ['var(--font-spaceGrotesk)'],
             },
             fontSize: {
-                xs: '0.5rem',
-                sm: '0.625rem',
+                xxs: '0.5rem',
+                xs: '0.625rem',
                 tiny: '0.75rem',
                 mini: '0.875rem',
-                xxs: '1rem',
-                xs: '1.125rem',
-                sm: '1.25rem',
+                small: '1rem',
+                medium: '1.125rem',
+                large: '1.25rem',
                 base: '1.5rem',
-                lg: '1.75rem',
+                big: '1.75rem',
                 xl: '2rem',
                 '2xl': '2.25rem',
                 '3xl': '2.5rem',

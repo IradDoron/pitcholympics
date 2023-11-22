@@ -1,5 +1,6 @@
 import CollaboratorCard from '@/components/shared/collaboratorCard';
 import collaborators from '@/data/collaborators';
+import PageFiller from '@/components/shared/pageFiller';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const shuffle = (array: any[]) => {
@@ -30,10 +31,7 @@ const getColorByIndex = (index: number) => {
 const Page = async () => {
     return (
         <div className='flex flex-col w-full items-center'>
-            <div
-                style={{
-                    marginTop: '140px',
-                }}></div>
+            <PageFiller />
             <div className='flex flex-col gap-16'>
                 {shuffle(collaborators).map((collaborator, index) => {
                     return (

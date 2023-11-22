@@ -8,9 +8,9 @@ type Props = {
 };
 const getStyle = (isDisabled: boolean) => {
     if (isDisabled) {
-        return '';
+        return 'dark:text-dark-background-onDefault text-light-background-onDefault ';
     } else {
-        return 'text-gray-500 border-2';
+        return 'text-grey-500 dark:text-grey-D00 border-2';
     }
 };
 

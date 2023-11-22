@@ -1,6 +1,4 @@
 import { Schema, model, models } from 'mongoose';
-import { GameProgress, LevelData } from '@/types/gameLogic';
-import { Achievement } from '@/types/achievements'
 
 const UserSchema = new Schema({
     email: {
@@ -11,7 +9,10 @@ const UserSchema = new Schema({
     username: {
         type: String,
         required: [true, 'Username is required!'],
-        match: [/^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/, "Username invalid, it should contain 8-20 alphanumeric letters and be unique!"]
+        match: [
+            /^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/,
+            'Username invalid, it should contain 8-20 alphanumeric letters and be unique!',
+        ],
     },
     image: {
         type: String,
@@ -27,43 +28,17 @@ const UserSchema = new Schema({
     },
     gameProgress: {
         memoTheMelo: {
-            type: [{
-                status: {
-                    type: String,
-                    enum: ['passed', 'failed', 'locked'],
-                    default: 'locked',
-                },
-                stage: {
-                    type: Number,
-                    default: 0,
-                },
-                level: {
-                    type: Number,
-                    default: 0,
-                },
-            }],
-            default: [{
-                status: 'passed',
-                stage: 1,
-                level: 1
-            }]
+            type: Map,
+            default: {
+                '1_1': 'locked',
+            },
         },
+
         pitchCatch: {
-            type: [{
-                status: {
-                    type: String,
-                    enum: ['passed', 'failed', 'locked'],
-                    default: 'locked',
-                },
-                stage: {
-                    type: Number,
-                    default: 0,
-                },
-                level: {
-                    type: Number,
-                    default: 0,
-                },
-            }],
+            type: Map,
+            default: {
+                '1_1': 'locked',
+            },
         },
     },
     xp: {
@@ -79,8 +54,8 @@ const UserSchema = new Schema({
             },
             pitchRecognition: {
                 type: Number,
-            }
-        }
+            },
+        },
     },
     resources: {
         type: {
@@ -96,59 +71,59 @@ const UserSchema = new Schema({
             health: {
                 type: Number,
             },
-
-        }
+        },
     },
-    GameAnalytics: [{
-        type: {
-            gameName: {
-                type: String,
-                enum: ['memoTheMelo', 'pitchCatch'],
-
+    GameAnalytics: [
+        {
+            type: {
+                gameName: {
+                    type: String,
+                    enum: ['memoTheMelo', 'pitchCatch'],
+                },
+                level: {
+                    type: Number,
+                },
+                stage: {
+                    type: Number,
+                },
+                status: {
+                    type: String,
+                    enum: ['passed', 'failed'],
+                },
+                time: {
+                    type: Number,
+                },
+                startDate: {
+                    type: Date,
+                },
             },
-            level: {
-                type: Number,
-            },
-            stage: {
-                type: Number,
-            },
-            status: {
-                type: String,
-                enum: ['passed', 'failed'],
-            },
-            time: {
-                type: Number,
-            },
-            startDate: {
-                type: Date,
-            }
-        }
-    }],
+        },
+    ],
     Achievements: {
         type: {
             1: {
-
-                criteriaStatus: [{
-                    type: Boolean,
-                }],
+                criteriaStatus: [
+                    {
+                        type: Boolean,
+                    },
+                ],
                 completeAmount: {
                     type: Number,
-                }
-            }
-        }
+                },
+            },
+        },
     },
     gameItems: {
         type: {
             1: {
                 quantity: {
                     type: Number,
-                }
-            }
-        }
-    }
+                },
+            },
+        },
+    },
 });
 
-
-const User = models.User || model("User", UserSchema);
+const User = models.User || model('User', UserSchema);
 
 export default User;

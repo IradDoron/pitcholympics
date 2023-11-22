@@ -7,7 +7,9 @@ type Props = {
 };
 const SelectInput = ({ onChange, options }: Props) => {
     return (
-        <select onChange={onChange}>
+        <select
+            onChange={onChange}
+            className='dark:text-light-background-onDefault text-light-background-onDefault'>
             {options.map(option => {
                 return (
                     <option key={option} value={option}>
