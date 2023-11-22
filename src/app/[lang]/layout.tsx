@@ -9,8 +9,8 @@ const inter = Inter({ subsets: ['latin'] });
 import NextAuthProvider from '@/context/SessionProvider';
 
 export const metadata: Metadata = {
-    title: 'Next.js 13 & i18n Template',
-    description: 'Template for Next.js 13 with App Router and i18n',
+    title: 'Pitch Olympics',
+    description: 'Website for improve pitch recognition and musical skills',
 };
 
 export async function generateStaticParams() {

@@ -8,16 +8,18 @@ import StageLevelsContainer from './StageLevelsContainer';
 import LevelLink from './LevelLink';
 import { useSession } from 'next-auth/react';
 import { LevelStatus } from '@/types';
+import { Locale } from '@/i18n.config';
 
 type Props = {
     levelsData: MemoTheMeloGame | PitchCatchGame;
-    baseUrl: string;
+    lang: Locale;
+    game: string;
 };
 type UserProgressEntry = {
     [key: string]: LevelStatus;
 };
 
-const GameLevelsLinks = ({ levelsData, baseUrl }: Props) => {
+const GameLevelsLinks = ({ levelsData, lang, game }: Props) => {
     const { data: session } = useSession();
     const [userProgress, setUserProgress] = useState<UserProgressEntry>({});
 
@@ -43,15 +45,16 @@ const GameLevelsLinks = ({ levelsData, baseUrl }: Props) => {
 
     useEffect(() => {
         // Fetch user progress from the backend using the user's ID (session.id)
+        console.log('game', game);
         const fetchUserProgress = async () => {
             try {
                 //@ts-ignore
                 const response = await fetch(
                     //@ts-ignore
-                    `/api/auth/games/${session?.user?.id}`,
+                    `/api/games/${game}/${session?.user?.id}`,
                 );
                 const data = await response.json();
-                setUserProgress(data.memoTheMeloObjects);
+                setUserProgress(data.gameData);
             } catch (error) {
                 console.error('Error fetching user progress:', error);
             }
@@ -63,7 +66,7 @@ const GameLevelsLinks = ({ levelsData, baseUrl }: Props) => {
     }, [session]);
 
     return (
-        <div className='mt-[100px] sm:mt-[250px]'>
+        <div className='h-full flex justify-center items-center'>
             <LevelsLinksContainer>
                 {levelsData?.map((stage, stageIndex) => {
                     return (
@@ -78,12 +81,13 @@ const GameLevelsLinks = ({ levelsData, baseUrl }: Props) => {
                                         levelIndex,
                                         stageIndex,
                                     );
+                                    const stageNumber = stageIndex + 1;
+                                    const levelNumber = levelIndex + 1;
+                                    const url = `/${lang}/games/${game}/${stageNumber}/${levelNumber}`;
                                     return (
                                         <LevelLink
                                             key={levelIndex}
-                                            url={`${baseUrl}/${
-                                                stageIndex + 1
-                                            }/${levelIndex + 1}`}
+                                            url={url}
                                             status={status}
                                             levelNumber={levelIndex + 1}
                                         />

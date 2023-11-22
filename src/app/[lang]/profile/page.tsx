@@ -5,14 +5,26 @@ import Card from '@/components/core/card';
 import UserImage from '@/components/shared/userImage';
 import ProfileInfo from '@/components/shared/profileInfo';
 import { useSession } from 'next-auth/react';
+import { getDictionaryClient } from '@/utils/getDictionaryClient';
+import { Locale as LocalType } from '@/i18n.config';
 
 type Gender = 'male' | 'female';
 type Locale = 'HE' | 'EN';
 
-const Page = () => {
+type Props = {
+    params: {
+        lang: LocalType;
+    };
+};
+
+const Page = ({ params }: Props) => {
     const { data: session } = useSession();
     const [gender, setGender] = useState<Gender>('male');
     const [locale, setLocale] = useState<Locale>('EN');
+
+    const dict = getDictionaryClient(params.lang);
+    const { profile } = dict.app;
+
     const getTimeZone = (): string => {
         return /\((.*)\)/.exec(new Date().toString())![1];
     };
@@ -36,25 +48,28 @@ const Page = () => {
                 style={{ width: '400px' }}>
                 <UserImage />
                 <ProfileInfo
-                    label='Gender'
+                    label={profile.gender}
                     inputType='select'
-                    options={['male', 'female']}
+                    options={[
+                        profile.genderOptions.male,
+                        profile.genderOptions.female,
+                    ]}
                     onChange={handleGenderChange}
                 />
                 <ProfileInfo
-                    label='Email'
+                    label={profile.email}
                     inputType='text'
                     isDisabled={true}
                     value={session?.user?.email ?? ''}
                 />
                 <ProfileInfo
-                    label='Locale'
+                    label={profile.locale}
                     inputType='select'
                     options={['HE', 'EN']}
                     onChange={handleLocaleChange}
                 />
                 <ProfileInfo
-                    label='TimeZone'
+                    label={profile.timeZone}
                     inputType='text'
                     value={timeZone}
                 />

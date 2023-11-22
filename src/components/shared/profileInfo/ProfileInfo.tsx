@@ -22,6 +22,7 @@ const ProfileInfo = ({
 }: Props) => {
     return (
         <Label label={label}>
+            {' '}
             {inputType === 'text' ? (
                 <TextInput onChange={onChange} value={value} />
             ) : (

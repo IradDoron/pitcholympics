@@ -9,7 +9,7 @@ import { FlipHorizontal2, FlipVertical2 } from 'lucide-react';
 /**
  * Mirror the matrix (flip it vertically - up to down)
  * @param matrix  - the matrix to mirror
- * @returns 
+ * @returns
  */
 function mirrorMatrix(matrix: Matrix) {
   const refMatrix = colorsTemplateMatrix;
@@ -20,9 +20,12 @@ function mirrorMatrix(matrix: Matrix) {
     copyMatrix.push([]);
     for (let j = 0; j < cols; j++) {
       if (!matrix[rows - 1 - i][j].isActive)
-        copyMatrix[i].push({ note: refMatrix[i][j].note, isActive: false, isTied: false });
-      else
-        copyMatrix[i].push(refMatrix[i][j]);
+        copyMatrix[i].push({
+          note: refMatrix[i][j].note,
+          isActive: false,
+          isTied: false,
+        });
+      else copyMatrix[i].push(refMatrix[i][j]);
     }
   }
   return copyMatrix;
@@ -39,7 +42,7 @@ function setInitialMatrixs(matArr: Matrix[]): Matrix[] {
 /**
  * Flip the matrix (flip it horizontally - left to right)
  * @param matrix - the matrix to flip
- * @returns 
+ * @returns
  */
 function flipMatrix(matrix: Matrix) {
   let copyMatrix: Matrix = [];

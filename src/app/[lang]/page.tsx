@@ -16,12 +16,12 @@ const Home = async ({ params: { lang } }: LangParam) => {
                 label='Pitch Catch'
                 lang={lang}
             />
-            <GameLink
+            {/* <GameLink
                 href='memo-blocks'
                 colorType='peach'
                 label='memo-blocks'
                 lang={lang}
-            />
+            /> */}
         </div>
     );
 };
