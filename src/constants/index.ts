@@ -65,3 +65,10 @@ export const colors: Colors = {
 };
 
 export const BIG_NUMBER_FOR_MEMO_THE_MELO = 1000;
+
+export const DOMAINS = {
+    DEV: 'http://localhost:3000',
+    PRODUCTION: 'https://pitcholympics.vercel.app',
+};
+
+export const CURRENT_DOMAIN = DOMAINS.DEV;

@@ -11,6 +11,7 @@ import LevelStepper from '@/components/shared/levelStepper';
 import { useSession } from 'next-auth/react';
 import { handleEndLevel } from '@/utils';
 import { Locale } from '@/i18n.config';
+import { getDictionaryClient } from '@/utils/getDictionaryClient';
 
 type Props = {
     params: {
@@ -34,6 +35,10 @@ const Page = ({ params }: Props) => {
     const { data: session } = useSession();
     const currentLevel = getLevelData(stage, level, pitchCatchData);
     const router = useRouter();
+
+    const dict = getDictionaryClient(lang);
+
+    const { submitButton } = dict.app['pitch-catch'];
 
     const updateDbWin = async () => {
         // update the status level and stage to database
@@ -159,9 +164,9 @@ const Page = ({ params }: Props) => {
                 useChoiceIndex={useChoiceIndex}
                 setChoiceIndex={setChoiceIndex}
             />
-            <Button label='This is the pitch' onClick={handleCheckMeClick} />
-            <Button label='Debug Win' onClick={handleWin} />
-            <Button label='Debug Lose' onClick={handleLose} />
+            <Button label={submitButton} onClick={handleCheckMeClick} />
+            {/* <Button label='Debug Win' onClick={handleWin} />
+            <Button label='Debug Lose' onClick={handleLose} /> */}
         </div>
     );
 };

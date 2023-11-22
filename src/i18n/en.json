@@ -33,7 +33,12 @@
                 "titleComplete": "Complete!",
                 "titleCompleteLevel": "level",
                 "dataScoreLevel": "Xp"
-            }
+            },
+            "startMelody": "Start the Melody",
+            "checkGuess": "Check Guess"
+        },
+        "pitch-catch": {
+            "submitButton": "This is the Pitch"
         },
         "game-result-page": {
             "actionButtonLabel": "Next Level",
