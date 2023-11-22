@@ -9,6 +9,7 @@ import Button from '@/components/core/button'
 import { getTimeZone } from '@/utils'
 import { getDictionaryClient } from '@/utils/getDictionaryClient';
 import { Locale as LocalType } from '@/i18n.config';
+import { useRouter } from 'next/navigation'
 
 type Gender = 'male' | 'female';
 type Locale = 'HE' | 'EN';
@@ -23,6 +24,7 @@ const Page = ({ params }: Props) => {
     const { data: session } = useSession()
     const [newGender, setNewGender] = useState<Gender>()
     const [newLocale, setNewLocale] = useState<Locale>()
+    const router = useRouter()
 
     const dict = getDictionaryClient(params.lang);
     const { profile } = dict.app;
@@ -47,7 +49,6 @@ const Page = ({ params }: Props) => {
                 },
                 body: JSON.stringify({ newGender, newLocale })
             });
-
             if (!res.ok) {
                 throw new Error("Failed to update")
             }
@@ -55,6 +56,7 @@ const Page = ({ params }: Props) => {
             console.log(error)
 
         }
+        router.push(`/${params.lang}`)
     }
 
     useEffect(() => {
@@ -99,7 +101,7 @@ const Page = ({ params }: Props) => {
                 <ProfileInfo label={profile.email} inputType='text' isDisabled={true} value={session?.user?.email ?? ''} />
                 <ProfileInfo label={profile.locale} value={newLocale} inputType='select' options={['HE', 'EN']} onChange={handleLocaleChange} />
                 <ProfileInfo label={profile.timeZone} inputType='text' value={timeZone} />
-                <Button label={profile.submitButton} onClick={handleSubmit} size='small' />
+                <Button label={profile.submitButton} onClick={handleSubmit} size='medium' />
             </Card>
         </div>
     )
