@@ -25,7 +25,7 @@ In Memo The Melo, the goal is to practice quickly memorizing melodies. At each l
 
 Pitch Catch aims to improve your ability to identify pitches. You listen to a pitch and then choose the correct one from several options. Winning the levels requires accurately recognizing all the pitches.
 
-## Contributers
+## Collaborators
 
 Here are our amazing team:
 
