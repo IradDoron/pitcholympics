@@ -12,6 +12,7 @@ import { isTwoArraysEqual } from '@/utils';
 import { handleEndLevel } from '@/utils';
 import { convertPitchesToIndexes } from '@/utils';
 import { useSession } from 'next-auth/react';
+import { getDictionaryClient } from '@/utils/getDictionaryClient';
 import { CURRENT_DOMAIN } from '@/constants';
 
 type Props = {
@@ -49,6 +50,10 @@ const Page = ({ params }: Props) => {
     const [startMelodyButtonState, setStartMelodyButtonState] = useState<
         'disabled' | 'default'
     >('default');
+
+    const dict = getDictionaryClient(lang);
+
+    const { startMelody, checkGuess } = dict.app['memo-the-melo'];
 
     const handleWin = async () => {
         // update the status level and stage to database
@@ -202,32 +207,17 @@ const Page = ({ params }: Props) => {
             </div>
             <div className='flex flex-row gap-2'>
                 <Button
-                    label='Start The Melody'
+                    label={startMelody}
                     state={startMelodyButtonState}
                     onClick={() =>
                         playMelody(pitches, pitchOptions, currentNote)
                     }
                 />
                 <Button
-                    label='Check Guess'
+                    label={checkGuess}
                     state={checkUserButtonState}
                     onClick={() =>
                         checkUserGuess(userGuess, currentLevel.melody)
-                    }
-                />
-                <Button
-                    label='Debug Win'
-                    onClick={() =>
-                        checkUserGuess(currentLevel.melody, currentLevel.melody)
-                    }
-                />
-                <Button
-                    label='Debug Lose'
-                    onClick={() =>
-                        checkUserGuess(
-                            currentLevel.melody,
-                            new Array(currentLevel.melody.length).fill(0),
-                        )
                     }
                 />
             </div>
@@ -236,3 +226,19 @@ const Page = ({ params }: Props) => {
 };
 
 export default Page;
+
+//  <Button
+//                 label='Debug Win'
+//                 onClick={() =>
+//                     checkUserGuess(currentLevel.melody, currentLevel.melody)
+//                 }
+//             />
+//             <Button
+//                 label='Debug Lose'
+//                 onClick={() =>
+//                     checkUserGuess(
+//                         currentLevel.melody,
+//                         new Array(currentLevel.melody.length).fill(0),
+//                     )
+//                 }
+//             />

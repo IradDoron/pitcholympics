@@ -33,7 +33,12 @@
                 "titleComplete": "הושלמה",
                 "titleCompleteLevel": "רמה",
                 "dataScoreLevel": "נקודות"
-            }
+            },
+            "startMelody": "להשמיע את המנגינה",
+            "checkGuess": "לבדוק את הניחוש"
+        },
+        "pitch-catch": {
+            "submitButton": "זה הצליל"
         },
         "game-result-page": {
             "actionButtonLabel": "לשלב הבא",
