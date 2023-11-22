@@ -1,4 +1,3 @@
-'use client';
 import type { User } from '@/types';
 import type {
     GameAnalytics,
@@ -8,7 +7,6 @@ import type {
 } from '@/types/gameLogic';
 import { getDictionaryClient } from '@/utils/getDictionaryClient';
 import StatsCard from '@/components/core/statsCard';
-import users from '@/mockData/users';
 import { Locale } from '@/i18n.config';
 
 type Props = {
@@ -17,11 +15,11 @@ type Props = {
     color: 'primary' | 'secondary' | 'tertiary';
 };
 
-const StatsSection = ({ type, lang, color }: Props) => {
-    const user = users[0];
+const StatsSection = async ({ type, lang, color }: Props) => {
+    const user = await fetch(`${process.env.BASE_URL}/api/users/`).then((res) => res.json());
 
     function countGames(user: User, gameName: GameNames): number {
-        return user.gamesAnalytics.reduce(
+        return user?.gamesAnalytics?.reduce(
             (count: number, curr: GameAnalytics) => {
                 if (curr.gameName === gameName) {
                     count += 1;
@@ -29,7 +27,7 @@ const StatsSection = ({ type, lang, color }: Props) => {
                 return count;
             },
             0,
-        );
+        ) || 0;
     }
 
     const memoTheMeloGamesCount = countGames(user, 'memoTheMelo');
@@ -62,7 +60,7 @@ const StatsSection = ({ type, lang, color }: Props) => {
                     // Use type assertions to tell TypeScript the expected type
                     const title =
                         type === 'resources'
-                            ? stats.resources[key as keyof Resources]
+                            ? stats.resources[key as keyof Resources] || 0
                             : stats.gamesStats[key as keyof GamesStats];
                     return (
                         <StatsCard
