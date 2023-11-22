@@ -16,7 +16,8 @@
             },
             "email": "אימייל",
             "locale": "שפה",
-            "timeZone": "אזור זמן"
+            "timeZone": "אזור זמן",
+            "submitButton": "שמור שינויים"
         },
         "contact": {
             "page": {

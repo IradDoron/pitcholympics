@@ -80,3 +80,7 @@ export const mapToObject = (map: Map<any, any>) => {
     }
     return obj;
 };
+
+export const getTimeZone = (): string => {
+    return /\((.*)\)/.exec(new Date().toString())![1];
+};
