@@ -1,3 +1,5 @@
+import { reduceClasses } from '@/utils/reduceClasses';
+
 type CardShadow = 'none' | 'medium' | 'large';
 type CardColor = 'primary' | 'secondary' | 'tertiary';
 type CardBorder = boolean;
@@ -96,12 +98,14 @@ const Card = ({
     const wrapClass = getWrap(isWrap);
     const widthClass = getWidth(width);
     const customClass = getCustomClass(className);
+    const defaultClasses = 'rounded-lg flex items-center justify-center';
+
+    const classesString = `${shadowClass} ${backgroundClass} ${borderClass} ${wrapClass} ${widthClass} ${customClass} ${defaultClasses}`;
+
+    const reducedClasses = reduceClasses(classesString);
 
     return (
-        <div
-            className={`rounded-lg flex items-center justify-center ${shadowClass} ${borderClass} ${backgroundClass} ${wrapClass} ${widthClass} ${customClass}`}
-            style={style}
-            onClick={onClick}>
+        <div className={reducedClasses} style={style} onClick={onClick}>
             {children}
         </div>
     );

@@ -5,12 +5,14 @@ const HamburgerIcon = ({
     color = 'primary',
     size = 'medium',
     className = '',
+    onClick,
 }: IconProps) => {
     return (
         <svg
             fill='none'
             xmlns='http://www.w3.org/2000/svg'
-            className={`${ICON_COLORS[color]}  ${ICON_SIZES[size]} ${className}`}>
+            className={`${ICON_COLORS[color]}  ${ICON_SIZES[size]} ${className}`}
+            onClick={onClick}>
             <path
                 d='M20.05 11H3.95C3.42533 11 3 11.4253 3 11.95V12.05C3 12.5747 3.42533 13 3.95 13H20.05C20.5747 13 21 12.5747 21 12.05V11.95C21 11.4253 20.5747 11 20.05 11Z'
                 fill='inherit'
