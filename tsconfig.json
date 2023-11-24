@@ -15,9 +15,9 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": "./src",
-    "module": "esnext",
-    "target": "es5",
-    "moduleResolution": "bundler",
+    "module": "es2015",
+    "target": "es2015",
+    "moduleResolution": "node",
     "downlevelIteration": true,
     "plugins": [
       {
