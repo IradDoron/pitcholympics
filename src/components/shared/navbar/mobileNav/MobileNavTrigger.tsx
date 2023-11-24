@@ -1,5 +1,5 @@
-import { Dispatch, SetStateAction } from 'react';
 import HamburgerIcon from '@/components/icons/hamburgerIcon';
+import { Dispatch, SetStateAction } from 'react';
 
 type Props = {
     setOpen: Dispatch<SetStateAction<boolean>>;

@@ -80,28 +80,11 @@
             },
             "title": "Page",
             "MobileNav": {
-                "sidebarLinks": [
-                    {
-                        "imgURL": "/assets/icons/sun.svg",
-                        "route": "/",
-                        "label": "Home"
-                    },
-                    {
-                        "imgURL": "/assets/icons/sun.svg",
-                        "route": "/stats",
-                        "label": "Stats"
-                    },
-                    {
-                        "imgURL": "/assets/icons/sun.svg",
-                        "route": "/about",
-                        "label": "About"
-                    },
-                    {
-                        "imgURL": "/assets/icons/sun.svg",
-                        "route": "/contact",
-                        "label": "Contact"
-                    }
-                ]
+                "sidebarLinks": {
+                    "home": "Home",
+                    "stats": "Stats",
+                    "about": "About"
+                }
             }
         },
         "LocaleSwitcher": {

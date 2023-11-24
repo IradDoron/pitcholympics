@@ -1,10 +1,15 @@
-import CloseIcon from '@/components/icons/closeIcon';
+import { Locale } from '@/i18n.config';
 import Card from '@core/card';
+import CloseIcon from '@icons/closeIcon';
 import { useState } from 'react';
 import MobileNavContent from './MobileNavContent';
 import MobileNavTrigger from './MobileNavTrigger';
 
-const MobileNav = () => {
+type Props = {
+    lang: Locale;
+};
+
+const MobileNav = ({ lang }: Props) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const handleClose = () => {
@@ -22,7 +27,7 @@ const MobileNav = () => {
                         onClick={handleClose}
                         className='absolute top-2 end-2 cursor-pointer'
                     />
-                    <MobileNavContent />
+                    <MobileNavContent lang={lang} handleClose={handleClose} />
                 </Card>
             </div>
         </div>
