@@ -4,7 +4,7 @@ import Theme from './Theme';
 import LocaleSwitcher from './LocaleSwitcher';
 import { LangParam } from '@/types';
 import { getDictionaryClient } from '@/utils/getDictionaryClient';
-import MobileNav from '@/components/shared/navbar/MobileNav';
+import MobileNav from './mobileNav';
 import NavbarLink from './NavbarLink';
 import AuthButton from './AuthButton';
 import { useState } from 'react';
@@ -47,7 +47,7 @@ const Navbar = ({ params: { lang } }: LangParam) => {
                         lang={lang}
                     />
                 </div>
-                <MobileNav lang={lang} />
+                <MobileNav />
             </nav>
         </div>
     );
