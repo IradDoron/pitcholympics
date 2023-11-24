@@ -1,7 +1,8 @@
-import { useState } from 'react';
 import CloseIcon from '@/components/icons/closeIcon';
-import MobileNavTrigger from './MobileNavTrigger';
 import Card from '@core/card';
+import { useState } from 'react';
+import MobileNavContent from './MobileNavContent';
+import MobileNavTrigger from './MobileNavTrigger';
 
 const MobileNav = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -21,7 +22,7 @@ const MobileNav = () => {
                         onClick={handleClose}
                         className='absolute top-2 end-2 cursor-pointer'
                     />
-                    Mobile Nav
+                    <MobileNavContent />
                 </Card>
             </div>
         </div>
