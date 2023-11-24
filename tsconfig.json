@@ -23,7 +23,8 @@
         "paths": {
             "@/*": ["*"],
             "@core/*": ["components/core/*"],
-            "@shared/*": ["components/shared/*"]
+            "@shared/*": ["components/shared/*"],
+            "@icons/*": ["components/icons/*"]
         }
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
