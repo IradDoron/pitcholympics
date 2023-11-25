@@ -3,12 +3,13 @@ import {
     IconProps,
     Matrix,
     SidebarLink,
-    ThemeModeDragEvent,
+    // ThemeModeDragEvent,
 } from '@/types';
 import SunIcon from '@/components/icons/sunIcon';
 import MoonIcon from '@/components/icons/moonIcon/MoonIcon';
 import GearIcon from '@/components/icons/gearIcon';
 import { MatrixAsaf } from '@/types';
+import { ThemeMode } from '@/types';
 
 export const LANGS_FULL_NAMES = {
     en: 'English',
