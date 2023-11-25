@@ -1,6 +1,9 @@
+'use client';
+
 import { closestCenter, DndContext } from '@dnd-kit/core';
 import {
     arrayMove,
+    horizontalListSortingStrategy,
     SortableContext,
     //useSortable,
     verticalListSortingStrategy,
@@ -79,6 +82,7 @@ function setInitialMatrix() {
 
 const InitialMatrix1 = setInitialMatrix();
 const InitialMatrix2 = setInitialMatrix();
+const InitialMatrix3 = setInitialMatrix();
 
 /**
  * Flip the matrix (flip it horizontally - left to right)
@@ -103,6 +107,7 @@ const MemoGame = () => {
     const [cards, setCards] = useState<Matrix[]>([
         InitialMatrix1,
         InitialMatrix2,
+        InitialMatrix3,
     ]);
 
     const onDragEnd = (e: Props) => {
@@ -119,19 +124,17 @@ const MemoGame = () => {
     };
 
     return (
-        <div>
-            <DndContext
-                collisionDetection={closestCenter}
-                onDragEnd={onDragEnd}>
+        <DndContext collisionDetection={closestCenter} onDragEnd={onDragEnd}>
+            <div className='flex justify-center gap-4 bg-red-200 w-auto mt-44'>
                 <SortableContext
                     items={cards}
-                    strategy={verticalListSortingStrategy}>
+                    strategy={horizontalListSortingStrategy}>
                     {cards.map(card => (
                         <SortableCard key={card.id} card={card} />
                     ))}
                 </SortableContext>
-            </DndContext>
-        </div>
+            </div>
+        </DndContext>
     );
 };
 export default MemoGame;

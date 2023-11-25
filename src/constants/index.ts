@@ -33,10 +33,12 @@ function setColorsMatrix() {
     const rows = 8;
     const columns = 4;
     const letters = ['C', 'B', 'A', 'G', 'F', 'E', 'D', 'C'];
-    let colorsMatrix: Matrix = [];
+    //let colorsMatrix: Matrix = [];
+    let colorsMatrix: Matrix = { id: Math.random(), data: [] };
 
     for (let i = 0; i < rows; i++) {
-        colorsMatrix.push(
+        //colorsMatrix.push(
+        colorsMatrix.data.push(
             Array(columns).fill({
                 note: letters[i],
                 isActive: true,

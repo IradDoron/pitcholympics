@@ -1,15 +1,13 @@
-import {
-    SortableContext,
-    horizontalListSortingStrategy,
-    useSortable,
-} from '@dnd-kit/sortable';
+'use client';
+
+import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { Matrix, Colors } from '@/types';
 import { useState } from 'react';
 import { colorsTemplateMatrix } from '@/constants';
 import MemoBlocksCard from './MemoBlocksCard';
-import { MatrixCell } from '@/types';
-import { type } from 'os';
+//import { MatrixCell } from '@/types';
+//import { type } from 'os';
 
 type Props = {
     card: Matrix;
@@ -47,7 +45,7 @@ const SortableCard = ({ card }: Props) => {
 
     function mirrorMatrix(matrix: Matrix) {
         const refMatrix = colorsTemplateMatrix;
-        const copyMatrix: Matrix = { id: Math.random(), data: matrix.data };
+        let copyMatrix: Matrix = { id: Math.random(), data: [] };
         const rows = refMatrix.data.length;
         const cols = refMatrix.data[0].length;
         for (let i = 0; i < rows; i++) {
@@ -66,7 +64,8 @@ const SortableCard = ({ card }: Props) => {
     }
 
     function flipMatrix(matrix: Matrix) {
-        const copyMatrix: Matrix = { id: Math.random(), data: matrix.data };
+        const copyMatrix: Matrix = { id: Math.random(), data: [] };
+        console.log('copyMatrix ', copyMatrix);
         const rows = matrix.data.length;
         const cols = matrix.data[0].length;
         for (let i = 0; i < rows; i++) {
@@ -79,18 +78,12 @@ const SortableCard = ({ card }: Props) => {
         return copyMatrix;
     }
 
-    // const colors: Colors = {
-    //     C: 'bg-green-400',
-    //     B: 'bg-yellow-400',
-    //     A: 'bg-red-400',
-    //     G: 'bg-purple-400',
-    //     F: 'bg-blue-600',
-    //     E: 'bg-blue-400',
-    //     D: 'bg-green-600',
-    // };
-
     const handleCellClick = (rowIndex: number, colIndex: number) => {
         // on click cell hear the sound
+    };
+
+    const test = () => {
+        console.log('egfef');
     };
 
     return (
@@ -101,29 +94,21 @@ const SortableCard = ({ card }: Props) => {
             {...listeners}
             //className='card'
         >
-            <div
-                style={{
-                    backgroundColor: 'lightcoral',
-                    padding: '10px',
-                    display: 'inline-block',
-                    border: '1px solid black',
-                    width: '40px',
-                    margin: '1px',
-                }}>
-                <div className='h-screen flex items-center justify-center'>
-                    <MemoBlocksCard matrix={matrix} />
-                    <div className='flex-row gap-0 justify-center items-center'>
-                        <button
-                            className='m-3 w-16 h-10 rounded-full bg-dark-background-onDefault text-dark-background-default'
-                            onClick={() => setMatrix(mirrorMatrix(matrix))}>
-                            Mirror
-                        </button>
-                        <button
-                            className='m-3 w-16 h-10 rounded-full bg-dark-background-onDefault text-dark-background-defau'
-                            onClick={() => setMatrix(flipMatrix(matrix))}>
-                            Flip
-                        </button>
-                    </div>
+            <div className='h-auto flex flex-col items-center justify-center z-10'>
+                <MemoBlocksCard matrix={matrix} />
+                <div className='flex-row gap-0 justify-center items-center'>
+                    <button
+                        className='m-3 w-16 h-10 rounded-full bg-dark-background-onDefault text-dark-background-default'
+                        // onClick replaced with onMouseDown - onClick was overwriten by dnd kit listeners
+                        onMouseDown={() => setMatrix(mirrorMatrix(matrix))}>
+                        Mirror
+                    </button>
+                    <button
+                        className='m-3 w-16 h-10 rounded-full bg-dark-background-onDefault text-dark-background-defau'
+                        // onClick replaced with onMouseDown - onClick was overwriten by dnd kit listeners
+                        onMouseDown={() => setMatrix(flipMatrix(matrix))}>
+                        Flip
+                    </button>
                 </div>
             </div>
         </div>
