@@ -10,42 +10,38 @@ export const reduceClasses = (classes: string) => {
     // Remove all empty strings
     const filteredClassesArray = classesArray.filter(c => c !== '');
 
-    // Reverse the array
-    const reversedClassesArray = filteredClassesArray.reverse();
-
     // Create empty dictionary
     const classesDictionary: { [key: string]: string } = {};
 
-    // Loop through the array and add the classes to the dictionary if they don't exist
-    reversedClassesArray.forEach(c => {
-        // Split the class into key and value by the first '-' if it exists
-        const splitClass = c.split('-');
-        const key = splitClass[0];
-        const value = splitClass.slice(1).join('-');
+    for (let i = filteredClassesArray.length - 1; i >= 0; i--) {
+        const currentClass = filteredClassesArray[i];
 
-        // If the key doesn't exist, add it to the dictionary
-        if (!classesDictionary[key]) {
-            classesDictionary[key] = value;
-            return;
-        }
-    });
+        const currentClassSplit = currentClass.split('-');
 
-    // Create empty string
-    let reducedClasses = '';
+        const classSplitLength = currentClassSplit.length;
+        const key =
+            classSplitLength === 1
+                ? `_${currentClassSplit[0]}`
+                : currentClassSplit[0];
 
-    // Loop through the dictionary and add the classes to the string
-    for (const key in classesDictionary) {
-        const value = classesDictionary[key];
-        if (value === '') {
-            reducedClasses += `${key} `;
-            continue;
-        }
-        reducedClasses += `${key}-${classesDictionary[key]} `;
+        const value =
+            classSplitLength === 1 ? '' : currentClassSplit.slice(1).join('-');
+
+        classesDictionary[key] = value;
     }
 
-    // Remove the last space
-    reducedClasses = reducedClasses.trim();
+    let classesString = '';
 
-    // Return the reduced classes
-    return reducedClasses;
+    for (const key in classesDictionary) {
+        // Handle keys that start with an underscore
+
+        if (key.startsWith('_')) {
+            const newKey = key.replace('_', '');
+            classesString += `${newKey} `;
+        } else {
+            classesString += `${key}-${classesDictionary[key]} `;
+        }
+    }
+
+    return classesString;
 };
