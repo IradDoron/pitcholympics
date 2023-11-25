@@ -100,7 +100,7 @@ const Card = ({
     const customClass = getCustomClass(className);
     const defaultClasses = 'rounded-lg flex items-center justify-center';
 
-    const classesString = `${shadowClass} ${backgroundClass} ${borderClass} ${wrapClass} ${widthClass} ${customClass} ${defaultClasses}`;
+    const classesString = `${shadowClass} ${backgroundClass} ${borderClass} ${wrapClass} ${widthClass} ${defaultClasses} ${customClass}`;
 
     const reducedClasses = reduceClasses(classesString);
 
