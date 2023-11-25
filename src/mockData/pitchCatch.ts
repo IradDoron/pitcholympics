@@ -337,34 +337,34 @@ const pitchCatchData: PitchCatchGame = [
                 userOptions: [
                     ['F5','A#5'],
                     ['F5','B5'],
-                    ['F5','D6'],
+                    ['F4','D5'],
                 ]
             },{
                 currPitch: ['G5','B5'],
                 userOptions: [
                     ['G5','B5'],
                     ['G5','A5'],
-                    ['G5','A#6'],
+                    ['G4','A#4'],
                 ]
             },{
                 currPitch: ['A5','B5'],
                 userOptions: [
                     ['G#5','B5'],
                     ['F5','B5'],
-                    ['B5','D6'],
+                    ['B5','D4'],
                 ]
             },{
                 currPitch: ['A4','C5'],
                 userOptions: [
                     ['A4','C5'],
                     ['G5','B5'],
-                    ['B5','D6'],
+                    ['B5','D4'],
                 ]
             },{
                 currPitch: ['G#5','B5'],
                 userOptions: [
                     ['A#5','C5'],
-                    ['G5','C6'],
+                    ['G5','C4'],
                     ['G#5','B5'],
                 ]
             },{
@@ -417,7 +417,7 @@ const pitchCatchData: PitchCatchGame = [
                 userOptions: [
                     ['D5','B5'],
                     ['G5','D5'],
-                    ['G5','D6'],
+                    ['G4','D5'],
                 ]
             },{
                 currPitch: ['G5','B5'],
@@ -431,7 +431,7 @@ const pitchCatchData: PitchCatchGame = [
                 userOptions: [
                     ['A5','C5'],
                     ['G4','C4'],
-                    ['B5','D6'],
+                    ['B4','D5'],
                 ]
             },{
                 currPitch: ['G#5','B5'],
@@ -444,7 +444,7 @@ const pitchCatchData: PitchCatchGame = [
                 currPitch: ['C#5','E5'],
                 userOptions: [
                     ['C#5','E5'],
-                    ['C5','E6'],
+                    ['C4','E5'],
                     ['C#5','A#5'],
                 ]
             },
