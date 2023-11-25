@@ -3,17 +3,24 @@
 import achievements from '@/mockData/achievements';
 import users from '@/mockData/users';
 import AchievementCard from './AchievementCard';
+import ComingSoonSection from '@/components/shared/comingSoonSection';
+import { Locale } from '@/i18n.config';
 
-const Achievements = () => {
+type Props = {
+    lang: Locale;
+};
+
+const Achievements = ({ lang }: Props) => {
     const user = users[0]; // TODO: get user from context
     const userAchievements = user.achievements;
 
     return (
         <>
-            <h1 className='mt-2 p-2 text-center text-lg font-inter font-bold text-light-background-onDefault dark:text-dark-background-onDefault'>
+            <h1 className='mt-2 p-2 text-center text-xl font-inter font-bold text-light-background-onDefault dark:text-dark-background-onDefault'>
                 Achievements
             </h1>
-            {Object.keys(userAchievements).map(achievementId => {
+            <ComingSoonSection lang={lang} />
+            {/* {Object.keys(userAchievements).map(achievementId => {
                 const achievement = achievements.find(
                     achievement => achievement.id === achievementId,
                 );
@@ -29,7 +36,7 @@ const Achievements = () => {
                         achievement={achievement}
                     />
                 );
-            })}
+            })} */}
         </>
     );
 };

@@ -95,14 +95,14 @@ const SortableCard = ({ card }: Props) => {
                 <div className='flex-row gap-0 justify-center items-center'>
                     <button
                         className='m-3 w-16 h-10 rounded-full bg-dark-background-onDefault text-dark-background-default'
-                        // onClick replaced with onMouseDown - onClick was overwriten by dnd kit listeners
-                        onMouseDown={() => setMatrix(mirrorMatrix(matrix))}>
+                        // onClick replaced with onPointerDown - onClick was overwriten by dnd kit listeners
+                        onPointerDown={() => setMatrix(mirrorMatrix(matrix))}>
                         Mirror
                     </button>
                     <button
                         className='m-3 w-16 h-10 rounded-full bg-dark-background-onDefault text-dark-background-defau'
-                        // onClick replaced with onMouseDown - onClick was overwriten by dnd kit listeners
-                        onMouseDown={() => setMatrix(flipMatrix(matrix))}>
+                        // onClick replaced with onPointerDown - onClick was overwriten by dnd kit listeners
+                        onPointerDown={() => setMatrix(flipMatrix(matrix))}>
                         Flip
                     </button>
                 </div>

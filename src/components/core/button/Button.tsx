@@ -31,7 +31,7 @@ const Button = ({
             case 'default':
                 return 'bg-light-primary-main dark:bg-dark-primary-main text-light-primary-contrastText dark:text-dark-primary-contrastText';
             case 'disabled':
-                return 'bg-grey-A00 dark:bg-grey-300 text-light-background-onDefault dark:text-dark-background-onDefault cursor-not-allowed';
+                return 'bg-grey-A00 dark:bg-grey-300 text-grey-100 dark:text-dark-background-onDefault cursor-not-allowed';
             default:
                 return 'bg-light-primary-main dark:bg-dark-primary-main text-light-primary-contrastText dark:text-dark-primary-contrastText';
         }
@@ -42,7 +42,7 @@ const Button = ({
     return (
         <button
             onClick={onClick}
-            className={`bg-light-primary-main dark:bg-dark-primary-main text-light-primary-contrastText dark:text-dark-primary-contrastText rounded-[12px] ${buttonSize} ${buttonColor}`}>
+            className={` shadow-large-light dark:shadow-large-dark rounded-[12px] ${buttonSize} ${buttonColor}`}>
             {label}
         </button>
     );

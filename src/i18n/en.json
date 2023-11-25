@@ -8,6 +8,17 @@
                 "title": "About page"
             }
         },
+        "profile": {
+            "gender": "Gender",
+            "genderOptions": {
+                "male": "Male",
+                "female": "Female"
+            },
+            "email": "Email",
+            "locale": "Locale",
+            "timeZone": "Time Zone",
+            "submitButton": "Save changes"
+        },
         "contact": {
             "page": {
                 "title": "Contact page"
@@ -22,7 +33,12 @@
                 "titleComplete": "Complete!",
                 "titleCompleteLevel": "level",
                 "dataScoreLevel": "Xp"
-            }
+            },
+            "startMelody": "Start the Melody",
+            "checkGuess": "Check Guess"
+        },
+        "pitch-catch": {
+            "submitButton": "This is the Pitch"
         },
         "game-result-page": {
             "actionButtonLabel": "Next Level",
@@ -52,6 +68,7 @@
         }
     },
     "shared": {
+        "comingSoonSection": "Coming Soon",
         "gameLevelsLinks": {
             "StageTitle": "Stage"
         },
@@ -59,33 +76,15 @@
             "pages": {
                 "home": "Home",
                 "stats": "Stats",
-                "about": "About",
-                "contact": "Contact"
+                "about": "About"
             },
             "title": "Page",
             "MobileNav": {
-                "sidebarLinks": [
-                    {
-                        "imgURL": "/assets/icons/sun.svg",
-                        "route": "/",
-                        "label": "Home"
-                    },
-                    {
-                        "imgURL": "/assets/icons/sun.svg",
-                        "route": "/stats",
-                        "label": "Stats"
-                    },
-                    {
-                        "imgURL": "/assets/icons/sun.svg",
-                        "route": "/about",
-                        "label": "About"
-                    },
-                    {
-                        "imgURL": "/assets/icons/sun.svg",
-                        "route": "/contact",
-                        "label": "Contact"
-                    }
-                ]
+                "sidebarLinks": {
+                    "home": "Home",
+                    "stats": "Stats",
+                    "about": "About"
+                }
             }
         },
         "LocaleSwitcher": {

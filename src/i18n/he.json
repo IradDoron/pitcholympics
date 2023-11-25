@@ -1,95 +1,94 @@
 {
-	"app": {
-		"page": {
-			"title": "דף בית"
-		},
-		"about": {
-			"page": {
-				"title": "אודות"
-			}
-		},
-		"contact": {
-			"page": {
-				"title": "צור קשר"
-			}
-		},
-		"memo-the-melo": {
-			"page": {
-				"title": "test"
-			},
-			"result": {
-				"actionButtonLabel": "לשלב הבא",
-				"titleComplete": "הושלמה",
-				"titleCompleteLevel": "רמה",
-				"dataScoreLevel": "נקודות"
-			}
-		},
-		"game-result-page": {
-			"actionButtonLabel": "לשלב הבא",
-			"titleComplete": "הושלמה",
-			"titleCompleteLevel": "רמה",
-			"dataScoreLevel": "נקודות",
-			"titleForFailed": " אופס לא עברת את ",
-			"titleForFailedLevel": "רמה",
-			"tryAgainButtonLabel": "נסה שוב"
-		},
-		"stats": {
-			"page": {
-				"title": "סטטיסטיקה",
-				"resources": {
-					"title": "משאבים",
-					"coins": "מטבעות",
-					"gems": "יהלומים",
-					"musicalTreasures": "אוצרות מוזיקליים"
-				},
-				"gamesStats": {
-					"title": "נתוני משחקים",
-					"memoTheMeloGames": "Memo The Melo Games",
-					"pitchCatchGames": "Pitch Catch Games",
-					"totalGamesPlayed": "סך משחקים ששוחקו"
-				}
-			}
-		}
-	},
-	"shared": {
-		"gameLevelsLinks": {
-			"StageTitle": "רמה"
-		},
-		"navbar": {
-			"pages": {
-				"home": "בית",
-				"stats": "סטטיסטיקה",
-				"about": "אודות",
-				"contact": "צור קשר"
-			},
-			"title": "עמוד",
-			"MobileNav": {
-				"sidebarLinks": [
-					{
-						"imgURL": "/assets/icons/sun.svg",
-						"route": "/",
-						"label": "בית"
-					},
-					{
-						"imgURL": "/assets/icons/sun.svg",
-						"route": "/stats",
-						"label": "סטטיסטיקה"
-					},
-					{
-						"imgURL": "/assets/icons/sun.svg",
-						"route": "/about",
-						"label": "עלינו"
-					},
-					{
-						"imgURL": "/assets/icons/sun.svg",
-						"route": "/contact",
-						"label": "צרו קשר"
-					}
-				]
-			}
-		},
-		"LocaleSwitcher": {
-			"Language": "שפה"
-		}
-	}
+    "app": {
+        "page": {
+            "title": "דף בית"
+        },
+        "about": {
+            "page": {
+                "title": "אודות"
+            }
+        },
+        "profile": {
+            "gender": "מין",
+            "genderOptions": {
+                "male": "זכר",
+                "female": "נקבה"
+            },
+            "email": "אימייל",
+            "locale": "שפה",
+            "timeZone": "אזור זמן",
+            "submitButton": "שמור שינויים"
+        },
+        "contact": {
+            "page": {
+                "title": "צור קשר"
+            }
+        },
+        "memo-the-melo": {
+            "page": {
+                "title": "test"
+            },
+            "result": {
+                "actionButtonLabel": "לשלב הבא",
+                "titleComplete": "הושלמה",
+                "titleCompleteLevel": "רמה",
+                "dataScoreLevel": "נקודות"
+            },
+            "startMelody": "להשמיע את המנגינה",
+            "checkGuess": "לבדוק את הניחוש"
+        },
+        "pitch-catch": {
+            "submitButton": "זה הצליל"
+        },
+        "game-result-page": {
+            "actionButtonLabel": "לשלב הבא",
+            "titleComplete": "הושלמה",
+            "titleCompleteLevel": "רמה",
+            "dataScoreLevel": "נקודות",
+            "titleForFailed": " אופס לא עברת את ",
+            "titleForFailedLevel": "רמה",
+            "tryAgainButtonLabel": "נסה שוב"
+        },
+        "stats": {
+            "page": {
+                "title": "סטטיסטיקה",
+                "resources": {
+                    "title": "משאבים",
+                    "coins": "מטבעות",
+                    "gems": "יהלומים",
+                    "musicalTreasures": "אוצרות מוזיקליים"
+                },
+                "gamesStats": {
+                    "title": "נתוני משחקים",
+                    "memoTheMeloGames": "Memo The Melo Games",
+                    "pitchCatchGames": "Pitch Catch Games",
+                    "totalGamesPlayed": "סך משחקים ששוחקו"
+                }
+            }
+        }
+    },
+    "shared": {
+        "comingSoonSection": "מגיע בקרוב",
+        "gameLevelsLinks": {
+            "StageTitle": "רמה"
+        },
+        "navbar": {
+            "pages": {
+                "home": "בית",
+                "stats": "סטטיסטיקה",
+                "about": "אודות"
+            },
+            "title": "עמוד",
+            "MobileNav": {
+                "sidebarLinks": {
+                    "home": "בית",
+                    "stats": "סטטיסטיקות",
+                    "about": "אודות"
+                }
+            }
+        },
+        "LocaleSwitcher": {
+            "Language": "שפה"
+        }
+    }
 }
