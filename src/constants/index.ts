@@ -38,7 +38,7 @@ function setColorsMatrix() {
     const columns = 4;
     const letters = ['C', 'B', 'A', 'G', 'F', 'E', 'D', 'C'];
     //let colorsMatrix: Matrix = [];
-    let colorsMatrix: Matrix = { id: Math.random(), data: [] };
+    let colorsMatrix: Matrix = { id: crypto.randomUUID(), data: [] };
 
     for (let i = 0; i < rows; i++) {
         //colorsMatrix.push(
