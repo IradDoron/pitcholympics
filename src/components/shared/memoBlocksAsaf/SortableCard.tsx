@@ -2,19 +2,19 @@
 
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { Matrix, Colors } from '@/types';
+import { MatrixAsaf, Colors } from '@/types';
 import { useState } from 'react';
-import { colorsTemplateMatrix } from '@/constants';
+import { colorsTemplateMatrixAsaf } from '@/constants';
 import MemoBlocksCard from './MemoBlocksCard';
 //import { MatrixCell } from '@/types';
 //import { type } from 'os';
 
 type Props = {
-    card: Matrix;
+    card: MatrixAsaf;
 };
 
 const SortableCard = ({ card }: Props) => {
-    const [matrix, setMatrix] = useState<Matrix>(setInitialMatrix);
+    const [matrix, setMatrix] = useState<MatrixAsaf>(setInitialMatrix);
     const { attributes, listeners, setNodeRef, transform, transition } =
         useSortable({ id: card.id });
     const style = {
@@ -23,7 +23,7 @@ const SortableCard = ({ card }: Props) => {
     };
 
     function setInitialMatrix() {
-        const initialMatrix: Matrix = {
+        const initialMatrix: MatrixAsaf = {
             id: crypto.randomUUID(),
             data: Array(8).fill(Array(4).fill({ note: 'D', isActive: false })),
         };
@@ -43,9 +43,9 @@ const SortableCard = ({ card }: Props) => {
         return initialMatrix;
     }
 
-    function mirrorMatrix(matrix: Matrix) {
-        const refMatrix = colorsTemplateMatrix;
-        const copyMatrix: Matrix = { id: crypto.randomUUID(), data: [] };
+    function mirrorMatrix(matrix: MatrixAsaf) {
+        const refMatrix = colorsTemplateMatrixAsaf;
+        const copyMatrix: MatrixAsaf = { id: crypto.randomUUID(), data: [] };
         const rows = refMatrix.data.length;
         const cols = refMatrix.data[0].length;
         for (let i = 0; i < rows; i++) {
@@ -63,8 +63,8 @@ const SortableCard = ({ card }: Props) => {
         return copyMatrix;
     }
 
-    function flipMatrix(matrix: Matrix) {
-        const copyMatrix: Matrix = { id: crypto.randomUUID(), data: [] };
+    function flipMatrix(matrix: MatrixAsaf) {
+        const copyMatrix: MatrixAsaf = { id: crypto.randomUUID(), data: [] };
         console.log('copyMatrix ', copyMatrix);
         const rows = matrix.data.length;
         const cols = matrix.data[0].length;

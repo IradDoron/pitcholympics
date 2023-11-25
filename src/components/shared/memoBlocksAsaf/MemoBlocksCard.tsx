@@ -1,8 +1,8 @@
-import { Matrix } from '@/types';
+import { MatrixAsaf } from '@/types';
 import MemoBlocksMatCell from '../memoBlocks/MemoBlocksCell';
 import PlayIcon from '@/components/icons/playIcon';
 type Props = {
-    matrix: Matrix; // matrix of the card (8x4), each cell is a contains a note and isActive & isTied flags
+    matrix: MatrixAsaf; // matrix of the card (8x4), each cell is a contains a note and isActive & isTied flags
 };
 const MemoBlocksCard = ({ matrix }: Props) => {
     // const melody: MemoBlockCardMelody ; // TODO: get the melody by the matrix active notes

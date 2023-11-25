@@ -6,8 +6,8 @@ export type MatrixCell = {
     isTied: boolean;
 };
 
-//export type Matrix = MatrixCell[][]; // changed to the line below
-export type Matrix = { id: string; data: MatrixCell[][] };
+export type Matrix = MatrixCell[][]; // changed to the line below
+export type MatrixAsaf = { id: string; data: MatrixCell[][] };
 export type Colors = Record<Notes, string>;
 
 export type MemoBlockCardNote = {

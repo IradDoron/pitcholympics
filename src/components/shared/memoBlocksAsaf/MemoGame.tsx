@@ -7,7 +7,8 @@ import {
     SortableContext,
 } from '@dnd-kit/sortable';
 import { useState } from 'react';
-import { Matrix } from '@/types';
+//import { Matrix } from '@/types';
+import { MatrixAsaf } from '@/types';
 import SortableCard from './SortableCard';
 
 type Props = {
@@ -33,7 +34,7 @@ type Props = {
 };
 
 function setInitialMatrix() {
-    const initialMatrix: Matrix = {
+    const initialMatrix: MatrixAsaf = {
         id: crypto.randomUUID(),
         data: Array(8).fill(Array(4).fill({ note: 'D', isActive: false })),
     };
@@ -64,7 +65,7 @@ const InitialMatrix3 = setInitialMatrix();
  */
 
 const MemoGame = () => {
-    const [cards, setCards] = useState<Matrix[]>([
+    const [cards, setCards] = useState<MatrixAsaf[]>([
         InitialMatrix1,
         InitialMatrix2,
         InitialMatrix3,
