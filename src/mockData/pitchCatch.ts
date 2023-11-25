@@ -229,7 +229,228 @@ const pitchCatchData: PitchCatchGame = [
                 ],
             },
         ],
-    ],
+    ],[
+        [
+            {
+                currPitch: ['C4','G4'],
+                userOptions: [
+                    ['C4','G4'],
+                    ['D4','F4'],
+                    ['A4','C4'],
+                ]
+            },   {
+                currPitch: ['A#4','A4'],
+                userOptions: [
+                    ['A#4','B4'],
+                    ['A#4','C5'],
+                    ['A#4','A4'],
+                ]
+            }, {
+                currPitch: ['B5','A5'],
+                userOptions: [
+                    ['A5','B5'],
+                    ['A#5','C5'],
+                    ['B5','A5'],
+                ]
+            },{
+                currPitch: ['B5','A5'],
+                userOptions: [
+                    ['A5','B5'],
+                    ['A#5','C5'],
+                    ['B5','A5'],
+                ]
+            },{
+                currPitch: ['F5','A5'],
+                userOptions: [
+                    ['A5','C5'],
+                    ['F5','A5'],
+                    ['B5','D6'],
+                ]
+            },{
+                currPitch: ['G5','B5'],
+                userOptions: [
+                    ['G5','B5'],
+                    ['F5','G5'],
+                    ['B5','D6'],
+                ]
+            },{
+                currPitch: ['F5','B5'],
+                userOptions: [
+                    ['G#5','B5'],
+                    ['F5','B5'],
+                    ['B5','D6'],
+                ]
+            },{
+                currPitch: ['A5','B5'],
+                userOptions: [
+                    ['A5','B5'],
+                    ['G5','B5'],
+                    ['B5','D6'],
+                ]
+            },{
+                currPitch: ['G#5','B5'],
+                userOptions: [
+                    ['A5','B5'],
+                    ['G5','C6'],
+                    ['G#5','B5'],
+                ]
+            },{
+                currPitch: ['C#5','B5'],
+                userOptions: [
+                    ['F5','B5'],
+                    ['C5','A#5'],
+                    ['C#5','B5'],
+                ]
+            },
+
+        ],  [
+            {
+                currPitch: ['A4','F4'],
+                userOptions: [
+                    ['C4','E4'],
+                    ['D4','G4'],
+                    ['A4','F4'],
+                ]
+            },   {
+                currPitch: ['A#4','A5'],
+                userOptions: [
+                    ['A4','B5'],
+                    ['A#4','C5'],
+                    ['A#4','A5'],
+                ]
+            }, {
+                currPitch: ['C5','A5'],
+                userOptions: [
+                    ['D5','F5'],
+                    ['C5','A5'],
+                    ['B5','A5'],
+                ]
+            },{
+                currPitch: ['B4','A5'],
+                userOptions: [
+                    ['B4','B5'],
+                    ['A5','C5'],
+                    ['B4','A5'],
+                ]
+            },{
+                currPitch: ['F5','B5'],
+                userOptions: [
+                    ['F5','A#5'],
+                    ['F5','B5'],
+                    ['F4','D5'],
+                ]
+            },{
+                currPitch: ['G5','B5'],
+                userOptions: [
+                    ['G5','B5'],
+                    ['G5','A5'],
+                    ['G4','A#4'],
+                ]
+            },{
+                currPitch: ['A5','B5'],
+                userOptions: [
+                    ['G#5','B5'],
+                    ['F5','B5'],
+                    ['B5','D4'],
+                ]
+            },{
+                currPitch: ['A4','C5'],
+                userOptions: [
+                    ['A4','C5'],
+                    ['G5','B5'],
+                    ['B5','D4'],
+                ]
+            },{
+                currPitch: ['G#5','B5'],
+                userOptions: [
+                    ['A#5','C5'],
+                    ['G5','C4'],
+                    ['G#5','B5'],
+                ]
+            },{
+                currPitch: ['C5','E5'],
+                userOptions: [
+                    ['F5','G5'],
+                    ['C5','E5'],
+                    ['C#5','A#5'],
+                ]
+            },
+
+        ],[
+            {
+                currPitch: ['G5','E5'],
+                userOptions: [
+                    ['G5','E5'],
+                    ['E4','G4'],
+                    ['C4','F4'],
+                ]
+            },   {
+                currPitch: ['A#4','G5'],
+                userOptions: [
+                    ['A4','B5'],
+                    ['A#4','C5'],
+                    ['A#4','G5'],
+                ]
+            }, {
+                currPitch: ['C5','B5'],
+                userOptions: [
+                    ['D5','F5'],
+                    ['C5','A5'],
+                    ['C5','B5'],
+                ]
+            },{
+                currPitch: ['C4','A5'],
+                userOptions: [
+                    ['B4','F5'],
+                    ['A5','F5'],
+                    ['C4','A5'],
+                ]
+            },{
+                currPitch: ['E5','B5'],
+                userOptions: [
+                    ['F5','A5'],
+                    ['E5','B5'],
+                    ['F5','D6'],
+                ]
+            },{
+                currPitch: ['D5','B5'],
+                userOptions: [
+                    ['D5','B5'],
+                    ['G5','D5'],
+                    ['G4','D5'],
+                ]
+            },{
+                currPitch: ['G5','B5'],
+                userOptions: [
+                    ['G5','B6'],
+                    ['F5','B5'],
+                    ['G5','B5'],
+                ]
+            },{
+                currPitch: ['A5','C5'],
+                userOptions: [
+                    ['A5','C5'],
+                    ['G4','C4'],
+                    ['B4','D5'],
+                ]
+            },{
+                currPitch: ['G#5','B5'],
+                userOptions: [
+                    ['A#5','C5'],
+                    ['A4','C4'],
+                    ['G#5','B5'],
+                ]
+            },{
+                currPitch: ['C#5','E5'],
+                userOptions: [
+                    ['C#5','E5'],
+                    ['C4','E5'],
+                    ['C#5','A#5'],
+                ]
+            },
+
+        ]
+    ]
 ];
 
 export default pitchCatchData;
