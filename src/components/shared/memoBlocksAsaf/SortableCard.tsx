@@ -24,7 +24,7 @@ const SortableCard = ({ card }: Props) => {
 
     function setInitialMatrix() {
         const initialMatrix: Matrix = {
-            id: Math.random(),
+            id: crypto.randomUUID(),
             data: Array(8).fill(Array(4).fill({ note: 'D', isActive: false })),
         };
 
@@ -45,7 +45,7 @@ const SortableCard = ({ card }: Props) => {
 
     function mirrorMatrix(matrix: Matrix) {
         const refMatrix = colorsTemplateMatrix;
-        let copyMatrix: Matrix = { id: Math.random(), data: [] };
+        const copyMatrix: Matrix = { id: crypto.randomUUID(), data: [] };
         const rows = refMatrix.data.length;
         const cols = refMatrix.data[0].length;
         for (let i = 0; i < rows; i++) {
@@ -64,7 +64,7 @@ const SortableCard = ({ card }: Props) => {
     }
 
     function flipMatrix(matrix: Matrix) {
-        const copyMatrix: Matrix = { id: Math.random(), data: [] };
+        const copyMatrix: Matrix = { id: crypto.randomUUID(), data: [] };
         console.log('copyMatrix ', copyMatrix);
         const rows = matrix.data.length;
         const cols = matrix.data[0].length;
@@ -80,10 +80,6 @@ const SortableCard = ({ card }: Props) => {
 
     const handleCellClick = (rowIndex: number, colIndex: number) => {
         // on click cell hear the sound
-    };
-
-    const test = () => {
-        console.log('egfef');
     };
 
     return (

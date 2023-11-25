@@ -7,7 +7,7 @@ export type MatrixCell = {
 };
 
 //export type Matrix = MatrixCell[][]; // changed to the line below
-export type Matrix = { id: number; data: MatrixCell[][] };
+export type Matrix = { id: string; data: MatrixCell[][] };
 export type Colors = Record<Notes, string>;
 
 export type MemoBlockCardNote = {
@@ -19,6 +19,28 @@ export type MemoBlockCardNote = {
 export type Coordinate = {
     row: number;
     col: number;
+};
+
+export type DragEvent = {
+    activatorEvent: PointerEvent;
+    active: {
+        id: string;
+        data: any;
+        rect: any;
+    };
+    collisions: any[];
+    delta: {
+        x: number;
+        y: number;
+        scaleX: number;
+        scaleY: number;
+    };
+    over: {
+        id: string;
+        rect: any;
+        data: any;
+        disabled: boolean;
+    };
 };
 
 export type MemoBlockCardMelody = MemoBlockCardNote[];

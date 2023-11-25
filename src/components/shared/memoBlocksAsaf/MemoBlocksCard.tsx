@@ -1,5 +1,4 @@
-import React, { Suspense } from 'react';
-import { Matrix, MemoBlockCardMelody } from '@/types';
+import { Matrix } from '@/types';
 import MemoBlocksMatCell from '../memoBlocks/MemoBlocksCell';
 import PlayIcon from '@/components/icons/playIcon';
 type Props = {
