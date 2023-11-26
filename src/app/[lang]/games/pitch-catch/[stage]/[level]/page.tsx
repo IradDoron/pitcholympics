@@ -31,6 +31,7 @@ const getLevelData = (
 const Page = ({ params }: Props) => {
     const [useChoiceIndex, setChoiceIndex] = useState<number | null>(null);
     const [currQuestion, setCurrQuestion] = useState(1);
+    const [playCount, setPlayCount] = useState(0);
     const { stage, level, lang } = params;
     const { data: session } = useSession();
     const currentLevel = getLevelData(stage, level, pitchCatchData);
@@ -101,12 +102,14 @@ const Page = ({ params }: Props) => {
 
     const handleWin = () => {
         updateDbWin();
+        setPlayCount(0);
         const scoreWinning = params.stage + params.level * 2;
         localStorage.setItem('score', scoreWinning.toString());
         handleEndLevel(stage, level, lang, 'pitch-catch', 'win', router);
     };
     const handleLose = () => {
         updateDbLose();
+        setPlayCount(0);
         localStorage.setItem('score', '0');
         handleEndLevel(stage, level, lang, 'pitch-catch', 'lose', router);
     };
@@ -117,6 +120,7 @@ const Page = ({ params }: Props) => {
                 return false;
             }
         }
+        setPlayCount(0);
         return true;
     }
 
@@ -158,14 +162,17 @@ const Page = ({ params }: Props) => {
                     totalSteps={currentLevel.length}
                 />
             </div>
-            <PitchButton pitches={currentLevel[currQuestion - 1].currPitch} />
+            <PitchButton
+                pitches={currentLevel[currQuestion - 1].currPitch}
+                playCount={playCount}
+                setPlayCount={setPlayCount}
+            />
             <UserOptions
                 pitches={currentLevel[currQuestion - 1].userOptions}
                 useChoiceIndex={useChoiceIndex}
                 setChoiceIndex={setChoiceIndex}
             />
             <Button label={submitButton} onClick={handleCheckMeClick} />
-      
         </div>
     );
 };
