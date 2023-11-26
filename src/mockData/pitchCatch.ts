@@ -449,6 +449,79 @@ const pitchCatchData: PitchCatchGame = [
                 ]
             },
 
+        ],[
+            {
+                currPitch: ['E4','C4'],
+                userOptions: [
+                    ['E4','C4'],
+                    ['E4','A4'],
+                    ['E4','A#4'],
+                ]
+            },   {
+                currPitch: ['A3','G4'],
+                userOptions: [
+                    ['A4','C5'],
+                    ['G#4','C5'],
+                    ['A3','G4'],
+                ]
+            }, {
+                currPitch: ['C#4','B4'],
+                userOptions: [
+                    ['D4','B4'],
+                    ['C#4','A4'],
+                    ['C#4','B4'],
+                ]
+            },{
+                currPitch: ['C3','G#4'],
+                userOptions: [
+                    ['B4','F4'],
+                    ['A3','F3'],
+                    ['C3','G#4'],
+                ]
+            },{
+                currPitch: ['E4','A4'],
+                userOptions: [
+                    ['F4','A4'],
+                    ['E4','A4'],
+                    ['F4','D4'],
+                ]
+            },{
+                currPitch: ['D#4','A4'],
+                userOptions: [
+                    ['D#4','A4'],
+                    ['G4','D4'],
+                    ['G4','D4'],
+                ]
+            },{
+                currPitch: ['A4','C4'],
+                userOptions: [
+                    ['G3','B4'],
+                    ['A4','C4'],
+                    ['G3','B3'],
+                ]
+            },{
+                currPitch: ['C3','C4'],
+                userOptions: [
+                    ['A3','C3'],
+                    ['C3','C4'],
+                    ['B3','D4'],
+                ]
+            },{
+                currPitch: ['G#4','B4'],
+                userOptions: [
+                    ['A#5','C5'],
+                    ['A4','C4'],
+                    ['G#4','B4'],
+                ]
+            },{
+                currPitch: ['A#4','E4'],
+                userOptions: [
+                    ['C#3','E3'],
+                    ['C4','E4'],
+                    ['A#4','E4'],
+                ]
+            },
+
         ]
     ]
 ];
