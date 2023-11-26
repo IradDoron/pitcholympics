@@ -165,8 +165,7 @@ const Page = ({ params }: Props) => {
                 setChoiceIndex={setChoiceIndex}
             />
             <Button label={submitButton} onClick={handleCheckMeClick} />
-            {/* <Button label='Debug Win' onClick={handleWin} />
-            <Button label='Debug Lose' onClick={handleLose} /> */}
+      
         </div>
     );
 };

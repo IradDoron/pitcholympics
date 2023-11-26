@@ -5,13 +5,17 @@ type Props = {
 };
 
 const PitchButton = ({ pitches }: Props) => {
+    const [plays, setPlays] = React.useState(0);
     function handleClick() {
+      if(plays > 2) return;
         const synth = new Tone.PolySynth(Tone.Synth).toDestination();
         const now = Tone.now();
         pitches.forEach((pitch, index) => {
             synth.triggerAttack(pitch.toString(), now + index / 2);
         });
         synth.triggerRelease(pitches, now + pitches.length / 2);
+        setPlays(() => plays + 1);
+      
     }
 
     return (
