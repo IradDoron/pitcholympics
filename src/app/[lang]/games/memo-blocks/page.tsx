@@ -1,8 +1,8 @@
 import GameLevelsLinks from '@/components/shared/gameLevelsLinks';
-import MemoBlock from '@/components/shared/memoBlocks/MemoBlock';
 import memoTheMeloMockData from '@/mockData/memoTheMelo';
 import { LangParam } from '@/types';
 import { getDictionaryServer } from '@/utils/getDictionaryServer';
+import MemoGame from '@/components/shared/memoBlocksAsaf/MemoGame';
 
 const Page = async ({ params: { lang } }: LangParam) => {
     const dict = await getDictionaryServer(lang);
@@ -11,7 +11,7 @@ const Page = async ({ params: { lang } }: LangParam) => {
     return (
         <>
             {/* <GameLevelsLinks levelsData={memoTheMeloMockData} baseUrl={`/${lang}/memo-blocks`} /> */}
-            <MemoBlock />
+            <MemoGame />
             {/* <MemoBlockIrad initialCoordinates={initialCoordinates} /> */}
         </>
     );
