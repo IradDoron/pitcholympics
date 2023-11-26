@@ -15,7 +15,7 @@ const PitchButton = ({ pitches }: Props) => {
         });
         synth.triggerRelease(pitches, now + pitches.length / 2);
         setPlays(() => plays + 1);
-        console.log(plays);
+      
     }
 
     return (
