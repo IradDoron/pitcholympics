@@ -8,8 +8,11 @@ import {
 } from '@dnd-kit/sortable';
 import { useState } from 'react';
 //import { Matrix } from '@/types';
-import { MatrixAsaf } from '@/types';
+import { MatrixWithId } from '@/types';
 import SortableCard from './SortableCard';
+import { levelOneCards } from '@/mockData/memo-blocks';
+import { parseTable } from '@/lib/utils';
+import MemoBlocksCard from '../memoBlocks/MemoBlocksCard';
 
 type Props = {
     activatorEvent: PointerEvent;
@@ -33,30 +36,6 @@ type Props = {
     };
 };
 
-function setInitialMatrix() {
-    const initialMatrix: MatrixAsaf = {
-        id: crypto.randomUUID(),
-        data: Array(8).fill(Array(4).fill({ note: 'D', isActive: false })),
-    };
-
-    initialMatrix.data[1] = [
-        { note: 'D', isActive: false, isTied: false },
-        { note: 'D', isActive: false, isTied: false },
-        { note: 'D', isActive: true, isTied: false },
-        { note: 'D', isActive: false, isTied: false },
-    ];
-    initialMatrix.data[2] = [
-        { note: 'C', isActive: true, isTied: false },
-        { note: 'C', isActive: false, isTied: false },
-        { note: 'C', isActive: true, isTied: false },
-        { note: 'C', isActive: false, isTied: false },
-    ];
-    return initialMatrix;
-}
-
-const InitialMatrix1 = setInitialMatrix();
-const InitialMatrix2 = setInitialMatrix();
-const InitialMatrix3 = setInitialMatrix();
 
 /**
  * Flip the matrix (flip it horizontally - left to right)
@@ -65,33 +44,33 @@ const InitialMatrix3 = setInitialMatrix();
  */
 
 const MemoGame = () => {
-    const [cards, setCards] = useState<MatrixAsaf[]>([
-        InitialMatrix1,
-        InitialMatrix2,
-        InitialMatrix3,
-    ]);
+    const [levelCards, setLevelCards] = useState<MatrixWithId[]>(levelOneCards.map(table => parseTable(table)));
+    const [guessCards, setGuessCards] = useState<MatrixWithId[]>(levelOneCards.map(table => parseTable(table)));
 
     const onDragEnd = (DragEvent: Props) => {
         const { active, over } = DragEvent;
         if (active.id === over.id) {
             return;
         }
-        setCards(cards => {
-            const oldIndex = cards.findIndex(card => card.id === active.id);
-            const newIndex = cards.findIndex(card => card.id === over.id);
+        setGuessCards(cards => {
+            const oldIndex = cards.findIndex(card => card.id === active?.id);
+            const newIndex = cards.findIndex(card => card.id === over?.id);
             return arrayMove(cards, oldIndex, newIndex);
         });
     };
 
     return (
-        <div className=' flex justify-center gap-4 border-2 border-solid border-black w-auto mt-44'>
+        <div className='grid grid-cols-4 gap-6 justify-center  border-2 border-solid border-black w-auto mt-44'>
+            {levelCards.map(card => (
+                <MemoBlocksCard key={card.id} matrix={card.data} />
+            ))}
             <DndContext
                 collisionDetection={closestCenter}
                 onDragEnd={onDragEnd}>
                 <SortableContext
-                    items={cards}
+                    items={guessCards}
                     strategy={horizontalListSortingStrategy}>
-                    {cards.map(card => (
+                    {guessCards.map(card => (
                         <SortableCard key={card.id} card={card} />
                     ))}
                 </SortableContext>
