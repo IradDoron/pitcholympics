@@ -9,7 +9,7 @@ import {
 import { useEffect, useState } from 'react';
 import { MatrixWithId } from '@/types';
 import SortableCard from './SortableCard';
-import { levelOneCards } from '@/mockData/memoBlocksGame';
+import { levelOneCards } from '@/mockData/memoBlocks';
 import { parseTable } from '@/lib/utils';
 import MemoBlocksCard from './MemoBlocksCard';
 import { FlipHorizontal2Icon, FlipVertical2Icon, Loader } from 'lucide-react';
