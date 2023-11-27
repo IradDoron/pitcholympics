@@ -6,15 +6,17 @@ import { MatrixWithId, Colors } from '@/types';
 import { useState } from 'react';
 import { colorsTemplateMatrix } from '@/constants';
 import MemoBlocksCard from './MemoBlocksCard';
-import { levelOneCards } from '@/mockData/memo-blocks';
+import { levelOneCards } from '@/mockData/memoBlocks';
 import { parseTable } from '@/lib/utils';
 import { FlipHorizontal2Icon, FlipVertical2Icon } from 'lucide-react';
 
 type Props = {
     card: MatrixWithId;
+    isActive: boolean;
+    onClick: () => void;
 };
 
-const SortableCard = ({ card }: Props) => {
+const SortableCard = ({ card, isActive , onClick }: Props) => {
     const [matrix, setMatrix] = useState<MatrixWithId>(card);
     const { attributes, listeners, setNodeRef, transform, transition } =
         useSortable({ id: card.id });
@@ -22,6 +24,7 @@ const SortableCard = ({ card }: Props) => {
         transition,
         transform: CSS.Transform.toString(transform),
     };
+    const activeEffect = isActive ? 'border-2 rounded-lg border-blue-500' : 'border-2 rounded-lg';
 
     function setInitialMatrix() {
         return parseTable(levelOneCards[0]);
@@ -60,20 +63,17 @@ const SortableCard = ({ card }: Props) => {
         return copyMatrix;
     }
 
-    const handleCellClick = (rowIndex: number, colIndex: number) => {
-        // on click cell hear the sound
-    };
-
     return (
         <div
             ref={setNodeRef}
             style={style}
             {...attributes}
             {...listeners}
-            //className='card'
         >
-            <div className='h-auto items-center justify-center z-10 max-w-[240px]'>
-                <MemoBlocksCard matrix={matrix} />
+            <div className={'h-full items-center justify-center max-w-[240px]'} onPointerDown={onClick}>
+                <div className={activeEffect || ''}>
+                    <MemoBlocksCard matrix={matrix.data}/>
+                </div>
                 <div className='flex-row gap-0 justify-center items-center'>
                     <button
                         className='m-3 w-16 h-10 rounded-full bg-dark-background-onDefault text-dark-background-default'

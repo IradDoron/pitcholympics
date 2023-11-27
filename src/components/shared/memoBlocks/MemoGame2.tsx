@@ -7,14 +7,13 @@ import {
     SortableContext,
 } from '@dnd-kit/sortable';
 import { useState } from 'react';
-//import { Matrix } from '@/types';
 import { MatrixWithId } from '@/types';
 import SortableCard from './SortableCard';
-import { levelOneCards } from '@/mockData/memo-blocks';
+import { levelOneCards } from '@/mockData/memoBlocks';
 import { parseTable } from '@/lib/utils';
-import MemoBlocksCard from '../memoBlocks/MemoBlocksCard';
+import MemoBlocksCard from './MemoBlocksCard';
 
-type Props = {
+type DragEventType = {
     activatorEvent: PointerEvent;
     active: {
         id: string;
@@ -44,10 +43,18 @@ type Props = {
  */
 
 const MemoGame = () => {
-    const [levelCards, setLevelCards] = useState<MatrixWithId[]>(levelOneCards.map(table => parseTable(table)));
     const [guessCards, setGuessCards] = useState<MatrixWithId[]>(levelOneCards.map(table => parseTable(table)));
+    const [activeMatrixId, setActiveMatrixId] = useState<string>(guessCards[0].id);
+    
+    const levelCards = levelOneCards.map(table => parseTable(table));
+    const activeMatrix = guessCards.find(m => m.id === activeMatrixId)!;
 
-    const onDragEnd = (DragEvent: Props) => {
+  function changeMatrix(matrix: MatrixWithId) {
+    const newMatrixes = [...guessCards];
+    newMatrixes.find(m => m.id === matrix.id)!.data = matrix.data;
+    setGuessCards(newMatrixes);
+  }
+    const onDragEnd = (DragEvent: DragEventType) => {
         const { active, over } = DragEvent;
         if (active.id === over.id) {
             return;
@@ -60,9 +67,9 @@ const MemoGame = () => {
     };
 
     return (
-        <div className='grid grid-cols-4 gap-6 justify-center  border-2 border-solid border-black w-auto mt-44'>
+        <div className='scale-75 grid grid-cols-4 gap-6 justify-center max-w-fit self-center items-center mt-10'>
             {levelCards.map(card => (
-                <MemoBlocksCard key={card.id} matrix={card.data} />
+                    <MemoBlocksCard key={`levelCard#${card.id}`} matrix={card.data} disabled/>
             ))}
             <DndContext
                 collisionDetection={closestCenter}
@@ -70,8 +77,13 @@ const MemoGame = () => {
                 <SortableContext
                     items={guessCards}
                     strategy={horizontalListSortingStrategy}>
-                    {guessCards.map(card => (
-                        <SortableCard key={card.id} card={card} />
+                    {guessCards.map((card) => (
+                        <SortableCard
+                            key={card.id}
+                            card={card} 
+                            isActive={card.id === activeMatrixId}
+                            onClick={() => setActiveMatrixId(card.id)}
+                            />
                     ))}
                 </SortableContext>
             </DndContext>

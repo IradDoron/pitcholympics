@@ -1,3 +1,3 @@
 import MemoBlock from "./MemoBlock";
 
-export default MemoBlock
+export default MemoBlock;
