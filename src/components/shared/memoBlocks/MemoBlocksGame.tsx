@@ -12,9 +12,8 @@ import SortableCard from './SortableCard';
 import { levelOneCards } from '@/mockData/memoBlocks';
 import { parseTable } from '@/lib/utils';
 import MemoBlocksCard from './MemoBlocksCard';
-import { FlipHorizontal2Icon, FlipVertical2Icon } from 'lucide-react';
-import { colorsTemplateMatrix } from '@/constants';
-
+import { FlipHorizontal2Icon, FlipVertical2Icon, Loader } from 'lucide-react';
+import { flipMatrix, mirrorMatrix } from './utils';
 
 type DragEventType = {
     activatorEvent: PointerEvent;
@@ -38,41 +37,6 @@ type DragEventType = {
     };
 };
 
-function mirrorMatrix(matrix: MatrixWithId) {
-    if (!matrix) return;
-    const refMatrix = colorsTemplateMatrix;
-    const copyMatrix: MatrixWithId = { id: matrix.id, data: [] };
-    const rows = refMatrix.length;
-    const cols = refMatrix[0].length;
-    for (let i = 0; i < rows; i++) {
-        copyMatrix.data.push([]);
-        for (let j = 0; j < cols; j++) {
-            if (!matrix.data[rows - 1 - i][j].isActive)
-                copyMatrix.data[i].push({
-                    note: refMatrix[i][j].note,
-                    isActive: false,
-                    isTied: false,
-                });
-            else copyMatrix.data[i].push(refMatrix[i][j]);
-        }
-    }
-    return copyMatrix;
-}
-
-function flipMatrix(matrix: MatrixWithId) {
-    if (!matrix) return;
-    const copyMatrix: MatrixWithId = { id: matrix.id, data: [] };
-    const rows = matrix.data.length;
-    const cols = matrix.data[0].length;
-    for (let i = 0; i < rows; i++) {
-        copyMatrix.data.push([]);
-        for (let j = 0; j < cols; j++) {
-            copyMatrix.data[i].push(matrix.data[i][cols - 1 - j]);
-        }
-    }
-    return copyMatrix;
-}
-
 const setInitialMatrixes = () => {
     function scrambleMatrix(matrix: MatrixWithId) {
         const [flip, mirror] = [Math.random() > 0.5, Math.random() > 0.5];
@@ -91,6 +55,7 @@ const setInitialMatrixes = () => {
 };
 
 const MemoBlocksGame = () => {
+    const [isLoading, setIsLoading] = useState<boolean>(true);
     const [guessCards, setGuessCards] = useState<MatrixWithId[]>([]);
     const [activeMatrixId, setActiveMatrixId] = useState<string>('');
     const levelCards = levelOneCards.map(table => parseTable(table));
@@ -98,6 +63,7 @@ const MemoBlocksGame = () => {
 
     useEffect(() => {
         setGuessCards(setInitialMatrixes());
+        setIsLoading(false);
     }, []);
 
     function changeMatrix(matrix: MatrixWithId | undefined) {
@@ -120,6 +86,8 @@ const MemoBlocksGame = () => {
     };
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        event.preventDefault();
+        event.stopPropagation();
         if (['ArrowLeft', 'ArrowRight', 'F', 'f'].includes(event.key)) {
             changeMatrix(mirrorMatrix(activeMatrix));
         }
@@ -127,12 +95,15 @@ const MemoBlocksGame = () => {
             changeMatrix(flipMatrix(activeMatrix));
         }
         else if (event.key === 'Tab') {
-            event.preventDefault();
             const activeIndex = guessCards.findIndex(card => card.id === activeMatrixId);
             const nextIndex = (activeIndex + 1) % guessCards.length;
             setActiveMatrixId(guessCards[nextIndex].id);
         }
-    }
+    };
+
+
+    if (isLoading)
+        return <Loader color='green' />;
 
     return (
         <div className='flex flex-col gap-5 items-center justify-center mt-3' onKeyDown={handleKeyDown}>
