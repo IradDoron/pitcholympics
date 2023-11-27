@@ -3,8 +3,18 @@ import GameProgress from '@/components/shared/stats/gamesProgress';
 import { LangParam } from '@/types';
 import Achievements from '@/components/shared/stats/achievements';
 import PageFiller from '@/components/shared/pageFiller';
+import { getServerSession } from 'next-auth';
 
-const Page = ({ params: { lang } }: LangParam) => {
+const Page = async ({ params: { lang } }: LangParam) => {
+    const session = await getServerSession();
+    if (!session)
+        return (
+            <div>
+                <PageFiller />
+                <p className='text-center text-xl text-light-background-onDefault dark:text-dark-background-onDefault'>You need to be logged in to see this page</p>
+            </div>
+        );
+
     return (
         <div>
             <PageFiller />
@@ -17,5 +27,6 @@ const Page = ({ params: { lang } }: LangParam) => {
         </div>
     );
 };
+
 
 export default Page;
