@@ -16,7 +16,7 @@ const Navbar = ({ params: { lang } }: LangParam) => {
     const { pages } = dict.shared.navbar;
 
     return (
-        <div className='flex flex-row justify-center '>
+        <div className='flex flex-row justify-center z-50'>
             <nav className='grid grid-cols-3 p-2 fixed w-full bg-light-background-defaultBlur dark:bg-dark-background-defaultBlur '>
                 <div className='flex justify-self-start px-10'>
                     <LocaleSwitcher params={{ lang }} />

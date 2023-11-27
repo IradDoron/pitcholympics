@@ -6,8 +6,16 @@ export type MatrixCell = {
     isTied: boolean;
 };
 
+export enum NoteStatus {
+  'EMPTY',
+  'ACTIVE',
+  'TIED',
+};
+
+export type MemoBlocksDataTable = NoteStatus[][];
+
 export type Matrix = MatrixCell[][]; // changed to the line below
-export type MatrixAsaf = { id: string; data: MatrixCell[][] };
+export type MatrixWithId = { id: string; data: Matrix };
 export type Colors = Record<Notes, string>;
 
 export type MemoBlockCardNote = {
