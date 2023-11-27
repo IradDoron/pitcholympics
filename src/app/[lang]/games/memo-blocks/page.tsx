@@ -1,7 +1,7 @@
 
 import { LangParam } from '@/types';
 import { getDictionaryServer } from '@/utils/getDictionaryServer';
-import MemoGame from '@/components/shared/memoBlocks/MemoGame2';
+import MemoBlocksGame from '@/components/shared/memoBlocks';
 
 const Page = async ({ params: { lang } }: LangParam) => {
     const dict = await getDictionaryServer(lang);
@@ -9,7 +9,7 @@ const Page = async ({ params: { lang } }: LangParam) => {
 
     return (
         <div className='h-full flex justify-center items-center'>
-            <MemoGame />
+            <MemoBlocksGame />
         </div>
     );
 };

@@ -42,7 +42,7 @@ type DragEventType = {
  * @returns
  */
 
-const MemoGame = () => {
+const MemoBlocksGame = () => {
     const [guessCards, setGuessCards] = useState<MatrixWithId[]>(levelOneCards.map(table => parseTable(table)));
     const [activeMatrixId, setActiveMatrixId] = useState<string>(guessCards[0].id);
     
@@ -90,4 +90,4 @@ const MemoGame = () => {
         </div>
     );
 };
-export default MemoGame;
+export default MemoBlocksGame;
