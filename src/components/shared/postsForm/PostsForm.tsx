@@ -3,7 +3,7 @@ import PageFiller from '../pageFiller/PageFiller';
 
 const PostsForm = () => {
     return (
-        <div className='flex flex-col h-full border-2 border-red-500 border-solid justify-center items-center gap-5'>
+        <div className='flex flex-col h-full justify-center items-center gap-5'>
             <PageFiller />
             <input
                 type='text'
