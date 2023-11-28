@@ -9,7 +9,7 @@ const Page = ({ params: { lang } }: LangParam) => {
         <>
         <PostsForm/>
         <PostsContainer>
-         <PostPage/>
+         <PostPage article='heyyy' picSrc='' paragraph='it is awesomeee'/>
         </PostsContainer>
         
         </>
