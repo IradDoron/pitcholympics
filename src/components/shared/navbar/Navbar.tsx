@@ -40,6 +40,18 @@ const Navbar = ({ params: { lang } }: LangParam) => {
                             label={pages.stats}
                         />
                     </li>
+                    <li>
+                        <NavbarLink
+                            url={`/${lang}/library`}
+                            label={pages.library}
+                        />
+                    </li>
+                    <li>
+                        <NavbarLink
+                            url={`/${lang}/suggestions`}
+                            label={pages.suggestions}
+                        />
+                    </li>
                 </ul>
                 <div className='flex justify-self-end pe-10 relative'>
                     <AuthButton

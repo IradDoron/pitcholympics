@@ -76,7 +76,9 @@
             "pages": {
                 "home": "בית",
                 "stats": "סטטיסטיקה",
-                "about": "אודות"
+                "about": "אודות",
+                "suggestions": "הצעות",
+                "library": "ספרייה"
             },
             "title": "עמוד",
             "MobileNav": {

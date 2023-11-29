@@ -5,7 +5,6 @@ export type LibraryContentBase = {
     imageURL: string;
     tags: string[];
     mainSubject: string;
-    subSubjects: string[];
 };
 
 export { type LibraryContentArticle } from './libraryContentArticle';
