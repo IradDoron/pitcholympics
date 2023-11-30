@@ -2,13 +2,11 @@ import {
     Colors,
     IconProps,
     Matrix,
-    SidebarLink,
     // ThemeModeDragEvent,
 } from '@/types';
 import SunIcon from '@/components/icons/sunIcon';
 import MoonIcon from '@/components/icons/moonIcon/MoonIcon';
 import GearIcon from '@/components/icons/gearIcon';
-import { MatrixWithId } from '@/types';
 import { ThemeMode } from '@/types';
 
 export const LANGS_FULL_NAMES = {
@@ -41,12 +39,12 @@ export const ICON_COLORS = {
     tertiary: 'fill-light-tertiary-main dark:fill-dark-tertiary-main',
 };
 
-function setColorsMatrix() : Matrix {
+function setColorsMatrix(): Matrix {
     const rows = 8;
     const columns = 4;
     const letters = ['C', 'B', 'A', 'G', 'F', 'E', 'D', 'C'];
-    let colorsMatrix: Matrix = [];
-    
+    const colorsMatrix: Matrix = [];
+
     for (let i = 0; i < rows; i++) {
         //colorsMatrix.push(
         colorsMatrix.push(

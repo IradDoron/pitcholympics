@@ -88,10 +88,10 @@ const MemoBlocksGame = () => {
     const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
         event.preventDefault();
         event.stopPropagation();
-        if (['ArrowLeft', 'ArrowRight', 'F', 'f'].includes(event.key)) {
+        if (['ArrowUp', 'ArrowDown', 'F', 'f'].includes(event.key)) {
             changeMatrix(mirrorMatrix(activeMatrix));
         }
-        else if (['ArrowUp', 'ArrowDown', 'M', 'm'].includes(event.key)) {
+        else if (['ArrowLeft', 'ArrowRight', 'M', 'm'].includes(event.key)) {
             changeMatrix(flipMatrix(activeMatrix));
         }
         else if (event.key === 'Tab') {

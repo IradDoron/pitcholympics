@@ -7,9 +7,15 @@ export type MatrixCell = {
 };
 
 export enum NoteStatus {
-  'EMPTY',
-  'ACTIVE',
-  'TIED',
+    'EMPTY',
+    'ACTIVE',
+    'TIED',
+};
+
+export type CellInfo = {
+    row: number;
+    col: number;
+    value: NoteStatus;
 };
 
 export type MemoBlocksDataTable = NoteStatus[][];
