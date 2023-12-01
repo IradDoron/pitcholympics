@@ -1,7 +1,7 @@
 import { IconProps } from '@/types';
 import { ICON_COLORS, ICON_SIZES } from '@/constants';
 
-const HamburgerIcon = ({
+export const HamburgerIcon = ({
     color = 'primary',
     size = 'medium',
     className = '',

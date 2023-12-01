@@ -1,7 +1,10 @@
 import { IconProps } from '@/types';
 import { ICON_COLORS, ICON_SIZES } from '@/constants';
 
-const GithubLogo = ({ color = 'primary', size = 'medium' }: IconProps) => {
+export const GithubLogo = ({
+    color = 'primary',
+    size = 'medium',
+}: IconProps) => {
     return (
         <svg
             width='800px'
@@ -28,5 +31,3 @@ const GithubLogo = ({ color = 'primary', size = 'medium' }: IconProps) => {
         </svg>
     );
 };
-
-export default GithubLogo;

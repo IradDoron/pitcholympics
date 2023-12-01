@@ -1,7 +1,7 @@
 import { IconProps } from '@/types';
 import { ICON_COLORS, ICON_SIZES } from '@/constants';
 
-const MoonIcon = ({ color = 'primary', size = 'medium' }: IconProps) => {
+export const MoonIcon = ({ color = 'primary', size = 'medium' }: IconProps) => {
     const iconSize = ICON_SIZES[size];
     const iconColor = ICON_COLORS[color];
     const iconClasses = `${iconSize} ${iconColor}`;
@@ -18,5 +18,3 @@ const MoonIcon = ({ color = 'primary', size = 'medium' }: IconProps) => {
         </svg>
     );
 };
-
-export default MoonIcon;

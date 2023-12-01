@@ -1,7 +1,7 @@
 import { IconProps } from '@/types';
 import { ICON_COLORS, ICON_SIZES } from '@/constants';
 
-const GearIcon = ({ color = 'primary', size = 'medium' }: IconProps) => {
+export const GearIcon = ({ color = 'primary', size = 'medium' }: IconProps) => {
     return (
         <svg
             viewBox='0 0 20 20'
@@ -15,5 +15,3 @@ const GearIcon = ({ color = 'primary', size = 'medium' }: IconProps) => {
         </svg>
     );
 };
-
-export default GearIcon;
