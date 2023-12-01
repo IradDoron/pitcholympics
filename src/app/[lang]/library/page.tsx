@@ -1,7 +1,11 @@
+import LibraryFilter from '@/components/shared/libraryFilter/LibraryFilter';
+import { useState } from 'react';
+
 const Page = () => {
+  
     return (
         <div>
-            <h1>Library page</h1>
+            <LibraryFilter   />
         </div>
     );
 };
