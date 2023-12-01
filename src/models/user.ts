@@ -33,8 +33,13 @@ const UserSchema = new Schema({
                 '1_1': 'locked',
             },
         },
-
         pitchCatch: {
+            type: Map,
+            default: {
+                '1_1': 'locked',
+            },
+        },
+        memoBlocks: {
             type: Map,
             default: {
                 '1_1': 'locked',
