@@ -4,7 +4,7 @@ type Props = {
     size: IconProps['size'];
 };
 
-const VMark = ({ size = 'medium' }: Props) => {
+export const XMark = ({ size = 'medium' }: Props) => {
     const sizes = {
         small: 'w-[112px] h-[18px]',
         medium: 'w-[130px] h-[25px]',
@@ -26,5 +26,3 @@ const VMark = ({ size = 'medium' }: Props) => {
         </svg>
     );
 };
-
-export default VMark;

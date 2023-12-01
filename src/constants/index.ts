@@ -5,29 +5,12 @@ import {
     SidebarLink,
     // ThemeModeDragEvent,
 } from '@/types';
-import SunIcon from '@/components/icons/sunIcon';
-import MoonIcon from '@/components/icons/moonIcon/MoonIcon';
-import GearIcon from '@/components/icons/gearIcon';
 import { MatrixWithId } from '@/types';
 import { ThemeMode } from '@/types';
-
 export const LANGS_FULL_NAMES = {
     en: 'English',
     he: 'עברית',
 };
-
-type ThemesObject = {
-    value: ThemeMode;
-    label: string;
-    // eslint-disable-next-line no-unused-vars
-    icon: ({ color, size }: IconProps) => JSX.Element;
-};
-
-export const themes = [
-    { value: 'light', label: 'Light', icon: SunIcon },
-    { value: 'dark', label: 'Dark', icon: MoonIcon },
-    { value: 'system', label: 'System', icon: GearIcon },
-] as ThemesObject[];
 
 export const ICON_SIZES = {
     small: 'w-6 h-6',
@@ -41,12 +24,12 @@ export const ICON_COLORS = {
     tertiary: 'fill-light-tertiary-main dark:fill-dark-tertiary-main',
 };
 
-function setColorsMatrix() : Matrix {
+function setColorsMatrix(): Matrix {
     const rows = 8;
     const columns = 4;
     const letters = ['C', 'B', 'A', 'G', 'F', 'E', 'D', 'C'];
     let colorsMatrix: Matrix = [];
-    
+
     for (let i = 0; i < rows; i++) {
         //colorsMatrix.push(
         colorsMatrix.push(

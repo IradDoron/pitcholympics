@@ -1,11 +1,11 @@
 import { IconProps } from '@/types';
 import { ICON_COLORS, ICON_SIZES } from '@/constants';
 
-const CloseIcon = ({
+export const CloseIcon = ({
     color = 'primary',
     size = 'medium',
     onClick,
-    className
+    className,
 }: IconProps) => {
     return (
         <svg
@@ -25,5 +25,3 @@ const CloseIcon = ({
         </svg>
     );
 };
-
-export default CloseIcon;
