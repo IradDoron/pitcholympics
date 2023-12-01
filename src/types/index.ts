@@ -29,7 +29,7 @@ export type SidebarLink = {
 
 export type Game = {
     name: GameNames;
-    game: MemoTheMeloGame | PitchCatchGame | MemoBlocksGame;
+    game: MemoTheMeloGame | PitchCatchGame;
 };
 
 export type ThemeMode = 'light' | 'dark' | 'system';
