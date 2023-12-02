@@ -2,7 +2,6 @@ import { FilterObject } from '@/types';
 import Button from '@/components/core/button';
 import Input from '@/components/core/input/Input';
 
-
 type Props = {
     filterButtons: FilterObject;
     setFilterButtons: React.Dispatch<React.SetStateAction<FilterObject>>;
