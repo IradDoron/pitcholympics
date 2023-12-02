@@ -52,10 +52,9 @@ const Input = ({
             placeholder={placeholder}
             onChange={onChange}
             type={type}
-            className={`${inputSize } ${inputColor }`}
+            className={`${inputSize} ${inputColor}`}
         />
     );
 };
 
 export default Input;
-//why every component have index.ts

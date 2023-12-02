@@ -1,36 +1,29 @@
-'use client';
-
+import { FilterObject } from '@/types';
 import Button from '@/components/core/button';
 import Input from '@/components/core/input/Input';
-import { useState } from 'react';
 
-interface LibraryFilterProps {
-    filters: { label: string; isOn: boolean }[];
-}
-//how the tailwind knbw when its darl
-const LibraryFilter = () => {
-    const [inputValue, setInputValue] = useState('');
-    const [filterButtons, setFilterButtons] = useState([
-        { label: 'Module', isOn: false },
-        { label: 'Article', isOn: false },
-        { label: 'Book', isOn: false },
-        { label: 'Course', isOn: false },
-        { label: 'Test', isOn: false },
-        { label: 'Post', isOn: false },
-    ]);
-    const handleValueChange = (value: string) => {
-        setInputValue(value);
-    };
-    const handleFilterOn = (clicked: any) => {
-        setFilterButtons(prevFilterButtons => {
-            return prevFilterButtons.map(filterButton => {
-                if (filterButton.label === clicked) {
-                    return { ...filterButton, isOn: !filterButton.isOn };
-                }
-                return filterButton;
-            });
+
+type Props = {
+    filterButtons: FilterObject;
+    setFilterButtons: React.Dispatch<React.SetStateAction<FilterObject>>;
+    inputValue: string;
+    setInputValue: React.Dispatch<React.SetStateAction<string>>;
+};
+const LibraryFilter = ({
+    filterButtons,
+    setFilterButtons,
+    inputValue,
+    setInputValue,
+}: Props) => {
+    const handleButtonClick = (value: string) => {
+        setFilterButtons(prevFilterObject => {
+            return { ...prevFilterObject, [value]: !prevFilterObject[value] };
         });
     };
+    const handleInputChange = (value: string) => {
+        setInputValue(value);
+    };
+
     const handleSearch = () => {
         console.log('search');
         //search on click or just search on every input and filter change
@@ -41,10 +34,11 @@ const LibraryFilter = () => {
             <div className='flex space-x-3'>
                 <Input
                     value={inputValue}
-                    onChange={(e: any) => handleValueChange(e.target.value)}
+                    onChange={(e: any) => handleInputChange(e.target.value)}
                     placeholder='Filter by name'
                     size='small'
                 />
+
                 <Button
                     label='Search'
                     onClick={() => handleSearch()}
@@ -52,13 +46,13 @@ const LibraryFilter = () => {
                 />
             </div>
             <div className='grid grid-cols-3 gap-3 md:w-64 '>
-                {filterButtons.map(filter => (
+                {Object.keys(filterButtons).map(key => (
                     <Button
-                        state={!filter.isOn ? 'default' : 'clicked'}
+                        state={filterButtons[key] ? 'clicked' : 'default'}
                         size='small'
-                        label={filter.label}
-                        onClick={(e: any) => {
-                            handleFilterOn(e.target.textContent!);
+                        label={key}
+                        onClick={() => {
+                            handleButtonClick(key);
                         }}
                     />
                 ))}
