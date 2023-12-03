@@ -1,6 +1,12 @@
 import { Locale } from '@/i18n.config';
 import { GameNames } from '.';
 import { StaticImageData } from 'next/image';
+import { MemoTheMeloGame, PitchCatchGame } from './games';
+
+
+export type FilterObject = {
+    [key: string]: boolean;
+};
 
 export type LangParam = {
     params: { lang: Locale };
@@ -26,29 +32,9 @@ export type SidebarLink = {
     label: string;
 };
 
-export type MemoTheMeloLevel = {
-    pitchOptions: string[];
-    melody: number[];
-};
-
 export type Game = {
     name: GameNames;
     game: MemoTheMeloGame | PitchCatchGame;
-};
-
-export type MemoTheMeloStage = MemoTheMeloLevel[];
-
-export type MemoTheMeloGame = MemoTheMeloStage[];
-
-export type PitchCatchLevel = PitchCatchQuestion[];
-
-export type PitchCatchStage = PitchCatchLevel[];
-
-export type PitchCatchGame = PitchCatchStage[];
-
-export type PitchCatchQuestion = {
-    currPitch: string[];
-    userOptions: string[][];
 };
 
 export type ThemeMode = 'light' | 'dark' | 'system';
@@ -83,4 +69,4 @@ export type MainColorCategories = 'primary' | 'secondary' | 'tertiary';
 export * from './gameItems';
 export * from './achievements';
 export * from './gameLogic';
-export * from './memo-blocks';
+export * from './games';

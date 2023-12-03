@@ -76,7 +76,9 @@
             "pages": {
                 "home": "Home",
                 "stats": "Stats",
-                "about": "About"
+                "about": "About",
+                "suggestions": "Suggestions",
+                "library": "Library"
             },
             "title": "Page",
             "MobileNav": {

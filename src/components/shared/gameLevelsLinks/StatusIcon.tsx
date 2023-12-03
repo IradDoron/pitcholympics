@@ -2,8 +2,7 @@
 
 import { useTheme } from '@/context/ThemeProvider';
 import Image from 'next/image';
-import VMark from '@/components/icons/vMark';
-import XMark from '@/components/icons/xMark';
+import { VMark, XMark } from '@icons';
 
 type Props = {
     status: 'passed' | 'failed' | 'locked' | 'pending';
