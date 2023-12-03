@@ -1,10 +1,12 @@
+import { DOMAttributes, MouseEventHandler } from "react";
+
 type BtnSize = 'small' | 'medium' | 'large';
 
 type Props = {
     label: string;
-    onClick: () => void;
+    onClick: MouseEventHandler<HTMLButtonElement>;
     size?: BtnSize;
-    state?: 'default' | 'disabled';
+    state?: 'default' | 'disabled' | 'clicked';
 };
 
 const Button = ({
@@ -26,12 +28,14 @@ const Button = ({
         }
     };
 
-    const getColor = (state: 'default' | 'disabled') => {
+    const getColor = (state: 'default' | 'disabled' | 'clicked') => {
         switch (state) {
             case 'default':
                 return 'bg-light-primary-main dark:bg-dark-primary-main text-light-primary-contrastText dark:text-dark-primary-contrastText';
             case 'disabled':
                 return 'bg-grey-A00 dark:bg-grey-300 text-grey-100 dark:text-dark-background-onDefault cursor-not-allowed';
+            case 'clicked':
+                return 'bg-green-A00 dark:bg-green-300 text-light-primary-contrastText dark:text-dark-primary-contrastText';
             default:
                 return 'bg-light-primary-main dark:bg-dark-primary-main text-light-primary-contrastText dark:text-dark-primary-contrastText';
         }

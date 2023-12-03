@@ -1,7 +1,15 @@
-import { Colors, IconProps, Matrix, SidebarLink, ThemeMode } from '@/types';
+import {
+    Colors,
+    IconProps,
+    Matrix,
+    SidebarLink,
+    // ThemeModeDragEvent,
+} from '@/types';
 import SunIcon from '@/components/icons/sunIcon';
 import MoonIcon from '@/components/icons/moonIcon/MoonIcon';
 import GearIcon from '@/components/icons/gearIcon';
+import { MatrixWithId } from '@/types';
+import { ThemeMode } from '@/types';
 
 export const LANGS_FULL_NAMES = {
     en: 'English',
@@ -33,13 +41,14 @@ export const ICON_COLORS = {
     tertiary: 'fill-light-tertiary-main dark:fill-dark-tertiary-main',
 };
 
-function setColorsMatrix() {
+function setColorsMatrix() : Matrix {
     const rows = 8;
     const columns = 4;
     const letters = ['C', 'B', 'A', 'G', 'F', 'E', 'D', 'C'];
     let colorsMatrix: Matrix = [];
-
+    
     for (let i = 0; i < rows; i++) {
+        //colorsMatrix.push(
         colorsMatrix.push(
             Array(columns).fill({
                 note: letters[i],

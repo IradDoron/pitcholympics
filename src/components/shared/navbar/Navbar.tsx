@@ -1,23 +1,22 @@
 'use client';
 
-import Theme from './Theme';
-import LocaleSwitcher from './LocaleSwitcher';
 import { LangParam } from '@/types';
 import { getDictionaryClient } from '@/utils/getDictionaryClient';
-import MobileNav from '@/components/shared/navbar/MobileNav';
-import NavbarLink from './NavbarLink';
-import AuthButton from './AuthButton';
+import SettingsMenu from '@shared/settingsMenu';
 import { useState } from 'react';
-import SettingsMenu from '@/components/shared/settingsMenu';
+import AuthButton from './AuthButton';
+import LocaleSwitcher from './LocaleSwitcher';
+import NavbarLink from './NavbarLink';
+import Theme from './Theme';
+import MobileNav from './mobileNav';
 
 const Navbar = ({ params: { lang } }: LangParam) => {
     const [isSettingsMenuOpen, setIsSettingsMenuOpen] = useState(false);
     const dict = getDictionaryClient(lang);
-    const { navbar } = dict.shared;
-    const pagesUrls = Object.entries(navbar.pages);
+    const { pages } = dict.shared.navbar;
 
     return (
-        <div className='flex flex-row justify-center '>
+        <div className='flex flex-row justify-center z-50'>
             <nav className='grid grid-cols-3 p-2 fixed w-full bg-light-background-defaultBlur dark:bg-dark-background-defaultBlur '>
                 <div className='flex justify-self-start px-10'>
                     <LocaleSwitcher params={{ lang }} />
@@ -26,15 +25,33 @@ const Navbar = ({ params: { lang } }: LangParam) => {
                     </div>
                 </div>
                 <ul className='gap-5 hidden sm:flex justify-self-center'>
-                    {pagesUrls.map(([url, title]) => {
-                        const composedUrl =
-                            url === 'home' ? `/${lang}` : `/${lang}/${url}`;
-                        return (
-                            <li key={url}>
-                                <NavbarLink url={composedUrl} label={title} />
-                            </li>
-                        );
-                    })}
+                    <li>
+                        <NavbarLink url={`/${lang}`} label={pages.home} />
+                    </li>
+                    <li>
+                        <NavbarLink
+                            url={`/${lang}/about`}
+                            label={pages.about}
+                        />
+                    </li>
+                    <li>
+                        <NavbarLink
+                            url={`/${lang}/stats`}
+                            label={pages.stats}
+                        />
+                    </li>
+                    <li>
+                        <NavbarLink
+                            url={`/${lang}/library`}
+                            label={pages.library}
+                        />
+                    </li>
+                    <li>
+                        <NavbarLink
+                            url={`/${lang}/suggestions`}
+                            label={pages.suggestions}
+                        />
+                    </li>
                 </ul>
                 <div className='flex justify-self-end pe-10 relative'>
                     <AuthButton

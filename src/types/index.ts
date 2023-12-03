@@ -2,6 +2,11 @@ import { Locale } from '@/i18n.config';
 import { GameNames } from '.';
 import { StaticImageData } from 'next/image';
 
+
+export type FilterObject = {
+    [key: string]: boolean;
+};
+
 export type LangParam = {
     params: { lang: Locale };
 };

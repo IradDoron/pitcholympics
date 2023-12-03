@@ -76,32 +76,17 @@
             "pages": {
                 "home": "בית",
                 "stats": "סטטיסטיקה",
-                "about": "אודות"
+                "about": "אודות",
+                "suggestions": "הצעות",
+                "library": "ספרייה"
             },
             "title": "עמוד",
             "MobileNav": {
-                "sidebarLinks": [
-                    {
-                        "imgURL": "/assets/icons/sun.svg",
-                        "route": "/",
-                        "label": "בית"
-                    },
-                    {
-                        "imgURL": "/assets/icons/sun.svg",
-                        "route": "/stats",
-                        "label": "סטטיסטיקה"
-                    },
-                    {
-                        "imgURL": "/assets/icons/sun.svg",
-                        "route": "/about",
-                        "label": "עלינו"
-                    },
-                    {
-                        "imgURL": "/assets/icons/sun.svg",
-                        "route": "/contact",
-                        "label": "צרו קשר"
-                    }
-                ]
+                "sidebarLinks": {
+                    "home": "בית",
+                    "stats": "סטטיסטיקות",
+                    "about": "אודות"
+                }
             }
         },
         "LocaleSwitcher": {
