@@ -10,6 +10,7 @@ import { getTimeZone } from '@/utils';
 import { getDictionaryClient } from '@/utils/getDictionaryClient';
 import { Locale as LocalType } from '@/i18n.config';
 import { useRouter } from 'next/navigation';
+import { CURRENT_DOMAIN } from '@/constants';
 
 type Gender = 'male' | 'female';
 type Locale = 'HE' | 'EN';
@@ -43,7 +44,7 @@ const Page = ({ params }: Props) => {
             // TODO: fix the session error
             const res = await fetch(
                 //@ts-ignore
-                `http://localhost:3000/api/auth/profile/${session?.user?.id}`,
+                `${CURRENT_DOMAIN}/api/auth/profile/${session?.user?.id}`,
                 {
                     method: 'PUT',
                     headers: {
@@ -70,7 +71,7 @@ const Page = ({ params }: Props) => {
                 // TODO: fix the session error
                 const res = await fetch(
                     //@ts-ignore
-                    `http://localhost:3000/api/auth/profile/${session?.user?.id}`,
+                    `${CURRENT_DOMAIN}/api/auth/profile/${session?.user?.id}`,
                     {
                         method: 'GET',
                         headers: {
