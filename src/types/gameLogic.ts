@@ -26,7 +26,7 @@ export type Price = {
     [resource in keyof Resources]: number;
 };
 
-export type LevelStatus = 'passed' | 'failed' | 'locked';
+export type LevelStatus = 'passed' | 'failed' | 'locked' | 'pending';
 
 export type GameProgress = {
     memoTheMelo: {

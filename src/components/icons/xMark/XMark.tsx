@@ -6,7 +6,7 @@ type Props = {
 
 const VMark = ({ size = 'medium' }: Props) => {
     const sizes = {
-        small: 'w-[112px] h-[18px]',
+        small: 'w-[50px] h-[18px]',
         medium: 'w-[130px] h-[25px]',
         large: 'w-[178px] h-[34px]',
     };
