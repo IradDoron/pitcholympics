@@ -24,6 +24,14 @@
                 "title": "Contact page"
             }
         },
+        "how-to-play": {
+            "howToPlay": "How to play",
+            "games": {
+                "memo-the-melo": "Memo the Melo",
+                "pitch-catch": "Pitch Catch",
+                "memo-blocks": "Memo Blocks"
+            }
+        },
         "memo-the-melo": {
             "page": {
                 "title": "memo-the-melo"

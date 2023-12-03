@@ -24,6 +24,14 @@
                 "title": "צור קשר"
             }
         },
+        "how-to-play": {
+            "howToPlay": "איך לשחק",
+            "games": {
+                "memo-the-melo": "מה ניגנתי?",
+                "pitch-catch": "תפוס ת׳צליל",
+                "memo-blocks": "קוביות מלודיות"
+            }
+        },
         "memo-the-melo": {
             "page": {
                 "title": "test"
