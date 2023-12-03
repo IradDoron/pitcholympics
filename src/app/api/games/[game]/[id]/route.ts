@@ -41,7 +41,9 @@ export async function PUT(request: NextRequest, { params }: any) {
 
         if (
             isLevelExist &&
-            (levelCurrentStatus === 'failed' || levelCurrentStatus === 'locked')
+            (levelCurrentStatus === 'failed' ||
+                levelCurrentStatus === 'locked' ||
+                levelCurrentStatus === 'pending')
         ) {
             const newKey = `gameProgress.${gameName}.${levelKey}`;
 
