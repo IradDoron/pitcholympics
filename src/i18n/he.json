@@ -27,6 +27,8 @@
         "how-to-play": {
             "howToPlay": "איך לשחק",
             "instructionsLabel": "הוראות",
+            "backButtonLabel": "חזור",
+            "continueButtonLabel": "המשך",
             "games": {
                 "memo-the-melo": {
                     "title": "מה ניגנתי?",

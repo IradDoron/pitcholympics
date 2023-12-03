@@ -27,6 +27,8 @@
         "how-to-play": {
             "howToPlay": "How to play",
             "instructionsLabel": "Instructions",
+            "backButtonLabel": "Back",
+            "continueButtonLabel": "Continue",
             "games": {
                 "memo-the-melo": {
                     "title": "Memo the Melo",
