@@ -1,8 +1,5 @@
 'use client';
-import { Button } from '@/components/core';
-
-import { Input } from '@/components/core';
-import { Link } from '@/components/core';
+import { Button, Input, Link } from '@/components/core';
 import { PostType } from '@/types/libraryPageTypes/contentElements';
 import React from 'react';
 import { POST } from '../../../../api/library-content/route';

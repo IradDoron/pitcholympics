@@ -1,5 +1,4 @@
-import { Input } from '@/components/core';
-import { Link } from '@/components/core';
+import { Input, Link } from '@/components/core';
 import React from 'react';
 
 const PostPage = () => {

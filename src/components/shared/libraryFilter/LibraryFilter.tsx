@@ -1,6 +1,5 @@
 import { FilterObject } from '@/types';
-import { Button } from '@/components/core';
-import { Input } from '@/components/core';
+import { Button, Input } from '@/components/core';
 
 type Props = {
     filterButtons: FilterObject;
