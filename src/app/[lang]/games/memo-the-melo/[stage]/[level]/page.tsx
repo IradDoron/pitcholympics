@@ -8,7 +8,7 @@ import ButtonMelody from '@/components/shared/buttonMelody';
 import LevelStepper from '@/components/shared/levelStepper';
 import { Locale } from '@/i18n.config';
 import Button from '@/components/core/button';
-import { isTwoArraysEqual } from '@/utils';
+import { compareArrays } from '@/utils';
 import { handleEndLevel } from '@/utils';
 import { convertPitchesToIndexes } from '@/utils';
 import { useSession } from 'next-auth/react';
@@ -193,7 +193,7 @@ const Page = ({ params }: Props) => {
             return;
         }
         const melodyPart = melody.slice(0, userGuess.length); // The part of the melody that the user guessed
-        const guessResult = isTwoArraysEqual(userGuess, melodyPart);
+        const guessResult = compareArrays(userGuess, melodyPart);
         // If the user guessed the whole melody
         if (guessResult && userGuess.length === melody.length) {
             handleWin();

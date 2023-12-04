@@ -1,10 +1,10 @@
-import type { User } from '@/types';
 import type {
+    User,
     GameAnalytics,
     GameNames,
     GamesStats,
     Resources,
-} from '@/types/gameLogic';
+} from '@/types';
 import { getDictionaryClient } from '@/utils/getDictionaryClient';
 import StatsCard from '@/components/core/statsCard';
 import { Locale } from '@/i18n.config';
@@ -30,15 +30,13 @@ const StatsSection = async ({ type, lang, color }: Props) => {
         ) || 0;
     }
 
-    const memoTheMeloGamesCount = countGames(user, 'memoTheMelo');
-    const pitchCatchGamesCount = countGames(user, 'pitchCatch');
-
     const stats = {
         resources: { ...user.resources },
         gamesStats: {
-            memoTheMeloGames: memoTheMeloGamesCount,
-            pitchCatchGames: pitchCatchGamesCount,
-            totalGamesPlayed: memoTheMeloGamesCount + pitchCatchGamesCount,
+            memoBlocks: countGames(user, 'memoTheMelo'),
+            memoTheMelo: countGames(user, 'pitchCatch'),
+            pitchCatch: countGames(user, 'memoBlocks'),
+            totalGamesPlayed: user?.gamesAnalytics?.length || 0,
         },
     };
     const dict = getDictionaryClient(lang);
