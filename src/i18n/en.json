@@ -114,7 +114,8 @@
                 "stats": "Stats",
                 "about": "About",
                 "suggestions": "Suggestions",
-                "library": "Library"
+                "library": "Library",
+                "courses": "Courses"
             },
             "title": "Page",
             "MobileNav": {
