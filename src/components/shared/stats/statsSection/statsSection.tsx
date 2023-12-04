@@ -6,7 +6,7 @@ import type {
     Resources,
 } from '@/types';
 import { getDictionaryClient } from '@/utils/getDictionaryClient';
-import StatsCard from '@/components/core/statsCard';
+import { StatsCard } from '@/components/core';
 import { Locale } from '@/i18n.config';
 
 type Props = {

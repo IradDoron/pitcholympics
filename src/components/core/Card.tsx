@@ -81,7 +81,7 @@ const getCustomClass = (customClass: string) => {
     return customClass;
 };
 
-const Card = ({
+export const Card = ({
     color = 'primary',
     shadow = 'none',
     border = false,
@@ -110,5 +110,3 @@ const Card = ({
         </div>
     );
 };
-
-export default Card;

@@ -7,7 +7,7 @@ import memoTheMeloMockData from '@/mockData/memoTheMelo';
 import ButtonMelody from '@/components/shared/buttonMelody';
 import LevelStepper from '@/components/shared/levelStepper';
 import { Locale } from '@/i18n.config';
-import Button from '@/components/core/button';
+import { Button } from '@/components/core';
 import { compareArrays } from '@/utils';
 import { handleEndLevel } from '@/utils';
 import { convertPitchesToIndexes } from '@/utils';

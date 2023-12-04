@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { PitchCatchGame, PitchCatchLevel } from '@/types';
 import PitchButton from '@/components/shared/pitchButton';
 import UserOptions from '@/components/shared/userOption';
-import Button from '@/components/core/button';
+import { Button } from '@/components/core';
 import pitchCatchData from '@/mockData/pitchCatch';
 import { useRouter } from 'next/navigation';
 import LevelStepper from '@/components/shared/levelStepper';

@@ -35,7 +35,7 @@ const getColor = (state: LinkColorType) => {
     }
 };
 
-function Link({ label, url, size = 'medium', color = 'default' }: Props) {
+export const Link = ({ label, url, size = 'medium', color = 'default' }: Props) => {
     const linkSize = getSize(size);
     const linkColor = getColor(color);
     return (
