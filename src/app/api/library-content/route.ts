@@ -1,11 +1,10 @@
 import Post from '@/models/post';
-import { PostType } from '@/types/libraryPageTypes/contentElements';
 import { connectToDB } from '@/utils/database';
 
 export async function GET() {
     // Handle GET request to fetch all posts
+
     await connectToDB();
-    console.log('fetching posts');
     try {
         const posts = await Post.find();
         // res.status(200).json(posts);
@@ -16,11 +15,9 @@ export async function GET() {
 }
 
 export async function POST(newPost: any) {
-    console.log(Post);
     await connectToDB()
         .then(() => console.log('connected'))
         .catch(err => console.log('err'));
-    console.log('create');
     await Post.create({
         title: newPost.title,
         description: newPost.description,

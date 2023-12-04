@@ -1,12 +1,11 @@
-import Input from '@/components/core/input/Input';
-import Link from '@/components/core/link';
+import { Input, Link } from '@/components/core';
 import React from 'react';
 
 const PostPage = () => {
     return (
         <div>
-                full post 
-          
+            full post
+
             <Link label='back to library' url='/library/library/posts' />
         </div>
     );

@@ -4,7 +4,7 @@ type Props = {
     color: 'primary' | 'secondary' | 'tertiary';
 };
 
-const StatsCard = ({ title, subTitle, color }: Props) => {
+export const StatsCard = ({ title, subTitle, color }: Props) => {
     const colorVariants = {
         primary: {
             bg: 'bg-light-surface-primary dark:bg-dark-surface-primary',
@@ -39,5 +39,3 @@ const StatsCard = ({ title, subTitle, color }: Props) => {
         </div>
     );
 };
-
-export default StatsCard;

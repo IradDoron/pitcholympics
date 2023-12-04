@@ -1,4 +1,4 @@
-import Card from '@core/card';
+import { Card } from '@/components/core';
 import Step from './Step';
 
 type Props = {

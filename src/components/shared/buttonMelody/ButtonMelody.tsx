@@ -1,4 +1,4 @@
-import { colorVariants } from '@/components/core/circleGradient/CircleGradient';
+import { colorVariants } from '@/components/core/CircleGradient';
 import { divideItemsByLightAndDark } from '@/utils/divideItemsByLightAndDark';
 import { Dispatch, SetStateAction, useEffect } from 'react';
 import * as Tone from 'tone';

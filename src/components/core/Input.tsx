@@ -11,7 +11,7 @@ interface InputProps {
     color?: InputColor;
     size?: InputSize;
 }
-const Input = ({
+export const Input = ({
     value,
     type,
     placeholder,
@@ -56,5 +56,3 @@ const Input = ({
         />
     );
 };
-
-export default Input;

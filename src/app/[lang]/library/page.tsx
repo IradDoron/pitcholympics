@@ -2,7 +2,7 @@
 import LibraryFilter from '@/components/shared/libraryFilter/LibraryFilter';
 import { FilterObject } from '@/types';
 import { useState } from 'react';
-import Link from '@/components/core/link';
+import { Link } from '@/components/core';
 
 const Page = () => {
     const [inputValue, setInputValue] = useState('');
