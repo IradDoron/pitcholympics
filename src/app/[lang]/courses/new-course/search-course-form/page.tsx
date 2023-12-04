@@ -1,5 +1,5 @@
 import { Locale } from '@/i18n.config';
-import Link from '@core/link';
+import { Link } from '@core';
 
 type Props = {
     params: {
