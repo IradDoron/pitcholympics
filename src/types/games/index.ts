@@ -24,4 +24,4 @@ export type GameProgress = {
   [game in GameNames]: Record<string, LevelStatus>;
 };
 
-export type LevelStatus = 'passed' | 'failed' | 'locked';
+export type LevelStatus = 'passed' | 'failed' | 'locked' | 'pending';

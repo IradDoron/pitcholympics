@@ -3,6 +3,11 @@ import { GameNames } from '.';
 import { StaticImageData } from 'next/image';
 import { MemoTheMeloGame, PitchCatchGame } from './games';
 
+
+export type FilterObject = {
+    [key: string]: boolean;
+};
+
 export type LangParam = {
     params: { lang: Locale };
 };

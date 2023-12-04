@@ -24,6 +24,42 @@
                 "title": "Contact page"
             }
         },
+        "how-to-play": {
+            "howToPlay": "How to play",
+            "instructionsLabel": "Instructions",
+            "backButtonLabel": "Back",
+            "continueButtonLabel": "Continue",
+            "games": {
+                "memo-the-melo": {
+                    "title": "Memo the Melo",
+                    "description": "Memo the Melo is a game that helps you to learn the notes on the staff. You will hear a melody and you have to guess the notes that you heard. You can play this game in 3 different modes: Easy, Medium and Hard. In the Easy mode you will hear a melody and you have to guess the notes that you heard. In the Medium mode you will hear a melody and you have to guess the notes that you heard and the rhythm. In the Hard mode you will hear a melody and you have to guess the notes that you heard, the rhythm and the key signature.",
+                    "instructions": [
+                        "Click on the button 'Start the Melody' to start the melody.",
+                        "Click on the button 'Check Guess' to check your guess.",
+                        "Click on the button 'Next Level' to go to the next level."
+                    ]
+                },
+
+                "pitch-catch": {
+                    "title": "Pitch Catch",
+                    "description": "Pitch Catch is a game that helps you to learn the notes on the staff. You will hear a note and you have to guess the note that you heard. You can play this game in 3 different modes: Easy, Medium and Hard. In the Easy mode you will hear a note and you have to guess the note that you heard. In the Medium mode you will hear a note and you have to guess the note that you heard and the rhythm. In the Hard mode you will hear a note and you have to guess the note that you heard, the rhythm and the key signature.",
+                    "instructions": [
+                        "Click on the button 'Start the Melody' to start the melody.",
+                        "Click on the button 'Check Guess' to check your guess.",
+                        "Click on the button 'Next Level' to go to the next level."
+                    ]
+                },
+                "memo-blocks": {
+                    "title": "Memo Blocks",
+                    "description": "Memo Blocks is a game that helps you to learn the notes on the staff. You will see a note and you have to guess the note that you saw. You can play this game in 3 different modes: Easy, Medium and Hard. In the Easy mode you will see a note and you have to guess the note that you saw. In the Medium mode you will see a note and you have to guess the note that you saw and the rhythm. In the Hard mode you will see a note and you have to guess the note that you saw, the rhythm and the key signature.",
+                    "instructions": [
+                        "Click on the button 'Start the Melody' to start the melody.",
+                        "Click on the button 'Check Guess' to check your guess.",
+                        "Click on the button 'Next Level' to go to the next level."
+                    ]
+                }
+            }
+        },
         "memo-the-melo": {
             "page": {
                 "title": "memo-the-melo"

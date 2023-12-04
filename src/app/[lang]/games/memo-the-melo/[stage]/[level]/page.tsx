@@ -13,6 +13,7 @@ import { handleEndLevel } from '@/utils';
 import { convertPitchesToIndexes } from '@/utils';
 import { useSession } from 'next-auth/react';
 import { getDictionaryClient } from '@/utils/getDictionaryClient';
+import { CURRENT_DOMAIN } from '@/constants';
 
 type Props = {
     params: {
@@ -35,6 +36,7 @@ const Page = ({ params }: Props) => {
     const { data: session } = useSession();
     const { stage, level, lang } = params; // The current stage, level and language
     const currentLevel = getLevelData(stage, level, memoTheMeloMockData); // The current level data
+    const currentStageLevels = memoTheMeloMockData[stage - 1].length; // Checking the max levels for the current stage
     const [currentNote, setCurrentNote] = useState(1); // The current note of the melody. For example, if the melody is [440, 880, 220] and the current note is 2, then the melody is [440, 880]
     const [pitchIndexPlaying, setPitchIndexPlaying] = useState(-1); // The index of the pitch that is currently playing and active
     const [userGuess, setUserGuess] = useState<number[]>([]); // Array of indexes. Each index is the index of the pitch in the pitch options array
@@ -61,7 +63,7 @@ const Page = ({ params }: Props) => {
             //@ts-ignore
             const res = await fetch(
                 //@ts-ignore
-                `http://localhost:3000/api/games/memo-the-melo/${session?.user?.id}`,
+                `${CURRENT_DOMAIN}/api/games/memo-the-melo/${session?.user?.id}`,
                 {
                     method: 'PUT',
                     headers: {
@@ -78,6 +80,49 @@ const Page = ({ params }: Props) => {
             if (!res.ok) {
                 throw new Error('Failed to update');
             }
+            if (!(level >= currentStageLevels)) {
+                const nextLevelRes = await fetch(
+                    //@ts-ignore
+
+                    `http://localhost:3000/api/games/memo-the-melo/${session?.user?.id}`,
+                    {
+                        method: 'PUT',
+                        headers: {
+                            'Content-type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            status: 'pending',
+                            stage: +params.stage,
+                            level: +params.level + 1,
+                        }),
+                    },
+                );
+
+                if (!nextLevelRes.ok) {
+                    throw new Error('Failed to update next level');
+                }
+            } else {
+                const nextLevelRes = await fetch(
+                    //@ts-ignore
+
+                    `http://localhost:3000/api/games/memo-the-melo/${session?.user?.id}`,
+                    {
+                        method: 'PUT',
+                        headers: {
+                            'Content-type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            status: 'pending',
+                            stage: +params.stage + 1,
+                            level: 1,
+                        }),
+                    },
+                );
+
+                if (!nextLevelRes.ok) {
+                    throw new Error('Failed to update next level');
+                }
+            }
         } catch (error) {
             console.log(error);
         }
@@ -90,7 +135,7 @@ const Page = ({ params }: Props) => {
             //@ts-ignore
             const res = await fetch(
                 //@ts-ignore
-                `http://localhost:3000/api/games/memo-the-melo/${session?.user?.id}`,
+                `${CURRENT_DOMAIN}/api/games/memo-the-melo/${session?.user?.id}`,
                 {
                     method: 'PUT',
                     headers: {
@@ -227,6 +272,14 @@ const Page = ({ params }: Props) => {
 export default Page;
 
 //  <Button
+
+/* <Button
+    label='Debug Win'
+    onClick={() =>
+        checkUserGuess(currentLevel.melody, currentLevel.melody)
+    }
+/> */
+
 //                 label='Debug Win'
 //                 onClick={() =>
 //                     checkUserGuess(currentLevel.melody, currentLevel.melody)

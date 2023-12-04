@@ -63,4 +63,4 @@ export const DOMAINS = {
     PRODUCTION: 'https://pitcholympics.vercel.app',
 };
 
-export const CURRENT_DOMAIN = DOMAINS.DEV;
+export const CURRENT_DOMAIN = DOMAINS.PRODUCTION;
