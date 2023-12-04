@@ -1,5 +1,4 @@
-import Link from '@core/link';
-import React from 'react';
+import { Link } from '@core';
 
 type Props = {
     children: React.ReactNode;

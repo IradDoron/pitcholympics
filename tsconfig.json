@@ -22,7 +22,7 @@
         "baseUrl": ".",
         "paths": {
             "@/*": ["src/*"],
-            "@core/*": ["src/components/core/*"],
+            "@core": ["src/components/core/index.ts"],
             "@shared/*": ["src/components/shared/*"],
             "@icons": ["src/components/icons/index.ts"]
         }
