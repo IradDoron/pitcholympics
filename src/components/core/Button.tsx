@@ -9,7 +9,7 @@ type Props = {
     state?: 'default' | 'disabled' | 'clicked';
 };
 
-const Button = ({
+export const Button = ({
     label,
     onClick,
     size = 'medium',
@@ -52,4 +52,4 @@ const Button = ({
     );
 };
 
-export default Button;
+

@@ -1,6 +1,6 @@
 'use client';
 
-import Card from '@/components/core/card';
+import { Card } from '@/components/core';
 import { useRouter } from 'next/navigation';
 import MenuSection from './MenuSection';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';

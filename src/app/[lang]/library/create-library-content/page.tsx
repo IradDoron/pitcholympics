@@ -1,4 +1,4 @@
-import Link from '@/components/core/link';
+import { Link } from '@/components/core';
 import React from 'react';
 
 const ChooseContent = () => {

@@ -1,6 +1,6 @@
 'use client';
 
-import Button from '@/components/core/button';
+import { Button } from '@/components/core';
 import { Locale } from '@/i18n.config';
 import { getDictionaryClient } from '@/utils/getDictionaryClient';
 import PageFiller from '@shared/pageFiller';

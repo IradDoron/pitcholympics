@@ -6,7 +6,7 @@ type Props = {
     className?: string;
 };
 
-const ProgressBar = ({
+export const ProgressBar = ({
     progress,
     max,
     className,
@@ -26,5 +26,3 @@ const ProgressBar = ({
         </>
     );
 };
-
-export default ProgressBar;

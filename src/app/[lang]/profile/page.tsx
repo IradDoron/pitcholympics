@@ -1,11 +1,11 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import Card from '@/components/core/card';
+import { Card } from '@/components/core';
 import UserImage from '@/components/shared/userImage';
 import ProfileInfo from '@/components/shared/profileInfo';
 import { useSession } from 'next-auth/react';
-import Button from '@/components/core/button';
+import { Button } from '@/components/core';
 import { getTimeZone } from '@/utils';
 import { getDictionaryClient } from '@/utils/getDictionaryClient';
 import { Locale as LocalType } from '@/i18n.config';
