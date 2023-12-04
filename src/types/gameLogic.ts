@@ -1,13 +1,4 @@
-export type GameAnalytics = {
-    gameName: GameNames;
-    level: number;
-    stage: number;
-    status: 'passed' | 'failed';
-    time: number;
-    startDate: string;
-};
-
-export type GameNames = 'memoTheMelo' | 'pitchCatch';
+import { GameAnalytics, GameProgress } from './games';
 
 export type Resources = {
     coins: number;
@@ -16,25 +7,8 @@ export type Resources = {
     health: number;
 };
 
-export type GamesStats = {
-    memoTheMeloGames: number;
-    pitchCatchGames: number;
-    totalGamesPlayed: number;
-};
-
 export type Price = {
     [resource in keyof Resources]: number;
-};
-
-export type LevelStatus = 'passed' | 'failed' | 'locked' | 'pending';
-
-export type GameProgress = {
-    memoTheMelo: {
-        [key: string]: LevelStatus;
-    };
-    pitchCatch: {
-        [key: string]: LevelStatus;
-    };
 };
 
 export type User = {
