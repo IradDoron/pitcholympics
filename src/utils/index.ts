@@ -7,9 +7,13 @@ export const getXpForLevel = (level: number): number => {
     return Math.floor(Math.pow(level / x, y));
 };
 
-export const compareArrays = (arr1: any[], arr2: any[]): boolean => {
+export const compareArrays = (
+    arr1: any[],
+    arr2: any[],
+    cmpFunc = (i1: any, i2: any) => i1 === i2
+): boolean => {
     if (arr1.length !== arr2.length) return false;
-    return arr1.every((item, index) => item === arr2[index]);
+    return arr1.every((item, index) => cmpFunc(item, arr2[index]));
 };
 
 export const shuffleArray = (array: any[]) => {

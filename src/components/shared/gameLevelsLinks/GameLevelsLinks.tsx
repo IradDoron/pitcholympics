@@ -16,9 +16,7 @@ type Props = {
     game: GameNamesToSlug;
 };
 
-type UserProgressEntry = {
-    [key: string]: LevelStatus;
-};
+type UserProgressEntry = Record<string, LevelStatus>
 
 type ExtendedSession = Session & {
     user: Session['user'] & {
@@ -37,7 +35,7 @@ const GameLevelsLinks = ({ levelsData, lang, game }: Props) => {
     ): LevelStatus => {
 
         if (!userProgress) {
-            return levelIndex === 0 && stageIndex === 0 ? 'pending' : 'locked';
+            return 'locked';
         }
 
         const levelKey = `${stageIndex + 1}_${levelIndex + 1}`;
@@ -45,8 +43,12 @@ const GameLevelsLinks = ({ levelsData, lang, game }: Props) => {
             Object.keys(userProgress).includes(levelKey);
 
         if (!isKeyInUserProgress) {
-            return levelIndex === 0 && stageIndex === 0 ? 'pending' : 'locked';
+            return 'locked';
         } else {
+
+            if (userProgress[levelKey] === 'locked' && levelIndex === 0) { // allow first level to be unlocked by default in each stage
+                return 'pending';
+            }
             return userProgress[levelKey];
         }
     };
