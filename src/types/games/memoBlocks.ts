@@ -7,18 +7,16 @@ export type MatrixCell = {
 };
 
 export enum NoteStatus {
-    'EMPTY',
-    'ACTIVE',
-    'TIED',
+  'EMPTY',
+  'ACTIVE',
+  'TIED',
 };
 
 export type CellInfo = {
-    row: number;
-    col: number;
-    value: NoteStatus;
+  row: number;
+  col: number;
+  value: NoteStatus;
 };
-
-export type MemoBlocksDataTable = NoteStatus[][];
 
 export type Matrix = MatrixCell[][]; // changed to the line below
 export type MatrixWithId = { id: string; data: Matrix };
@@ -58,3 +56,10 @@ export type DragEvent = {
 };
 
 export type MemoBlockCardMelody = MemoBlockCardNote[];
+
+export type MemoBlocksLevel = CellInfo[][];
+
+export type MemoBlocksStage = MemoBlocksLevel[];
+
+export type MemoBlocksGame = MemoBlocksStage[];
+

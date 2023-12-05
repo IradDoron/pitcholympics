@@ -9,8 +9,6 @@ import {
 import { useEffect, useState } from 'react';
 import { MatrixWithId } from '@/types';
 import SortableCard from './SortableCard';
-import { levelOneCards } from '@/mockData/memoBlocks';
-import { parseTable } from '@/lib/utils';
 import MemoBlocksCard from './MemoBlocksCard';
 import { FlipHorizontal2Icon, FlipVertical2Icon, Loader } from 'lucide-react';
 import { flipMatrix, mirrorMatrix } from './utils';
@@ -38,29 +36,30 @@ type DragEventType = {
     };
 };
 
-const setInitialMatrixes = () => {
-    function scrambleMatrix(matrix: MatrixWithId) {
+type Props = {
+    levelData: MatrixWithId[];
+};
+
+const setInitialMatrixes = (levelData: MatrixWithId[]) => {
+    function scrambleCard(matrix: MatrixWithId) {
         const [flip, mirror] = [Math.random() > 0.5, Math.random() > 0.5];
         let newMatrix = matrix;
         if (flip) newMatrix = flipMatrix(newMatrix) as MatrixWithId;
         if (mirror) newMatrix = mirrorMatrix(newMatrix) as MatrixWithId;
         return newMatrix;
     }
-
-    const levelCards = levelOneCards.map(table => parseTable(table));
-    const matrixes = levelCards.map(matrix => scrambleMatrix(matrix));
+    const matrixes = levelData.map(card => scrambleCard(card));
     return shuffleArray([...matrixes]);
 };
 
-const MemoBlocksGame = () => {
+const MemoBlocksLevel = ({ levelData }: Props) => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [guessCards, setGuessCards] = useState<MatrixWithId[]>([]);
     const [activeMatrixId, setActiveMatrixId] = useState<string>('');
-    const levelCards = levelOneCards.map(table => parseTable(table));
     const activeMatrix = guessCards.find(m => m.id === activeMatrixId)!;
 
     useEffect(() => {
-        setGuessCards(setInitialMatrixes());
+        setGuessCards(setInitialMatrixes(levelData));
         setIsLoading(false);
     }, []);
 
@@ -115,7 +114,7 @@ const MemoBlocksGame = () => {
                 />
             </div>
             <div className='grid grid-cols-4 gap-6 justify-center max-w-fit self-center items-center'>
-                {levelCards.map(card => (
+                {levelData.map(card => (
                     <MemoBlocksCard key={`levelCard#${card.id}`} matrix={card.data} disabled />
                 ))}
                 <DndContext
@@ -138,4 +137,4 @@ const MemoBlocksGame = () => {
         </div>
     );
 };
-export default MemoBlocksGame;
+export default MemoBlocksLevel;
