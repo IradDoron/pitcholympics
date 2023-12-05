@@ -2,7 +2,7 @@
 
 import LevelsLinksContainer from './LevelsLinksContainer';
 import { useEffect, useState } from 'react';
-import { MemoTheMeloGame, PitchCatchGame, LevelStatus } from '@/types';
+import { MemoTheMeloGame, PitchCatchGame, LevelStatus, GameNamesToSlug, MemoBlocksGame } from '@/types';
 import StageTitle from './StageTitle';
 import StageLevelsContainer from './StageLevelsContainer';
 import LevelLink from './LevelLink';
@@ -11,9 +11,9 @@ import { Locale } from '@/i18n.config';
 import type { Session } from 'next-auth';
 
 type Props = {
-    levelsData: MemoTheMeloGame | PitchCatchGame;
+    levelsData: MemoTheMeloGame | PitchCatchGame | MemoBlocksGame;
     lang: Locale;
-    game: string;
+    game: GameNamesToSlug;
 };
 
 type UserProgressEntry = {
@@ -26,7 +26,6 @@ type ExtendedSession = Session & {
     };
 };
 
-
 const GameLevelsLinks = ({ levelsData, lang, game }: Props) => {
     const { data: session } = useSession() as { data: ExtendedSession | null };
     const [userProgress, setUserProgress] = useState<UserProgressEntry>({});
@@ -36,8 +35,9 @@ const GameLevelsLinks = ({ levelsData, lang, game }: Props) => {
         levelIndex: number,
         stageIndex: number,
     ): LevelStatus => {
+
         if (!userProgress) {
-            return 'locked';
+            return levelIndex === 0 && stageIndex === 0 ? 'pending' : 'locked';
         }
 
         const levelKey = `${stageIndex + 1}_${levelIndex + 1}`;
@@ -45,7 +45,7 @@ const GameLevelsLinks = ({ levelsData, lang, game }: Props) => {
             Object.keys(userProgress).includes(levelKey);
 
         if (!isKeyInUserProgress) {
-            return 'locked';
+            return levelIndex === 0 && stageIndex === 0 ? 'pending' : 'locked';
         } else {
             return userProgress[levelKey];
         }

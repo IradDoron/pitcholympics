@@ -1,7 +1,7 @@
 import { Locale } from '@/i18n.config';
 import { GameNames } from '.';
 import { StaticImageData } from 'next/image';
-import { MemoTheMeloGame, PitchCatchGame } from './games';
+import { MemoBlocksGame, MemoTheMeloGame, PitchCatchGame } from './games';
 
 
 export type FilterObject = {
@@ -34,7 +34,7 @@ export type SidebarLink = {
 
 export type Game = {
     name: GameNames;
-    game: MemoTheMeloGame | PitchCatchGame;
+    game: MemoTheMeloGame | PitchCatchGame | MemoBlocksGame;
 };
 
 export type ThemeMode = 'light' | 'dark' | 'system';
