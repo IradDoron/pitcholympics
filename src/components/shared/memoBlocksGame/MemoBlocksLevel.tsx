@@ -7,12 +7,12 @@ import {
     SortableContext,
 } from '@dnd-kit/sortable';
 import { useEffect, useState } from 'react';
-import { MatrixWithId } from '@/types';
+import { Matrix, MatrixWithId } from '@/types';
 import SortableCard from './SortableCard';
 import MemoBlocksCard from './MemoBlocksCard';
 import { FlipHorizontal2Icon, FlipVertical2Icon, Loader } from 'lucide-react';
 import { flipMatrix, mirrorMatrix } from './utils';
-import { shuffleArray } from '@/utils';
+import { compareArrays, shuffleArray } from '@/utils';
 
 type DragEventType = {
     activatorEvent: PointerEvent;
@@ -68,6 +68,7 @@ const MemoBlocksLevel = ({ levelData }: Props) => {
         const newMatrixes = [...guessCards];
         newMatrixes.find(m => m.id === matrix.id)!.data = matrix.data;
         setGuessCards(newMatrixes);
+        checkWin();
     }
 
     const onDragEnd = (DragEvent: DragEventType) => {
@@ -98,6 +99,21 @@ const MemoBlocksLevel = ({ levelData }: Props) => {
         }
     };
 
+    const checkWin = () => {
+        const isWin = compareArrays(guessCards.map(card => card.data), levelData.map(card => card.data), compareCards);
+        if (isWin) {
+            console.log('win');
+        }
+    }
+
+    const compareCards = (card1: Matrix, card2: Matrix): boolean => {
+        card1.forEach((row, i) => {
+            row.forEach((value, j) => {
+                if (value !== card2[i][j]) return false;
+            });
+        });
+        return true;
+    };
 
     if (isLoading)
         return <Loader color='green' />;
