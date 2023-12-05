@@ -1,4 +1,4 @@
-import Button from '@/components/core/button';
+import { Button } from '@/components/core';
 import ResultData from './ResultData';
 import ResultTitle from './ResultTitle';
 import { Locale } from '@/i18n.config';

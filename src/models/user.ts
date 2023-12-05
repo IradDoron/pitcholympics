@@ -30,11 +30,16 @@ const UserSchema = new Schema({
         memoTheMelo: {
             type: Map,
             default: {
-                '1_1': 'locked',
+                '1_1': 'pending',
             },
         },
-
         pitchCatch: {
+            type: Map,
+            default: {
+                '1_1': 'pending',
+            },
+        },
+        memoBlocks: {
             type: Map,
             default: {
                 '1_1': 'locked',

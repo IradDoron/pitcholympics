@@ -14,6 +14,7 @@ import { parseTable } from '@/lib/utils';
 import MemoBlocksCard from './MemoBlocksCard';
 import { FlipHorizontal2Icon, FlipVertical2Icon, Loader } from 'lucide-react';
 import { flipMatrix, mirrorMatrix } from './utils';
+import { shuffleArray } from '@/utils';
 
 type DragEventType = {
     activatorEvent: PointerEvent;
@@ -48,10 +49,7 @@ const setInitialMatrixes = () => {
 
     const levelCards = levelOneCards.map(table => parseTable(table));
     const matrixes = levelCards.map(matrix => scrambleMatrix(matrix));
-    // switch order of matrixes
-    const matrixesCopy = [...matrixes];
-    matrixesCopy.sort(() => Math.random() - 0.5);
-    return matrixesCopy;
+    return shuffleArray([...matrixes]);
 };
 
 const MemoBlocksGame = () => {
