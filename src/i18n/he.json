@@ -65,6 +65,11 @@
                     "totalGamesPlayed": "סך משחקים ששוחקו"
                 }
             }
+        },
+        "patchNote": {
+            "page": {
+                "title": "עדכוני גירסה"
+            }
         }
     },
     "shared": {
@@ -78,7 +83,8 @@
                 "stats": "סטטיסטיקה",
                 "about": "אודות",
                 "suggestions": "הצעות",
-                "library": "ספרייה"
+                "library": "ספרייה",
+                "patchNote": "עדכונים"
             },
             "title": "עמוד",
             "MobileNav": {

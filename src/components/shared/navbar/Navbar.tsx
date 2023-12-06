@@ -52,6 +52,12 @@ const Navbar = ({ params: { lang } }: LangParam) => {
                             label={pages.suggestions}
                         />
                     </li>
+                    <li>
+                        <NavbarLink
+                            url={`/${lang}/patch-note`}
+                            label={pages.patchNote}
+                        />
+                    </li>
                 </ul>
                 <div className='flex justify-self-end pe-10 relative'>
                     <AuthButton
