@@ -2,6 +2,7 @@ import PageFiller from '@/components/shared/pageFiller';
 import ShopCard from '@/components/shared/shopCard';
 import { Locale } from '@/i18n.config';
 import shopItemsData from '@/mockData/shopMockData';
+
 type Props = {
     params: {
         lang: Locale;
@@ -27,7 +28,7 @@ const Page = ({ params }: Props) => {
                         );
                     })}
                 </div>
-                <button > Buy it  </button>
+                <button> Buy it </button>
             </div>
         </>
     );
