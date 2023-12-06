@@ -1,6 +1,6 @@
 import TextInfo from '@/components/shared/collaboratorCard/TextInfo';
 import { Collaborator, CollaboratorRoles } from '@/types';
-import Card from '@/components/core/card';
+import { Card } from '@/components/core';
 import Image from './Image';
 import Links from './Links';
 import { CardComponentsColor } from './types';

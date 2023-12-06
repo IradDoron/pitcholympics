@@ -1,5 +1,5 @@
 import React from 'react';
-import { colorVariants } from '@/components/core/circleGradient/CircleGradient';
+import { colorVariants } from '@/components/core/CircleGradient';
 import { divideItemsByLightAndDark } from '@/utils/divideItemsByLightAndDark';
 
 import * as Tone from 'tone';
@@ -20,7 +20,7 @@ const UserOptions = ({ pitches, useChoiceIndex, setChoiceIndex }: Props) => {
       synth.triggerAttack(pitch, now + index / 2);
     });
     synth.triggerRelease(
-    pitches[index],
+      pitches[index],
       now + pitches.length / 4
     );
 

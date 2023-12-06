@@ -23,6 +23,13 @@ const users: User[] = [
                 '1_4': 'passed',
                 '1_5': 'failed',
             },
+            memoBlocks: {
+                '1_1': 'passed',
+                '1_2': 'passed',
+                '1_3': 'passed',
+                '1_4': 'passed',
+                '1_5': 'passed',
+            },
         },
         xp: 8500,
         userLevel: 7,
@@ -129,8 +136,14 @@ const users: User[] = [
                 '1_2': 'passed',
                 '1_3': 'passed',
             },
-
             pitchCatch: {
+                '1_1': 'passed',
+                '1_2': 'passed',
+                '1_3': 'passed',
+                '1_4': 'passed',
+                '1_5': 'passed',
+            },
+            memoBlocks: {
                 '1_1': 'passed',
                 '1_2': 'passed',
                 '1_3': 'passed',

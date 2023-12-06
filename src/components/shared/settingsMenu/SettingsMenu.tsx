@@ -1,6 +1,6 @@
 'use client';
 
-import Card from '@/components/core/card';
+import { Card } from '@/components/core';
 import { useRouter } from 'next/navigation';
 import MenuSection from './MenuSection';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
@@ -13,10 +13,9 @@ import {
     signOut,
 } from 'next-auth/react';
 import MenuItem from './MenuItem';
-import GithubLogo from '@/components/icons/githubLogo';
 import { Locale } from '@/i18n.config';
 import TransparentBg from './TransparentBg';
-import CloseIcon from '@/components/icons/closeIcon';
+import { GithubLogo, CloseIcon } from '@icons';
 
 type Props = {
     isOpen: boolean;

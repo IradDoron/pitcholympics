@@ -6,7 +6,7 @@ import { LangParam } from '@/types';
 import { redirectedPathName } from '@/utils/redirectedPathName';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import Menubar from '@/components/core/menubar';
+import { Menubar } from '@/components/core';
 import Image from 'next/image';
 import FlagIsrael from '@/assets/icons/flags/israel-flag-icon.svg';
 import FlagUnitedStates from '@/assets/icons/flags/united-states-flag-icon.svg';

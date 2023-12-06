@@ -5,29 +5,12 @@ import {
     SidebarLink,
     // ThemeModeDragEvent,
 } from '@/types';
-import SunIcon from '@/components/icons/sunIcon';
-import MoonIcon from '@/components/icons/moonIcon/MoonIcon';
-import GearIcon from '@/components/icons/gearIcon';
-import { MatrixAsaf } from '@/types';
+import { MatrixWithId } from '@/types';
 import { ThemeMode } from '@/types';
-
 export const LANGS_FULL_NAMES = {
     en: 'English',
     he: 'עברית',
 };
-
-type ThemesObject = {
-    value: ThemeMode;
-    label: string;
-    // eslint-disable-next-line no-unused-vars
-    icon: ({ color, size }: IconProps) => JSX.Element;
-};
-
-export const themes = [
-    { value: 'light', label: 'Light', icon: SunIcon },
-    { value: 'dark', label: 'Dark', icon: MoonIcon },
-    { value: 'system', label: 'System', icon: GearIcon },
-] as ThemesObject[];
 
 export const ICON_SIZES = {
     small: 'w-6 h-6',
@@ -41,12 +24,11 @@ export const ICON_COLORS = {
     tertiary: 'fill-light-tertiary-main dark:fill-dark-tertiary-main',
 };
 
-function setColorsMatrix() {
+function setColorsMatrix(): Matrix {
     const rows = 8;
     const columns = 4;
     const letters = ['C', 'B', 'A', 'G', 'F', 'E', 'D', 'C'];
     let colorsMatrix: Matrix = [];
-    //let colorsMatrix: Matrix = { id: crypto.randomUUID(), data: [] };
 
     for (let i = 0; i < rows; i++) {
         //colorsMatrix.push(
@@ -62,29 +44,7 @@ function setColorsMatrix() {
     return colorsMatrix;
 }
 
-function setColorsMatrixAsaf() {
-    const rows = 8;
-    const columns = 4;
-    const letters = ['C', 'B', 'A', 'G', 'F', 'E', 'D', 'C'];
-    //let colorsMatrix: Matrix = [];
-    let colorsMatrix: MatrixAsaf = { id: crypto.randomUUID(), data: [] };
-
-    for (let i = 0; i < rows; i++) {
-        //colorsMatrix.push(
-        colorsMatrix.data.push(
-            Array(columns).fill({
-                note: letters[i],
-                isActive: true,
-                isTied: false,
-            }),
-        );
-    }
-
-    return colorsMatrix;
-}
-
 export const colorsTemplateMatrix = setColorsMatrix();
-export const colorsTemplateMatrixAsaf = setColorsMatrixAsaf();
 
 export const colors: Colors = {
     C: 'bg-light-notes-C dark:bg-dark-notes-C',
@@ -103,4 +63,4 @@ export const DOMAINS = {
     PRODUCTION: 'https://pitcholympics.vercel.app',
 };
 
-export const CURRENT_DOMAIN = DOMAINS.DEV;
+export const CURRENT_DOMAIN = DOMAINS.PRODUCTION;

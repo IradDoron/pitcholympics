@@ -19,6 +19,12 @@ const Home = ({ params }: LangParam) => {
                         label='Pitch Catch'
                         lang={params.lang}
                     />
+                    <GameLink
+                        href='memo-blocks'
+                        colorType='peach'
+                        label='Memo Blocks'
+                        lang={params.lang}
+                    />
                 </>
             ) : (
                 <Loading />
