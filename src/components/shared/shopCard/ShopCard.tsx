@@ -1,3 +1,4 @@
+import Text from "@/components/core/Text";
 type Props = {
     name: string;
     description: string;
@@ -10,11 +11,11 @@ const ShopCard = ({ name, description, price, image, quantity }: Props) => {
     return (
         <div className=' rounded  shadow-lg  m-2  flex-col  items-center w-[180px] flex p-4'>
             <img src={image} alt='' className='w-full' />
-            <p className='font-bold text-sm'>{name}</p>
-            <p className='text-gray-700 text-sm'>{description}</p>
+            <Text >{name}</Text>
+            <Text >{description}</Text>
             <div className='flex flex-row justify-between items-start gap-12'>
-                <span className='text-sm text-gray-600'>${price}</span>
-                <span className='text-sm text-gray-600'>{quantity}</span>
+                <Text className='text-sm text-gray-600'>${price}</Text>
+                <Text className='text-sm text-gray-600'>{quantity}</Text>
             </div>
         </div>
     );
