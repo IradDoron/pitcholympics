@@ -84,3 +84,7 @@ export const mapToObject = (map: Map<any, any>) => {
 export const getTimeZone = (): string => {
     return /\((.*)\)/.exec(new Date().toString())![1];
 };
+
+export const getRandomItemFromArray = (arr: any) => {
+    return arr[Math.floor(Math.random() * arr.length)];
+};

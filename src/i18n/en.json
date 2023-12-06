@@ -89,6 +89,10 @@
         },
         "LocaleSwitcher": {
             "Language": "Language"
+        },
+        "snackbar": {
+            "Success": ["Good Job!", "Excellent!", "Genius"],
+            "Failed": ["Try again", "Next time.."]
         }
     }
 }
