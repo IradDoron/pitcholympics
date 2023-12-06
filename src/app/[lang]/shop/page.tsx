@@ -1,4 +1,3 @@
-import { Button } from '@/components/core/Button';
 import PageFiller from '@/components/shared/pageFiller';
 import ShopCard from '@/components/shared/shopCard';
 import { Locale } from '@/i18n.config';
