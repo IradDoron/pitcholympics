@@ -15,6 +15,7 @@ module.exports = {
                 '2xl': '1400px',
             },
         },
+
         extend: {
             colors: {
                 common: {
