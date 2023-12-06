@@ -2,9 +2,7 @@ import Comp from '@/components/shared/pianoChords/comp';
 const Page = () => {
     
     return (
-        
-            <Comp/>
-        
+        <Comp/>
     );
 };
 
