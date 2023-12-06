@@ -2,6 +2,7 @@ import PageFiller from '@/components/shared/pageFiller';
 import ShopCard from '@/components/shared/shopCard';
 import { Locale } from '@/i18n.config';
 import shopItemsData from '@/mockData/shopMockData';
+import Text from "@/components/core/Text";
 
 type Props = {
     params: {
@@ -28,7 +29,9 @@ const Page = ({ params }: Props) => {
                         );
                     })}
                 </div>
-                <div className='debug'> Buy it </div>
+                <div className='debug'>
+                    <Text>Buy it </Text>
+                </div>
             </div>
         </>
     );
