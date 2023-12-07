@@ -1,11 +1,19 @@
-import { LibraryContentBase } from './index';
+// import { LibraryContentBase } from './index';
+
+type LibraryContentBase = {
+    id: string;
+    title: string;
+    description: string;
+    imageURL: string;
+    tags: string[];
+    mainSubject: string;
+};
 
 type CourseLesson = {
     id: string;
     title: string;
     description: string;
     modulesIds: string[];
-    // some lesson test
 };
 
 type CourseSection = {
@@ -13,11 +21,11 @@ type CourseSection = {
     title: string;
     description: string;
     lessons: CourseLesson[];
-    // some section test
 };
 
 type CourseTrack = {
     id: string;
+    title: string;
     mainSubject: string;
     sections: CourseSection[];
     required: boolean;

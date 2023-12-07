@@ -5,9 +5,20 @@
 
 html,
 body {
-	height: 100%;
+    height: 100%;
 }
-.debug{
-	outline: 2px solid red;
+.debug {
+    outline: 2px solid red;
+}
 
+.debug-green {
+    outline: 2px solid green;
+}
+
+.debug-blue {
+    outline: 2px solid blue;
+}
+
+.debug-yellow {
+    outline: 2px solid yellow;
 }
