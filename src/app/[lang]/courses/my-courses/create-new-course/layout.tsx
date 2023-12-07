@@ -45,11 +45,9 @@ const Layout = ({ children, params }: Props) => {
                     color={currentTab === 'preview' ? 'secondary' : 'primary'}
                 />
                 <Link
-                    url={`/${lang}/courses/my-courses/create-new-course/course-stages`}
-                    label='Course Stages'
-                    color={
-                        currentTab === 'course-stages' ? 'secondary' : 'primary'
-                    }
+                    url={`/${lang}/courses/my-courses/create-new-course/tracks`}
+                    label='Tracks'
+                    color={currentTab === 'tracks' ? 'secondary' : 'primary'}
                 />
             </section>
             {children}
