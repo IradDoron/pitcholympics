@@ -21,7 +21,7 @@ const Layout = ({ children, params }: Props) => {
     return (
         <div>
             <Text className='text-3xl text-center'>My Courses Page</Text>
-            <div>
+            <section className='flex flex-row gap-2 justify-center'>
                 <Link
                     url={`/${lang}/courses/my-courses/create-new-course/info`}
                     label='Info'
@@ -44,7 +44,7 @@ const Layout = ({ children, params }: Props) => {
                         currentTab === 'course-stages' ? 'secondary' : 'primary'
                     }
                 />
-            </div>
+            </section>
             {children}
         </div>
     );
