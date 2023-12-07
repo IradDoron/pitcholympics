@@ -27,11 +27,13 @@ const Page = () => {
 
     return (
         <div className='flex flex-col items-center gap-8 p-8'>
-            <Button
-                onClick={() => {}}
-                label='Add First Track'
-                className='w-fit'
-            />
+            {!currentCourseState.tracks && (
+                <Button
+                    onClick={() => {}}
+                    label='Add First Track'
+                    className='w-fit'
+                />
+            )}
         </div>
     );
 };
