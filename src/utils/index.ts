@@ -55,7 +55,6 @@ export const getRandomItemFromArray = (arr: any) => {
     return arr[Math.floor(Math.random() * arr.length)];
 };
 
-
 export const countLessonsInCourse = (course: LibraryContentCourse) => {
     let count = 0;
 
@@ -66,4 +65,9 @@ export const countLessonsInCourse = (course: LibraryContentCourse) => {
     });
 
     return count;
+};
+
+export const getCurrentTab = (pathname: string) => {
+    const tabs = pathname.split('/');
+    return tabs[tabs.length - 1];
 };

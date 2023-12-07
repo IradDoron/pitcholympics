@@ -20,7 +20,7 @@ const Page = ({ params }: Props) => {
         router.push(`/${lang}/courses/my-courses/create-new-course/info`);
     };
     return (
-        <div className='flex flex-col gap-6'>
+        <div className='flex flex-col gap-6 items-center'>
             <Text className='text-3xl text-center'>My Courses Page</Text>
             <Button
                 label='Create new course'
