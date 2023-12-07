@@ -9,8 +9,9 @@ const SuggestionsPostSchema = new Schema({
         type: String,
     },
     category: {
+        type: String,
         enum: ['Bugs', 'Features', 'Suggestions','General'],
-        required: [true, 'Topic is required!'],
+        required: [true, 'Topic is required!']
     },
     authorId: {
         type: String,
