@@ -5,6 +5,7 @@ import Text from '@/components/core/Text';
 import { Locale } from '@/i18n.config';
 import { getCurrentTab } from '@/utils';
 import { usePathname } from 'next/navigation';
+import { useEffect } from 'react';
 
 type Props = {
     children: React.ReactNode;
@@ -17,6 +18,12 @@ const Layout = ({ children, params }: Props) => {
     const pathname = usePathname();
     const { lang } = params;
     const currentTab = getCurrentTab(pathname);
+    useEffect(() => {
+        const currentCourse = localStorage.getItem('currentCourse');
+        if (!currentCourse) {
+            localStorage.setItem('currentCourse', JSON.stringify({}));
+        }
+    }, []);
 
     return (
         <div>
