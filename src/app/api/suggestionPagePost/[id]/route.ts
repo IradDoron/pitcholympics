@@ -1,41 +1,40 @@
-// import { connectToDB } from '@/utils/database';
-// import { getServerSession } from 'next-auth'
-// import SuggestionPage from '@/models/suggestionsPagePost';
-// import { NextRequest, NextResponse } from 'next/server';
+import { connectToDB } from '@/utils/database';
 
-// export async function PUT(request: NextRequest, { params }: any) {
-//     const { id } = params;
-//     const { title, description, category, authorId } = await request.json();
+import SuggestionPage from '@/models/suggestionsPagePost';
+import { NextRequest, NextResponse } from 'next/server';
+import { getSession } from 'next-auth/react';
 
-//     await connectToDB();
+export async function POST(request: NextRequest, { params }: any) {
+    const { id } = params;
+    const { title, description, category, authorId } = await request.json();
+    const session = await getSession();
+    await connectToDB();
+    console.log(session);
+    try {
+        const suggestionPagePost = await SuggestionPage.findOne({ _id: id });
 
-//     try {
-//         const suggestionPagePost = await SuggestionPage.findOne({ _id: id });
+        if (!suggestionPagePost) {
+            return NextResponse.json(
+                { message: 'Suggestion Post not found' },
+                { status: 404 },
+            );
+        }
 
-//         if (!suggestionPagePost) {
-//             return NextResponse.json(
-//                 { message: 'Suggestion Post not found' },
-//                 { status: 404 },
-//             );
-//         }
+        await SuggestionPage.findByIdAndUpdate(id, {
+            title,
+            description,
+            category,
+            authorId,
+        });
 
-//         await SuggestionPage.findByIdAndUpdate(id, {
-//             title,
-//             description,
-//             category,
-//             authorId,
-//         });
-
-//         return NextResponse.json(
-//             { message: 'Suggestion Post updated successfully' },
-//             { status: 200 },
-//         );
-//     } catch (error) {
-//         return NextResponse.json(
-//             { message: 'Invalid input data' },
-//             { status: 400 },
-//         );
-//     }
-
-
-// }
+        return NextResponse.json(
+            { message: 'Suggestion Post updated successfully' },
+            { status: 200 },
+        );
+    } catch (error) {
+        return NextResponse.json(
+            { message: 'Invalid input data' },
+            { status: 400 },
+        );
+    }
+}
