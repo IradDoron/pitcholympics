@@ -18,6 +18,7 @@ const Layout = ({ children, params }: Props) => {
     const pathname = usePathname();
     const { lang } = params;
     const currentTab = getCurrentTab(pathname);
+    const pathSegments = pathname.split('/');
     useEffect(() => {
         const currentCourse = localStorage.getItem('currentCourse');
         if (!currentCourse) {
@@ -42,12 +43,21 @@ const Layout = ({ children, params }: Props) => {
                 <Link
                     url={`/${lang}/courses/my-courses/create-new-course/preview`}
                     label='Preview'
-                    color={currentTab === 'preview' ? 'secondary' : 'primary'}
+                    color={
+                        pathSegments[pathSegments.length - 1] === 'preview' &&
+                        pathSegments[pathSegments.length - 2] !== 'tracks'
+                            ? 'secondary'
+                            : 'primary'
+                    }
                 />
                 <Link
-                    url={`/${lang}/courses/my-courses/create-new-course/tracks`}
+                    url={`/${lang}/courses/my-courses/create-new-course/tracks/all-tracks`}
                     label='Tracks'
-                    color={currentTab === 'tracks' ? 'secondary' : 'primary'}
+                    color={
+                        pathSegments[pathSegments.length - 2] === 'tracks'
+                            ? 'secondary'
+                            : 'primary'
+                    }
                 />
             </section>
             {children}
