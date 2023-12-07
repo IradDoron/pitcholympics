@@ -1,4 +1,4 @@
-import { DOMAttributes, MouseEventHandler } from "react";
+import { MouseEventHandler } from 'react';
 
 type BtnSize = 'small' | 'medium' | 'large';
 
@@ -7,6 +7,7 @@ type Props = {
     onClick: MouseEventHandler<HTMLButtonElement>;
     size?: BtnSize;
     state?: 'default' | 'disabled' | 'clicked';
+    className?: string;
 };
 
 export const Button = ({
@@ -14,6 +15,7 @@ export const Button = ({
     onClick,
     size = 'medium',
     state = 'default',
+    className = '',
 }: Props) => {
     const getSize = (size: BtnSize) => {
         switch (size) {
@@ -46,10 +48,8 @@ export const Button = ({
     return (
         <button
             onClick={onClick}
-            className={` shadow-large-light dark:shadow-large-dark rounded-[12px] ${buttonSize} ${buttonColor}`}>
+            className={` shadow-large-light dark:shadow-large-dark rounded-[12px] ${buttonSize} ${buttonColor} ${className}`}>
             {label}
         </button>
     );
 };
-
-

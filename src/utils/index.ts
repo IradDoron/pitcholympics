@@ -1,3 +1,5 @@
+import { LibraryContentCourse } from '@/types/libraryPageTypes';
+
 export * from './gameLogic';
 
 export const getXpForLevel = (level: number): number => {
@@ -51,4 +53,21 @@ export const getTimeZone = (): string => {
 
 export const getRandomItemFromArray = (arr: any) => {
     return arr[Math.floor(Math.random() * arr.length)];
+};
+
+export const countLessonsInCourse = (course: LibraryContentCourse) => {
+    let count = 0;
+
+    course.tracks.forEach(track => {
+        track.sections.forEach(section => {
+            count += section.lessons.length;
+        });
+    });
+
+    return count;
+};
+
+export const getCurrentTab = (pathname: string) => {
+    const tabs = pathname.split('/');
+    return tabs[tabs.length - 1];
 };

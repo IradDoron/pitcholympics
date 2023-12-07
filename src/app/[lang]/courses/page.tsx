@@ -15,6 +15,7 @@ const Page = ({ params }: Props) => {
             <section>
                 <Link label='new course' url={`/${lang}/courses/new-course`} />
                 <Link label='dashboard' url={`/${lang}/courses/dashboard`} />
+                <Link label='my courses' url={`/${lang}/courses/my-courses`} />
             </section>
         </div>
     );

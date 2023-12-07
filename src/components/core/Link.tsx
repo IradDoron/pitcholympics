@@ -1,8 +1,7 @@
-import React from 'react';
 import NextLink from 'next/link';
 
 type LinkSizeType = 'small' | 'medium' | 'large';
-type LinkColorType = 'default' | 'green';
+type LinkColorType = 'default' | 'green' | 'primary' | 'secondary';
 
 type Props = {
     label: string;
@@ -30,12 +29,21 @@ const getColor = (state: LinkColorType) => {
             return 'bg-light-primary-main dark:bg-dark-primary-main text-light-primary-contrastText dark:text-dark-primary-contrastText';
         case 'green':
             return 'bg-green-A00 dark:bg-green-300 text-light-primary-contrastText dark:text-dark-primary-contrastText';
+        case 'primary':
+            return 'bg-light-primary-main dark:bg-dark-primary-main text-light-primary-contrastText dark:text-dark-primary-contrastText';
+        case 'secondary':
+            return 'bg-light-secondary-main dark:bg-dark-secondary-main text-light-secondary-contrastText dark:text-dark-secondary-contrastText';
         default:
             return 'bg-light-primary-main dark:bg-dark-primary-main text-light-primary-contrastText dark:text-dark-primary-contrastText';
     }
 };
 
-export const Link = ({ label, url, size = 'medium', color = 'default' }: Props) => {
+export const Link = ({
+    label,
+    url,
+    size = 'medium',
+    color = 'default',
+}: Props) => {
     const linkSize = getSize(size);
     const linkColor = getColor(color);
     return (
@@ -45,6 +53,6 @@ export const Link = ({ label, url, size = 'medium', color = 'default' }: Props) 
             {label}
         </NextLink>
     );
-}
+};
 
 export default Link;
