@@ -23,13 +23,13 @@ type CourseSection = {
     lessons: CourseLesson[];
 };
 
-type CourseTrack = {
+export type CourseTrack = {
     id: string;
     title: string;
     mainSubject: string;
     sections: CourseSection[];
     required: boolean;
-    order: number;
+    parentId: string;
 };
 
 export type LibraryContentCourse = LibraryContentBase & {
