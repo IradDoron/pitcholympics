@@ -1,12 +1,16 @@
 'use client';
 
-import { Input } from '@/components/core';
+import { Button, Input } from '@/components/core';
 import Text from '@/components/core/Text';
-import { CourseTrack } from '@/types/libraryPageTypes/libraryContentCourse';
+import CourseTrackSectionEditor from '@/components/shared/trackSectionEditor';
+import {
+    CourseSection,
+    CourseTrack,
+} from '@/types/libraryPageTypes/libraryContentCourse';
 import { useEffect, useState } from 'react';
 
 const Page = () => {
-    const [currentTrackState, setCurrentTrackState] = useState<CourseTrack>({
+    const [currentTrack, setCurrentTrack] = useState<CourseTrack>({
         id: '',
         title: '',
         mainSubject: '',
@@ -26,8 +30,32 @@ const Page = () => {
         );
         const newField = e.target.value;
         const newTrack = { ...currentTrack, [field]: newField };
-        setCurrentTrackState(newTrack);
+        setCurrentTrack(newTrack);
         localStorage.setItem('currentTrack', JSON.stringify(newTrack));
+    };
+
+    const handleAddSectionClick = () => {
+        const currentTrack = JSON.parse(
+            localStorage.getItem('currentTrack') || 'null',
+        );
+
+        let initSectionId = '1';
+
+        if (currentTrack) {
+            initSectionId = String(currentTrack.sections.length + 1);
+        }
+
+        const initTrackSection: CourseSection = {
+            id: initSectionId,
+            title: '',
+            description: '',
+            lessons: [],
+        };
+
+        const newSections = [...currentTrack.sections, initTrackSection];
+        const newTrack = { ...currentTrack, sections: newSections };
+        localStorage.setItem('currentTrack', JSON.stringify(newTrack));
+        setCurrentTrack(newTrack);
     };
 
     useEffect(() => {
@@ -36,13 +64,11 @@ const Page = () => {
         );
 
         if (!currentTrack) {
-            localStorage.setItem(
-                'currentTrack',
-                JSON.stringify(currentTrackState),
-            );
+            localStorage.setItem('currentTrack', JSON.stringify(currentTrack));
             return;
         }
-        setCurrentTrackState(currentTrack);
+
+        setCurrentTrack(currentTrack);
     }, []);
 
     return (
@@ -55,7 +81,7 @@ const Page = () => {
                     <Input
                         onChange={e => handleFieldChange(e, 'title')}
                         className='w-auto min-w-[200px]'
-                        value={currentTrackState.title}
+                        value={currentTrack.title}
                     />
                 </label>
                 <label>
@@ -65,7 +91,7 @@ const Page = () => {
                     <Input
                         onChange={e => handleFieldChange(e, 'mainSubject')}
                         className='w-auto min-w-[200px]'
-                        value={currentTrackState.mainSubject}
+                        value={currentTrack.mainSubject}
                     />
                 </label>
                 <div>
@@ -75,12 +101,12 @@ const Page = () => {
                         </span>
                         <span>
                             <Text className='w-fit'>
-                                {currentTrackState.required}
+                                {currentTrack.required}
                             </Text>
                         </span>
                     </div>
 
-                    {currentTrackState.required ? (
+                    {currentTrack.required ? (
                         <select
                             onChange={e => handleFieldChange(e, 'required')}>
                             <option value='false'>false</option>
@@ -95,14 +121,25 @@ const Page = () => {
                     )}
                 </div>
             </section>
-            <section>
-                <h2>
-                    <Text className='text-xl w-fit inline'>
-                        Section Number:
-                    </Text>{' '}
-                    <Text className='text-xl w-fit inline'>1</Text>
-                </h2>
-            </section>
+            <div>
+                <h2 className='text-xl'>Sections:</h2>
+                {currentTrack.sections.map((section, index) => {
+                    const { id } = section;
+                    return (
+                        <CourseTrackSectionEditor
+                            key={id}
+                            sectionIndex={index}
+                            currentTrack={currentTrack}
+                            setCurrentTrack={setCurrentTrack}
+                        />
+                    );
+                })}
+            </div>
+            <Button
+                label='Add Section'
+                className='w-fit'
+                onClick={handleAddSectionClick}
+            />
         </div>
     );
 };

@@ -9,14 +9,14 @@ type LibraryContentBase = {
     mainSubject: string;
 };
 
-type CourseLesson = {
+export type CourseLesson = {
     id: string;
     title: string;
     description: string;
     modulesIds: string[];
 };
 
-type CourseSection = {
+export type CourseSection = {
     id: string;
     title: string;
     description: string;
