@@ -51,7 +51,7 @@ const musicCourse: LibraryContentCourse = {
                 // Add more sections as needed
             ],
             required: true,
-            order: 1,
+            parentId: '1',
         },
         {
             id: '102',
@@ -61,7 +61,7 @@ const musicCourse: LibraryContentCourse = {
                 // Add sections, lessons, and modules as needed
             ],
             required: false,
-            order: 2,
+            parentId: '101',
         },
         // Add more tracks as needed
     ],
