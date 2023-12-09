@@ -16,24 +16,26 @@ const Page = ({ params }: Props) => {
     const { lang } = params;
 
     const handleSubmitTrackClick = () => {
+        // get current track from localStorage
         const currentTrack = JSON.parse(
             localStorage.getItem('currentTrack') || 'null',
         );
+
+        // get current course from localStorage
         const currentCourse = JSON.parse(
             localStorage.getItem('currentCourse') || 'null',
         );
 
-        if (!currentCourse.tracks) {
-            currentCourse.tracks = [];
-        } else {
-            currentCourse.tracks = [...currentCourse.tracks, currentTrack];
-        }
+        // add current track to current course
+        currentCourse.tracks = [...currentCourse.tracks, currentTrack];
 
+        // save current course in localStorage
         localStorage.setItem('currentCourse', JSON.stringify(currentCourse));
 
         // remove track from localStorage and replace with empty track object
         localStorage.setItem('currentTrack', JSON.stringify({}));
 
+        // navigate to all tracks page
         router.push(
             `/${lang}/courses/my-courses/create-new-course/tracks/all-tracks`,
         );
