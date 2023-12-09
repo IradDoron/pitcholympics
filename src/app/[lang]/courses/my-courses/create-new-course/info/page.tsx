@@ -31,7 +31,7 @@ const Page = () => {
             localStorage.getItem('currentCourse') || 'null',
         );
         setCurrentCourseState(currentCourse);
-        setCurrentTags(currentCourse.tags || []);
+        setCurrentTags(currentCourse?.tags || []);
         setCurrentPrerequisites(currentCourse.prerequisites || []);
     }, []);
 

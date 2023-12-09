@@ -36,6 +36,15 @@ const Layout = ({ children, params }: Props) => {
                     color={currentTab === 'info' ? 'secondary' : 'primary'}
                 />
                 <Link
+                    url={`/${lang}/courses/my-courses/create-new-course/tracks/all-tracks`}
+                    label='Tracks'
+                    color={
+                        pathSegments[pathSegments.length - 2] === 'tracks'
+                            ? 'secondary'
+                            : 'primary'
+                    }
+                />
+                <Link
                     url={`/${lang}/courses/my-courses/create-new-course/syllabus`}
                     label='Syllabus'
                     color={currentTab === 'syllabus' ? 'secondary' : 'primary'}
@@ -46,15 +55,6 @@ const Layout = ({ children, params }: Props) => {
                     color={
                         pathSegments[pathSegments.length - 1] === 'preview' &&
                         pathSegments[pathSegments.length - 2] !== 'tracks'
-                            ? 'secondary'
-                            : 'primary'
-                    }
-                />
-                <Link
-                    url={`/${lang}/courses/my-courses/create-new-course/tracks/all-tracks`}
-                    label='Tracks'
-                    color={
-                        pathSegments[pathSegments.length - 2] === 'tracks'
                             ? 'secondary'
                             : 'primary'
                     }
