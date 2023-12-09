@@ -62,6 +62,7 @@ const Page = ({ params }: Props) => {
 
     return (
         <div className='flex flex-col items-center gap-8 p-8'>
+            <Text className='text-xl text-center'>All Tracks</Text>
             {!currentCourse.tracks && (
                 <Button
                     label='Add First Track'

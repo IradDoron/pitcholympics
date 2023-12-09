@@ -1,6 +1,7 @@
 'use client';
 
 import { Link } from '@/components/core';
+import Text from '@/components/core/Text';
 import { Locale } from '@/i18n.config';
 import { usePathname } from 'next/navigation';
 
@@ -16,7 +17,8 @@ const Layout = ({ children, params }: Props) => {
     const pathname = usePathname();
     const pathSegments = pathname.split('/');
     return (
-        <div className='mt-16'>
+        <div className='my-8'>
+            <Text className='text-3xl text-center'>Tracks</Text>
             <section className='flex flex-row justify-center gap-4'>
                 <Link
                     url={`/${lang}/courses/my-courses/create-new-course/tracks/all-tracks`}

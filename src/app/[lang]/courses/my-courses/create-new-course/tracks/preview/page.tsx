@@ -1,6 +1,7 @@
 'use client';
 
 import { Button } from '@/components/core';
+import Text from '@/components/core/Text';
 import { Locale } from '@/i18n.config';
 import { useRouter } from 'next/navigation';
 
@@ -39,8 +40,8 @@ const Page = ({ params }: Props) => {
     };
 
     return (
-        <div>
-            preview
+        <div className='p-8'>
+            <Text className='text-xl text-center'>Preview</Text>
             <Button
                 label='Submit Track'
                 className='w-fit'

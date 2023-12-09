@@ -1,6 +1,7 @@
 'use client';
 
 import { Button } from '@/components/core';
+import Text from '@/components/core/Text';
 import {
     CourseSection,
     CourseTrack,
@@ -94,7 +95,9 @@ const Page = () => {
     }, []);
 
     return (
-        <div>
+        <div className='p-8'>
+            <Text className='text-xl text-center'>Edit</Text>
+
             <TrackInfo
                 currentTrack={currentTrack}
                 setCurrentTrack={setCurrentTrack}
