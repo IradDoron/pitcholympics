@@ -1,5 +1,11 @@
+import Text from '@/components/core/Text';
+
 const Page = () => {
-    return <div>Preview Page</div>;
+    return (
+        <div className='flex flex-col justify-center items-center gap-4 my-8 w-full'>
+            <Text className='text-3xl text-center'>Preview</Text>
+        </div>
+    );
 };
 
 export default Page;

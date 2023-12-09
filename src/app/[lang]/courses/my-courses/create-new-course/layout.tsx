@@ -28,12 +28,21 @@ const Layout = ({ children, params }: Props) => {
 
     return (
         <div>
-            <Text className='text-3xl text-center'>My Courses Page</Text>
+            <Text className='text-3xl text-center'>Create New Course</Text>
             <section className='flex flex-row gap-2 justify-center'>
                 <Link
                     url={`/${lang}/courses/my-courses/create-new-course/info`}
                     label='Info'
                     color={currentTab === 'info' ? 'secondary' : 'primary'}
+                />
+                <Link
+                    url={`/${lang}/courses/my-courses/create-new-course/tracks/all-tracks`}
+                    label='Tracks'
+                    color={
+                        pathSegments[pathSegments.length - 2] === 'tracks'
+                            ? 'secondary'
+                            : 'primary'
+                    }
                 />
                 <Link
                     url={`/${lang}/courses/my-courses/create-new-course/syllabus`}
@@ -46,15 +55,6 @@ const Layout = ({ children, params }: Props) => {
                     color={
                         pathSegments[pathSegments.length - 1] === 'preview' &&
                         pathSegments[pathSegments.length - 2] !== 'tracks'
-                            ? 'secondary'
-                            : 'primary'
-                    }
-                />
-                <Link
-                    url={`/${lang}/courses/my-courses/create-new-course/tracks/all-tracks`}
-                    label='Tracks'
-                    color={
-                        pathSegments[pathSegments.length - 2] === 'tracks'
                             ? 'secondary'
                             : 'primary'
                     }

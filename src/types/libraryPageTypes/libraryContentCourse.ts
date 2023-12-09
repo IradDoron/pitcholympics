@@ -9,27 +9,27 @@ type LibraryContentBase = {
     mainSubject: string;
 };
 
-type CourseLesson = {
+export type CourseLesson = {
     id: string;
     title: string;
     description: string;
     modulesIds: string[];
 };
 
-type CourseSection = {
+export type CourseSection = {
     id: string;
     title: string;
     description: string;
     lessons: CourseLesson[];
 };
 
-type CourseTrack = {
+export type CourseTrack = {
     id: string;
     title: string;
     mainSubject: string;
     sections: CourseSection[];
     required: boolean;
-    order: number;
+    parentId: string;
 };
 
 export type LibraryContentCourse = LibraryContentBase & {

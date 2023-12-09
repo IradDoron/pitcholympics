@@ -1,9 +1,15 @@
 'use client';
 
-import { Button, Input } from '@/components/core';
 import Text from '@/components/core/Text';
 import { LibraryContentCourse } from '@/types/libraryPageTypes';
 import { useEffect, useState } from 'react';
+import {
+    InfoDisplay,
+    LongInput,
+    PrerequisitesInput,
+    ShortInput,
+    TagsInput,
+} from './_components';
 
 const Page = () => {
     const [currentCourseState, setCurrentCourseState] =
@@ -31,12 +37,14 @@ const Page = () => {
             localStorage.getItem('currentCourse') || 'null',
         );
         setCurrentCourseState(currentCourse);
-        setCurrentTags(currentCourse.tags || []);
+        setCurrentTags(currentCourse?.tags || []);
         setCurrentPrerequisites(currentCourse.prerequisites || []);
     }, []);
 
     const handleFieldChange = (
-        e: React.ChangeEvent<HTMLInputElement>,
+        e:
+            | React.ChangeEvent<HTMLInputElement>
+            | React.ChangeEvent<HTMLTextAreaElement>,
         field: string,
     ) => {
         const currentCourse = JSON.parse(
@@ -88,88 +96,45 @@ const Page = () => {
     };
 
     return (
-        <div>
-            <label>
-                <span>
-                    <Text>Course Title:</Text>
-                </span>
-                <Input
-                    onChange={e => handleFieldChange(e, 'title')}
-                    className='w-auto min-w-[200px]'
-                    value={currentCourseState.title}
+        <div className='flex flex-col justify-center items-center gap-4 my-8 w-full'>
+            <Text className='text-3xl text-center'>Info</Text>
+            <InfoDisplay currentCourseState={currentCourseState} />
+            <div className='flex flex-col justify-center items-center gap-4 my-8 w-full'>
+                <ShortInput
+                    label='title'
+                    handleFieldChange={handleFieldChange}
+                    currentCourseState={currentCourseState}
                 />
-            </label>
-            <label>
-                <span>
-                    <Text>Main subject:</Text>
-                </span>
-                <Input
-                    onChange={e => handleFieldChange(e, 'mainSubject')}
-                    className='w-auto min-w-[200px]'
-                    value={currentCourseState.mainSubject}
+                <ShortInput
+                    label='mainSubject'
+                    handleFieldChange={handleFieldChange}
+                    currentCourseState={currentCourseState}
                 />
-            </label>
-            <label>
-                <span>
-                    <Text>Description:</Text>
-                </span>
-                <Input
-                    onChange={e => handleFieldChange(e, 'description')}
-                    className='w-auto min-w-[200px]'
-                    value={currentCourseState.description}
+                <LongInput
+                    label='description'
+                    handleFieldChange={handleFieldChange}
+                    currentCourseState={currentCourseState}
                 />
-            </label>
-            <label>
-                <span>
-                    <Text>Image URL:</Text>
-                </span>
-                <Input
-                    onChange={e => handleFieldChange(e, 'imageURL')}
-                    className='w-auto min-w-[200px]'
-                    value={currentCourseState.imageURL}
+                <ShortInput
+                    label='imageURL'
+                    handleFieldChange={handleFieldChange}
+                    currentCourseState={currentCourseState}
                 />
-            </label>
-            <label>
-                <span>
-                    <Text>New tag:</Text>
-                </span>
-                <Input
-                    onChange={handleCurrentTagChange}
-                    className='w-auto min-w-[200px]'
-                    value={currentTag}
-                />
-                <Button onClick={handleAddTagClick} label='Add Tag' />
-                <div>
-                    {currentCourseState.tags?.map((tag: string) => (
-                        <div key={tag}>
-                            <Text>{tag}</Text>
-                        </div>
-                    ))}
-                </div>
-            </label>
-            <label>
-                <span>
-                    <Text>New prerequisite:</Text>
-                </span>
-                <Input
-                    onChange={handleCurrentPrerequisiteChange}
-                    className='w-auto min-w-[200px]'
-                    value={currentPrerequisite}
-                />
-                <Button
-                    onClick={handleAddPrerequisiteClick}
-                    label='Add Prerequisite'
-                />
-                <div>
-                    {currentCourseState.prerequisites?.map(
-                        (prerequisite: string) => (
-                            <div key={prerequisite}>
-                                <Text>{prerequisite}</Text>
-                            </div>
-                        ),
-                    )}
-                </div>
-            </label>
+            </div>
+
+            <TagsInput
+                handleCurrentTagChange={handleCurrentTagChange}
+                currentTag={currentTag}
+                handleAddTagClick={handleAddTagClick}
+            />
+
+            <PrerequisitesInput
+                handleCurrentPrerequisiteChange={
+                    handleCurrentPrerequisiteChange
+                }
+                currentPrerequisite={currentPrerequisite}
+                handleAddPrerequisiteClick={handleAddPrerequisiteClick}
+            />
         </div>
     );
 };
