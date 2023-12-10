@@ -3,6 +3,10 @@
 import { Button } from '@/components/core';
 import Text from '@/components/core/Text';
 import { Locale } from '@/i18n.config';
+import {
+    CourseTrack,
+    LibraryContentCourse,
+} from '@/types/libraryPageTypes/libraryContentCourse';
 import { useRouter } from 'next/navigation';
 
 type Props = {
@@ -24,10 +28,22 @@ const Page = ({ params }: Props) => {
         // get current course from localStorage
         const currentCourse = JSON.parse(
             localStorage.getItem('currentCourse') || 'null',
+        ) as LibraryContentCourse;
+
+        // get current track id
+        const currentTrackId = currentTrack.id as string;
+
+        // check if current track id is in current course tracks, if exists return the index of the track in the array, else return -1
+        const currentTrackIndex = currentCourse.tracks.findIndex(
+            (track: CourseTrack) => track.id === currentTrackId,
         );
 
-        // add current track to current course
-        currentCourse.tracks = [...currentCourse.tracks, currentTrack];
+        // if current track index is -1, add current track to current course tracks, else replace current track with current track in current course tracks
+        if (currentTrackIndex === -1) {
+            currentCourse.tracks.push(currentTrack);
+        } else {
+            currentCourse.tracks[currentTrackIndex] = currentTrack;
+        }
 
         // save current course in localStorage
         localStorage.setItem('currentCourse', JSON.stringify(currentCourse));
