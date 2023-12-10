@@ -1,6 +1,6 @@
 import { Locale } from '@/i18n.config';
 import { Link } from '@core';
-
+import Text from '@/components/core/Text';
 type Props = {
     params: {
         lang: Locale;
@@ -10,8 +10,22 @@ type Props = {
 const Page = ({ params }: Props) => {
     const { lang } = params;
     return (
-        <div>
-            <h1>Choose Course</h1>
+        <div className='flex flex-col justify-center items-center gap-6'>
+            <div className='w-[200px] h-[130px] bg-blue-500  flex items-center justify-center'>
+                <Text className='text-sm'> הקורס המומלץ ביותר</Text>
+            </div>
+
+            <div className='flex w-[700px]  flex-row items-center justify-center h-1/2 gap-20'>
+                <div className='w-[200px] h-[130px] bg-blue-500 flex items-center justify-center'>
+                    <Text className='text-sm'> קורס מומלץ</Text>
+                </div>
+                <div className='w-[200px] h-[130px] bg-blue-500 flex items-center justify-center'>
+                    <Text className='text-sm'> קורס מומלץ</Text>
+                </div>
+                <div className='w-[200px] h-[130px] bg-blue-500 flex items-center justify-center'>
+                    <Text className='text-sm'> קורס מומלץ</Text>
+                </div>
+            </div>
             <Link
                 label='Syllabus'
                 url={`/${lang}/courses/new-course/search-course-form/choose-course/syllabus/1`}

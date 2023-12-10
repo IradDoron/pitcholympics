@@ -2,6 +2,7 @@
 
 import { Locale } from '@/i18n.config';
 import { Button, Link } from '@core';
+import Text from '@/components/core/Text';
 
 type Props = {
     params: {
@@ -17,13 +18,25 @@ const Page = ({ params }: Props) => {
     };
 
     return (
-        <div>
-            <h1>Syllabus</h1>
-            <Button label='Choose Course' onClick={handleClick} />
-            <Link
-                label='Back'
-                url={`/${lang}/courses/new-course/search-course-form/choose-course`}
-            />
+        <div className='flex flex-col w-full h-full items-center gap-4'>
+            <Text className='text-xl'>שׁם הקורס</Text>
+            <div className=' w-1/2 h-1/2 bg-white items-center justify-center'>
+                lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam, voluptatum. lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Quisquam, voluptatum. lorem ipsum dolor sit
+                amet consectetur adipisicing elit. Quisquam, voluptatum. lorem
+                ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+                voluptatum. lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Quisquam, voluptatum. lorem ipsum dolor sit amet
+                consectetur adipisicing elit. Quisquam, voluptatum.
+            </div>
+            <div className='flex flex-row justify-between items-center '>
+                <Button label='Choose Course' onClick={handleClick} />
+                <Link
+                    label='Back'
+                    url={`/${lang}/courses/new-course/search-course-form/choose-course`}
+                />
+            </div>
         </div>
     );
 };
