@@ -1,20 +1,20 @@
 'use client';
 
+import { parseTable } from '@/lib/utils';
+import { levelOneCards } from '@/mockData/memoBlocks';
+import { MatrixWithId } from '@/types';
+import { shuffleArray } from '@/utils';
 import { closestCenter, DndContext } from '@dnd-kit/core';
 import {
     arrayMove,
     horizontalListSortingStrategy,
     SortableContext,
 } from '@dnd-kit/sortable';
-import { useEffect, useState } from 'react';
-import { MatrixWithId } from '@/types';
-import SortableCard from './SortableCard';
-import { levelOneCards } from '@/mockData/memoBlocks';
-import { parseTable } from '@/lib/utils';
-import MemoBlocksCard from './MemoBlocksCard';
 import { FlipHorizontal2Icon, FlipVertical2Icon, Loader } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import MemoBlocksCard from './MemoBlocksCard';
+import SortableCard from './SortableCard';
 import { flipMatrix, mirrorMatrix } from './utils';
-import { shuffleArray } from '@/utils';
 
 type DragEventType = {
     activatorEvent: PointerEvent;
@@ -52,7 +52,7 @@ const setInitialMatrixes = () => {
     return shuffleArray([...matrixes]);
 };
 
-const MemoBlocksGame = () => {
+export const MemoBlocksGame = () => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [guessCards, setGuessCards] = useState<MatrixWithId[]>([]);
     const [activeMatrixId, setActiveMatrixId] = useState<string>('');
@@ -138,4 +138,4 @@ const MemoBlocksGame = () => {
         </div>
     );
 };
-export default MemoBlocksGame;
+

@@ -1,15 +1,14 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { Card, Button } from '@/components/core';
-import UserImage from '@/components/shared/userImage';
-import ProfileInfo from '@/components/shared/profileInfo';
-import { useSession } from 'next-auth/react';
+import { CURRENT_DOMAIN } from '@/constants';
+import { Locale as LocalType } from '@/i18n.config';
 import { getTimeZone } from '@/utils';
 import { getDictionaryClient } from '@/utils/getDictionaryClient';
-import { Locale as LocalType } from '@/i18n.config';
+import { Button, Card } from '@core';
+import { ProfileInfo, UserImage } from '@shared';
+import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { CURRENT_DOMAIN } from '@/constants';
+import { useEffect, useState } from 'react';
 
 type Gender = 'male' | 'female';
 type Locale = 'HE' | 'EN';

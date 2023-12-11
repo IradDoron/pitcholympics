@@ -1,5 +1,5 @@
 import { LangParam } from '@/types';
-import GameLink from '@/components/shared/gameLink/GameLink';
+import { GameLink } from '@shared';
 import Loading from './loading';
 
 const Home = ({ params }: LangParam) => {

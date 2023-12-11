@@ -6,7 +6,7 @@ import { getDictionaryClient } from '@/utils/getDictionaryClient';
 type Props = {
     lang: Locale;
 };
-const ComingSoonSection = ({ lang }: Props) => {
+export const ComingSoonSection = ({ lang }: Props) => {
     const dict = getDictionaryClient(lang);
 
     const { comingSoonSection } = dict.shared;
@@ -17,5 +17,3 @@ const ComingSoonSection = ({ lang }: Props) => {
         </div>
     );
 };
-
-export default ComingSoonSection;

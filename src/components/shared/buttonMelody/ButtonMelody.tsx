@@ -1,3 +1,5 @@
+'use client';
+
 import { colorVariants } from '@/components/core/CircleGradient';
 import { divideItemsByLightAndDark } from '@/utils/divideItemsByLightAndDark';
 import { Dispatch, SetStateAction, useEffect } from 'react';
@@ -27,7 +29,7 @@ type Props = {
     userGuess: number[]; // The user guess array
     setPitchIndexPlaying: Dispatch<SetStateAction<number>>; // Set the pitch index that is currently playing
 };
-const ButtonMelody = ({
+export const ButtonMelody = ({
     isPlaying,
     pitch,
     isUserTurn,
@@ -62,5 +64,3 @@ const ButtonMelody = ({
             className={`w-24 h-24 rounded-full hover:shadow-2xl flex flex-row items-center justify-center ${light[pitchOptionIndex]} dark:${dark[pitchOptionIndex]} text-white text-center mt-[20px]`}></div>
     );
 };
-
-export default ButtonMelody;

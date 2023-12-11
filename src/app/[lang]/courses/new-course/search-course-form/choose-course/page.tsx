@@ -1,5 +1,5 @@
 import { Locale } from '@/i18n.config';
-import { Link } from '@core';
+import { Link, Text } from '@core';
 import CoursesOptionsItem from '../../_components/coursesOptionsItem';
 
 type Props = {

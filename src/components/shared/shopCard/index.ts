@@ -1,3 +1,1 @@
-import ShopCard from './ShopCard';
-
-export default ShopCard;
+export * from './ShopCard';

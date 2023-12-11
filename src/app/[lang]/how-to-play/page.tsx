@@ -3,7 +3,7 @@
 import { Button } from '@/components/core';
 import { Locale } from '@/i18n.config';
 import { getDictionaryClient } from '@/utils/getDictionaryClient';
-import PageFiller from '@shared/pageFiller';
+import { PageFiller } from '@shared';
 import { useRouter } from 'next/navigation';
 
 type Props = {

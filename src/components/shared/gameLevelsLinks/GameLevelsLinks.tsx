@@ -1,14 +1,14 @@
 'use client';
 
-import LevelsLinksContainer from './LevelsLinksContainer';
-import { useEffect, useState } from 'react';
-import { MemoTheMeloGame, PitchCatchGame, LevelStatus } from '@/types';
-import StageTitle from './StageTitle';
-import StageLevelsContainer from './StageLevelsContainer';
-import LevelLink from './LevelLink';
-import { useSession } from 'next-auth/react';
 import { Locale } from '@/i18n.config';
+import { LevelStatus, MemoTheMeloGame, PitchCatchGame } from '@/types';
 import type { Session } from 'next-auth';
+import { useSession } from 'next-auth/react';
+import { useEffect, useState } from 'react';
+import LevelLink from './LevelLink';
+import LevelsLinksContainer from './LevelsLinksContainer';
+import StageLevelsContainer from './StageLevelsContainer';
+import StageTitle from './StageTitle';
 
 type Props = {
     levelsData: MemoTheMeloGame | PitchCatchGame;
@@ -26,8 +26,7 @@ type ExtendedSession = Session & {
     };
 };
 
-
-const GameLevelsLinks = ({ levelsData, lang, game }: Props) => {
+export const GameLevelsLinks = ({ levelsData, lang, game }: Props) => {
     const { data: session } = useSession() as { data: ExtendedSession | null };
     const [userProgress, setUserProgress] = useState<UserProgressEntry>({});
 
@@ -106,5 +105,3 @@ const GameLevelsLinks = ({ levelsData, lang, game }: Props) => {
         </div>
     );
 };
-
-export default GameLevelsLinks;

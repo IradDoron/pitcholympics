@@ -1,21 +1,21 @@
 'use client';
 
-import { Card } from '@/components/core';
-import { useRouter } from 'next/navigation';
-import MenuSection from './MenuSection';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import UserImage from '@/components/shared/userImage';
-import UserName from './UserName';
+import { Locale } from '@/i18n.config';
+import { Card } from '@core';
+import { CloseIcon, GithubLogo } from '@icons';
+import { UserImage } from '@shared';
 import {
     ClientSafeProvider,
     getProviders,
-    useSession,
     signOut,
+    useSession,
 } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import MenuItem from './MenuItem';
-import { Locale } from '@/i18n.config';
+import MenuSection from './MenuSection';
 import TransparentBg from './TransparentBg';
-import { GithubLogo, CloseIcon } from '@icons';
+import UserName from './UserName';
 
 type Props = {
     isOpen: boolean;
@@ -23,7 +23,7 @@ type Props = {
     lang: Locale;
 };
 
-const SettingsMenu = ({ isOpen, setIsOpen, lang }: Props) => {
+export const SettingsMenu = ({ isOpen, setIsOpen, lang }: Props) => {
     const router = useRouter();
     const { data: session } = useSession();
 
@@ -86,5 +86,3 @@ const SettingsMenu = ({ isOpen, setIsOpen, lang }: Props) => {
         </Card>
     );
 };
-
-export default SettingsMenu;

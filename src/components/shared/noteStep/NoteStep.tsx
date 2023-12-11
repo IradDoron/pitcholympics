@@ -1,7 +1,7 @@
 type Props = {
     state: 'Played' | 'Current' | 'NotPlayed';
 };
-const NoteStep = ({ state }: Props) => {
+export const NoteStep = ({ state }: Props) => {
     return (
         (state == 'Played' && (
             <div className='w-24 h-24 rounded-md hover:shadow-2xl flex flex-row items-center justify-center bg-green-500 text-white text-center mt-[20px]'>
@@ -20,5 +20,3 @@ const NoteStep = ({ state }: Props) => {
         ))
     );
 };
-
-export default NoteStep;

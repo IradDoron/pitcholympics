@@ -12,7 +12,7 @@ type Props = {
     colorType: ColorType;
 };
 
-const GameLink = ({ href, label, colorType, lang }: Props) => {
+export const GameLink = ({ href, label, colorType, lang }: Props) => {
     const commonStyles = {
         width: '218px',
         height: '218px',
@@ -38,5 +38,3 @@ const GameLink = ({ href, label, colorType, lang }: Props) => {
         </Link>
     );
 };
-
-export default GameLink;

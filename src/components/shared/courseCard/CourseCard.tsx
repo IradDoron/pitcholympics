@@ -1,14 +1,13 @@
-import { Link } from '@/components/core';
-import Text from '@/components/core/Text';
 import { LibraryContentCourse } from '@/types/libraryPageTypes';
 import { countLessonsInCourse } from '@/utils';
+import { Link, Text } from '@core';
 
 type Props = {
     courseId: string;
     courses: LibraryContentCourse[];
 };
 
-const CourseCard = ({ courseId, courses }: Props) => {
+export const CourseCard = ({ courseId, courses }: Props) => {
     const course = courses.find(course => course.id === courseId);
     if (!course) {
         return <div>Course not found</div>;
@@ -32,5 +31,3 @@ const CourseCard = ({ courseId, courses }: Props) => {
         </div>
     );
 };
-
-export default CourseCard;

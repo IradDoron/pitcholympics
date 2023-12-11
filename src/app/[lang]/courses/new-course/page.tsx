@@ -1,7 +1,7 @@
 import { Locale } from '@/i18n.config';
-import { Link } from '@core';
-import Text from '@/components/core/Text';
+import { Link, Text } from '@core';
 import SubjectsGridItem from './_components/subjectsGridItem';
+
 type Props = {
     params: {
         lang: Locale;

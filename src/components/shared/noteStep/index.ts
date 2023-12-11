@@ -1,3 +1,1 @@
-import NoteStep from './NoteStep';
-
-export default NoteStep;
+export * from './NoteStep';

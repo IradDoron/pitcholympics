@@ -1,5 +1,4 @@
-import { LangParam } from '@/types';
-import MemoBlocksGame from '@/components/shared/memoBlocksGame';
+import { MemoBlocksGame } from '@shared';
 
 const Page = async () => {
     return (

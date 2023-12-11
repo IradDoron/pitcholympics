@@ -1,3 +1,1 @@
-import TrackLessonEditor from './TrackLessonEditor';
-
-export default TrackLessonEditor;
+export * from './TrackLessonEditor';

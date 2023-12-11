@@ -1,16 +1,8 @@
-import PageFiller from '@/components/shared/pageFiller';
-import ShopCard from '@/components/shared/shopCard';
-import { Locale } from '@/i18n.config';
 import shopItemsData from '@/mockData/shopMockData';
-import Text from "@/components/core/Text";
+import { Text } from '@core';
+import { PageFiller, ShopCard } from '@shared';
 
-type Props = {
-    params: {
-        lang: Locale;
-    };
-};
-
-const Page = ({ params }: Props) => {
+const Page = () => {
     return (
         <>
             <PageFiller />

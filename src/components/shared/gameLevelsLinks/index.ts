@@ -1,3 +1,1 @@
-import GameLevelsLinks from './GameLevelsLinks';
-
-export default GameLevelsLinks;
+export * from './GameLevelsLinks';

@@ -3,7 +3,7 @@
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 
-const UserImage = () => {
+export const UserImage = () => {
     const { data: session } = useSession();
 
     if (session?.user) {
@@ -20,5 +20,3 @@ const UserImage = () => {
         );
     }
 };
-
-export default UserImage;

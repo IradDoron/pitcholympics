@@ -1,5 +1,5 @@
-import CourseTrackSectionEditor from '@/components/shared/trackSectionEditor';
 import { CourseTrack } from '@/types/libraryPageTypes/libraryContentCourse';
+import { TrackSectionEditor } from '@shared';
 import { Dispatch, SetStateAction } from 'react';
 
 type Props = {
@@ -14,7 +14,7 @@ export const TrackSections = ({ currentTrack, setCurrentTrack }: Props) => {
             {currentTrack.sections?.map((section, index) => {
                 const { id } = section;
                 return (
-                    <CourseTrackSectionEditor
+                    <TrackSectionEditor
                         key={id}
                         sectionIndex={index}
                         currentTrack={currentTrack}

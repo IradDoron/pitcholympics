@@ -1,6 +1,5 @@
-import { Input } from '@/components/core';
-import Text from '@/components/core/Text';
 import { LibraryContentCourse } from '@/types/libraryPageTypes';
+import { Input, Text } from '@core';
 
 type Props = {
     label: 'id' | 'title' | 'description' | 'imageURL' | 'mainSubject';

@@ -1,3 +1,1 @@
-import PageFiller from './PageFiller';
-
-export default PageFiller;
+export * from './PageFiller';

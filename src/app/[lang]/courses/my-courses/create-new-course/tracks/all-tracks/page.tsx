@@ -1,10 +1,9 @@
 'use client';
 
-import { Button } from '@/components/core';
-import Text from '@/components/core/Text';
 import { Locale } from '@/i18n.config';
 import { LibraryContentCourse } from '@/types/libraryPageTypes';
 import { CourseTrack } from '@/types/libraryPageTypes/libraryContentCourse';
+import { Button, Text } from '@core';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { TrackCard } from './_components';

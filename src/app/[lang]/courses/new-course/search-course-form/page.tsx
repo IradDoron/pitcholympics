@@ -1,7 +1,7 @@
 'use client';
+
 import { Locale } from '@/i18n.config';
-import { Link } from '@core';
-import Text from '@/components/core/Text';
+import { Link, Text } from '@core';
 import FormInput from '../_components/formInput';
 import FormSelect from '../_components/formSelect';
 import { useEffect, useState } from 'react';

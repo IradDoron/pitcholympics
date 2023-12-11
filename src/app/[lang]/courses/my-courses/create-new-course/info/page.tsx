@@ -1,7 +1,7 @@
 'use client';
 
-import Text from '@/components/core/Text';
 import { LibraryContentCourse } from '@/types/libraryPageTypes';
+import { Text } from '@core';
 import { useEffect, useState } from 'react';
 import {
     InfoDisplay,
