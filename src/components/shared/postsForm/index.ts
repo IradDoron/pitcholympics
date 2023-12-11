@@ -1,2 +1,1 @@
-import PostsForm from './PostsForm';
-export default PostsForm;
+export * from './PostsForm';

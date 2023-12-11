@@ -1,16 +1,15 @@
 'use client';
 
 import { Card } from '@/components/core';
-import { Props as MenubarItemProps } from './MenubarItem';
-import MenubarItem from './MenubarItem';
 import { useState } from 'react';
+import MenubarItem, { Props as MenubarItemProps } from './MenubarItem';
 
 type Props = {
     items: MenubarItemProps[];
     isOpenFromParent: boolean;
 };
 
-const Menubar = ({ items, isOpenFromParent }: Props) => {
+export const Menubar = ({ items, isOpenFromParent }: Props) => {
     const [isOpen, setIsOpen] = useState(isOpenFromParent);
 
     const handleToggle = () => setIsOpen(!isOpen);
@@ -35,5 +34,3 @@ const Menubar = ({ items, isOpenFromParent }: Props) => {
         </Card>
     );
 };
-
-export default Menubar;

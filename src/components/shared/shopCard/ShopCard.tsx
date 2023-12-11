@@ -1,4 +1,5 @@
-import Text from "@/components/core/Text";
+import { Text } from '@core';
+
 type Props = {
     name: string;
     description: string;
@@ -7,12 +8,18 @@ type Props = {
     quantity: number;
 };
 
-const ShopCard = ({ name, description, price, image, quantity }: Props) => {
+export const ShopCard = ({
+    name,
+    description,
+    price,
+    image,
+    quantity,
+}: Props) => {
     return (
         <div className=' rounded  shadow-lg  m-2  flex-col  items-center w-[180px] flex p-4'>
             <img src={image} alt='' className='w-full' />
-            <Text >{name}</Text>
-            <Text >{description}</Text>
+            <Text>{name}</Text>
+            <Text>{description}</Text>
             <div className='flex flex-row justify-between items-start gap-12'>
                 <Text className='text-sm text-gray-600'>${price}</Text>
                 <Text className='text-sm text-gray-600'>{quantity}</Text>
@@ -20,5 +27,3 @@ const ShopCard = ({ name, description, price, image, quantity }: Props) => {
         </div>
     );
 };
-
-export default ShopCard;

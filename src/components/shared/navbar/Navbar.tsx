@@ -2,7 +2,7 @@
 
 import { LangParam } from '@/types';
 import { getDictionaryClient } from '@/utils/getDictionaryClient';
-import SettingsMenu from '@shared/settingsMenu';
+import { SettingsMenu } from '@shared';
 import { useState } from 'react';
 import AuthButton from './AuthButton';
 import LocaleSwitcher from './LocaleSwitcher';
@@ -10,7 +10,7 @@ import NavbarLink from './NavbarLink';
 import Theme from './Theme';
 import MobileNav from './mobileNav';
 
-const Navbar = ({ params: { lang } }: LangParam) => {
+export const Navbar = ({ params: { lang } }: LangParam) => {
     const [isSettingsMenuOpen, setIsSettingsMenuOpen] = useState(false);
     const dict = getDictionaryClient(lang);
     const { pages } = dict.shared.navbar;
@@ -81,5 +81,3 @@ const Navbar = ({ params: { lang } }: LangParam) => {
         </div>
     );
 };
-
-export default Navbar;

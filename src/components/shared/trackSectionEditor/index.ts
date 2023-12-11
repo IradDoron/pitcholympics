@@ -1,3 +1,1 @@
-import TrackSectionEditor from './TrackSectionEditor';
-
-export default TrackSectionEditor;
+export * from './TrackSectionEditor';

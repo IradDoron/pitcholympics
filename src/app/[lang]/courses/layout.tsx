@@ -1,4 +1,4 @@
-import PageFiller from '@shared/pageFiller';
+import { PageFiller } from '@shared';
 
 type Props = {
     children: React.ReactNode;

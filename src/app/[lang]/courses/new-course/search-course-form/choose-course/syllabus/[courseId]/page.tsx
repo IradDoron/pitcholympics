@@ -1,8 +1,7 @@
 'use client';
 
 import { Locale } from '@/i18n.config';
-import { Button, Link } from '@core';
-import Text from '@/components/core/Text';
+import { Button, Link, Text } from '@core';
 
 type Props = {
     params: {

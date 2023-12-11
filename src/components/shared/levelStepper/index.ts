@@ -1,3 +1,1 @@
-import LevelStepper from './LevelStepper';
-
-export default LevelStepper;
+export * from './LevelStepper';

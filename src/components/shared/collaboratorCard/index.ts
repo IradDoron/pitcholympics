@@ -1,3 +1,1 @@
-import CollaboratorCard from './CollaboratorCard';
-
-export default CollaboratorCard;
+export * from './CollaboratorCard';

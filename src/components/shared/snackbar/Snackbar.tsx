@@ -1,11 +1,12 @@
 'use client';
-import { useEffect, useState } from 'react';
-import { getDictionaryClient } from '@/utils/getDictionaryClient';
+
 import { Locale } from '@/i18n.config';
+import { getDictionaryClient } from '@/utils/getDictionaryClient';
+import { useEffect, useState } from 'react';
 
 type Props = { status: 'Success' | 'Failed'; lang: Locale };
 
-const Snackbar = ({ status, lang }: Props) => {
+export const Snackbar = ({ status, lang }: Props) => {
     const [show, setShow] = useState(true);
     const dict = getDictionaryClient(lang);
     const { snackbar } = dict.shared;
@@ -32,5 +33,3 @@ const Snackbar = ({ status, lang }: Props) => {
         </div>
     );
 };
-
-export default Snackbar;

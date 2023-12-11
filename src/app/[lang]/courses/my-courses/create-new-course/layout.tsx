@@ -1,9 +1,8 @@
 'use client';
 
-import { Link } from '@/components/core';
-import Text from '@/components/core/Text';
 import { Locale } from '@/i18n.config';
 import { getCurrentTab } from '@/utils';
+import { Link, Text } from '@core';
 import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
 

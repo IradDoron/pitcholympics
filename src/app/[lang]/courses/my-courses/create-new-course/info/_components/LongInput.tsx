@@ -1,5 +1,5 @@
-import Text from '@/components/core/Text';
 import { LibraryContentCourse } from '@/types/libraryPageTypes';
+import { Text } from '@core';
 
 type Props = {
     label: 'id' | 'title' | 'description' | 'imageURL' | 'mainSubject';

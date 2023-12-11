@@ -1,5 +1,5 @@
-import PageFiller from '@/components/shared/pageFiller';
 import { Text } from '@core';
+import { PageFiller } from '@shared';
 import { Date } from 'mongoose';
 
 type WebsiteAnalyticsDocument = {

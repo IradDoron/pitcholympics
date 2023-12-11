@@ -1,5 +1,4 @@
-import { Button, Input } from '@/components/core';
-import Text from '@/components/core/Text';
+import { Button, Input, Text } from '@core';
 
 type Props = {
     // eslint-disable-next-line no-unused-vars

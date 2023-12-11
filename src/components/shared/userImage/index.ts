@@ -1,3 +1,1 @@
-import UserImage from './UserImage';
-
-export default UserImage;
+export * from './UserImage';

@@ -1,11 +1,11 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
-import { useState, useEffect } from 'react';
-import LevelResult from '@/components/shared/levelResult';
-import { getDictionaryClient } from '@/utils/getDictionaryClient';
 import { Locale } from '@/i18n.config';
 import pitchCatchData from '@/mockData/pitchCatch';
+import { getDictionaryClient } from '@/utils/getDictionaryClient';
+import { LevelResult } from '@shared';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 type Props = {
     lang: Locale;

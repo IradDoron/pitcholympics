@@ -1,5 +1,5 @@
-import { FilterObject } from '@/types';
 import { Button, Input } from '@/components/core';
+import { FilterObject } from '@/types';
 
 type Props = {
     filterButtons: FilterObject;
@@ -7,7 +7,7 @@ type Props = {
     inputValue: string;
     setInputValue: React.Dispatch<React.SetStateAction<string>>;
 };
-const LibraryFilter = ({
+export const LibraryFilter = ({
     filterButtons,
     setFilterButtons,
     inputValue,
@@ -44,8 +44,9 @@ const LibraryFilter = ({
                 />
             </div>
             <div className='grid grid-cols-3 gap-3 md:w-64 '>
-                {Object.keys(filterButtons).map(key => (
+                {Object.keys(filterButtons).map((key, index) => (
                     <Button
+                        key={index}
                         state={filterButtons[key] ? 'clicked' : 'default'}
                         size='small'
                         label={key}
