@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 
 type Props = { status: 'Success' | 'Failed'; lang: Locale };
 
-export const Snackbar = ({ status, lang }: Props) => {
+const Snackbar = ({ status, lang }: Props) => {
     const [show, setShow] = useState(true);
     const dict = getDictionaryClient(lang);
     const { snackbar } = dict.shared;
@@ -33,3 +33,5 @@ export const Snackbar = ({ status, lang }: Props) => {
         </div>
     );
 };
+
+export default Snackbar;

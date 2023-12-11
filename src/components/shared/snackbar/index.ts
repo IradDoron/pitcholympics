@@ -1,1 +1,3 @@
-export * from './Snackbar';
+import Snackbar from './Snackbar';
+
+export { Snackbar };

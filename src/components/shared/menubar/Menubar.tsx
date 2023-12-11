@@ -9,7 +9,7 @@ type Props = {
     isOpenFromParent: boolean;
 };
 
-export const Menubar = ({ items, isOpenFromParent }: Props) => {
+const Menubar = ({ items, isOpenFromParent }: Props) => {
     const [isOpen, setIsOpen] = useState(isOpenFromParent);
 
     const handleToggle = () => setIsOpen(!isOpen);
@@ -34,3 +34,5 @@ export const Menubar = ({ items, isOpenFromParent }: Props) => {
         </Card>
     );
 };
+
+export default Menubar;

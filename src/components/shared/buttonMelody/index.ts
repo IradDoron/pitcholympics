@@ -1,1 +1,3 @@
-export * from './ButtonMelody';
+import ButtonMelody from './ButtonMelody';
+
+export { ButtonMelody };

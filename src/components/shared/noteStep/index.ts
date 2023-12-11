@@ -1,1 +1,3 @@
-export * from './NoteStep';
+import NoteStep from './NoteStep';
+
+export { NoteStep };

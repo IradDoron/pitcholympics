@@ -9,11 +9,7 @@ type Props = {
     setChoiceIndex: React.Dispatch<React.SetStateAction<number | null>>;
 };
 
-export const UserOptions = ({
-    pitches,
-    useChoiceIndex,
-    setChoiceIndex,
-}: Props) => {
+const UserOptions = ({ pitches, useChoiceIndex, setChoiceIndex }: Props) => {
     function handleChoiceClick(index: number) {
         const synth = new Tone.PolySynth(Tone.Synth).toDestination();
 
@@ -62,3 +58,5 @@ export const UserOptions = ({
         </div>
     );
 };
+
+export default UserOptions;

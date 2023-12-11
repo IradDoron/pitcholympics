@@ -7,7 +7,7 @@ type Props = {
     title: string;
 };
 
-export const PageTitle = ({ title }: Props) => {
+const PageTitle = ({ title }: Props) => {
     const { mode } = useTheme();
 
     const memoMode = useMemo(
@@ -17,3 +17,5 @@ export const PageTitle = ({ title }: Props) => {
 
     return <h1 className={memoMode}>{title}</h1>;
 };
+
+export default PageTitle;

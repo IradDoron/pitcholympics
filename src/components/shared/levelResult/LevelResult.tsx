@@ -13,7 +13,7 @@ type Props = {
     lang: Locale;
 };
 
-export const LevelResult = ({
+const LevelResult = ({
     level,
     score,
     actionButtonLabel,
@@ -59,3 +59,5 @@ export const LevelResult = ({
 // //    <Button label={actionButtonLabel} onClick={actionButtonOnClick} />
 
 // // </div>))
+
+export default LevelResult;

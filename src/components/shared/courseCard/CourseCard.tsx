@@ -7,7 +7,7 @@ type Props = {
     courses: LibraryContentCourse[];
 };
 
-export const CourseCard = ({ courseId, courses }: Props) => {
+const CourseCard = ({ courseId, courses }: Props) => {
     const course = courses.find(course => course.id === courseId);
     if (!course) {
         return <div>Course not found</div>;
@@ -31,3 +31,5 @@ export const CourseCard = ({ courseId, courses }: Props) => {
         </div>
     );
 };
+
+export default CourseCard;

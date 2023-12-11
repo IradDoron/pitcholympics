@@ -1,1 +1,3 @@
-export * from './LevelStepper';
+import LevelStepper from './LevelStepper';
+
+export { LevelStepper };

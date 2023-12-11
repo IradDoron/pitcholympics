@@ -1,1 +1,3 @@
-export * from './TrackLessonEditor';
+import TrackLessonEditor from './TrackLessonEditor';
+
+export { TrackLessonEditor };

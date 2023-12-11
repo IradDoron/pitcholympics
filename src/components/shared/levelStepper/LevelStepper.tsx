@@ -16,7 +16,7 @@ const getStepStatus = (currentStep: number, index: number) => {
     }
 };
 
-export const LevelStepper = ({ currentStep, totalSteps }: Props) => {
+const LevelStepper = ({ currentStep, totalSteps }: Props) => {
     const arr = Array(totalSteps).fill(0);
     return (
         <Card
@@ -32,3 +32,5 @@ export const LevelStepper = ({ currentStep, totalSteps }: Props) => {
         </Card>
     );
 };
+
+export default LevelStepper;

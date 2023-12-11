@@ -1,1 +1,3 @@
-export * from './PostsForm';
+import PostsForm from './PostsForm';
+
+export { PostsForm };

@@ -1,1 +1,3 @@
-export * from './ShopCard';
+import ShopCard from './ShopCard';
+
+export { ShopCard };

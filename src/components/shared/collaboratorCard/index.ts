@@ -1,1 +1,3 @@
-export * from './CollaboratorCard';
+import CollaboratorCard from './CollaboratorCard';
+
+export { CollaboratorCard };

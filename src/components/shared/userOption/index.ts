@@ -1,1 +1,3 @@
-export * from './UserOptions';
+import UserOptions from './UserOptions';
+
+export { UserOptions };

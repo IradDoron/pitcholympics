@@ -1,1 +1,3 @@
-export * from './PitchButton';
+import PitchButton from './PitchButton';
+
+export { PitchButton };

@@ -26,7 +26,7 @@ type ExtendedSession = Session & {
     };
 };
 
-export const GameLevelsLinks = ({ levelsData, lang, game }: Props) => {
+const GameLevelsLinks = ({ levelsData, lang, game }: Props) => {
     const { data: session } = useSession() as { data: ExtendedSession | null };
     const [userProgress, setUserProgress] = useState<UserProgressEntry>({});
 
@@ -105,3 +105,5 @@ export const GameLevelsLinks = ({ levelsData, lang, game }: Props) => {
         </div>
     );
 };
+
+export default GameLevelsLinks;

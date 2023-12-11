@@ -7,7 +7,7 @@ type Props = {
     inputValue: string;
     setInputValue: React.Dispatch<React.SetStateAction<string>>;
 };
-export const LibraryFilter = ({
+const LibraryFilter = ({
     filterButtons,
     setFilterButtons,
     inputValue,

@@ -12,7 +12,7 @@ type Props = {
     value?: string;
 };
 
-export const ProfileInfo = ({
+const ProfileInfo = ({
     label,
     inputType,
     options = [],
@@ -30,3 +30,5 @@ export const ProfileInfo = ({
         </Label>
     );
 };
+
+export default ProfileInfo;

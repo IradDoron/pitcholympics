@@ -3,7 +3,7 @@
 import { useTheme } from '@/context/ThemeProvider';
 import { ThemeMode } from '@/types';
 
-export const ThemeSwitcher = () => {
+const ThemeSwitcher = () => {
     const { setMode } = useTheme();
 
     const handleThemeChange = (mode: ThemeMode) => {
@@ -17,3 +17,5 @@ export const ThemeSwitcher = () => {
         </div>
     );
 };
+
+export default ThemeSwitcher;

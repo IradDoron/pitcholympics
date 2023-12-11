@@ -1,1 +1,3 @@
-export * from './PostsContainer';
+import PostsContainer from './PostsContainer';
+
+export { PostsContainer };
