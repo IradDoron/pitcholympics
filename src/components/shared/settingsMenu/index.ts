@@ -1,1 +1,3 @@
-export * from './SettingsMenu';
+import SettingsMenu from './SettingsMenu';
+
+export { SettingsMenu };

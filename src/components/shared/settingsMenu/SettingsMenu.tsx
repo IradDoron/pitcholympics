@@ -23,7 +23,7 @@ type Props = {
     lang: Locale;
 };
 
-export const SettingsMenu = ({ isOpen, setIsOpen, lang }: Props) => {
+const SettingsMenu = ({ isOpen, setIsOpen, lang }: Props) => {
     const router = useRouter();
     const { data: session } = useSession();
 
@@ -86,3 +86,5 @@ export const SettingsMenu = ({ isOpen, setIsOpen, lang }: Props) => {
         </Card>
     );
 };
+
+export default SettingsMenu;
