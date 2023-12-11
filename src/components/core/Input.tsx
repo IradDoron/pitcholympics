@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler } from 'react';
+import { ChangeEventHandler } from 'react';
 
 type InputSize = 'small' | 'medium' | 'large';
 type InputColor = 'default' | 'disabled';
@@ -10,6 +10,7 @@ interface InputProps {
     onChange?: ChangeEventHandler<HTMLInputElement> | undefined;
     color?: InputColor;
     size?: InputSize;
+    className?: string;
 }
 export const Input = ({
     value,
@@ -18,6 +19,7 @@ export const Input = ({
     onChange,
     color = 'default',
     size = 'medium',
+    className = '',
 }: InputProps) => {
     const getSize = (size: InputSize) => {
         switch (size) {
@@ -52,7 +54,7 @@ export const Input = ({
             placeholder={placeholder}
             onChange={onChange}
             type={type}
-            className={`${inputSize} ${inputColor}`}
+            className={`${inputSize} ${inputColor} ${className}`}
         />
     );
 };

@@ -115,7 +115,8 @@
                 "about": "אודות",
                 "suggestions": "הצעות",
                 "library": "ספרייה",
-                "courses": "קורסים"
+                "courses": "קורסים",
+                "websiteAnalytics": "נתוני אתר"
             },
             "title": "עמוד",
             "MobileNav": {
@@ -128,6 +129,10 @@
         },
         "LocaleSwitcher": {
             "Language": "שפה"
+        },
+        "snackbar": {
+            "Success": ["עבודה טובה!", "יפה!", "גאון"],
+            "Failed": ["נסה שוב", "אולי בפעם הבאה.."]
         }
     }
 }

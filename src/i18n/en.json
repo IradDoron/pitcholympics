@@ -115,7 +115,8 @@
                 "about": "About",
                 "suggestions": "Suggestions",
                 "library": "Library",
-                "courses": "Courses"
+                "courses": "Courses",
+                "websiteAnalytics": "Website Analytics"
             },
             "title": "Page",
             "MobileNav": {
@@ -128,6 +129,10 @@
         },
         "LocaleSwitcher": {
             "Language": "Language"
+        },
+        "snackbar": {
+            "Success": ["Good Job!", "Excellent!", "Genius"],
+            "Failed": ["Try again", "Next time.."]
         }
     }
 }
