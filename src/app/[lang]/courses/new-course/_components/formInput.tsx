@@ -1,4 +1,4 @@
-import Text from '@/components/core/Text';
+import { Text } from '@core';
 import { ChangeEvent } from 'react';
 
 type Props = {

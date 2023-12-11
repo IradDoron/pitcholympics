@@ -1,6 +1,6 @@
 'use client';
-import React from 'react';
-import Text from '@/components/core/Text';
+
+import { Text } from '@core';
 
 type props = {
     subject: string;
