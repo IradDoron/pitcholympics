@@ -111,6 +111,7 @@
         "navbar": {
             "pages": {
                 "home": "Home",
+                "games": "Games",
                 "stats": "Stats",
                 "about": "About",
                 "suggestions": "Suggestions",

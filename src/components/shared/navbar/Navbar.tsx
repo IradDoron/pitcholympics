@@ -30,6 +30,12 @@ const Navbar = ({ params: { lang } }: LangParam) => {
                     </li>
                     <li>
                         <NavbarLink
+                            url={`/${lang}/games`}
+                            label={pages.games}
+                        />
+                    </li>
+                    <li>
+                        <NavbarLink
                             url={`/${lang}/about`}
                             label={pages.about}
                         />
