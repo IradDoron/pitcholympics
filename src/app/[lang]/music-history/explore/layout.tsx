@@ -18,31 +18,31 @@ const Layout = ({ children, params }: Props) => {
             <ul className='flex gap-4 m-4'>
                 <li>
                     <Link
-                        url={`/${lang}/music-history/explore/search-composer`}
+                        url={`/${lang}/music-history/explore/search/composer`}
                         label='Search Composer'
                     />
                 </li>
                 <li>
                     <Link
-                        url={`/${lang}/music-history/explore/search-country`}
+                        url={`/${lang}/music-history/explore/search/country`}
                         label='Search Country'
                     />
                 </li>
                 <li>
                     <Link
-                        url={`/${lang}/music-history/explore/search-era`}
+                        url={`/${lang}/music-history/explore/search/era`}
                         label='Search Era'
                     />
                 </li>
                 <li>
                     <Link
-                        url={`/${lang}/music-history/explore/search-piece`}
+                        url={`/${lang}/music-history/explore/search/piece`}
                         label='Search Piece'
                     />
                 </li>
                 <li>
                     <Link
-                        url={`/${lang}/music-history/explore/search-story`}
+                        url={`/${lang}/music-history/explore/search/story`}
                         label='Search Story'
                     />
                 </li>

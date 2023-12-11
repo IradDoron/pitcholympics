@@ -17,7 +17,7 @@ const Page = ({ params }: Props) => {
             <ul className='flex gap-4 m-4'>
                 <li>
                     <Link
-                        url={`/${lang}/music-history/explore`}
+                        url={`/${lang}/music-history/explore/search/composer`}
                         label='Explore'
                     />
                 </li>
