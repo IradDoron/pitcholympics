@@ -7,7 +7,7 @@ type Props = {
     setPlayCount: React.Dispatch<React.SetStateAction<number>>;
 };
 
-export const PitchButton = ({ pitches, playCount, setPlayCount }: Props) => {
+const PitchButton = ({ pitches, playCount, setPlayCount }: Props) => {
     function handleClick() {
         if (playCount > 2) return;
         const synth = new Tone.PolySynth(Tone.Synth).toDestination();
@@ -25,3 +25,5 @@ export const PitchButton = ({ pitches, playCount, setPlayCount }: Props) => {
             onClick={handleClick}></div>
     );
 };
+
+export default PitchButton;

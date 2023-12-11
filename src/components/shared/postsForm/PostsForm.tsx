@@ -1,6 +1,6 @@
 import { PageFiller } from '@shared';
 
-export const PostsForm = () => {
+const PostsForm = () => {
     return (
         <div className='flex flex-col h-full justify-center items-center gap-5'>
             <PageFiller />
@@ -39,3 +39,5 @@ export const PostsForm = () => {
         </div>
     );
 };
+
+export default PostsForm;

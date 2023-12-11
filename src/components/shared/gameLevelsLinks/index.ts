@@ -1,1 +1,3 @@
-export * from './GameLevelsLinks';
+import GameLevelsLinks from './GameLevelsLinks';
+
+export { GameLevelsLinks };

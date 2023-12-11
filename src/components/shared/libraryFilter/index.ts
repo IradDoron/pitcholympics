@@ -1,1 +1,3 @@
-export * from './LibraryFilter';
+import LibraryFilter from './LibraryFilter';
+
+export { LibraryFilter };

@@ -1,1 +1,3 @@
-export * from './TrackSectionEditor';
+import TrackSectionEditor from './TrackSectionEditor';
+
+export { TrackSectionEditor };

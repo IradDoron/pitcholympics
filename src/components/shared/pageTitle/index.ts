@@ -1,1 +1,3 @@
-export * from './PageTitle';
+import PageTitle from './PageTitle';
+
+export { PageTitle };

@@ -1,1 +1,3 @@
-export * from './PostPage';
+import PostPage from './PostPage';
+
+export { PostPage };

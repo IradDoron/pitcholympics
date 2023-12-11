@@ -17,7 +17,7 @@ type Props = {
     setCurrentSection: React.Dispatch<React.SetStateAction<CourseSection>>;
 };
 
-export const TrackLessonEditor = ({
+const TrackLessonEditor = ({
     lessonIndex,
     sectionIndex,
     currentTrack,
@@ -274,3 +274,5 @@ export const TrackLessonEditor = ({
         </div>
     );
 };
+
+export default TrackLessonEditor;

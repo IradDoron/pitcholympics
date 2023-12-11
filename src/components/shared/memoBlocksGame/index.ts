@@ -1,1 +1,3 @@
-export * from './MemoBlocksGame';
+import MemoBlocksGame from './MemoBlocksGame';
+
+export { MemoBlocksGame };

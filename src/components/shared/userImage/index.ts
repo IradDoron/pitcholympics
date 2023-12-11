@@ -1,1 +1,3 @@
-export * from './UserImage';
+import UserImage from './UserImage';
+
+export { UserImage };

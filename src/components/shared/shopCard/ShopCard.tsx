@@ -8,13 +8,7 @@ type Props = {
     quantity: number;
 };
 
-export const ShopCard = ({
-    name,
-    description,
-    price,
-    image,
-    quantity,
-}: Props) => {
+const ShopCard = ({ name, description, price, image, quantity }: Props) => {
     return (
         <div className=' rounded  shadow-lg  m-2  flex-col  items-center w-[180px] flex p-4'>
             <img src={image} alt='' className='w-full' />
@@ -27,3 +21,5 @@ export const ShopCard = ({
         </div>
     );
 };
+
+export default ShopCard;

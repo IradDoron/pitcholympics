@@ -11,7 +11,7 @@ type Props = {
     cardIndex: number;
 };
 
-export const CollaboratorCard = ({ collaborator, color, cardIndex }: Props) => {
+const CollaboratorCard = ({ collaborator, color, cardIndex }: Props) => {
     const {
         firstName,
         lastName,
@@ -73,3 +73,5 @@ export const CollaboratorCard = ({ collaborator, color, cardIndex }: Props) => {
         </Card>
     );
 };
+
+export default CollaboratorCard;

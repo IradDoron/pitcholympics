@@ -1,1 +1,3 @@
-export * from './ComingSoonSection';
+import ComingSoonSection from './ComingSoonSection';
+
+export { ComingSoonSection };
