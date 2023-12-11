@@ -1,6 +1,5 @@
 import { Locale } from '@/i18n.config';
 import { Link, Text } from '@core';
-import { PageFiller } from '@shared';
 
 type Props = {
     params: {
@@ -12,7 +11,6 @@ const Page = ({ params }: Props) => {
     const { lang } = params;
     return (
         <>
-            <PageFiller />
             <Text>Music History</Text>
             <ul className='flex gap-4 m-4'>
                 <li>

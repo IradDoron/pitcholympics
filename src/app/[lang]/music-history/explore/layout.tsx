@@ -1,6 +1,5 @@
 import { Locale } from '@/i18n.config';
 import { Link } from '@core';
-import { PageFiller } from '@shared';
 
 type Props = {
     children: React.ReactNode;
@@ -13,7 +12,6 @@ const Layout = ({ children, params }: Props) => {
     const { lang } = params;
     return (
         <div>
-            <PageFiller />
             <h1>Explore</h1>
             <ul className='flex gap-4 m-4'>
                 <li>
