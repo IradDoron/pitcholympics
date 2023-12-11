@@ -117,7 +117,8 @@
                 "library": "Library",
                 "courses": "Courses",
                 "websiteAnalytics": "Website Analytics",
-                "musicHistory": "Music History"
+                "musicHistory": "Music History",
+                "leaderboard": "Leaderboard"
             },
             "title": "Page",
             "MobileNav": {
