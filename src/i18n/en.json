@@ -116,7 +116,9 @@
                 "suggestions": "Suggestions",
                 "library": "Library",
                 "courses": "Courses",
-                "websiteAnalytics": "Website Analytics"
+                "websiteAnalytics": "Website Analytics",
+                "musicHistory": "Music History",
+                "leaderboard": "Leaderboard"
             },
             "title": "Page",
             "MobileNav": {

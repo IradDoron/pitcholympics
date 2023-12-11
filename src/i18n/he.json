@@ -116,7 +116,9 @@
                 "suggestions": "הצעות",
                 "library": "ספרייה",
                 "courses": "קורסים",
-                "websiteAnalytics": "נתוני אתר"
+                "websiteAnalytics": "נתוני אתר",
+                "musicHistory": "היסטוריה המוזיקה",
+                "leaderboard": "טבלת מובילים"
             },
             "title": "עמוד",
             "MobileNav": {
