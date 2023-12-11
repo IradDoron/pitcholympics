@@ -121,7 +121,8 @@
                 "musicHistory": "Music History",
                 "leaderboard": "Leaderboard",
                 "pieces": "Pieces",
-                "practice": "Practice"
+                "practice": "Practice",
+                "musicalPatterns": "Musical Patterns"
             },
             "title": "Page",
             "MobileNav": {

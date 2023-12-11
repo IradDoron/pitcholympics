@@ -94,6 +94,12 @@ const Navbar = ({ params: { lang } }: LangParam) => {
                             label={pages.practice}
                         />
                     </li>
+                    <li>
+                        <NavbarLink
+                            url={`/${lang}/musical-patterns`}
+                            label={pages.musicalPatterns}
+                        />
+                    </li>
                 </ul>
                 <div className='flex justify-self-end pe-10 relative w-fit'>
                     <AuthButton
