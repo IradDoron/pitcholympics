@@ -118,7 +118,8 @@
                 "courses": "Courses",
                 "websiteAnalytics": "Website Analytics",
                 "musicHistory": "Music History",
-                "leaderboard": "Leaderboard"
+                "leaderboard": "Leaderboard",
+                "pieces": "Pieces"
             },
             "title": "Page",
             "MobileNav": {
