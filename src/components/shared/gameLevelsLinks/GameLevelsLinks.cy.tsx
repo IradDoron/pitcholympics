@@ -1,5 +1,5 @@
 import memoTheMeloMockData from '@/mockData/memoTheMelo';
-import { GameLevelsLinks } from './GameLevelsLinks';
+import GameLevelsLinks from './GameLevelsLinks';
 describe('<GameLevelsLinks />', () => {
     it('renders', () => {
         // see: https://on.cypress.io/mounting-react

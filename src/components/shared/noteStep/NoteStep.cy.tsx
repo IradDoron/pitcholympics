@@ -1,4 +1,4 @@
-import { NoteStep } from './NoteStep';
+import NoteStep from './NoteStep';
 
 describe('<NoteStep />', () => {
     it('renders', () => {
