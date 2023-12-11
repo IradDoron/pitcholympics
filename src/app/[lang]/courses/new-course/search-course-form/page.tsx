@@ -1,6 +1,11 @@
+'use client';
 import { Locale } from '@/i18n.config';
 import { Link } from '@core';
 import Text from '@/components/core/Text';
+import FormInput from '../_components/formInput';
+import FormSelect from '../_components/formSelect';
+import { useEffect, useState } from 'react';
+
 type Props = {
     params: {
         lang: Locale;
@@ -9,51 +14,48 @@ type Props = {
 
 const Page = ({ params }: Props) => {
     const { lang } = params;
+    const [state, setState] = useState({
+        age: '',
+        diffcultyLevel: '',
+        musicStyle: '',
+        experience: '',
+    });
+
+    function handleChange(
+        e:
+            | React.ChangeEvent<HTMLInputElement>
+            | React.ChangeEvent<HTMLSelectElement>,
+    ) {
+        const { name, value } = e.target;
+        console.log(name, value);
+        setState(prevState => ({
+            ...prevState,
+            [name]: value,
+        }));
+        localStorage.setItem(name, value);
+    }
+
+    useEffect(() => {
+        localStorage.setItem('yourStateKey', JSON.stringify(state));
+    }, [state]);
+
     return (
         <div className='flex flex-col justify-center items-center gap-4'>
             <Text className='text-xl'>שׁם הקורס</Text>
             <form className='flex flex-col items-center justify-center gap-4'>
-                <label className='text-l flex flex-row gap-3'>
-                    <Text> גיל: </Text>
-                    <input
-                        className='w-[200px] h-[30px] bg-blue-500 debug flex items-center justify-center'
-                        type='text'
-                        placeholder=''
-                        name='age'
-                    />
-                </label>
-                <label className='text-l flex flex-row gap-3'>
-                    <Text> רמת נגינה רצויה: </Text>
-                    <select
-                        id='experience'
-                        name='experience'
-                        className='block w-full p-2 border border-gray-300 rounded-md'>
-                        <option value='beginner'>Beginner</option>
-                        <option value='intermediate'>Intermediate</option>
-                        <option value='advanced'>Advanced</option>
-                    </select>
-                </label>
+                <FormInput name={'age'} onChange={handleChange} />
+                <FormSelect
+                    name={'diffcultyLevel'}
+                    option={['Beginner', 'Intermediate', 'Advanced']}
+                    onChange={handleChange}
+                />
+                <FormSelect
+                    name={'musicStyle'}
+                    option={['Jazz', 'Rock', 'House']}
+                    onChange={handleChange}
+                />
 
-                <label className='text-l flex flex-row gap-3'>
-                    <Text> סגנונות מוזיקליים: </Text>
-                    <select
-                        id='experience'
-                        name='experience'
-                        className='block w-full p-2 border border-gray-300 rounded-md'>
-                        <option value='beginner'>Jazz</option>
-                        <option value='intermediate'>Rock</option>
-                        <option value='advanced'>House</option>
-                    </select>
-                </label>
-                <label className='text-l flex flex-row gap-3'>
-                    <Text> מידת ניסיון קודם: </Text>
-                    <input
-                        className='w-[200px] h-[30px] bg-blue-500 debug flex items-center justify-center'
-                        type='text'
-                        placeholder=''
-                        name='age'
-                    />
-                </label>
+                <FormInput name={'experience'} onChange={handleChange} />
             </form>
             <Link
                 label='Choose Course'
