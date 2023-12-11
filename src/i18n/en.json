@@ -120,7 +120,8 @@
                 "websiteAnalytics": "Website Analytics",
                 "musicHistory": "Music History",
                 "leaderboard": "Leaderboard",
-                "pieces": "Pieces"
+                "pieces": "Pieces",
+                "practice": "Practice"
             },
             "title": "Page",
             "MobileNav": {
