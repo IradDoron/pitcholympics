@@ -41,7 +41,7 @@ const Page = ({ params }: Props) => {
         <div className='flex flex-col justify-center items-center gap-4'>
             <Text className='text-xl'>שׁם הקורס</Text>
             <form className='flex flex-col items-center justify-center gap-4'>
-                <FormInput name={'age'} onChange={handleChange} />
+                <FormInput label={'age'} onChange={handleChange} />
                 <FormSelect
                     label={'diffcultyLevel'}
                     option={['Beginner', 'Intermediate', 'Advanced']}
@@ -53,7 +53,7 @@ const Page = ({ params }: Props) => {
                     onChange={handleChange}
                 />
 
-                <FormInput name={'experience'} onChange={handleChange} />
+                <FormInput label={'experience'} onChange={handleChange} />
             </form>
             <Link
                 label='Choose Course'
