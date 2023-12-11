@@ -27,7 +27,6 @@ const Page = ({ params }: Props) => {
             | React.ChangeEvent<HTMLSelectElement>,
     ) {
         const { name, value } = e.target;
-        console.log(name, value);
         setState(prevState => ({
             ...prevState,
             [name]: value,
@@ -45,12 +44,12 @@ const Page = ({ params }: Props) => {
             <form className='flex flex-col items-center justify-center gap-4'>
                 <FormInput name={'age'} onChange={handleChange} />
                 <FormSelect
-                    name={'diffcultyLevel'}
+                    label={'diffcultyLevel'}
                     option={['Beginner', 'Intermediate', 'Advanced']}
                     onChange={handleChange}
                 />
                 <FormSelect
-                    name={'musicStyle'}
+                    label={'musicStyle'}
                     option={['Jazz', 'Rock', 'House']}
                     onChange={handleChange}
                 />

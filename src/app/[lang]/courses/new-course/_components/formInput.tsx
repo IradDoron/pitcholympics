@@ -12,7 +12,7 @@ const FormInput = ({ name, onChange }: Props) => {
     return (
         <div>
             <label className='text-l flex flex-row gap-3'>
-                <Text> :{name}</Text>
+                <Text>{name}:</Text>
                 <input
                     className='w-[200px] h-[30px] bg-blue-500 debug flex items-center justify-center'
                     type='text'

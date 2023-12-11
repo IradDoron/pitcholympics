@@ -1,7 +1,7 @@
 import { Locale } from '@/i18n.config';
 import { Link } from '@core';
-import Text from '@/components/core/Text';
 import CoursesOptionsItem from '../../_components/coursesOptionsItem';
+
 type Props = {
     params: {
         lang: Locale;

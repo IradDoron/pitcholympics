@@ -1,10 +1,10 @@
 import Text from '@/components/core/Text';
 
-type props = {
+type Props = {
     name: string;
 };
 
-const CoursesOptionsItem = ({ name }: props) => {
+const CoursesOptionsItem = ({ name }: Props) => {
     return (
         <div className='w-[200px] h-[130px] bg-blue-500  flex items-center justify-center'>
             <Text className='text-sm'>{name}</Text>

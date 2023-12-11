@@ -2,12 +2,12 @@ import Text from '@/components/core/Text';
 import { ChangeEvent } from 'react';
 
 type Props = {
-    name: string;
+    label: string;
     option: string[];
     onChange: (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => void;
 };
 
-const FormSelect = ({ name, option,onChange }: Props) => {
+const FormSelect = ({ label: name, option,onChange }: Props) => {
     return (
         <label className='text-l flex flex-row gap-3'>
             <Text> {name}: </Text>
