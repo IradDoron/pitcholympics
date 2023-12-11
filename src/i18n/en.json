@@ -115,7 +115,8 @@
                 "about": "About",
                 "suggestions": "Suggestions",
                 "library": "Library",
-                "courses": "Courses"
+                "courses": "Courses",
+                "websiteAnalytics": "Website Analytics"
             },
             "title": "Page",
             "MobileNav": {
