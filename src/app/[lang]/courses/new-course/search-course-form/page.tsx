@@ -31,11 +31,10 @@ const Page = ({ params }: Props) => {
             ...prevState,
             [name]: value,
         }));
-        localStorage.setItem(name, value);
     }
 
     useEffect(() => {
-        localStorage.setItem('yourStateKey', JSON.stringify(state));
+        localStorage.setItem('formNewCourse', JSON.stringify(state));
     }, [state]);
 
     return (
