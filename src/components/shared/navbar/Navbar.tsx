@@ -64,6 +64,12 @@ const Navbar = ({ params: { lang } }: LangParam) => {
                             label={pages.websiteAnalytics}
                         />
                     </li>
+                    <li>
+                        <NavbarLink
+                            url={`/${lang}/music-history`}
+                            label={pages.musicHistory}
+                        />
+                    </li>
                 </ul>
                 <div className='flex justify-self-end pe-10 relative'>
                     <AuthButton
