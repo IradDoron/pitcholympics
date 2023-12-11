@@ -1,5 +1,4 @@
 'use client';
-
 import { Locale } from '@/i18n.config';
 import { Button, Link, Text } from '@core';
 
