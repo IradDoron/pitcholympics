@@ -1,6 +1,6 @@
 import { Locale } from '@/i18n.config';
-import Card from '@core/card';
-import CloseIcon from '@icons/closeIcon';
+import { Card } from '@/components/core';
+import { CloseIcon } from '@icons';
 import { useState } from 'react';
 import MobileNavContent from './MobileNavContent';
 import MobileNavTrigger from './MobileNavTrigger';

@@ -1,18 +1,19 @@
 'use client';
 
+import { parseTable } from '@/lib/utils';
+import { levelOneCards } from '@/mockData/memoBlocks';
+import { MatrixWithId } from '@/types';
+import { shuffleArray } from '@/utils';
 import { closestCenter, DndContext } from '@dnd-kit/core';
 import {
     arrayMove,
     horizontalListSortingStrategy,
     SortableContext,
 } from '@dnd-kit/sortable';
-import { useEffect, useState } from 'react';
-import { MatrixWithId } from '@/types';
-import SortableCard from './SortableCard';
-import { levelOneCards } from '@/mockData/memoBlocks';
-import { parseTable } from '@/lib/utils';
-import MemoBlocksCard from './MemoBlocksCard';
 import { FlipHorizontal2Icon, FlipVertical2Icon, Loader } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import MemoBlocksCard from './MemoBlocksCard';
+import SortableCard from './SortableCard';
 import { flipMatrix, mirrorMatrix } from './utils';
 
 type DragEventType = {
@@ -48,10 +49,7 @@ const setInitialMatrixes = () => {
 
     const levelCards = levelOneCards.map(table => parseTable(table));
     const matrixes = levelCards.map(matrix => scrambleMatrix(matrix));
-    // switch order of matrixes
-    const matrixesCopy = [...matrixes];
-    matrixesCopy.sort(() => Math.random() - 0.5);
-    return matrixesCopy;
+    return shuffleArray([...matrixes]);
 };
 
 const MemoBlocksGame = () => {
@@ -90,27 +88,30 @@ const MemoBlocksGame = () => {
         event.stopPropagation();
         if (['ArrowLeft', 'ArrowRight', 'F', 'f'].includes(event.key)) {
             changeMatrix(mirrorMatrix(activeMatrix));
-        }
-        else if (['ArrowUp', 'ArrowDown', 'M', 'm'].includes(event.key)) {
+        } else if (['ArrowUp', 'ArrowDown', 'M', 'm'].includes(event.key)) {
             changeMatrix(flipMatrix(activeMatrix));
-        }
-        else if (event.key === 'Tab') {
-            const activeIndex = guessCards.findIndex(card => card.id === activeMatrixId);
+        } else if (event.key === 'Tab') {
+            const activeIndex = guessCards.findIndex(
+                card => card.id === activeMatrixId,
+            );
             const nextIndex = (activeIndex + 1) % guessCards.length;
             setActiveMatrixId(guessCards[nextIndex].id);
         }
     };
 
-
-    if (isLoading)
-        return <Loader color='green' />;
+    if (isLoading) return <Loader color='green' />;
 
     return (
-        <div className='flex flex-col gap-5 items-center justify-center mt-3' onKeyDown={handleKeyDown}>
+        <div
+            className='flex flex-col gap-5 items-center justify-center mt-3'
+            onKeyDown={handleKeyDown}>
             <div className='flex flex-row gap-3 justify-center items-center text-center'>
                 <FlipVertical2Icon
                     className='w-10 h-10 rounded-lg bg-gray-100 dark:bg-transparent dark:text-light-background-default text-dark-background-default'
-                    onPointerDown={() => changeMatrix(mirrorMatrix(activeMatrix))} />
+                    onPointerDown={() =>
+                        changeMatrix(mirrorMatrix(activeMatrix))
+                    }
+                />
                 <FlipHorizontal2Icon
                     className='w-10 h-10 rounded-lg bg-gray-100 dark:bg-transparent dark:text-light-background-default text-dark-background-default'
                     onPointerDown={() => changeMatrix(flipMatrix(activeMatrix))}
@@ -118,7 +119,11 @@ const MemoBlocksGame = () => {
             </div>
             <div className='grid grid-cols-4 gap-6 justify-center max-w-fit self-center items-center'>
                 {levelCards.map(card => (
-                    <MemoBlocksCard key={`levelCard#${card.id}`} matrix={card.data} disabled />
+                    <MemoBlocksCard
+                        key={`levelCard#${card.id}`}
+                        matrix={card.data}
+                        disabled
+                    />
                 ))}
                 <DndContext
                     collisionDetection={closestCenter}
@@ -126,7 +131,7 @@ const MemoBlocksGame = () => {
                     <SortableContext
                         items={guessCards}
                         strategy={horizontalListSortingStrategy}>
-                        {guessCards.map((card) => (
+                        {guessCards.map(card => (
                             <SortableCard
                                 key={card.id}
                                 card={card}
@@ -140,4 +145,5 @@ const MemoBlocksGame = () => {
         </div>
     );
 };
+
 export default MemoBlocksGame;

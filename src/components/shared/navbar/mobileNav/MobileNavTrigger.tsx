@@ -1,4 +1,4 @@
-import HamburgerIcon from '@/components/icons/hamburgerIcon';
+import { HamburgerIcon } from '@icons';
 import { Dispatch, SetStateAction } from 'react';
 
 type Props = {

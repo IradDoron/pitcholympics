@@ -1,5 +1,4 @@
-import React from 'react';
-import PageFiller from '../pageFiller/PageFiller';
+import { PageFiller } from '@shared';
 
 const PostsForm = () => {
     return (

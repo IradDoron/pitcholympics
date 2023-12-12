@@ -1,6 +1,6 @@
 import { Matrix, MemoBlockCardMelody } from '@/types';
 import MemoBlocksMatCell from './MemoBlocksCell';
-import PlayIcon from '@/components/icons/playIcon';
+import {PlayIcon} from '@icons';
 type Props = {
     matrix: Matrix // matrix of the card (8x4), each cell is a contains a note and isActive & isTied flags
     disabled?: boolean;
