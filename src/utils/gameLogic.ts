@@ -1,4 +1,4 @@
-import { LevelStatus } from '@/types';
+import { GameNamesToSlug, LevelStatus } from '@/types';
 import { Locale } from '@/i18n.config';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 
@@ -42,7 +42,7 @@ export const handleEndLevel = (
   stage: number,
   level: number,
   lang: Locale,
-  game: 'memo-the-melo' | 'pitch-catch' | 'memo-blocks',
+  game: GameNamesToSlug,
   status: 'win' | 'lose',
   router: AppRouterInstance,
 ) => {

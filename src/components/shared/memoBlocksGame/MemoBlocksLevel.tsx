@@ -12,7 +12,10 @@ import SortableCard from './SortableCard';
 import MemoBlocksCard from './MemoBlocksCard';
 import { FlipHorizontal2Icon, FlipVertical2Icon, Loader } from 'lucide-react';
 import { flipMatrix, mirrorMatrix } from './utils';
-import { compareArrays, shuffleArray } from '@/utils';
+import { compareArrays, handleEndLevel, shuffleArray } from '@/utils';
+import { memoBlocksLevels } from '@/mockData';
+import { Locale } from '@/i18n.config';
+import { useRouter } from 'next/navigation';
 
 type DragEventType = {
     activatorEvent: PointerEvent;
@@ -38,6 +41,9 @@ type DragEventType = {
 
 type Props = {
     levelData: MatrixWithId[];
+    level: number;
+    stage: number;
+    lang: Locale;
 };
 
 const setInitialMatrixes = (levelData: MatrixWithId[]) => {
@@ -52,11 +58,13 @@ const setInitialMatrixes = (levelData: MatrixWithId[]) => {
     return shuffleArray([...matrixes]);
 };
 
-const MemoBlocksLevel = ({ levelData }: Props) => {
+const MemoBlocksLevel = ({ levelData, level, stage, lang }: Props) => {
+    const router = useRouter(); // Next.js router
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [guessCards, setGuessCards] = useState<MatrixWithId[]>([]);
     const [activeMatrixId, setActiveMatrixId] = useState<string>('');
     const activeMatrix = guessCards.find(m => m.id === activeMatrixId)!;
+    const currentStageLevels = memoBlocksLevels[stage - 1].length;
 
     useEffect(() => {
         setGuessCards(setInitialMatrixes(levelData));
@@ -68,7 +76,7 @@ const MemoBlocksLevel = ({ levelData }: Props) => {
         const newMatrixes = [...guessCards];
         newMatrixes.find(m => m.id === matrix.id)!.data = matrix.data;
         setGuessCards(newMatrixes);
-        checkWin();
+        checkVictory();
     }
 
     const onDragEnd = (DragEvent: DragEventType) => {
@@ -81,6 +89,7 @@ const MemoBlocksLevel = ({ levelData }: Props) => {
             const newIndex = cards.findIndex(card => card.id === over?.id);
             return arrayMove(cards, oldIndex, newIndex);
         });
+        checkVictory();
     };
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -99,20 +108,58 @@ const MemoBlocksLevel = ({ levelData }: Props) => {
         }
     };
 
-    const checkWin = () => {
-        const isWin = compareArrays(guessCards.map(card => card.data), levelData.map(card => card.data), compareCards);
-        if (isWin) {
-            console.log('win');
+    const checkVictory = () => {
+        const isVictory = compareArrays(guessCards.map(card => card.data), levelData.map(card => card.data), compareCards);
+        if (isVictory) {
+            handleWin();
+            handleEndLevel(stage, level, lang, 'memo-blocks', 'win', router);
+        }
+    };
+
+    const handleWin = async () => {
+        // update the status level and stage to database
+        try {
+            // TODO: fix the session error
+            //@ts-ignore
+            const res = await fetch(
+                //@ts-ignore
+                `${CURRENT_DOMAIN}/api/games/memo-blocks/${session?.user?.id}`,
+                {
+                    method: 'PUT',
+                    headers: {
+                        'Content-type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        status: 'passed',
+                        stage: stage,
+                        level: level,
+                        isLastLevel: level >= currentStageLevels
+                    }),
+                },
+            );
+
+            if (!res.ok) {
+                throw new Error('Failed to update');
+            }
+        } catch (error) {
+            console.log(error);
         }
     }
 
     const compareCards = (card1: Matrix, card2: Matrix): boolean => {
+        let equal = true;
         card1.forEach((row, i) => {
-            row.forEach((value, j) => {
-                if (value !== card2[i][j]) return false;
+            row.forEach((cell, j) => {
+                if (!equal) return;
+                const other = card2[i][j];
+                if (JSON.stringify(cell) !== JSON.stringify(other)) {
+                    equal = false;
+                    return;
+                }
             });
         });
-        return true;
+
+        return equal;
     };
 
     if (isLoading)

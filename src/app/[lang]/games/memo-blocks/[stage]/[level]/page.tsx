@@ -1,11 +1,12 @@
 import MemoBlocksLevel from '@/components/shared/memoBlocksGame';
+import { Locale } from '@/i18n.config';
 import { parseTable } from '@/lib/utils';
 import { memoBlocksLevels } from '@/mockData/memoBlocks';
-import { CellInfo, MatrixWithId, MemoBlocksGame } from '@/types';
+import { MatrixWithId, MemoBlocksGame } from '@/types';
 
 type Props = {
     params: {
-        lang: string;
+        lang: Locale;
         stage: number;
         level: number;
     };
@@ -20,7 +21,7 @@ const Page = async ({ params: { level, stage, lang } }: Props) => {
     const currentLevel = getLevelData(stage, level, memoBlocksLevels);
     return (
         <div className='h-full flex justify-center items-center'>
-            <MemoBlocksLevel levelData={currentLevel} />
+            <MemoBlocksLevel levelData={currentLevel} level={level} stage={stage} lang={lang} />
         </div>
     );
 };
