@@ -1,6 +1,5 @@
-import { Input } from '@/components/core';
-import Text from '@/components/core/Text';
 import { CourseTrack } from '@/types/libraryPageTypes/libraryContentCourse';
+import { Input, Text } from '@core';
 import { Dispatch, SetStateAction } from 'react';
 
 type Props = {

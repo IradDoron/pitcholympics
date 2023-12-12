@@ -1,7 +1,6 @@
 'use client';
 
-import { Button } from '@/components/core';
-import Text from '@/components/core/Text';
+import { Button, Text } from '@/components/core';
 import {
     CourseSection,
     CourseTrack,

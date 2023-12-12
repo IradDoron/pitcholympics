@@ -1,5 +1,5 @@
 import { Button, Input } from '@/components/core';
-import Text from '@/components/core/Text';
+import { Text } from '@core';
 
 type Props = {
     handleCurrentPrerequisiteChange: (

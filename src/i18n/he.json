@@ -111,12 +111,18 @@
         "navbar": {
             "pages": {
                 "home": "בית",
+                "games": "משחקים",
                 "stats": "סטטיסטיקה",
                 "about": "אודות",
                 "suggestions": "הצעות",
                 "library": "ספרייה",
                 "courses": "קורסים",
-                "websiteAnalytics": "נתוני אתר"
+                "websiteAnalytics": "נתוני אתר",
+                "musicHistory": "היסטוריה המוזיקה",
+                "leaderboard": "טבלת מובילים",
+                "pieces": "יצירות",
+                "practice": "תרגול",
+                "musicalPatterns": "תבניות מוזיקליות"
             },
             "title": "עמוד",
             "MobileNav": {

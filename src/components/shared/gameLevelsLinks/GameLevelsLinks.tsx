@@ -1,14 +1,14 @@
 'use client';
 
+import { Locale } from '@/i18n.config';
+import type { Session } from 'next-auth';
+import { useSession } from 'next-auth/react';
+import LevelLink from './LevelLink';
 import LevelsLinksContainer from './LevelsLinksContainer';
 import { useEffect, useState } from 'react';
 import { MemoTheMeloGame, PitchCatchGame, LevelStatus, GameNamesToSlug, MemoBlocksGame } from '@/types';
 import StageTitle from './StageTitle';
 import StageLevelsContainer from './StageLevelsContainer';
-import LevelLink from './LevelLink';
-import { useSession } from 'next-auth/react';
-import { Locale } from '@/i18n.config';
-import type { Session } from 'next-auth';
 
 type Props = {
     levelsData: MemoTheMeloGame | PitchCatchGame | MemoBlocksGame;

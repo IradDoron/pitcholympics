@@ -1,7 +1,6 @@
-import { Link } from '@/components/core';
-import Text from '@/components/core/Text';
 import { LibraryContentCourse } from '@/types/libraryPageTypes';
 import { countLessonsInCourse } from '@/utils';
+import { Link, Text } from '@core';
 
 type Props = {
     courseId: string;

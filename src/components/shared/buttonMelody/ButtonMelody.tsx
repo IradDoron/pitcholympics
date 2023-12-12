@@ -1,3 +1,5 @@
+'use client';
+
 import { colorVariants } from '@/components/core/CircleGradient';
 import { divideItemsByLightAndDark } from '@/utils/divideItemsByLightAndDark';
 import { Dispatch, SetStateAction, useEffect } from 'react';
@@ -27,6 +29,7 @@ type Props = {
     userGuess: number[]; // The user guess array
     setPitchIndexPlaying: Dispatch<SetStateAction<number>>; // Set the pitch index that is currently playing
 };
+
 const ButtonMelody = ({
     isPlaying,
     pitch,

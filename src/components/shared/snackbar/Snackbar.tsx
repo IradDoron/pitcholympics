@@ -1,7 +1,8 @@
 'use client';
-import { useEffect, useState } from 'react';
-import { getDictionaryClient } from '@/utils/getDictionaryClient';
+
 import { Locale } from '@/i18n.config';
+import { getDictionaryClient } from '@/utils/getDictionaryClient';
+import { useEffect, useState } from 'react';
 
 type Props = { status: 'Success' | 'Failed'; lang: Locale };
 

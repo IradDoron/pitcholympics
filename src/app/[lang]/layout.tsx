@@ -1,12 +1,12 @@
+import NextAuthProvider from '@/context/SessionProvider';
+import ThemeProvider from '@/context/ThemeProvider';
 import { Locale, i18n } from '@/i18n.config';
+import '@/styles/globals.css';
 import { getHtmlDirection } from '@/utils/getHtmlDirection';
+import { Navbar } from '@shared';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import ThemeProvider from '@/context/ThemeProvider';
-import '@/styles/globals.css';
-import Navbar from '@/components/shared/navbar';
 const inter = Inter({ subsets: ['latin'] });
-import NextAuthProvider from '@/context/SessionProvider';
 
 export const metadata: Metadata = {
     title: 'Pitch Olympics',

@@ -11,5 +11,3 @@ export function Text({ children, className = '' }: Props) {
         </p>
     );
 }
-
-export default Text;

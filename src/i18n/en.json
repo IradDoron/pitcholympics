@@ -111,12 +111,18 @@
         "navbar": {
             "pages": {
                 "home": "Home",
+                "games": "Games",
                 "stats": "Stats",
                 "about": "About",
                 "suggestions": "Suggestions",
                 "library": "Library",
                 "courses": "Courses",
-                "websiteAnalytics": "Website Analytics"
+                "websiteAnalytics": "Website Analytics",
+                "musicHistory": "Music History",
+                "leaderboard": "Leaderboard",
+                "pieces": "Pieces",
+                "practice": "Practice",
+                "musicalPatterns": "Musical Patterns"
             },
             "title": "Page",
             "MobileNav": {

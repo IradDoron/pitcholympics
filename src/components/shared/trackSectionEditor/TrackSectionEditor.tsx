@@ -1,13 +1,12 @@
 'use client';
 
-import { Button, Input } from '@/components/core';
-import Text from '@/components/core/Text';
-import CourseTrackSectionLessonEditor from '@/components/shared/trackLessonEditor';
 import {
     CourseLesson,
     CourseSection,
     CourseTrack,
 } from '@/types/libraryPageTypes/libraryContentCourse';
+import { Button, Input, Text } from '@core';
+import { TrackLessonEditor } from '@shared';
 import { useEffect, useState } from 'react';
 
 type Props = {
@@ -172,7 +171,7 @@ const TrackSectionEditor = ({
                 <div>
                     {currentSection.lessons.map((lesson, index) => {
                         return (
-                            <CourseTrackSectionLessonEditor
+                            <TrackLessonEditor
                                 key={index}
                                 lessonIndex={index}
                                 sectionIndex={sectionIndex}

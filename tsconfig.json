@@ -23,7 +23,7 @@
         "paths": {
             "@/*": ["src/*"],
             "@core": ["src/components/core/index.ts"],
-            "@shared/*": ["src/components/shared/*"],
+            "@shared": ["src/components/shared/index.ts"],
             "@icons": ["src/components/icons/index.ts"]
         }
     },

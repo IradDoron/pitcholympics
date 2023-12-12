@@ -1,2 +1,3 @@
-import UserOptions from "./UserOptions";
-export default UserOptions;
+import UserOptions from './UserOptions';
+
+export { UserOptions };

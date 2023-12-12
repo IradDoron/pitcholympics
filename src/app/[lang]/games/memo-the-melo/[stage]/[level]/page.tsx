@@ -1,18 +1,16 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
-import { useState, useEffect } from 'react';
-import { MemoTheMeloGame } from '@/types';
-import memoTheMeloMockData from '@/mockData/memoTheMelo';
-import ButtonMelody from '@/components/shared/buttonMelody';
-import LevelStepper from '@/components/shared/levelStepper';
-import { Locale } from '@/i18n.config';
-import { Button } from '@/components/core';
-import { compareArrays, handleEndLevel } from '@/utils';
-import { convertPitchesToIndexes } from '@/utils';
-import { useSession } from 'next-auth/react';
-import { getDictionaryClient } from '@/utils/getDictionaryClient';
 import { CURRENT_DOMAIN } from '@/constants';
+import { Locale } from '@/i18n.config';
+import memoTheMeloMockData from '@/mockData/memoTheMelo';
+import { MemoTheMeloGame } from '@/types';
+import { compareArrays, handleEndLevel, convertPitchesToIndexes } from '@/utils';
+import { getDictionaryClient } from '@/utils/getDictionaryClient';
+import { Button } from '@core';
+import { ButtonMelody, LevelStepper } from '@shared';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 type Props = {
     params: {
