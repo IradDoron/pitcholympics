@@ -29,7 +29,7 @@ const GameLink = ({ href, label, colorType, lang }: Props) => {
 
     return (
         <Link
-            href={`${lang}/how-to-play?game=${href}`}
+            href={`${lang}/games/how-to-play?game=${href}`}
             style={{
                 ...commonStyles,
             }}
