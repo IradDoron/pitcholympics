@@ -1,17 +1,16 @@
-import { LangParam } from '@/types';
-import PostsForm from '@/components/shared/postsForm';
-import PostsContainer from '@/components/shared/postsContainer';
-import PostPage from '@/components/shared/postPage';
+import { PostPage, PostsContainer, PostsForm } from '@shared';
 
-
-const Page = ({ params: { lang } }: LangParam) => {
+const Page = () => {
     return (
         <>
-        <PostsForm/>
-        <PostsContainer>
-         <PostPage article='heyyy' picSrc='' paragraph='it is awesomeee'/>
-        </PostsContainer>
-        
+            <PostsForm />
+            <PostsContainer>
+                <PostPage
+                    article='heyyy'
+                    picSrc=''
+                    paragraph='it is awesomeee'
+                />
+            </PostsContainer>
         </>
     );
 };

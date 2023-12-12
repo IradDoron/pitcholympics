@@ -1,9 +1,7 @@
 import { connectToDB } from '@/utils/database';
 import User from '@/models/user';
-import { NextResponse } from 'next/server';
-import { NextRequest } from 'next/server';
-import { isLevelExisting } from '@/utils';
-import { convertKebabCaseToCamelCase, mapToObject } from '@/utils';
+import { NextResponse, NextRequest } from 'next/server';
+import { convertKebabCaseToCamelCase, mapToObject, isLevelExisting } from '@/utils';
 import { LevelStatus } from '@/types';
 
 /**
@@ -41,7 +39,9 @@ export async function PUT(request: NextRequest, { params }: any) {
 
         if (
             isLevelExist &&
-            (levelCurrentStatus === 'failed' || levelCurrentStatus === 'locked')
+            (levelCurrentStatus === 'failed' ||
+                levelCurrentStatus === 'locked' ||
+                levelCurrentStatus === 'pending')
         ) {
             const newKey = `gameProgress.${gameName}.${levelKey}`;
 

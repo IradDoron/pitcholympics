@@ -1,10 +1,10 @@
 'use client';
 
-import achievements from '@/mockData/achievements';
+// import achievements from '@/mockData/achievements';
 import users from '@/mockData/users';
-import AchievementCard from './AchievementCard';
-import ComingSoonSection from '@/components/shared/comingSoonSection';
+// import AchievementCard from './AchievementCard';
 import { Locale } from '@/i18n.config';
+import { ComingSoonSection } from '@shared';
 
 type Props = {
     lang: Locale;

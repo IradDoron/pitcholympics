@@ -1,17 +1,16 @@
 'use client';
 
-import { useState } from 'react';
-import { PitchCatchGame, PitchCatchLevel } from '@/types';
-import PitchButton from '@/components/shared/pitchButton';
-import UserOptions from '@/components/shared/userOption';
-import Button from '@/components/core/button';
-import pitchCatchData from '@/mockData/pitchCatch';
-import { useRouter } from 'next/navigation';
-import LevelStepper from '@/components/shared/levelStepper';
-import { useSession } from 'next-auth/react';
-import { handleEndLevel } from '@/utils';
+import { CURRENT_DOMAIN } from '@/constants';
 import { Locale } from '@/i18n.config';
+import pitchCatchData from '@/mockData/pitchCatch';
+import { PitchCatchGame, PitchCatchLevel } from '@/types';
+import { handleEndLevel } from '@/utils';
 import { getDictionaryClient } from '@/utils/getDictionaryClient';
+import { Button } from '@core';
+import { LevelStepper, PitchButton, UserOptions } from '@shared';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 type Props = {
     params: {
@@ -48,7 +47,7 @@ const Page = ({ params }: Props) => {
             //@ts-ignore
             const res = await fetch(
                 //@ts-ignore
-                `http://localhost:3000/api/games/pitch-catch/${session?.user?.id}`,
+                `${CURRENT_DOMAIN}/api/games/pitch-catch/${session?.user?.id}`,
                 {
                     method: 'PUT',
                     headers: {
@@ -78,7 +77,7 @@ const Page = ({ params }: Props) => {
             //@ts-ignore
             const res = await fetch(
                 //@ts-ignore
-                `http://localhost:3000/api/games/pitch-catch/${session?.user?.id}`,
+                `${CURRENT_DOMAIN}/api/games/pitch-catch/${session?.user?.id}`,
                 {
                     method: 'PUT',
                     headers: {

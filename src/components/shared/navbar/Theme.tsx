@@ -1,11 +1,21 @@
 'use client';
 
 import { useTheme } from '@/context/ThemeProvider';
-import Image from 'next/image';
-import { themes } from '@/constants';
-import Menubar from '@/components/core/menubar';
-import SunIcon from '@/components/icons/sunIcon';
-import MoonIcon from '@/components/icons/moonIcon/MoonIcon';
+import { Menubar } from '@/components/core';
+import { SunIcon, MoonIcon, GearIcon } from '@icons';
+import { IconProps, ThemeMode } from '@/types';
+
+type ThemesObject = {
+    value: ThemeMode;
+    label: string;
+    icon: (props: IconProps) => JSX.Element;
+};
+
+export const themes = [
+    { value: 'light', label: 'Light', icon: SunIcon },
+    { value: 'dark', label: 'Dark', icon: MoonIcon },
+    { value: 'system', label: 'System', icon: GearIcon },
+] as ThemesObject[];
 
 const Theme = () => {
     const { mode, setMode } = useTheme();
@@ -39,11 +49,10 @@ const Theme = () => {
                                 }}>
                                 <Icon color='primary' size='medium' />
                                 <p
-                                    className={`body-semibold text-light-500 ${
-                                        mode === item.value
+                                    className={`body-semibold text-light-500 ${mode === item.value
                                             ? 'text-primary-500'
                                             : 'text-dark100_light900'
-                                    }`}>
+                                        }`}>
                                     {item.label}
                                 </p>
                             </div>

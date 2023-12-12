@@ -1,15 +1,14 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import Card from '@/components/core/card';
-import UserImage from '@/components/shared/userImage';
-import ProfileInfo from '@/components/shared/profileInfo';
-import { useSession } from 'next-auth/react';
-import Button from '@/components/core/button';
+import { CURRENT_DOMAIN } from '@/constants';
+import { Locale as LocalType } from '@/i18n.config';
 import { getTimeZone } from '@/utils';
 import { getDictionaryClient } from '@/utils/getDictionaryClient';
-import { Locale as LocalType } from '@/i18n.config';
+import { Button, Card } from '@core';
+import { ProfileInfo, UserImage } from '@shared';
+import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 type Gender = 'male' | 'female';
 type Locale = 'HE' | 'EN';
@@ -43,7 +42,7 @@ const Page = ({ params }: Props) => {
             // TODO: fix the session error
             const res = await fetch(
                 //@ts-ignore
-                `http://localhost:3000/api/auth/profile/${session?.user?.id}`,
+                `${CURRENT_DOMAIN}/api/auth/profile/${session?.user?.id}`,
                 {
                     method: 'PUT',
                     headers: {
@@ -70,7 +69,7 @@ const Page = ({ params }: Props) => {
                 // TODO: fix the session error
                 const res = await fetch(
                     //@ts-ignore
-                    `http://localhost:3000/api/auth/profile/${session?.user?.id}`,
+                    `${CURRENT_DOMAIN}/api/auth/profile/${session?.user?.id}`,
                     {
                         method: 'GET',
                         headers: {
