@@ -8,6 +8,7 @@ type Props = {
     url: string;
     size?: LinkSizeType;
     color?: LinkColorType;
+    className?: string;
 };
 
 const getSize = (size: LinkSizeType) => {
@@ -43,12 +44,13 @@ export const Link = ({
     url,
     size = 'medium',
     color = 'default',
+    className = '',
 }: Props) => {
     const linkSize = getSize(size);
     const linkColor = getColor(color);
     return (
         <NextLink
-            className={`shadow-large-light dark:shadow-large-dark rounded-[12px] ${linkSize} ${linkColor}`}
+            className={`shadow-large-light dark:shadow-large-dark rounded-[12px] ${linkSize} ${linkColor} ${className}`}
             href={url}>
             {label}
         </NextLink>
