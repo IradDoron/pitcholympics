@@ -1,0 +1,27 @@
+import { Locale } from '@/i18n.config';
+import { Link } from '@core';
+
+type Props = {
+    params: {
+        lang: Locale;
+    };
+};
+
+const Page = ({ params }: Props) => {
+    const { lang } = params;
+    return (
+        <div>
+            <h1 className='text-2xl font-bold'>Piano solos</h1>
+            <ul className='flex gap-4 m-4'>
+                <li>
+                    <Link
+                        url={`/${lang}/instruments/piano/solos/improve`}
+                        label='Accompaniment patterns'
+                    />
+                </li>
+            </ul>
+        </div>
+    );
+};
+
+export default Page;
