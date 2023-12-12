@@ -171,7 +171,7 @@ const Comp = () => {
     return(
         <div className='h-full flex justify-center items-center'>   
             <div>
-                <button id='c' className='m-5' onClick={}>Up</button>
+                <button id='c' className='m-5' onClick={changeKeyboardMap}>Up</button>
             </div>
             <div className='h-full flex justify-center items-center'>
                 <button id='c' className='m-5' onClick={onClickZ}>Play C</button>
