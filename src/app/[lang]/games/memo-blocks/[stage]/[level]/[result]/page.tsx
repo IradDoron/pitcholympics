@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import memoTheMeloMockData from '@/mockData/memoTheMelo';
-import LevelResult from '@/components/shared/levelResult';
+import { LevelResult } from '@/components/shared/levelResult';
 import { getDictionaryClient } from '@/utils/getDictionaryClient';
 import { Locale } from '@/i18n.config';
 
