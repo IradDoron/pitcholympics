@@ -123,7 +123,7 @@ const MemoBlocksLevel = ({ levelData, level, stage, lang }: Props) => {
             //@ts-ignore
             const res = await fetch(
                 //@ts-ignore
-                `${CURRENT_DOMAIN}/api/games/memo-blocks/${session?.user?.id}`,
+                `${process.env.BASE_URL}/api/games/memo-blocks/${session?.user?.id}`,
                 {
                     method: 'PUT',
                     headers: {

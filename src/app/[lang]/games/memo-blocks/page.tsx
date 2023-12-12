@@ -1,4 +1,4 @@
-import GameLevelsLinks from '@/components/shared/gameLevelsLinks';
+import { GameLevelsLinks } from '@shared';
 import { memoBlocksLevels } from '@/mockData/memoBlocks';
 import { LangParam } from '@/types';
 

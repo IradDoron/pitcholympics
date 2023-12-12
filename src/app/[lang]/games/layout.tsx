@@ -1,5 +1,5 @@
 
-import PageFiller from '@/components/shared/pageFiller';
+import { PageFiller } from '@shared';
 import { getServerSession } from "next-auth/next";
 
 export default async function GamesLayout({
