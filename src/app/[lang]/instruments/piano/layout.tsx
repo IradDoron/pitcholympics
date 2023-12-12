@@ -13,7 +13,7 @@ const Layout = ({ children, params }: Props) => {
     return (
         <div>
             <h1 className='text-2xl font-bold'>Learn to play the piano</h1>
-            <ul className='flex gap-4 m-4'>
+            <ul className='flex gap-4 m-4 flex-wrap'>
                 <li>
                     <Link
                         url={`/${lang}/instruments/piano/accompaniment-patterns`}
