@@ -51,19 +51,19 @@ class keyboardMapper{
     }
     get Piano(): IKeyboardPianoMap{
         return {
-            C:this.usableKeys[this.startKeyX][this.startKeyY],
-            Cd:this.usableKeys[this.startKeyX + 1][this.startKeyY + 1],
-            D:this.usableKeys[this.startKeyX + 1][this.startKeyY],
-            Dd:this.usableKeys[this.startKeyX + 2][this.startKeyY + 1],
-            E:this.usableKeys[this.startKeyX + 2][this.startKeyY],
-            F:this.usableKeys[this.startKeyX + 3][this.startKeyY],
-            Fd:this.usableKeys[this.startKeyX + 4][this.startKeyY + 1],
-            G:this.usableKeys[this.startKeyX + 4][this.startKeyY],
-            Gd:this.usableKeys[this.startKeyX + 5][this.startKeyY + 1],
-            A:this.usableKeys[this.startKeyX + 5][this.startKeyY],
-            Ad:this.usableKeys[this.startKeyX + 6][this.startKeyY + 1],
-            B:this.usableKeys[this.startKeyX + 6][this.startKeyY],
-            C2:this.usableKeys[this.startKeyX + 7][this.startKeyY],
+            C:this.usableKeys [this.startKeyY]    [this.startKeyX],
+            Cd:this.usableKeys[this.startKeyY + 1][this.startKeyX + 1],
+            D:this.usableKeys [this.startKeyY]    [this.startKeyX + 1],
+            Dd:this.usableKeys[this.startKeyY + 1][this.startKeyX + 2],
+            E:this.usableKeys [this.startKeyY]    [this.startKeyX + 2],
+            F:this.usableKeys [this.startKeyY]    [this.startKeyX + 3],
+            Fd:this.usableKeys[this.startKeyY + 1][this.startKeyX + 4],
+            G:this.usableKeys [this.startKeyY]    [this.startKeyX + 4],
+            Gd:this.usableKeys[this.startKeyY + 1][this.startKeyX + 5],
+            A:this.usableKeys [this.startKeyY]    [this.startKeyX + 5],
+            Ad:this.usableKeys[this.startKeyY + 1][this.startKeyX + 6],
+            B:this.usableKeys [this.startKeyY]    [this.startKeyX + 6],
+            C2:this.usableKeys[this.startKeyY]    [this.startKeyX + 7],
         };
     }
 }
@@ -95,18 +95,18 @@ const Comp = () => {
         temp[key] = bool;
         setDic(temp);
     }
-    const [playC] = useSound(config.sound.C,{volume:config.volume});
+    const [playC]  = useSound(config.sound.C,{volume:config.volume});
     const [playCd] = useSound(config.sound.Cd,{volume:config.volume});
-    const [playD] = useSound(config.sound.D,{volume:config.volume});
+    const [playD]  = useSound(config.sound.D,{volume:config.volume});
     const [playDd] = useSound(config.sound.Dd,{volume:config.volume});
-    const [playE] = useSound(config.sound.E,{volume:config.volume});
-    const [playF] = useSound(config.sound.F,{volume:config.volume});
+    const [playE]  = useSound(config.sound.E,{volume:config.volume});
+    const [playF]  = useSound(config.sound.F,{volume:config.volume});
     const [playFd] = useSound(config.sound.Fd,{volume:config.volume});
-    const [playG] = useSound(config.sound.G,{volume:config.volume});
+    const [playG]  = useSound(config.sound.G,{volume:config.volume});
     const [playGd] = useSound(config.sound.Gd,{volume:config.volume});
-    const [playA] = useSound(config.sound.A,{volume:config.volume});
+    const [playA]  = useSound(config.sound.A,{volume:config.volume});
     const [playAd] = useSound(config.sound.Ad,{volume:config.volume});
-    const [playB] = useSound(config.sound.B,{volume:config.volume});
+    const [playB]  = useSound(config.sound.B,{volume:config.volume});
     const [playC2] = useSound(config.sound.C2,{volume:config.volume});
 
     const onClickZ=()=>playC();
@@ -124,8 +124,10 @@ const Comp = () => {
     const onClickComma=()=>playC2();
     
     const playKey = (key:string) =>{
+        console.log(config.Keyboard.C);
+        console.log(key);
         switch(key){
-            case config.Keyboard.C: document.getElementById('c')?.click(); break;
+            case config.Keyboard.C: document.getElementById('c')?.click();  break;
             case config.Keyboard.Cd: document.getElementById('cd')?.click(); break;
             case config.Keyboard.D: document.getElementById('d')?.click(); break;
             case config.Keyboard.Dd: document.getElementById('dd')?.click(); break;
@@ -172,7 +174,7 @@ const Comp = () => {
     return(
         <div className='h-full flex justify-center items-center'>   
             <div>
-                <button id='c' className='m-5' onClick={changeKeyboardMap}>Up</button>
+                <button id='y' className='m-5' onClick={changeKeyboardMap}>Up</button>
             </div>
             <div className='h-full flex justify-center items-center'>
                 <button id='c' className='m-5' onClick={onClickZ}>Play C</button>
