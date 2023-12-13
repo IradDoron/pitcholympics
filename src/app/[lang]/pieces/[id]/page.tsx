@@ -1,3 +1,5 @@
+import { pieces } from '@/data/piecesData';
+
 type Props = {
     params: {
         id: string;
@@ -6,6 +8,9 @@ type Props = {
 
 const Page = ({ params }: Props) => {
     const { id } = params;
+    const piece = pieces[id];
+    console.log(piece);
+
     return (
         <>
             <h1>Piece {id}</h1>
