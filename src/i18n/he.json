@@ -140,5 +140,39 @@
             "Success": ["עבודה טובה!", "יפה!", "גאון"],
             "Failed": ["נסה שוב", "אולי בפעם הבאה.."]
         }
+    },
+    "data": {
+        "pianoDataDict": {
+            "pianoAccompanimentPatternCategoriesDict": {
+                "whole-notes-arrepegio": {
+                    "name": "פירוקי שלמים",
+                    "description": "נגינת פירוקי שלמים"
+                },
+                "quater-notes-arrepegio": {
+                    "name": "פירוקי רבעים",
+                    "description": "נגינת פירוקי רבעים"
+                },
+                "eight-notes-arrepegio": {
+                    "name": "פירוקי שמיניות",
+                    "description": "נגינת פירוקי שמיניות"
+                }
+            },
+            "pianoAccompanimentPatternsDict": {
+                "1": {
+                    "name": "תבנית ליווי בסיסית 1",
+                    "description": "תבנית ליווי בסיסית 1",
+                    "useCases": [
+                        "שימושי כאשר אתה רוצה לנגן שיר עם ליווי פשוט",
+                        "שימושי כאשר אתה רוצה לנגן שיר עם ליווי פשוט",
+                        "שימושי כאשר אתה רוצה לנגן שיר עם ליווי פשוט"
+                    ]
+                }
+            },
+            "handDict": {
+                "left": "יד שמאל",
+                "right": "יד ימין",
+                "both": "שתי ידיים"
+            }
+        }
     }
 }
