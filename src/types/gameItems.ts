@@ -6,7 +6,7 @@ export type BaseItem = {
 	id: string;
 	name: string;
 	description: string;
-	image: string; // URL or image path
+	image?: string; // URL or image path
 	rarity: Rarity;
 	quantity: number;
 };
