@@ -9,6 +9,7 @@ import LocaleSwitcher from './LocaleSwitcher';
 import NavbarLink from './NavbarLink';
 import Theme from './Theme';
 import MobileNav from './mobileNav';
+import { AccessibilityIcon } from '@/components/icons';
 
 const Navbar = ({ params: { lang } }: LangParam) => {
     const [isSettingsMenuOpen, setIsSettingsMenuOpen] = useState(false);
@@ -17,6 +18,7 @@ const Navbar = ({ params: { lang } }: LangParam) => {
 
     return (
         <div className='flex flex-row justify-center z-50'>
+            <AccessibilityIcon color='primary' size='Xlarge' />
             <nav className='flex flex-row p-2 sticky w-full bg-light-background-defaultBlur dark:bg-dark-background-defaultBlur '>
                 <div className='flex justify-self-start px-10 w-fit'>
                     <LocaleSwitcher params={{ lang }} />
