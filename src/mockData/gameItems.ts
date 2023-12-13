@@ -9,6 +9,7 @@ const gameItems: GameItem[] = [
 		rarity: 'Common',
 		type: 'VirtualCurrency',
 		value: 10,
+		quantity : 10,
 	},
 	{
 		id: '2',
@@ -18,6 +19,7 @@ const gameItems: GameItem[] = [
 		rarity: 'Uncommon',
 		type: 'Consumable',
 		usage: 'Drink to restore health points',
+		quantity : 10,
 	},
 	{
 		id: '3',
@@ -27,6 +29,7 @@ const gameItems: GameItem[] = [
 		rarity: 'Rare',
 		type: 'CosmeticItem',
 		characterId: 'wizard-character-123',
+		quantity : 10,
 	},
 	{
 		id: '4',
@@ -36,6 +39,7 @@ const gameItems: GameItem[] = [
 		rarity: 'Epic',
 		type: 'AchievementReward',
 		achievementName: 'Explorer',
+		quantity : 10,
 	},
 	{
 		id: '5',
@@ -45,6 +49,7 @@ const gameItems: GameItem[] = [
 		rarity: 'Legendary',
 		type: 'VirtualCurrency',
 		value: 1000,
+		quantity : 10,
 	},
 	{
 		id: '6',
@@ -54,6 +59,7 @@ const gameItems: GameItem[] = [
 		rarity: 'Rare',
 		type: 'Consumable',
 		usage: 'Drink to move faster for a limited time',
+		quantity : 10,
 	},
 	{
 		id: '7',
@@ -63,6 +69,7 @@ const gameItems: GameItem[] = [
 		rarity: 'Uncommon',
 		type: 'CosmeticItem',
 		characterId: 'cool-character-456',
+		quantity : 10,
 	},
 	{
 		id: '8',
@@ -72,6 +79,7 @@ const gameItems: GameItem[] = [
 		rarity: 'Epic',
 		type: 'AchievementReward',
 		achievementName: 'High Scorer',
+		quantity : 10,
 	},
 	{
 		id: '9',
@@ -81,6 +89,7 @@ const gameItems: GameItem[] = [
 		rarity: 'Rare',
 		type: 'CosmeticItem',
 		characterId: 'mystical-character-789',
+		quantity : 10,
 	},
 	{
 		id: '10',
@@ -90,6 +99,7 @@ const gameItems: GameItem[] = [
 		rarity: 'Epic',
 		type: 'AchievementReward',
 		achievementName: 'Collector',
+		quantity : 10,
 	},
 ];
 

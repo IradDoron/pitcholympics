@@ -8,6 +8,7 @@ export type BaseItem = {
 	description: string;
 	image: string; // URL or image path
 	rarity: Rarity;
+	quantity: number;
 };
 
 // Define specific item types using type
