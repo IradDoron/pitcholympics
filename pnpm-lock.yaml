@@ -35,6 +35,9 @@ dependencies:
   '@tailwindcss/typography':
     specifier: ^0.5.10
     version: 0.5.10(tailwindcss@3.3.3)
+  abcjs:
+    specifier: ^6.2.3
+    version: 6.2.3
   axios:
     specifier: ^1.6.0
     version: 1.6.0
@@ -1309,6 +1312,10 @@ packages:
 
   /abbrev@1.1.1:
     resolution: {integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==}
+    dev: false
+
+  /abcjs@6.2.3:
+    resolution: {integrity: sha512-epu8C1yRkxV7Ss9hS0Bu72rairl1p2sR3hviVowjtdDJvb5GRE0SrB4TtN4HBbaoYhvxGnSZQxGULfQlW3o3RQ==}
     dev: false
 
   /acorn-jsx@5.3.2(acorn@8.10.0):
