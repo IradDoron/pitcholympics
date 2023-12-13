@@ -140,5 +140,39 @@
             "Success": ["Good Job!", "Excellent!", "Genius"],
             "Failed": ["Try again", "Next time.."]
         }
+    },
+    "data": {
+        "pianoDataDict": {
+            "pianoAccompanimentPatternCategoriesDict": {
+                "whole-notes-arrepegio": {
+                    "name": "Whole notes arrepegio",
+                    "description": "Play whole notes arrepegio"
+                },
+                "quater-notes-arrepegio": {
+                    "name": "Quater notes arrepegio",
+                    "description": "Play quater notes arrepegio"
+                },
+                "eight-notes-arrepegio": {
+                    "name": "Eight notes arrepegio",
+                    "description": "Play eight notes arrepegio"
+                }
+            },
+            "pianoAccompanimentPatternsDict": {
+                "1": {
+                    "name": "Basic accompaniment pattern 1",
+                    "description": "Basic accompaniment pattern 1",
+                    "useCases": [
+                        "when you want to play a song with a simple accompaniment",
+                        "when you want to play a song with a simple accompaniment",
+                        "when you want to play a song with a simple accompaniment"
+                    ]
+                }
+            },
+            "handDict": {
+                "left": "Left hand",
+                "right": "Right hand",
+                "both": "Both hands"
+            }
+        }
     }
 }

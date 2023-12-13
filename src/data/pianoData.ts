@@ -8,16 +8,13 @@ export const pianoAccompanimentPatternCategories: Record<
     PianoAccompanimentPatternCategory
 > = {
     'whole-notes-arrepegio': {
-        name: 'Whole notes arrepegio',
-        description: 'Play whole notes arrepegio',
+        id: '1',
     },
     'quater-notes-arrepegio': {
-        name: 'Quater notes arrepegio',
-        description: 'Play quater notes arrepegio',
+        id: '2',
     },
     'eight-notes-arrepegio': {
-        name: 'Eight notes arrepegio',
-        description: 'Play eight notes arrepegio',
+        id: '3',
     },
 };
 
@@ -27,8 +24,6 @@ export const pianoAccompanimentPatterns: Record<
 > = {
     '1': {
         id: '1',
-        name: 'Basic accompaniment pattern 1',
-        description: 'Basic accompaniment pattern 1',
         videoTutorialsUrls: [
             'https://www.youtube.com/embed/tRQsodIxoDI',
             'https://www.youtube.com/embed/tRQsodIxoDI',
@@ -36,30 +31,13 @@ export const pianoAccompanimentPatterns: Record<
             'https://www.youtube.com/embed/tRQsodIxoDI',
         ],
         mainTutorialUrlIndex: 0,
-        useCases: [
-            'when you want to play a song with a simple accompaniment',
-            'when you want to play a song with a simple accompaniment',
-            'when you want to play a song with a simple accompaniment',
-        ],
         hand: 'left',
-        category: pianoAccompanimentPatternCategories['whole-notes-arrepegio'],
+        categoryId: 'whole-notes-arrepegio',
         optionalMeters: ['4/4', '3/4', '2/4', '6/8'],
         abcNotationExampleInC: `
         M: 4/4
         L: 1/4
         K: C
         CGcG|| `,
-    },
-    '2': {
-        id: '2',
-        name: 'Basic accompaniment pattern 2',
-        description: 'Basic accompaniment pattern 2',
-        videoTutorialsUrls: ['https://www.youtube.com/watch?v=7XUWtB2rXro'],
-        mainTutorialUrlIndex: 0,
-        useCases: [''],
-        hand: 'left',
-        category: pianoAccompanimentPatternCategories['quater-notes-arrepegio'],
-        optionalMeters: ['4/4', '3/4', '2/4', '6/8'],
-        abcNotationExampleInC: ``,
     },
 };
