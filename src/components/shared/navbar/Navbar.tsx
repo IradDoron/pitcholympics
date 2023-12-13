@@ -96,8 +96,8 @@ const Navbar = ({ params: { lang } }: LangParam) => {
                     </li>
                     <li>
                         <NavbarLink
-                            url={`/${lang}/musical-patterns`}
-                            label={pages.musicalPatterns}
+                            url={`/${lang}/instruments`}
+                            label={pages.instruments}
                         />
                     </li>
                 </ul>

@@ -1,8 +1,7 @@
 import { Locale } from '@/i18n.config';
-import { GameNames } from '.';
 import { StaticImageData } from 'next/image';
+import { GameNames } from '.';
 import { MemoTheMeloGame, PitchCatchGame } from './games';
-
 
 export type FilterObject = {
     [key: string]: boolean;
@@ -73,7 +72,8 @@ export type IconProps = {
 
 export type MainColorCategories = 'primary' | 'secondary' | 'tertiary';
 
-export * from './gameItems';
 export * from './achievements';
+export * from './gameItems';
 export * from './gameLogic';
 export * from './games';
+export * from './pianoTypes';
