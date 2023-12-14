@@ -60,6 +60,7 @@ export type IconProps = {
     color?: MainColorCategories;
     size?: 'small' | 'medium' | 'large' | 'Xlarge';
     onClick?: () => void;
+    isActive?: boolean;
     className?: string;
 };
 
