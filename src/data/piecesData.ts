@@ -3,7 +3,8 @@ import { Piece } from '@/types';
 export const pieces: Record<string, Piece> = {
     '1': {
         id: '1',
-        leadSheet: 'X:1\nT:Sample Tune\nM:4/4\nK:C\n|E2 G2|A4|B4|c4|',
+        leadSheet:
+            'M:4/4\nK:C\nL:1/4\n|"C" E G F A | "F" A2 B2 |"G" B c A B |"C" c4|]',
         meter: '4/4',
         key: 'C',
         tempo: 'Moderato',
