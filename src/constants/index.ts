@@ -2,11 +2,8 @@ import {
     Colors,
     IconProps,
     Matrix,
-    SidebarLink,
     // ThemeModeDragEvent,
 } from '@/types';
-import { MatrixWithId } from '@/types';
-import { ThemeMode } from '@/types';
 export const LANGS_FULL_NAMES = {
     en: 'English',
     he: 'עברית',

@@ -11,6 +11,8 @@ export type GamesStats = {
 
 export type GameNames = 'memoTheMelo' | 'pitchCatch' | 'memoBlocks';
 
+export type GameNamesToSlug = 'memo-the-melo' | 'pitch-catch' | 'memo-blocks'; // name this better
+
 export type GameAnalytics = {
   gameName: GameNames;
   level: number;

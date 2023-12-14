@@ -12,7 +12,11 @@ export enum NoteStatus {
   'TIED',
 };
 
-export type MemoBlocksDataTable = NoteStatus[][];
+export type CellInfo = {
+  row: number;
+  col: number;
+  value: NoteStatus;
+};
 
 export type Matrix = MatrixCell[][]; // changed to the line below
 export type MatrixWithId = { id: string; data: Matrix };
@@ -52,3 +56,10 @@ export type DragEvent = {
 };
 
 export type MemoBlockCardMelody = MemoBlockCardNote[];
+
+export type MemoBlocksLevel = CellInfo[][];
+
+export type MemoBlocksStage = MemoBlocksLevel[];
+
+export type MemoBlocksGame = MemoBlocksStage[];
+
