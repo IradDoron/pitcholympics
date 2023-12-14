@@ -70,3 +70,4 @@ export * from './gameItems';
 export * from './gameLogic';
 export * from './games';
 export * from './pianoTypes';
+export * from './piecesTypes';
