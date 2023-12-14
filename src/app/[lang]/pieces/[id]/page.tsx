@@ -10,6 +10,7 @@ const Page = ({ params }: Props) => {
     const { id } = params;
     const piece = pieces[id];
     console.log(piece);
+    const { title } = piece;
 
     return (
         <>
