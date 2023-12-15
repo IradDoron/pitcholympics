@@ -36,7 +36,7 @@ export type PieceLyrics = PieceLyricsSection[];
 
 export type Piece = {
     id: string;
-    musicalInfo: {
+    musicalData: {
         key: string; // C, C#, Db, etc.
         originalKey: string; // C, C#, Db, etc.
         meter: string; // 4/4, 3/4, 6/8, etc.
