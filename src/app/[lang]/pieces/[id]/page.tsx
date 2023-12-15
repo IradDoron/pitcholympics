@@ -13,53 +13,27 @@ type Props = {
 const Page = ({ params }: Props) => {
     const { id } = params;
     const piece = pieces[id];
-    console.log(piece);
-    const {
-        title,
-        leadSheet,
-        description,
-        composer,
-        arranger,
-        lyricist,
-        artist,
-        tempo,
-        meter,
-        key,
-        album,
-        year,
-        genre,
-        duration,
-        lyrics,
-    } = piece;
+    const { musicalData, notation, metadata, socialData } = piece;
 
     useEffect(() => {
-        abcjs.renderAbc(`lead-sheet-${id}`, leadSheet, {
-            scale: 1.5,
+        abcjs.renderAbc(`lead-sheet-${id}`, notation.leadSheet, {
+            scale: 1,
         });
     }, []);
 
     return (
         <div className='flex flex-col m-auto items-center justify-center'>
-            <h1 className='text-2xl'>{title}</h1>
-            <p className='text-lg'>{description}</p>
+            <h1 className='text-2xl'>{metadata.title}</h1>
             <div>
-                <p className='text-lg'>Composer: {composer}</p>
-                <p className='text-lg'>Arranger: {arranger}</p>
-                <p className='text-lg'>Lyricist: {lyricist}</p>
-                <p className='text-lg'>Artist: {artist}</p>
+                <p className='text-lg'>Composer: {metadata.artists[0]}</p>
             </div>
             <div id={`lead-sheet-${id}`} />
             <div>
-                <p className='text-lg'>Tempo: {tempo}</p>
-                <p className='text-lg'>Meter: {meter}</p>
-                <p className='text-lg'>Key: {key}</p>
-                <p className='text-lg'>Album: {album}</p>
-                <p className='text-lg'>Year: {year}</p>
-                <p className='text-lg'>Genre: {genre}</p>
-                <p className='text-lg'>Duration: {duration}</p>
+                <p className='text-lg'>Tempo: {musicalData.bpm}</p>
+                <p className='text-lg'>Meter: {musicalData.meter}</p>
+                <p className='text-lg'>Key: {musicalData.key}</p>
             </div>
             <br />
-            <p>{lyrics}</p>
         </div>
     );
 };
