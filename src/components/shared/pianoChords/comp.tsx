@@ -1,7 +1,6 @@
 'use client';
 
 import React,{ useState } from 'react';
-// import useSound from 'use-sound';
 import * as Tone from 'tone'
 import ISoundsMap from '@/models/ISoundMap';
 import PianoSoundMap from '@/models/SoundsMap/piano-sound-map';
@@ -95,68 +94,59 @@ const Comp = () => {
         temp[key] = bool;
         setDic(temp);
     }
-    // const sampler = new Tone.Sampler({
-    //     urls:{
-    //         C:""
-    //     },
-    //     onload: () => {
-    //         sampler.triggerAttackRelease(["C"], 0.5);
-    //     }
-    // }).toDestination();
+
     const sampler = new Tone.Sampler({
         urls:{
-            C1:"piano_C3.mp3",
+            "C1" :"piano_C3.mp3",
+            "C#1":"piano_Cc3.mp3",
+            "D1" :"piano_D3.mp3",
+            "D#1":"piano_Dc3.mp3",
+            "E1" :"piano_E3.mp3",
+            "F1" :"piano_F3.mp3",
+            "F#1":"piano_Fc3.mp3",
+            "G1" :"piano_G3.mp3",
+            "G#1":"piano_Gc3.mp3",
+            "A1" :"piano_A3.mp3",
+            "A#1":"piano_Ac3.mp3",
+            "B1"  :"piano_B3.mp3",
+            "C2" :"piano_C4.mp3",
         },
+        release:1,
         baseUrl:"/sounds/piano/"
     }).toDestination();
-    //const [playC]  = useSound(config.sound.C, {volume:config.volume});
-    // const [playCd] = useSound(config.sound.Cd,{volume:config.volume});
-    // const [playD]  = useSound(config.sound.D, {volume:config.volume});
-    // const [playDd] = useSound(config.sound.Dd,{volume:config.volume});
-    // const [playE]  = useSound(config.sound.E, {volume:config.volume});
-    // const [playF]  = useSound(config.sound.F, {volume:config.volume});
-    // const [playFd] = useSound(config.sound.Fd,{volume:config.volume});
-    // const [playG]  = useSound(config.sound.G, {volume:config.volume});
-    // const [playGd] = useSound(config.sound.Gd,{volume:config.volume});
-    // const [playA]  = useSound(config.sound.A, {volume:config.volume});
-    // const [playAd] = useSound(config.sound.Ad,{volume:config.volume});
-    // const [playB]  = useSound(config.sound.B, {volume:config.volume});
-    // const [playC2] = useSound(config.sound.C2,{volume:config.volume});
 
 
     const onClickZ=() => sampler.triggerAttackRelease(["C1"], 1);
-
-    // const onClickZ=()=>playC();
-    // const onClickS=()=>playCd();
-    // const onClickX=()=>playD();
-    // const onClickD=()=>playDd();
-    // const onClickC=()=>playE();
-    // const onClickV=()=>playF();
-    // const onClickG=()=>playFd();
-    // const onClickB=()=>playG();
-    // const onClickH=()=>playGd();
-    // const onClickN=()=>playA();
-    // const onClickJ=()=>playAd();
-    // const onClickM=()=>playB();
-    // const onClickComma=()=>playC2();
+    const onClickS=() => sampler.triggerAttackRelease(["C#1"], 1);
+    const onClickX=() => sampler.triggerAttackRelease(["D1"], 1);
+    const onClickD=() => sampler.triggerAttackRelease(["D#1"], 1);
+    const onClickC=() => sampler.triggerAttackRelease(["E1"], 1);
+    const onClickV=() => sampler.triggerAttackRelease(["F1"], 1);
+    const onClickG=() => sampler.triggerAttackRelease(["F#1"], 1);
+    const onClickB=() => sampler.triggerAttackRelease(["G1"], 1);
+    const onClickH=() => sampler.triggerAttackRelease(["G#1"], 1);
+    const onClickN=() => sampler.triggerAttackRelease(["A1"], 1);
+    const onClickJ=() => sampler.triggerAttackRelease(["A#1"], 1);
+    const onClickM=() => sampler.triggerAttackRelease(["B1"], 1);
+    const onClickComma=() => sampler.triggerAttackRelease(["C2"], 1);
     
     const playKey = (key:string) =>{
         console.log(config.KeyBoard.C);
         console.log(key);
         switch(key){
             case config.KeyBoard.C: document.getElementById('c')?.click(); break;
-            // case config.KeyBoard.Cd: document.getElementById('cd')?.click(); break;
-            // case config.KeyBoard.D: document.getElementById('d')?.click(); break;
-            // case config.KeyBoard.Dd: document.getElementById('dd')?.click(); break;
-            // case config.KeyBoard.E: document.getElementById('e')?.click(); break;
-            // case config.KeyBoard.F: document.getElementById('f')?.click(); break;
-            // case config.KeyBoard.Fd: document.getElementById('fd')?.click(); break;
-            // case config.KeyBoard.G: document.getElementById('g')?.click(); break;
-            // case config.KeyBoard.Gd: document.getElementById('gd')?.click(); break;
-            // case config.KeyBoard.A: document.getElementById('a')?.click(); break;
-            // case config.KeyBoard.Ad: document.getElementById('ad')?.click(); break;
-            // case config.KeyBoard.B: document.getElementById('b')?.click(); break;
-            // case config.KeyBoard.C2: document.getElementById('c2')?.click(); break;
+            case config.KeyBoard.Cd: document.getElementById('cd')?.click(); break;
+            case config.KeyBoard.D: document.getElementById('d')?.click(); break;
+            case config.KeyBoard.Dd: document.getElementById('dd')?.click(); break;
+            case config.KeyBoard.E: document.getElementById('e')?.click(); break;
+            case config.KeyBoard.F: document.getElementById('f')?.click(); break;
+            case config.KeyBoard.Fd: document.getElementById('fd')?.click(); break;
+            case config.KeyBoard.G: document.getElementById('g')?.click(); break;
+            case config.KeyBoard.Gd: document.getElementById('gd')?.click(); break;
+            case config.KeyBoard.A: document.getElementById('a')?.click(); break;
+            case config.KeyBoard.Ad: document.getElementById('ad')?.click(); break;
+            case config.KeyBoard.B: document.getElementById('b')?.click(); break;
+            case config.KeyBoard.C2: document.getElementById('c2')?.click(); break;
         }
     }
     const onKeyDown = (event:KeyboardEvent) =>{
@@ -180,7 +170,16 @@ const Comp = () => {
         switch(direction){
             case 0: 
                 config.KeyboardUp();
-                break;
+            break;
+            case 1: 
+                config.KeyboardDown();
+            break;
+            case 2: 
+                config.KeyboardRight();
+            break;
+            case 3: 
+                config.KeyboardLeft();
+            break;
         }
     }
     React.useEffect(() => {
@@ -193,26 +192,39 @@ const Comp = () => {
     });
    
     return(
-        <div className='h-full flex justify-center items-center'>   
+        <div className='h-full flex-row justify-center items-center column'>   
             <div>
-                {/* <button id='y' className='m-5' onClick={()=>{changeKeyboardMap(0);}}>Up</button> */}
+                <button id='y' className='m-5' onClick={()=>{changeKeyboardMap(0);}}>Up</button>
             </div>
-            <div className='h-full flex justify-center items-center'>
-            <button id='c' className='m-5' onClick={onClickZ}>Play C</button>
-                {/* <button id='cd' className='m-5' onClick={onClickS}>Play C#</button>
-                <button id='d' className='m-5' onClick={onClickX}>Play D</button>
+            <div className='h-half flex justify-center items-center'>
+                
+                <button id='cd' className='m-5' onClick={onClickS}>Play C#</button>
+                
                 <button id='dd' className='m-5' onClick={onClickD}>Play D#</button>
-                <button id='e' className='m-5' onClick={onClickC}>Play E</button>
-                <button id='f' className='m-5' onClick={onClickV}>Play F</button>
+                
                 <button id='fd' className='m-5' onClick={onClickG}>Play F#</button>
-                <button id='g' className='m-5' onClick={onClickB}>Play G</button>
+                
                 <button id='gd' className='m-5' onClick={onClickH}>Play G#</button>
-                <button id='a' className='m-5' onClick={onClickN}>Play A</button>
+                
                 <button id='ad' className='m-5' onClick={onClickJ}>Play A#</button>
-                <button id='b' className='m-5' onClick={onClickM}>Play B</button>
-                <button id='c2' className='m-5' onClick={onClickComma}>Play High C</button> */}
+                
             </div>
+            <div className='h-40 w-150 block relative'>
+                <div className='flex-row absolute '>
+                    <button id='c' className='bg-gray-400 h-40 w-10 m-1' onClick={onClickZ}>Play C</button>
+                    <button id='d' className='bg-gray-400 h-40 w-10 m-1' onClick={onClickX}>Play D</button>
+                    <button id='e' className='bg-gray-400 h-40 w-10 m-1' onClick={onClickC}>Play E</button>
+                    <button id='f' className='bg-gray-400 h-40 w-10 m-1' onClick={onClickV}>Play F</button>
+                    <button id='g' className='bg-gray-400 h-40 w-10 m-1' onClick={onClickB}>Play G</button>
+                    <button id='a' className='bg-gray-400 h-40 w-10 m-1' onClick={onClickN}>Play A</button>
+                    <button id='b' className='bg-gray-400 h-40 w-10 m-1' onClick={onClickM}>Play B</button>
+                    <button id='c2' className='bg-gray-400 h-40 w-10 m-1' onClick={onClickComma}>Play C2</button>
+                </div>
+                <div className=''>
+                    <button id='cd' className='bg-black text-white h-25 w-10 m-1' onClick={onClickS}>Play C#</button>
 
+                </div>
+            </div>
         </div>
     );
 }
