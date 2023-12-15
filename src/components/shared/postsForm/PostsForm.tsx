@@ -1,27 +1,51 @@
+'use client';
 import { PageFiller } from '@shared';
 
-const PostsForm = () => {
+
+type Props = {
+    handleChange: (
+        e:
+            | React.ChangeEvent<HTMLInputElement>
+            | React.ChangeEvent<HTMLTextAreaElement>
+            | React.ChangeEvent<HTMLSelectElement>,
+    ) => void;
+    addPost: (e: React.MouseEvent<HTMLButtonElement>) => void;
+};
+
+const PostsForm = ({ handleChange, addPost }: Props) => {
     return (
         <div className='flex flex-col h-full justify-center items-center gap-5'>
             <PageFiller />
+          
             <input
+                name='title'
                 type='text'
                 placeholder='enter Your title'
                 className='border-2 border-gray-500 rounded-md p-2'
+                onChange={handleChange}
+
             />
             <textarea
+                name='content'
                 placeholder='enter Your suggestion'
                 className='border-2 border-gray-500 rounded-md p-2'
+                onChange={handleChange}
             />
-            <select className='border-2 border-gray-500 rounded-md p-2'>
-                <option value='pitch-catch'>באגים</option>
-                <option value='pitch-button'>הצעה למשחק</option>
-                <option value='pitch-match'>כללי</option>
-                <option value='pitch-match'>פיצ׳רים</option>
+            <select
+                className='border-2 border-gray-500 rounded-md p-2'
+                onChange={handleChange}
+                name='category'>
+                <option value='bugs'>באגים</option>
+                <option value='suggestion'>הצעה למשחק</option>
+                <option value='general'>כללי</option>
+                <option value='features'>פיצ׳רים</option>
             </select>
-            <button className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded'>
+            <button
+                className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded'
+              onClick={addPost} >
                 שלח
             </button>
+       
             <div className='flex flex-row gap-8'>
                 <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'>
                     הצג הכל

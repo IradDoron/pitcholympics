@@ -56,6 +56,13 @@ export type Collaborator = {
     portfolio?: string;
 };
 
+export type suggestionPost = {
+  
+    title: string;
+    content: string;
+    category: string;
+}
+
 export type IconProps = {
     color?: MainColorCategories;
     size?: 'small' | 'medium' | 'large';
