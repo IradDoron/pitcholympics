@@ -32,6 +32,19 @@ export type PieceLyricsSection = {
     text: string;
 };
 
+export type PieceLeadSheetSection = {
+    type:
+        | 'verse'
+        | 'chorus'
+        | 'bridge'
+        | 'pre-chorus'
+        | 'intro'
+        | 'outro'
+        | 'solo'
+        | 'full';
+    abcNotation: string;
+};
+
 export type PieceLyrics = PieceLyricsSection[];
 
 export type Piece = {
@@ -44,7 +57,7 @@ export type Piece = {
         bpm: string; // 120, 140, 160, etc.
     };
     notation: {
-        leadSheet: string; // abc notation
+        leadSheet: PieceLeadSheetSection[];
         chordsAndLyrics: string;
         arrangements: Record<string, PieceArrangement>; // arrangementId: PieceArrangement
     };
@@ -61,9 +74,9 @@ export type Piece = {
         publishDate: {
             earliestEstimate: Date;
             latestEstimate: Date;
-        }
+        };
         genres: string[];
-        duration: number | string // in milliseconds or in string format, for example: 3:30
+        duration: number | string; // in milliseconds or in string format, for example: 3:30
         instruments: string[];
         tags: string[];
         description: string;
