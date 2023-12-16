@@ -157,4 +157,98 @@ export const pieces: Record<string, Piece> = {
             ],
         },
     },
+    '2': {
+        id: '2',
+        musicalData: {
+            key: 'C',
+            originalKey: '',
+            meter: '4/4',
+            noteLength: '1/4',
+            bpm: '',
+        },
+        notation: {
+            leadSheet: [
+                {
+                    type: 'full',
+                    abcNotation: `"C"CEGF|"Am"EDCD|"F"EFED|"G"E2 D2|
+                    CEGC|CDEC|DECD|EFED|
+                    CEGF|EDCD|EFED|C4|]`,
+                },
+            ],
+            chordsAndLyrics: '',
+            arrangements: {},
+        },
+        metadata: {
+            title: 'Piano Lead Sheet Exercise',
+            pieceUrl: '',
+            artists: [],
+            composers: [],
+            lyricists: [],
+            lyrics: [],
+            album: '',
+            albumNumber: 0,
+            trackNumber: 0,
+            publishDate: {
+                earliestEstimate: new Date(),
+                latestEstimate: new Date(),
+            },
+            genres: [],
+            duration: '',
+            instruments: [],
+            tags: [],
+            description: '',
+            language: '',
+            pieceType: 'exercise',
+        },
+        socialData: {
+            likes: 0,
+            views: 0,
+            shares: 0,
+            comments: [],
+        },
+    },
+};
+
+const emptyPiece: Piece = {
+    id: '',
+    musicalData: {
+        key: '',
+        originalKey: '',
+        meter: '',
+        noteLength: '',
+        bpm: '',
+    },
+    notation: {
+        leadSheet: [],
+        chordsAndLyrics: '',
+        arrangements: {},
+    },
+    metadata: {
+        title: '',
+        pieceUrl: '',
+        artists: [],
+        composers: [],
+        lyricists: [],
+        lyrics: [],
+        album: '',
+        albumNumber: 0,
+        trackNumber: 0,
+        publishDate: {
+            earliestEstimate: new Date(),
+            latestEstimate: new Date(),
+        },
+        genres: [],
+        duration: '',
+        instruments: [],
+        tags: [],
+        description: '',
+        language: '',
+        pieceType: 'song',
+    },
+    socialData: {
+        likes: 0,
+        views: 0,
+        shares: 0,
+        comments: [],
+    },
 };
