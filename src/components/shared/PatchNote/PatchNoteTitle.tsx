@@ -10,8 +10,8 @@ const PatchNoteTitle = ({ lang }: Props) => {
     const { title } = dict.app['patchNote'].page;
 
     return (
-        <div className='h-full flex flex-col justify-center'>
-            <div className='flex flex-col items-center justify-center rounded-lg m-8 bg-light-background-onDefault text-large h-16'>
+        <div className='flex flex-col justify-start'>
+            <div className='flex items-center justify-center rounded-lg m-28 bg-light-background-onDefault text-large h-16'>
                 <span className='text-light-background-default'>{title}</span>
             </div>
         </div>

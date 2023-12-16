@@ -1,0 +1,49 @@
+import Image from 'next/image';
+import CardImgPatch from '@/assets/patch-notes/CardImgPatch.jpg';
+
+const HeaderContainer = () => {
+    return (
+        //image container
+        <div className='flex flex-col w-full justify-center items-center -z-10'>
+            <Image
+                className='h-[500px] object-cover after:'
+                src={CardImgPatch}
+                alt='PatchHeader Image'
+            />
+            {/* <div
+                style={{
+                    position: 'absolute',
+                    bottom: '-2px',
+                    left: '0px',
+                    width: '100%',
+                    height: '150px',
+                    background:
+                        'linear-gradient(to top, rgb(0, 9, 19) 1%, rgba(0, 9, 19, 0) 100%)',
+                }}></div> */}
+
+            {/* title container */}
+            <div className='flex flex-col w-full px-14'>
+                <div className='border-slate-800 border-x-2 border-t-2'>
+                    <span className='-mt-10 font-bold text-7xl justify-center border-t-black items-center w-full flex tracking-wide'>
+                        Patch 1.0.0 Notes
+                    </span>
+                </div>
+                <div className='flex items-center justify-between border-slate-800 border-t-2 border'>
+                    <div>
+                        <span className='text-sm px-8'>Social link</span>
+                    </div>
+                    <div className='p-4 border-x-2 border-slate-800 flex-5 flex-shrink-1 flex-auto justify-center items-center'>
+                        <span className='text-sm flex justify-center'>
+                            Author Amit Halevi
+                        </span>
+                    </div>
+                    <div>
+                        <span className='text-sm px-8'>3 Weeks Ago</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default HeaderContainer;

@@ -1,6 +1,11 @@
 import { Schema, model, models } from 'mongoose';
 
 const PatchNoteSchema = new Schema({
+    patchNumber: {
+        type: Number,
+        unique: [true, 'Patch is unique'],
+        required: [true, 'PatchNumber is required'],
+    },
     authorId: {
         type: String,
         unique: [true, 'authorId is unique'],
