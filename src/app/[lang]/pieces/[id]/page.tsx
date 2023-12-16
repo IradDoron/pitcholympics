@@ -16,8 +16,11 @@ const Page = ({ params }: Props) => {
     const { musicalData, notation, metadata, socialData } = piece;
 
     useEffect(() => {
-        abcjs.renderAbc(`lead-sheet-${id}`, notation.leadSheet, {
-            scale: 1,
+        notation.leadSheet.forEach((leadSheetSection, index) => {
+            const { type, abcNotation } = leadSheetSection;
+            const scoreId = `${type}-${index}`;
+            const abcFullString = `K:${musicalData.key}\nM:${musicalData.meter}\nL:${musicalData.noteLength}\n${abcNotation}`;
+            abcjs.renderAbc(scoreId, abcFullString);
         });
     }, []);
 
@@ -27,7 +30,18 @@ const Page = ({ params }: Props) => {
             <div>
                 <p className='text-lg'>Composer: {metadata.artists[0]}</p>
             </div>
-            <div id={`lead-sheet-${id}`} />
+            <section>
+                {notation.leadSheet.map((leadSheetSection, index) => {
+                    const { type } = leadSheetSection;
+                    const scoreId = `${type}-${index}`;
+                    return (
+                        <div key={scoreId}>
+                            <p>{type}:</p>
+                            <div id={scoreId} />
+                        </div>
+                    );
+                })}
+            </section>
             <div>
                 <p className='text-lg'>Tempo: {musicalData.bpm}</p>
                 <p className='text-lg'>Meter: {musicalData.meter}</p>
