@@ -1,13 +1,6 @@
 'use client';
 import { PageFiller } from '@shared';
 
-
-
-
-
-
-
-
 const tableData = [
     {
         name: 'מתי כספי',
