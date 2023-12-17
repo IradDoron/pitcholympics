@@ -36,7 +36,10 @@ const Page = ({ params }: Props) => {
                 <p className='text-lg'>Meter: {musicalData.meter}</p>
                 <p className='text-lg'>Key: {musicalData.key}</p>
             </div>
-            <section>
+            <section
+                style={{
+                    direction: 'ltr',
+                }}>
                 <p className='text-lg'>Lead Sheet:</p>
                 {notation.leadSheet.map((leadSheetSection, index) => {
                     const { type } = leadSheetSection;
