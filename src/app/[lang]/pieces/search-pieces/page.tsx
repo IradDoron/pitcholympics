@@ -19,6 +19,7 @@ const Page = ({ params }: Props) => {
                     label='נכון להיום - זוהר ארגוב'
                 />
                 <Link url={`/${lang}/pieces/2`} label='תרגיל לפסנתר' />
+                <Link url={`/${lang}/pieces/3`} label='ואיך שלא' />
             </div>
         </>
     );
