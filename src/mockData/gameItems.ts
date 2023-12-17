@@ -95,7 +95,7 @@ const gameItems: GameItem[] = [
 		id: '10',
 		name: 'Achievement Reward: Collector',
 		description: 'Reward for collecting a variety of items',
-		image: 'collector-reward.png',
+		image: 'gold-coin.png', //'collector-reward.png',
 		rarity: 'Epic',
 		type: 'AchievementReward',
 		achievementName: 'Collector',

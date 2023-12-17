@@ -28,7 +28,7 @@ interface ItemCardProps {
 
   return (
     <div style={cardStyle}>
-      <Image src={require('../../../mockData/itemsImages/gold-coin.png')} /*{item.image}*/ alt={item.name} style={image} />
+      <Image src={require('../../../mockData/itemsImages/' + item.image)} /*'../../../mockData/itemsImages/gold-coin.png'*/ alt={item.name} style={image} />
       <div style={card}>{item.quantity}</div>
       <h2>{item.name}</h2>
       <p>{item.description}</p>
