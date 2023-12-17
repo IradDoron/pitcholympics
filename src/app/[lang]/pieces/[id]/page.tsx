@@ -3,6 +3,7 @@
 import { pieces } from '@/data/piecesData';
 import abcjs from 'abcjs';
 import { useEffect } from 'react';
+import { ChordsAndLyricsDisplay } from './_components';
 
 type Props = {
     params: {
@@ -30,7 +31,13 @@ const Page = ({ params }: Props) => {
             <div>
                 <p className='text-lg'>Composer: {metadata.artists[0]}</p>
             </div>
+            <div>
+                <p className='text-lg'>Tempo: {musicalData.bpm}</p>
+                <p className='text-lg'>Meter: {musicalData.meter}</p>
+                <p className='text-lg'>Key: {musicalData.key}</p>
+            </div>
             <section>
+                <p className='text-lg'>Lead Sheet:</p>
                 {notation.leadSheet.map((leadSheetSection, index) => {
                     const { type } = leadSheetSection;
                     const scoreId = `${type}-${index}`;
@@ -42,11 +49,12 @@ const Page = ({ params }: Props) => {
                     );
                 })}
             </section>
-            <div>
-                <p className='text-lg'>Tempo: {musicalData.bpm}</p>
-                <p className='text-lg'>Meter: {musicalData.meter}</p>
-                <p className='text-lg'>Key: {musicalData.key}</p>
-            </div>
+            <section className='w-full p-16'>
+                <p className='text-lg'>Lyrics & Chords:</p>
+                <ChordsAndLyricsDisplay
+                    chordsAndLyricsNotation={notation.chordsAndLyrics}
+                />
+            </section>
             <br />
         </div>
     );
