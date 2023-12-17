@@ -207,6 +207,67 @@ export const pieces: Record<string, Piece> = {
             comments: [],
         },
     },
+    '3': {
+        id: '3',
+        musicalData: {
+            key: '',
+            originalKey: '',
+            meter: '',
+            noteLength: '',
+            bpm: '',
+        },
+        notation: {
+            leadSheet: [],
+            chordsAndLyrics: `
+            4_4_2_2<ו>2<איך>2<ש>|
+            4"Em"<לא>4_2_2<אפ>2<נה>2<לר>|
+            4"Em/D"<אות>4_2_2<ת>2<מיד>2<אי>|
+            4"Cmaj7"<תה>4_2_2<אר>2<צה>2<ל>|
+            4"G6"<היות>4_2_2<שו>2<מ>2<רת>|
+            4"Em"<לי>4_2_2<היא>2<א>2<מו>|
+            4"Em/D"<נים>4_2_2<לא>2<מת>2<רו>|
+            4"Cmaj7"<צ>4_2_2<צת>2<ב>2<ג>|
+            4"G6"<נים>4_2_2<ו>2<גם>2<א>|
+            4"Em"<ני>4_2_2<בין>2<ה>2<ברי>|
+            4"Em/D"<יות>4_2_2<לא>2<מת>2<פ>|
+            4"Cmaj7"<תה>4_2_2<ל>2<א>2<ח>|
+            4"G6"<רות>4_2_2<ג>2<לים>2<עו>|
+            4"Em"<לים>4_2_2<חו>2<לות>2<נ>|
+            4"Em/D"<עים>4_2_2<איוו>2<שת>2<ה>|
+            4"Cmaj7"<רו>4_2_2<ח>2<ב>2<ע>|
+            4"G6"<לים>4_2_2<ו>2<ב>2<לי>|
+            `,
+            arrangements: {},
+        },
+        metadata: {
+            title: 'ואיך שלא',
+            pieceUrl: 'ואיך-שלא',
+            artists: ['אריאל זילבר'],
+            composers: [],
+            lyricists: [],
+            lyrics: [],
+            album: '',
+            albumNumber: 0,
+            trackNumber: 0,
+            publishDate: {
+                earliestEstimate: new Date(),
+                latestEstimate: new Date(),
+            },
+            genres: [],
+            duration: '',
+            instruments: [],
+            tags: [],
+            description: '',
+            language: '',
+            pieceType: 'song',
+        },
+        socialData: {
+            likes: 0,
+            views: 0,
+            shares: 0,
+            comments: [],
+        },
+    },
 };
 
 const emptyPiece: Piece = {
@@ -220,7 +281,7 @@ const emptyPiece: Piece = {
     },
     notation: {
         leadSheet: [],
-        chordsAndLyrics: '',
+        chordsAndLyrics: ``,
         arrangements: {},
     },
     metadata: {
