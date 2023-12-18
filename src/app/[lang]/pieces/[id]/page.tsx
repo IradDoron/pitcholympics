@@ -3,7 +3,7 @@
 import { pieces } from '@/data/piecesData';
 import abcjs from 'abcjs';
 import { useEffect } from 'react';
-import { ChordsAndLyricsDisplay } from './_components';
+import { ChordsAndLyricsDisplay, LyricsDisplay } from './_components';
 
 type Props = {
     params: {
@@ -57,6 +57,8 @@ const Page = ({ params }: Props) => {
                 <ChordsAndLyricsDisplay
                     chordsAndLyricsNotation={notation.chordsAndLyrics}
                 />
+                <p className='text-lg'>Lyrics:</p>
+                <LyricsDisplay lyrics={metadata.lyrics} />
             </section>
             <br />
         </div>
