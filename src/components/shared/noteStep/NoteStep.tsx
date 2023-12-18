@@ -1,6 +1,7 @@
 type Props = {
     state: 'Played' | 'Current' | 'NotPlayed';
 };
+
 const NoteStep = ({ state }: Props) => {
     return (
         (state == 'Played' && (

@@ -1,12 +1,13 @@
-import { Locale, i18n } from '@/i18n.config';
-import { getHtmlDirection } from '@/utils/getHtmlDirection';
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import ThemeProvider from '@/context/ThemeProvider';
-import '@/styles/globals.css';
-import Navbar from '@/components/shared/navbar';
-const inter = Inter({ subsets: ['latin'] });
 import NextAuthProvider from '@/context/SessionProvider';
+import ThemeProvider from '@/context/ThemeProvider';
+import { Locale, i18n } from '@/i18n.config';
+import '@/styles/globals.css';
+import { getHtmlDirection } from '@/utils/getHtmlDirection';
+import { Navbar } from '@shared';
+import type { Metadata } from 'next';
+import Providers from './_components/Providers';
+import GlobalStyles from '@/styles/globalStyles';
+// const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
     title: 'Pitch Olympics',
@@ -28,10 +29,13 @@ export default async function RootLayout({
         <html lang={params.lang} dir={getHtmlDirection(params.lang)}>
             <ThemeProvider>
                 <body
-                    className={`${inter.className} bg-light-background-default dark:bg-dark-background-default`}>
+                    className={` bg-light-background-default dark:bg-dark-background-default`}>
                     <NextAuthProvider>
                         <Navbar params={params} />
-                        {children}
+                        <Providers>
+                            <GlobalStyles />
+                            {children}
+                        </Providers>
                     </NextAuthProvider>
                 </body>
             </ThemeProvider>

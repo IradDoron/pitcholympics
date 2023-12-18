@@ -2,11 +2,8 @@ import {
     Colors,
     IconProps,
     Matrix,
-    SidebarLink,
     // ThemeModeDragEvent,
 } from '@/types';
-import { MatrixWithId } from '@/types';
-import { ThemeMode } from '@/types';
 export const LANGS_FULL_NAMES = {
     en: 'English',
     he: 'עברית',
@@ -63,4 +60,4 @@ export const DOMAINS = {
     PRODUCTION: 'https://pitcholympics.vercel.app',
 };
 
-export const CURRENT_DOMAIN = DOMAINS.DEV;
+export const CURRENT_DOMAIN = DOMAINS.PRODUCTION;

@@ -1,17 +1,66 @@
-import { LangParam } from '@/types';
-import PostsForm from '@/components/shared/postsForm';
-import PostsContainer from '@/components/shared/postsContainer';
-import PostPage from '@/components/shared/postPage';
+'use client';
+import { PostPage, PostsContainer, PostsForm } from '@shared';
+import { useState } from 'react';
+import { suggestionPost } from '@/types';
 
+const Page = () => {
+    const [posts, setPosts] = useState<suggestionPost[]>([]);
+    const [post, setPost] = useState<suggestionPost>({
+        title: '',
+        content: '',
+        category: '',
+    });
+    const addPost = (e: React.MouseEvent<HTMLButtonElement>): void => {
+        setPosts([...posts, post]);
+        setPost({ title: '', content: '', category: '' });
+        sendPost(post);
+    };
+    async function sendPost(post: suggestionPost) {
+        try {
+            const response = await fetch(
+                `${process.env.BASE_URL}/api/suggestions`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(post),
+                },
+            );
+            const data = await response.json();
+            console.log(data);
+        } catch (error) {
+            console.log(error);
+        }
+        console.log(JSON.stringify(post));
+    }
 
-const Page = ({ params: { lang } }: LangParam) => {
+    function handleChange(
+        e:
+            | React.ChangeEvent<HTMLInputElement>
+            | React.ChangeEvent<HTMLTextAreaElement>
+            | React.ChangeEvent<HTMLSelectElement>,
+    ) {
+        console.log(e.target.name);
+
+        setPost({ ...post, [e.target.name]: e.target.value });
+        console.log(post);
+    }
+
     return (
         <>
-        <PostsForm/>
-        <PostsContainer>
-         <PostPage article='heyyy' picSrc='' paragraph='it is awesomeee'/>
-        </PostsContainer>
-        
+            <PostsForm handleChange={handleChange} addPost={addPost} />
+            <PostsContainer>
+                {posts.map((post, index) => (
+                    <PostPage
+                        key={index}
+                        title={post.title}
+                        picSrc=''
+                        content={post.content}
+                        category={post.category}
+                    />
+                ))}
+            </PostsContainer>
         </>
     );
 };

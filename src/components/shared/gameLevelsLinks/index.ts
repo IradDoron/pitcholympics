@@ -1,3 +1,3 @@
 import GameLevelsLinks from './GameLevelsLinks';
 
-export default GameLevelsLinks;
+export { GameLevelsLinks };

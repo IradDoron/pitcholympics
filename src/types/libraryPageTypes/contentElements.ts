@@ -1,5 +1,15 @@
 import { LibraryContentTestQuestion } from './libraryContentTest';
 
+export type PostType = {
+   // type: 'post';
+    title: string;
+    description: string;
+    topic: string;
+    tags: string[];
+    content: string;
+    // content: RichText[];
+};
+
 export type RichTextElement =
     | { type: 'text'; content: string }
     | { type: 'bold'; content: RichText[] }

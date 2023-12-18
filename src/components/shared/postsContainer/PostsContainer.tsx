@@ -4,10 +4,9 @@ type Props = {
     children: React.ReactNode;
 };
 
-
-const PostsContainer = ({children}:Props) => {
+const PostsContainer = ({ children }: Props) => {
     return (
-        <div className='w-full h-full flex flex-col justify-center items-center'>
+        <div className='w-full h-full flex flex-col justify-center items-center gap-4'>
             {children}
         </div>
     );

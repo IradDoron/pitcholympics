@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { VMark, XMark } from '@icons';
 
 type Props = {
-    status: 'passed' | 'failed' | 'locked';
+    status: 'passed' | 'failed' | 'locked' | 'pending';
 };
 
 const StatusIcon = ({ status }: Props) => {
@@ -18,6 +18,9 @@ const StatusIcon = ({ status }: Props) => {
             }
             case 'failed': {
                 return <XMark size='small' />;
+            }
+            case 'pending': {
+                return <XMark size='small' />; //pending
             }
             default: {
                 return null;
@@ -34,6 +37,9 @@ const StatusIcon = ({ status }: Props) => {
             }
             case 'failed': {
                 return 'bg-red-800 dark:bg-red-500';
+            }
+            case 'pending': {
+                return 'bg-grey-400 dark:bg-grey-200';
             }
             default: {
                 return '';

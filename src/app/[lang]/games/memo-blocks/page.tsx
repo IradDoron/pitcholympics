@@ -1,12 +1,17 @@
+import { GameLevelsLinks } from '@shared';
+import { memoBlocksLevels } from '@/mockData/memoBlocks';
 import { LangParam } from '@/types';
-import MemoBlocksGame from '@/components/shared/memoBlocksGame';
 
-const Page = async () => {
-    return (
-        <div className='h-full flex justify-center items-center'>
-            <MemoBlocksGame />
-        </div>
-    );
+const Page = async ({ params: { lang } }: LangParam) => {
+  return (
+    <div className='h-full'>
+      <GameLevelsLinks
+        levelsData={memoBlocksLevels}
+        lang={lang}
+        game='memo-blocks'
+      />
+    </div>
+  );
 };
 
 export default Page;
