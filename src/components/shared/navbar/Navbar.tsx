@@ -3,45 +3,25 @@
 import { LangParam } from '@/types';
 import { getDictionaryClient } from '@/utils/getDictionaryClient';
 import { SettingsMenu } from '@shared';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import AuthButton from './AuthButton';
 import LocaleSwitcher from './LocaleSwitcher';
 import NavbarLink from './NavbarLink';
 import Theme from './Theme';
 import MobileNav from './mobileNav';
 import { AccessibilityIcon } from '@/components/icons';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
+import Accesibility from '../accessibility/Accesibility';
+import CursorBig from '../accessibility/CursorBig';
 
 const Navbar = ({ params: { lang } }: LangParam) => {
-    const [isAccessability, setIsAccessibility] = useState(false);
     const [isSettingsMenuOpen, setIsSettingsMenuOpen] = useState(false);
     const dict = getDictionaryClient(lang);
     const { pages } = dict.shared.navbar;
 
-    const accessebilityHandler = () => {
-        console.log('Accessibility is on');
-        localStorage.setItem('Accessibility', 'true');
-        //setIsAccessibility(true);
-    };
-
     return (
-        <div className='flex flex-row justify-center z-50'>
-            <AccessibilityIcon
-                onClick={accessebilityHandler}
-                color='primary'
-                size='Xlarge'
-                //Active from local storage
-                isActive={isAccessability}
-            />
-            <motion.div
-                className='absolute left-0 w-40 h-full bg-slate-500'
-                initial={{ x: -160 }}
-                animate={isAccessability && { x: 0 }}
-                transition={{
-                    type: 'spring',
-                    damping: 30,
-                    delay: 1,
-                }}></motion.div>
+        <div className=' flex flex-row justify-center'>
+            <Accesibility />
             <nav className='flex flex-row p-2 sticky w-full bg-light-background-defaultBlur dark:bg-dark-background-defaultBlur '>
                 <div className='flex justify-self-start px-10 w-fit'>
                     <LocaleSwitcher params={{ lang }} />

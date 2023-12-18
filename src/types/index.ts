@@ -62,6 +62,7 @@ export type IconProps = {
     onClick?: () => void;
     isActive?: boolean;
     className?: string;
+    exit?: object;
 };
 
 export type MainColorCategories = 'primary' | 'secondary' | 'tertiary';
