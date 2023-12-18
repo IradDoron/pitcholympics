@@ -71,7 +71,7 @@ export const pieces: Record<string, Piece> = {
                     "Am" ABcd- dcBA- "G" ABG2- G4 |"F" ABcd- defe- "G" edcd- dBGA |"Am" A8 z8 |]`,
                 },
             ],
-            chordsAndLyrics: '',
+            chordsAndLyrics: [],
             arrangements: {
                 '1': {
                     arrangementId: '1',
@@ -175,7 +175,7 @@ export const pieces: Record<string, Piece> = {
                     CEGF|EDCD|EFED|C4|]`,
                 },
             ],
-            chordsAndLyrics: '',
+            chordsAndLyrics: [],
             arrangements: {},
         },
         metadata: {
@@ -218,7 +218,10 @@ export const pieces: Record<string, Piece> = {
         },
         notation: {
             leadSheet: [],
-            chordsAndLyrics: `4_4_2_2<ו>-2<איך>2<ש>-|4"Em"<לא>4_2_2<אפ>-2<נה>2<לר>-|4"Em/D"<אות>4_2_2<ת>-2<מיד>2<אי>-|
+            chordsAndLyrics: [
+                {
+                    type: 'verse',
+                    chordsAndLyricsNotation: `4_4_2_2<ו>-2<איך>2<ש>-|4"Em"<לא>4_2_2<אפ>-2<נה>2<לר>-|4"Em/D"<אות>4_2_2<ת>-2<מיד>2<אי>-|
 4"Cmaj7"<תה>4_2_2<אר>-2<צה>2<ל>-|4"G6"<היות>4_2_2<שו>-2<מ>-2<רת>|
 4"Em"<לי>4_2_2<היא>2<א>-2<מו>-|4"Em/D"<נים>4_2_2<לא>2<מת>-2<רו>-|
 4"Cmaj7"<צ>-4_2_2<צת>2<ב>-2<ג>-|4"G6"<נים>4_2_2<ו>-2<גם>2<א>-|
@@ -226,6 +229,8 @@ export const pieces: Record<string, Piece> = {
 4"Cmaj7"<תה>4_2_2<ל>-2<א>-2<ח>-|4"G6"<רות>4_2_2<ג>-2<לים>2<עו>-|
 4"Em"<לים>4_2_2<חו>-2<לות>2<נ>-|4"Em/D"<עים>4_2_2<איוו>-2<שת>2<ה>-|
 4"Cmaj7"<רו>-4_2_2<ח>2<ב>-2<ע>-|4"G6"<לים>4_2_2<ו>2<ב>2<לי>|`,
+                },
+            ],
             arrangements: {},
         },
         metadata: {
@@ -318,7 +323,7 @@ const emptyPiece: Piece = {
     },
     notation: {
         leadSheet: [],
-        chordsAndLyrics: ``,
+        chordsAndLyrics: [],
         arrangements: {},
     },
     metadata: {

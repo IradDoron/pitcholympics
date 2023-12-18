@@ -40,21 +40,29 @@ const Page = ({ params }: Props) => {
 
             <section className='w-full p-16'>
                 <div className='flex justify-center gap-4'>
-                    <Button
-                        state={
-                            currentTab === 'chords-and-lyrics'
-                                ? 'clicked'
-                                : 'default'
-                        }
-                        onClick={() => handleSetCurrentTab('chords-and-lyrics')}
-                        label='Chords & Lyrics'
-                    />
+                    {notation.chordsAndLyrics.length > 0 && (
+                        <Button
+                            state={
+                                currentTab === 'chords-and-lyrics'
+                                    ? 'clicked'
+                                    : 'default'
+                            }
+                            onClick={() =>
+                                handleSetCurrentTab('chords-and-lyrics')
+                            }
+                            label='Chords & Lyrics'
+                        />
+                    )}
 
-                    <Button
-                        state={currentTab === 'lyrics' ? 'clicked' : 'default'}
-                        onClick={() => handleSetCurrentTab('lyrics')}
-                        label='Lyrics'
-                    />
+                    {metadata.lyrics.length > 0 && (
+                        <Button
+                            state={
+                                currentTab === 'lyrics' ? 'clicked' : 'default'
+                            }
+                            onClick={() => handleSetCurrentTab('lyrics')}
+                            label='Lyrics'
+                        />
+                    )}
 
                     {notation.leadSheet.length > 0 && (
                         <Button
@@ -71,7 +79,7 @@ const Page = ({ params }: Props) => {
 
                 {currentTab === 'chords-and-lyrics' && (
                     <ChordsAndLyricsDisplay
-                        chordsAndLyricsNotation={notation.chordsAndLyrics}
+                        chordsAndLyrics={notation.chordsAndLyrics}
                     />
                 )}
 
