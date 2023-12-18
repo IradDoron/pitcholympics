@@ -1,8 +1,7 @@
 'use client';
-
 import React,{ useState } from 'react';
 import * as Tone from 'tone'
-import ISoundsMap from '@/models/ISoundMap';
+import IToneSampler from '@/models/IToneSampler';
 import PianoSoundMap from '@/models/SoundsMap/piano-sound-map';
 interface IKeyboardPianoMap{
     C:string;
@@ -30,23 +29,45 @@ class keyboardMapper{
     startKeyY : number = 0;//max = 4
     MapUp(){
         //validation
-        this.startKeyY++;
+        if(this.startKeyY<3){
+            this.startKeyY++;
+        }
+        else{
+            alert("Cant Move The Keyboard MIDI Up");
+        }
         return this.Piano;
+        
     }
     MapDown(){
         //validation
-        this.startKeyY--;
+        if(this.startKeyY>0){
+            this.startKeyY--;
+        }
+        else{
+            alert("Cant Move The Keyboard MIDI Down");
+        }
         return this.Piano;
     }
     MapRight(){
         //validation
-        this.startKeyX++;
+        if(this.startKeyX+7<12){
+            this.startKeyX++;
+        }
+        else{
+            alert("Cant Move The Keyboard MIDI Right");
+        }
         return this.Piano;
     }
     MapLeft(){
         //validation
         //maybe just try and catch;
-        this.startKeyX--;
+        if(this.startKeyX>0){
+
+            this.startKeyX--;
+        }
+        else{
+            alert("Cant Move The Keyboard MIDI Left");
+        }
         return this.Piano;
     }
     get Piano(): IKeyboardPianoMap{
@@ -69,10 +90,9 @@ class keyboardMapper{
 }
 class SoundConfig {
     volume : number = 1;
-    sound : ISoundsMap = new PianoSoundMap;
+    sound : IToneSampler = new PianoSoundMap;
     private keyboard : keyboardMapper = new keyboardMapper;
     KeyBoard : IKeyboardPianoMap = this.keyboard.Piano;
-    
     KeyboardUp(){
         this.KeyBoard = this.keyboard.MapUp();
     }
@@ -82,7 +102,7 @@ class SoundConfig {
     KeyboardLeft(){
         this.KeyBoard = this.keyboard.MapLeft();
     }
-     KeyboardRight(){
+    KeyboardRight(){
         this.KeyBoard = this.keyboard.MapRight();
     }
 }
@@ -96,23 +116,8 @@ const Comp = () => {
     }
 
     const sampler = new Tone.Sampler({
-        urls:{
-            "C1" :"piano_C3.mp3",
-            "C#1":"piano_Cc3.mp3",
-            "D1" :"piano_D3.mp3",
-            "D#1":"piano_Dc3.mp3",
-            "E1" :"piano_E3.mp3",
-            "F1" :"piano_F3.mp3",
-            "F#1":"piano_Fc3.mp3",
-            "G1" :"piano_G3.mp3",
-            "G#1":"piano_Gc3.mp3",
-            "A1" :"piano_A3.mp3",
-            "A#1":"piano_Ac3.mp3",
-            "B1"  :"piano_B3.mp3",
-            "C2" :"piano_C4.mp3",
-        },
-        release:1,
-        baseUrl:"/sounds/piano/"
+        urls: config.sound.urls,
+        baseUrl: config.sound.baseUrl,
     }).toDestination();
 
 
@@ -194,7 +199,10 @@ const Comp = () => {
     return(
         <div className='h-full flex-row justify-center items-center column'>   
             <div>
-                <button id='y' className='m-5' onClick={()=>{changeKeyboardMap(0);}}>Up</button>
+                <button className='m-5' onClick={()=>{changeKeyboardMap(0);}}>Move Mapping Up</button>
+                <button className='m-5' onClick={()=>{changeKeyboardMap(1);}}>Move Mapping Down</button>
+                <button className='m-5' onClick={()=>{changeKeyboardMap(2);}}>Move Mapping Right</button>
+                <button className='m-5' onClick={()=>{changeKeyboardMap(3);}}>Move Mapping Left</button>
             </div>
             <div className='h-half flex justify-center items-center'>
                 
