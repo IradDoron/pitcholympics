@@ -55,13 +55,11 @@ export type Collaborator = {
     linkedin?: string;
     portfolio?: string;
 };
-
 export type suggestionPost = {
-  
     title: string;
     content: string;
     category: string;
-}
+};
 
 export type IconProps = {
     color?: MainColorCategories;
@@ -76,5 +74,6 @@ export * from './achievements';
 export * from './gameItems';
 export * from './gameLogic';
 export * from './games';
+export * from './patchNote';
 export * from './pianoTypes';
 export * from './piecesTypes';

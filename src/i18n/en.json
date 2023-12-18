@@ -101,6 +101,11 @@
                     "totalGamesPlayed": "Total Games Played"
                 }
             }
+        },
+        "patchNote": {
+            "page": {
+                "title": "Patch Notes"
+            }
         }
     },
     "shared": {
@@ -116,8 +121,9 @@
                 "about": "About",
                 "suggestions": "Suggestions",
                 "library": "Library",
+                "patchNote": "PatchNotes",
                 "courses": "Courses",
-                "items" : "Items",
+                "items": "Items",
                 "websiteAnalytics": "Website Analytics",
                 "musicHistory": "Music History",
                 "leaderboard": "Leaderboard",

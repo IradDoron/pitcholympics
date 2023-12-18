@@ -66,6 +66,12 @@ const Navbar = ({ params: { lang } }: LangParam) => {
                     </li>
                     <li>
                         <NavbarLink
+                            url={`/${lang}/patch-note`}
+                            label={pages.patchNote}
+                        />
+                    </li>
+                    <li>
+                        <NavbarLink
                             url={`/${lang}/items`}
                             label={pages.items}
                         />

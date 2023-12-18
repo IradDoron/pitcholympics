@@ -101,6 +101,11 @@
                     "totalGamesPlayed": "סך משחקים ששוחקו"
                 }
             }
+        },
+        "patchNote": {
+            "page": {
+                "title": "עדכוני גירסה"
+            }
         }
     },
     "shared": {
@@ -116,6 +121,7 @@
                 "about": "אודות",
                 "suggestions": "הצעות",
                 "library": "ספרייה",
+                "patchNote": "עדכונים",
                 "courses": "קורסים",
                 "items": "פריטים",
                 "websiteAnalytics": "נתוני אתר",
