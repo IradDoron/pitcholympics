@@ -1,7 +1,6 @@
-import CollaboratorCard from '@/components/shared/collaboratorCard';
 import collaborators from '@/data/collaborators';
-import PageFiller from '@/components/shared/pageFiller';
 import { shuffleArray } from '@/utils';
+import { CollaboratorCard, PageFiller } from '@shared';
 
 const getColorByIndex = (index: number) => {
     const colors = ['primary', 'secondary', 'tertiary'];

@@ -1,2 +1,3 @@
-import PostsContainer from "./PostsContainer";
-export default PostsContainer;
+import PostsContainer from './PostsContainer';
+
+export { PostsContainer };

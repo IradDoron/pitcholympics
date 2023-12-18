@@ -1,8 +1,7 @@
 import { Locale } from '@/i18n.config';
-import { GameNames } from '.';
 import { StaticImageData } from 'next/image';
-import { MemoTheMeloGame, PitchCatchGame } from './games';
-
+import { GameNames } from '.';
+import { MemoBlocksGame, MemoTheMeloGame, PitchCatchGame } from './games';
 
 export type FilterObject = {
     [key: string]: boolean;
@@ -34,7 +33,7 @@ export type SidebarLink = {
 
 export type Game = {
     name: GameNames;
-    game: MemoTheMeloGame | PitchCatchGame;
+    game: MemoTheMeloGame | PitchCatchGame | MemoBlocksGame;
 };
 
 export type ThemeMode = 'light' | 'dark' | 'system';
@@ -57,6 +56,13 @@ export type Collaborator = {
     portfolio?: string;
 };
 
+export type suggestionPost = {
+  
+    title: string;
+    content: string;
+    category: string;
+}
+
 export type IconProps = {
     color?: MainColorCategories;
     size?: 'small' | 'medium' | 'large';
@@ -66,7 +72,9 @@ export type IconProps = {
 
 export type MainColorCategories = 'primary' | 'secondary' | 'tertiary';
 
-export * from './gameItems';
 export * from './achievements';
+export * from './gameItems';
 export * from './gameLogic';
 export * from './games';
+export * from './pianoTypes';
+export * from './piecesTypes';

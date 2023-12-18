@@ -1,7 +1,6 @@
 import Label from '@/components/shared/profileInfo/Label';
 import SelectInput from '@/components/shared/profileInfo/SelectInput';
 import TextInput from '@/components/shared/profileInfo/TextInput';
-import React from 'react';
 
 type Props = {
     label: string;

@@ -1,9 +1,8 @@
 'use client';
 
 import { Card } from '@/components/core';
-import { Props as MenubarItemProps } from './MenubarItem';
-import MenubarItem from './MenubarItem';
 import { useState } from 'react';
+import MenubarItem, { Props as MenubarItemProps } from './MenubarItem';
 
 type Props = {
     items: MenubarItemProps[];

@@ -1,11 +1,10 @@
 'use client';
 
-import { Button } from '@/components/core';
-import Text from '@/components/core/Text';
-import CourseCard from '@/components/shared/courseCard';
 import { Locale } from '@/i18n.config';
 import courses from '@/mockData/courses';
 import { LibraryContentCourse } from '@/types/libraryPageTypes';
+import { Button, Text } from '@core';
+import { CourseCard } from '@shared';
 import { useRouter } from 'next/navigation';
 
 type Props = {

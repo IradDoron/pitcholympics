@@ -1,6 +1,7 @@
 import { LangParam } from '@/types';
-import GameLink from '@/components/shared/gameLink/GameLink';
+import { GameLink } from '@shared';
 import Loading from './loading';
+import MyDivComponent from './_components/myDiv';
 
 const Home = ({ params }: LangParam) => {
     return (
@@ -25,6 +26,7 @@ const Home = ({ params }: LangParam) => {
                         label='Memo Blocks'
                         lang={params.lang}
                     />
+                 
                 </>
             ) : (
                 <Loading />

@@ -1,6 +1,6 @@
-import GameLevelsLinks from '@/components/shared/gameLevelsLinks';
 import memoTheMeloMockData from '@/mockData/memoTheMelo';
 import { LangParam } from '@/types';
+import { GameLevelsLinks } from '@shared';
 
 const Page = async ({ params: { lang } }: LangParam) => {
     return (

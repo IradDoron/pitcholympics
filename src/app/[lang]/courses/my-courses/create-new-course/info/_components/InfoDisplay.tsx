@@ -1,5 +1,5 @@
-import Text from '@/components/core/Text';
 import { LibraryContentCourse } from '@/types/libraryPageTypes';
+import { Text } from '@core';
 import Image from 'next/image';
 
 type Props = {

@@ -1,18 +1,16 @@
 'use client';
 
-import { useState } from 'react';
-import { PitchCatchGame, PitchCatchLevel } from '@/types';
-import PitchButton from '@/components/shared/pitchButton';
-import UserOptions from '@/components/shared/userOption';
-import { Button } from '@/components/core';
-import pitchCatchData from '@/mockData/pitchCatch';
-import { useRouter } from 'next/navigation';
-import LevelStepper from '@/components/shared/levelStepper';
-import { useSession } from 'next-auth/react';
-import { handleEndLevel } from '@/utils';
-import { Locale } from '@/i18n.config';
-import { getDictionaryClient } from '@/utils/getDictionaryClient';
 import { CURRENT_DOMAIN } from '@/constants';
+import { Locale } from '@/i18n.config';
+import pitchCatchData from '@/mockData/pitchCatch';
+import { PitchCatchGame, PitchCatchLevel } from '@/types';
+import { handleEndLevel } from '@/utils';
+import { getDictionaryClient } from '@/utils/getDictionaryClient';
+import { Button } from '@core';
+import { LevelStepper, PitchButton, UserOptions } from '@shared';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 type Props = {
     params: {

@@ -1,10 +1,11 @@
-import { Button, Input } from '@/components/core';
-import Text from '@/components/core/Text';
+'use client';
+
 import {
     CourseLesson,
     CourseSection,
     CourseTrack,
 } from '@/types/libraryPageTypes/libraryContentCourse';
+import { Button, Input, Text } from '@core';
 import { useEffect, useState } from 'react';
 
 type Props = {
