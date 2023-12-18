@@ -1,9 +1,13 @@
 'use client';
 
+import { Button } from '@/components/core';
 import { pieces } from '@/data/piecesData';
-import abcjs from 'abcjs';
-import { useEffect } from 'react';
-import { ChordsAndLyricsDisplay } from './_components';
+import { useState } from 'react';
+import {
+    ChordsAndLyricsDisplay,
+    LeadSheetDisplay,
+    LyricsDisplay,
+} from './_components';
 
 type Props = {
     params: {
@@ -11,19 +15,16 @@ type Props = {
     };
 };
 
+type CurrentTab = 'chords-and-lyrics' | 'lead-sheet' | 'lyrics';
 const Page = ({ params }: Props) => {
+    const [currentTab, setCurrentTab] = useState<CurrentTab | ''>('');
     const { id } = params;
     const piece = pieces[id];
     const { musicalData, notation, metadata, socialData } = piece;
 
-    useEffect(() => {
-        notation.leadSheet.forEach((leadSheetSection, index) => {
-            const { type, abcNotation } = leadSheetSection;
-            const scoreId = `${type}-${index}`;
-            const abcFullString = `K:${musicalData.key}\nM:${musicalData.meter}\nL:${musicalData.noteLength}\n${abcNotation}`;
-            abcjs.renderAbc(scoreId, abcFullString);
-        });
-    }, []);
+    const handleSetCurrentTab = (tab: CurrentTab) => {
+        setCurrentTab(tab);
+    };
 
     return (
         <div className='flex flex-col m-auto items-center justify-center'>
@@ -36,24 +37,62 @@ const Page = ({ params }: Props) => {
                 <p className='text-lg'>Meter: {musicalData.meter}</p>
                 <p className='text-lg'>Key: {musicalData.key}</p>
             </div>
-            <section>
-                <p className='text-lg'>Lead Sheet:</p>
-                {notation.leadSheet.map((leadSheetSection, index) => {
-                    const { type } = leadSheetSection;
-                    const scoreId = `${type}-${index}`;
-                    return (
-                        <div key={scoreId}>
-                            <p>{type}:</p>
-                            <div id={scoreId} />
-                        </div>
-                    );
-                })}
-            </section>
+
             <section className='w-full p-16'>
-                <p className='text-lg'>Lyrics & Chords:</p>
-                <ChordsAndLyricsDisplay
-                    chordsAndLyricsNotation={notation.chordsAndLyrics}
-                />
+                <div className='flex justify-center gap-4'>
+                    {notation.chordsAndLyrics.length > 0 && (
+                        <Button
+                            state={
+                                currentTab === 'chords-and-lyrics'
+                                    ? 'clicked'
+                                    : 'default'
+                            }
+                            onClick={() =>
+                                handleSetCurrentTab('chords-and-lyrics')
+                            }
+                            label='Chords & Lyrics'
+                        />
+                    )}
+
+                    {metadata.lyrics.length > 0 && (
+                        <Button
+                            state={
+                                currentTab === 'lyrics' ? 'clicked' : 'default'
+                            }
+                            onClick={() => handleSetCurrentTab('lyrics')}
+                            label='Lyrics'
+                        />
+                    )}
+
+                    {notation.leadSheet.length > 0 && (
+                        <Button
+                            state={
+                                currentTab === 'lead-sheet'
+                                    ? 'clicked'
+                                    : 'default'
+                            }
+                            onClick={() => handleSetCurrentTab('lead-sheet')}
+                            label='Lead Sheet'
+                        />
+                    )}
+                </div>
+
+                {currentTab === 'chords-and-lyrics' && (
+                    <ChordsAndLyricsDisplay
+                        chordsAndLyrics={notation.chordsAndLyrics}
+                    />
+                )}
+
+                {currentTab === 'lyrics' && (
+                    <LyricsDisplay lyrics={metadata.lyrics} />
+                )}
+
+                {currentTab === 'lead-sheet' && (
+                    <LeadSheetDisplay
+                        leadSheet={notation.leadSheet}
+                        musicalData={musicalData}
+                    />
+                )}
             </section>
             <br />
         </div>

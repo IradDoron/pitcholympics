@@ -45,20 +45,39 @@ export type PieceLeadSheetSection = {
     abcNotation: string;
 };
 
+export type PieceChordsAndLyricsSection = {
+    type:
+        | 'verse'
+        | 'chorus'
+        | 'bridge'
+        | 'pre-chorus'
+        | 'intro'
+        | 'outro'
+        | 'solo'
+        | 'full';
+    chordsAndLyricsNotation: string;
+};
+
 export type PieceLyrics = PieceLyricsSection[];
+
+export type PieceLeadSheet = PieceLeadSheetSection[];
+
+export type PieceChordsAndLyrics = PieceChordsAndLyricsSection[];
+
+export type PieceMusicalData = {
+    key: string; // C, C#, Db, etc.
+    originalKey: string; // C, C#, Db, etc.
+    meter: string; // 4/4, 3/4, 6/8, etc.
+    noteLength: string; // 1/4, 1/8, 1/16, etc.
+    bpm: string; // 120, 140, 160, etc.
+};
 
 export type Piece = {
     id: string;
-    musicalData: {
-        key: string; // C, C#, Db, etc.
-        originalKey: string; // C, C#, Db, etc.
-        meter: string; // 4/4, 3/4, 6/8, etc.
-        noteLength: string; // 1/4, 1/8, 1/16, etc.
-        bpm: string; // 120, 140, 160, etc.
-    };
+    musicalData: PieceMusicalData;
     notation: {
-        leadSheet: PieceLeadSheetSection[];
-        chordsAndLyrics: string;
+        leadSheet: PieceLeadSheet;
+        chordsAndLyrics: PieceChordsAndLyrics;
         arrangements: Record<string, PieceArrangement>; // arrangementId: PieceArrangement
     };
     metadata: {
