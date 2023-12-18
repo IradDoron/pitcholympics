@@ -111,6 +111,7 @@ export const ChordsAndLyricsDisplay = ({ chordsAndLyricsNotation }: Props) => {
 
     return (
         <div>
+            <p className='text-lg'>Lyrics & Chords:</p>
             <div className='flex flex-col gap-4'>
                 {chordsAndLyricsLines.map((line, index) => {
                     return (

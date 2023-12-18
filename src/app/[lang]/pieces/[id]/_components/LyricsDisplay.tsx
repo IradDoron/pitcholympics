@@ -7,6 +7,7 @@ type Props = {
 export const LyricsDisplay = ({ lyrics }: Props) => {
     return (
         <div>
+            <p className='text-lg'>Lyrics:</p>
             {lyrics.map((lyric, index) => {
                 const { type, text } = lyric;
                 return (

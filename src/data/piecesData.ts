@@ -71,7 +71,7 @@ export const pieces: Record<string, Piece> = {
                     "Am" ABcd- dcBA- "G" ABG2- G4 |"F" ABcd- defe- "G" edcd- dBGA |"Am" A8 z8 |]`,
                 },
             ],
-            chordsAndLyrics: 'Test Piece\n\n[C]Test [D]Piece',
+            chordsAndLyrics: '',
             arrangements: {
                 '1': {
                     arrangementId: '1',
