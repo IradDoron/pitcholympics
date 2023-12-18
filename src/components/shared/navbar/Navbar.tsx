@@ -66,38 +66,8 @@ const Navbar = ({ params: { lang } }: LangParam) => {
                     </li>
                     <li>
                         <NavbarLink
-                            url={`/${lang}/website-analytics`}
-                            label={pages.websiteAnalytics}
-                        />
-                    </li>
-                    <li>
-                        <NavbarLink
-                            url={`/${lang}/music-history`}
-                            label={pages.musicHistory}
-                        />
-                    </li>
-                    <li>
-                        <NavbarLink
-                            url={`/${lang}/leaderboard`}
-                            label={pages.leaderboard}
-                        />
-                    </li>
-                    <li>
-                        <NavbarLink
-                            url={`/${lang}/pieces`}
-                            label={pages.pieces}
-                        />
-                    </li>
-                    <li>
-                        <NavbarLink
-                            url={`/${lang}/practice`}
-                            label={pages.practice}
-                        />
-                    </li>
-                    <li>
-                        <NavbarLink
-                            url={`/${lang}/instruments`}
-                            label={pages.instruments}
+                            url={`/${lang}/items`}
+                            label={pages.items}
                         />
                     </li>
                 </ul>
