@@ -1,17 +1,15 @@
-// // ItemCard.tsx
+'use client';
+
 import React from 'react';
 import { GameItem } from '@/types';
-import { Console } from 'console';
 import Image from 'next/image';
-import { size } from 'node_modules/cypress/types/lodash';
 
-interface ItemCardProps {
+type Props = {
   item: GameItem;
  }
  
 
-
- const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
+ const ItemCard = ({ item } : Props) => {
 
   const cardStyle: React.CSSProperties = {
     width: '200px', height: '350px', padding: '20px', margin: '10px', border: '1px solid #ccc', textAlign: 'center', position: 'relative', display: 'flex', flexDirection: 'column'
