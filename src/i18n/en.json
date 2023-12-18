@@ -121,10 +121,9 @@
                 "about": "About",
                 "suggestions": "Suggestions",
                 "library": "Library",
-
-                "patchNote": "PatchNotes"
+                "patchNote": "PatchNotes",
                 "courses": "Courses",
-                "items" : "Items",
+                "items": "Items",
                 "websiteAnalytics": "Website Analytics",
                 "musicHistory": "Music History",
                 "leaderboard": "Leaderboard",
