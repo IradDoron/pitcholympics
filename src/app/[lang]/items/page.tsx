@@ -1,4 +1,4 @@
-import PageFiller from '@/components/shared/pageFiller';
+import {PageFiller} from '@/components/shared/pageFiller';
 import Items from '@/components/shared/items' ;
 
 const getColorByIndex = (index: number) => {
