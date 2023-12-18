@@ -4,22 +4,12 @@ import CardImgPatch from '@/assets/patch-notes/CardImgPatch.jpg';
 const HeaderContainer = () => {
     return (
         //image container
-        <div className='flex flex-col w-full justify-center items-center -z-10'>
+        <div className='flex flex-col w-full justify-center items-center'>
             <Image
-                className='h-[500px] object-cover after:'
+                className='h-[500px] object-cover'
                 src={CardImgPatch}
                 alt='PatchHeader Image'
             />
-            {/* <div
-                style={{
-                    position: 'absolute',
-                    bottom: '-2px',
-                    left: '0px',
-                    width: '100%',
-                    height: '150px',
-                    background:
-                        'linear-gradient(to top, rgb(0, 9, 19) 1%, rgba(0, 9, 19, 0) 100%)',
-                }}></div> */}
 
             {/* title container */}
             <div className='flex flex-col w-full px-14'>

@@ -2,7 +2,7 @@ import { Schema, model, models } from 'mongoose';
 
 const PatchNoteSchema = new Schema({
     patchNumber: {
-        type: Number,
+        type: String,
         unique: [true, 'Patch is unique'],
         required: [true, 'PatchNumber is required'],
     },
@@ -15,14 +15,38 @@ const PatchNoteSchema = new Schema({
         type: String,
         required: [true, 'intro is required'],
     },
-    features: {
-        type: [String],
+    contentSections: {
+        type: {
+            featuresIntro: {
+                type: String,
+            },
+            featuresChanges: {
+                type: [String],
+            },
+        },
     },
     bugFixed: {
-        type: [String],
+        type: {
+            bugFixedIntro: {
+                type: String,
+            },
+            bugFixedChanges: {
+                type: [String],
+            },
+        },
     },
     Adjustments: {
-        type: [String],
+        type: {
+            buffs: {
+                type: [String],
+            },
+            nerfs: {
+                type: [String],
+            },
+            adjustment: {
+                type: [String],
+            },
+        },
     },
 });
 

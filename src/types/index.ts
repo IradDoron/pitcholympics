@@ -3,7 +3,6 @@ import { GameNames } from '.';
 import { StaticImageData } from 'next/image';
 import { MemoTheMeloGame, PitchCatchGame } from './games';
 
-
 export type FilterObject = {
     [key: string]: boolean;
 };
@@ -70,3 +69,4 @@ export * from './gameItems';
 export * from './achievements';
 export * from './gameLogic';
 export * from './games';
+export * from './patchNote';
