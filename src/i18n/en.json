@@ -117,12 +117,16 @@
                 "suggestions": "Suggestions",
                 "library": "Library",
                 "courses": "Courses",
+<<<<<<< HEAD
+                "items" : "Items"
+=======
                 "websiteAnalytics": "Website Analytics",
                 "musicHistory": "Music History",
                 "leaderboard": "Leaderboard",
                 "pieces": "Pieces",
                 "practice": "Practice",
                 "instruments": "Instruments"
+>>>>>>> origin/development
             },
             "title": "Page",
             "MobileNav": {

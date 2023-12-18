@@ -66,6 +66,10 @@ const Navbar = ({ params: { lang } }: LangParam) => {
                     </li>
                     <li>
                         <NavbarLink
+<<<<<<< HEAD
+                            url={`/${lang}/items`}
+                            label={pages.items}
+=======
                             url={`/${lang}/website-analytics`}
                             label={pages.websiteAnalytics}
                         />
@@ -98,6 +102,7 @@ const Navbar = ({ params: { lang } }: LangParam) => {
                         <NavbarLink
                             url={`/${lang}/instruments`}
                             label={pages.instruments}
+>>>>>>> origin/development
                         />
                     </li>
                 </ul>

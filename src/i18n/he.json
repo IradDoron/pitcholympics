@@ -117,12 +117,16 @@
                 "suggestions": "הצעות",
                 "library": "ספרייה",
                 "courses": "קורסים",
+<<<<<<< HEAD
+                "items": "פריטים"
+=======
                 "websiteAnalytics": "נתוני אתר",
                 "musicHistory": "היסטוריה המוזיקה",
                 "leaderboard": "טבלת מובילים",
                 "pieces": "יצירות",
                 "practice": "תרגול",
                 "instruments": "כלי נגינה"
+>>>>>>> origin/development
             },
             "title": "עמוד",
             "MobileNav": {
