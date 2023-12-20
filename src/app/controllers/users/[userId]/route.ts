@@ -10,9 +10,10 @@ export async function GET(request: NextRequest, { params }: any) {
 
 export async function PUT(request: NextRequest, { params }: any) {
     connectToDB();
-    const { id } = params;
+    const { userId } = params;
     const { newGender, newLocale } = await request.json();
-    updateUserProfileService(id, newGender, newLocale);
+    updateUserProfileService(userId, newLocale, newGender);
+
     return NextResponse.json(
         { message: 'gender and locale updated' },
         { status: 200 },

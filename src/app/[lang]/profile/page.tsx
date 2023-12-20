@@ -49,6 +49,7 @@ const Page = ({ params }: Props) => {
                     body: JSON.stringify({ newGender, newLocale }),
                 },
             );
+
             if (!res.ok) {
                 throw new Error('Failed to update');
             }
@@ -74,7 +75,6 @@ const Page = ({ params }: Props) => {
                 throw new Error('Failed to fetch');
             }
             const data = await res.json();
-            console.log(data);
             const dbGender = data.user.gender;
             const dbLocale = data.user.locale;
             setNewGender(dbGender);
