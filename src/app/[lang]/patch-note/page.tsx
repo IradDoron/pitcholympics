@@ -1,5 +1,5 @@
-import PatchNoteCard from '@/components/shared/PatchNote/PatchNoteCard';
-import PatchNoteTitle from '@/components/shared/PatchNote/PatchNoteTitle';
+import PatchNoteCard from './_components/PatchNoteCard';
+import PatchNoteTitle from './_components/PatchNoteTitle';
 import { Locale } from '@/i18n.config';
 
 type Props = {

@@ -55,10 +55,37 @@ export type Collaborator = {
     linkedin?: string;
     portfolio?: string;
 };
-export type suggestionPost = {
+export type ReactionType =
+    | 'like'
+    | 'dislike'
+    | 'love'
+    | 'haha'
+    | 'wow'
+    | 'sad'
+    | 'angry';
+
+export type Reactions =
+    | {
+          // eslint-disable-next-line no-unused-vars
+          [key in ReactionType]: string[]; //array of userIds
+      }
+    | null;
+
+export type SuggestionPostComment = {
+    content: string;
+    authorId: string;
+    date: number;
+    reactions: Reactions;
+    comments: SuggestionPostComment[];
+} | null;
+
+export type SuggestionPost = {
+    authorId: string;
     title: string;
     content: string;
     category: string;
+    reactions: Reactions;
+    comments: SuggestionPostComment[];
 };
 
 export type IconProps = {
