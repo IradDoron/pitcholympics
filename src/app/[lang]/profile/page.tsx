@@ -60,37 +60,33 @@ const Page = ({ params }: Props) => {
         router.push(`/${params.lang}`);
     };
 
-    useEffect(() => {
-        /**
-         * update state according to the data base
-         */
-        async function fetchData() {
-            try {
-                // TODO: fix the session error
-                const res = await fetch(
-                    //@ts-ignore
-                    `${CURRENT_DOMAIN}/api/auth/profile/${session?.user?.id}`,
-                    {
-                        method: 'GET',
-                        headers: {
-                            'Content-type': 'application/json',
-                        },
+    async function setIntialState() {
+        try {
+            const res = await fetch(
+                //@ts-ignore
+                `/controllers/users/${session?.user?.id}`,
+                {
+                    method: 'GET',
+                    headers: {
+                        'Content-type': 'application/json',
                     },
-                );
-                if (!res.ok) {
-                    throw new Error('Failed to fetch');
-                }
-                const data = await res.json();
-                const dbGender = data.user.gender;
-                const dbLocale = data.user.locale;
-                setNewGender(dbGender);
-                setNewLocale(dbLocale);
-            } catch (error) {
-                console.log(error);
+                },
+            );
+            if (!res.ok) {
+                throw new Error('Failed to fetch');
             }
+            const data = await res.json();
+            console.log(data);
+            const dbGender = data.user.gender;
+            const dbLocale = data.user.locale;
+            setNewGender(dbGender);
+            setNewLocale(dbLocale);
+        } catch (error) {
+            console.log(error);
         }
-        fetchData();
-        // TODO: fix the session error
+    }
+    useEffect(() => {
+        setIntialState();
         //@ts-ignore
     }, [session?.user?.id]);
     return (
