@@ -1,11 +1,15 @@
-type props = {
+type Props = {
     title: string;
     picSrc: string;
     content: string;
     category: string;
+    setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const PostPage = ({ title, picSrc, content, category }: props) => {
+const PostPage = ({ title, picSrc, content, category, setIsModalOpen }: Props) => {
+   function handleComment() {
+       setIsModalOpen(true); }
+   
     return (
         <div className='flex flex-col bg-white h-[40%] w-[60%] items-center justify-center rounded-lg'>
             <div className='w-full flex flex-row  justify-center'>
@@ -18,6 +22,9 @@ const PostPage = ({ title, picSrc, content, category }: props) => {
                 <p>{content}</p>
                 <p>{category}</p>
             </div>
+            <button onClick={handleComment}>
+                Comment
+            </button>
         </div>
     );
 };

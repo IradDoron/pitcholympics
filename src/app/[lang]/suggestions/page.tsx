@@ -1,21 +1,38 @@
 'use client';
 import { PostPage, PostsContainer, PostsForm } from '@shared';
 import { useState } from 'react';
-import { suggestionPost } from '@/types';
+import { SuggestionPost, SuggestionPostComment } from '@/types';
+import SuggestionPageModalComponent from '../_components/suggestionPageModal';
+import { Button } from '@/components/core/Button';
+import PostHeadersInModal from './_components/postHeadersInModal';
+import ButtonContainer from './_components/buttonContainer';
 
 const Page = () => {
-    const [posts, setPosts] = useState<suggestionPost[]>([]);
-    const [post, setPost] = useState<suggestionPost>({
+    const [posts, setPosts] = useState<SuggestionPost[]>([]);
+    const [currComment, setCurrComment] = useState<SuggestionPostComment>(null);
+    const [post, setPost] = useState<SuggestionPost>({
         title: '',
         content: '',
         category: '',
+        comments: [],
+        authorId: '',
+        reactions: null,
     });
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const addPost = (e: React.MouseEvent<HTMLButtonElement>): void => {
         setPosts([...posts, post]);
-        setPost({ title: '', content: '', category: '' });
+        setPost({
+            title: '',
+            content: '',
+            category: '',
+            comments: [],
+            reactions: null,
+            authorId: '',
+        });
         sendPost(post);
     };
-    async function sendPost(post: suggestionPost) {
+
+    async function sendPost(post: SuggestionPost) {
         try {
             const response = await fetch(
                 `${process.env.BASE_URL}/api/suggestions`,
@@ -34,31 +51,78 @@ const Page = () => {
         }
         console.log(JSON.stringify(post));
     }
+    function handleSubmitCommentClick(comment: SuggestionPostComment) {
+        console.log(comment);
+        console.log('hail');
+        handleCommentChange(null);
+        setIsModalOpen(false);
+    }
 
-    function handleChange(
+    function handlePostChange(
         e:
             | React.ChangeEvent<HTMLInputElement>
             | React.ChangeEvent<HTMLTextAreaElement>
             | React.ChangeEvent<HTMLSelectElement>,
     ) {
-        console.log(e.target.name);
-
         setPost({ ...post, [e.target.name]: e.target.value });
-        console.log(post);
+    }
+
+    function handleCommentChange(comment: SuggestionPostComment) {
+        setPost({ ...post, comments: [comment] });
     }
 
     return (
         <>
-            <PostsForm handleChange={handleChange} addPost={addPost} />
+            <PostsForm handleChange={handlePostChange} addPost={addPost} />
             <PostsContainer>
                 {posts.map((post, index) => (
-                    <PostPage
-                        key={index}
-                        title={post.title}
-                        picSrc=''
-                        content={post.content}
-                        category={post.category}
-                    />
+                    <div key={index}>
+                        {!isModalOpen ? (
+                            <PostPage
+                                title={post.title}
+                                picSrc=''
+                                content={post.content}
+                                category={post.category}
+                                setIsModalOpen={setIsModalOpen}
+                            />
+                        ) : (
+                            <SuggestionPageModalComponent
+                                title={post.title}
+                                content={post.content}>
+                                <div className='flex flex-col justify-center items-center'>
+                                    <PostHeadersInModal
+                                        title={post.title}
+                                        content={post.content}
+                                    />
+                                    {post.comments.map((comment, index) => (
+                                        <div key={index}>
+                                            <p>{comment?.content}</p>
+                                            <p>{index}</p>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <textarea
+                                    onChange={e =>
+                                        setCurrComment({
+                                            content: e.target.value,
+                                            authorId: '',
+                                            date: Date.now(),
+                                            reactions: null,
+                                            comments: [],
+                                        })
+                                    }></textarea>
+
+                                <ButtonContainer
+                                    handleSubmitCommentClick={
+                                        handleSubmitCommentClick
+                                    }
+                                    currComment={currComment}
+                                    setIsModalOpen={setIsModalOpen}
+                                />
+                            </SuggestionPageModalComponent>
+                        )}
+                    </div>
                 ))}
             </PostsContainer>
         </>
