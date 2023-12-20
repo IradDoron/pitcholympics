@@ -4,7 +4,7 @@ import User from '@/models/user';
 export async function getUserService(userId: string) {
     await connectToDB();
     try {
-        const user = await User.findById('65638253d365cb85e4984374');
+        const user = await User.findById(userId);
 
         return user;
     } catch (error) {

@@ -1,6 +1,4 @@
 'use client';
-
-import { CURRENT_DOMAIN } from '@/constants';
 import { Locale as LocalType } from '@/i18n.config';
 import { getTimeZone } from '@/utils';
 import { getDictionaryClient } from '@/utils/getDictionaryClient';
@@ -42,7 +40,7 @@ const Page = ({ params }: Props) => {
             // TODO: fix the session error
             const res = await fetch(
                 //@ts-ignore
-                `${CURRENT_DOMAIN}/api/auth/profile/${session?.user?.id}`,
+                `/controllers/users/${session?.user?.id}`,
                 {
                     method: 'PUT',
                     headers: {
