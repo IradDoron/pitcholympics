@@ -78,6 +78,10 @@ const Page = ({ params }: Props) => {
             label: 'Prettier',
             url: 'prettier',
         },
+        {
+            label: 'i18n',
+            url: 'i18n',
+        },
     ];
     return (
         <div>
