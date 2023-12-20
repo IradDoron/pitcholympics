@@ -1,5 +1,5 @@
-import { connectToDB } from '@/utils/database';
 import User from '@/models/user';
+import { connectToDB } from '@/utils/database';
 
 export async function updateUserProfileService(
     userId: string,
