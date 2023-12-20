@@ -1,7 +1,7 @@
 import { LangParam } from '@/types';
 import { GameLink } from '@shared';
 import Loading from './loading';
-import MyDivComponent from './_components/myDiv';
+import MyDivComponent from './_components/suggestionPageModal';
 
 const Home = ({ params }: LangParam) => {
     return (
