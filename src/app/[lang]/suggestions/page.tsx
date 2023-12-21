@@ -49,7 +49,7 @@ const Page = () => {
         } catch (error) {
             console.log(error);
         }
-        console.log(JSON.stringify(post));
+       
     }
     function handleSubmitCommentClick(comment: SuggestionPostComment) {
         console.log(comment);
