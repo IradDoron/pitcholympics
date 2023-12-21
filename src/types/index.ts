@@ -58,7 +58,7 @@ export type Collaborator = {
 
 export type IconProps = {
     color?: MainColorCategories;
-    size?: 'small' | 'medium' | 'large' | 'Xlarge';
+    size?: 'small' | 'medium' | 'large' | 'extraLarge';
     onClick?: () => void;
     isActive?: boolean;
     className?: string;

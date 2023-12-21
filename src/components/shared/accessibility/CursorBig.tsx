@@ -7,17 +7,13 @@ type Props = {
     x: number;
     y: number;
     event: MouseEvent;
-    //onMouseMove: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
-    //containerRef: React.RefObject<HTMLDivElement>;
 };
 
 const CursorBig = () => {
-    //const containerRef = useRef<HTMLDivElement | null>(null);
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
     useEffect(() => {
         const mouseMove = (e: MouseEvent) => {
-            //console.log(e);
             setMousePosition({ x: e.clientX, y: e.clientY });
         };
 

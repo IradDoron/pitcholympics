@@ -44,7 +44,7 @@ export const Accesibility = () => {
                     <AccessibilityIcon
                         onClick={accessebilityUiOn}
                         color='primary'
-                        size='Xlarge'
+                        size='extraLarge'
                         isActive={isAccessability}
                         className='top-20'
                     />
