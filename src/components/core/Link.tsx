@@ -9,6 +9,7 @@ type Props = {
     size?: LinkSizeType;
     color?: LinkColorType;
     className?: string;
+    newTab?: boolean;
 };
 
 const getSize = (size: LinkSizeType) => {
@@ -45,11 +46,13 @@ export const Link = ({
     size = 'medium',
     color = 'default',
     className = '',
+    newTab = false,
 }: Props) => {
     const linkSize = getSize(size);
     const linkColor = getColor(color);
     return (
         <NextLink
+            target={newTab ? '_blank' : '_self'}
             className={`shadow-large-light dark:shadow-large-dark rounded-[12px] ${linkSize} ${linkColor} ${className}`}
             href={url}>
             {label}

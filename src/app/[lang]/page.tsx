@@ -1,9 +1,7 @@
 import { LangParam } from '@/types';
 import { GameLink } from '@shared';
 import Loading from './loading';
-import MyDivComponent from './_components/suggestionPageModal';
-
-const Home = ({ params }: LangParam) => {
+const Home = async ({ params }: LangParam) => {
     return (
         <div className='h-full flex flex-col justify-center items-center gap-10 sm:flex-row sm:gap-20'>
             {params ? (
@@ -26,7 +24,6 @@ const Home = ({ params }: LangParam) => {
                         label='Memo Blocks'
                         lang={params.lang}
                     />
-                 
                 </>
             ) : (
                 <Loading />
