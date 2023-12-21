@@ -29,18 +29,6 @@ const CursorBig = () => {
     }, []);
 
     return (
-        // <motion.h1
-        //     animate={{
-        //         x: mousePosition.x,
-        //         y: mousePosition.y,
-        //     }}
-        //     transition={{
-        //         stiffness: 500,
-        //         type: 'keyframes',
-        //         duration: 0,
-        //     }}>
-        //     HSFEWF
-        // </motion.h1>
         <motion.div
             className='z-[100] pointer-events-none'
             animate={{

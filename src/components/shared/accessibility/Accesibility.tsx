@@ -46,6 +46,7 @@ export const Accesibility = () => {
                         color='primary'
                         size='Xlarge'
                         isActive={isAccessability}
+                        className='top-20'
                     />
                 ) : (
                     ''
@@ -67,8 +68,6 @@ export const Accesibility = () => {
                     x
                 </span>
                 <Button onClick={cursorHandler} label='Cursor' />
-                <Button onClick={() => console.log('Click2')} label='Click' />
-                <Button onClick={() => console.log('Click3')} label='Click' />
             </motion.div>
         </>
     );
