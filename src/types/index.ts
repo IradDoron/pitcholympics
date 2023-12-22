@@ -1,4 +1,5 @@
 import { Locale } from '@/i18n.config';
+import { ObjectId } from 'mongoose';
 import { StaticImageData } from 'next/image';
 import { GameNames } from '.';
 import { MemoBlocksGame, MemoTheMeloGame, PitchCatchGame } from './games';
@@ -96,6 +97,25 @@ export type IconProps = {
 };
 
 export type MainColorCategories = 'primary' | 'secondary' | 'tertiary';
+
+export type Vote = {
+    userId: ObjectId;
+    value: 1 | -1;
+};
+
+export type FAQ = {
+    _id: ObjectId;
+    originalQuestion: string;
+    votes: Vote[];
+    question: {
+        en: string;
+        he: string;
+    };
+    answer: {
+        en: string;
+        he: string;
+    };
+};
 
 export * from './achievements';
 export * from './gameItems';

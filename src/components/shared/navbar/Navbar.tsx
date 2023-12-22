@@ -20,6 +20,7 @@ const Navbar = ({ params: { lang } }: LangParam) => {
         { url: `/${lang}/about`, label: pages.about },
         { url: `/${lang}/courses`, label: pages.courses },
         { url: `/${lang}/dev-info/tech`, label: pages.devInfo },
+        { url: `/${lang}/faq`, label: pages.faq },
         { url: `/${lang}/games`, label: pages.games },
         { url: `/${lang}/how-to-contribute`, label: pages.howToContribute },
         { url: `/${lang}/instruments`, label: pages.instruments },
