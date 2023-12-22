@@ -2,7 +2,7 @@ import { Schema, model, models } from 'mongoose';
 
 const VoteSchema = new Schema({
     userId: {
-        type: String,
+        type: [Schema.Types.ObjectId],
         required: true,
     },
     value: {
