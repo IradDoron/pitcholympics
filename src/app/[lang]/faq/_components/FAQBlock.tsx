@@ -1,5 +1,8 @@
+'use client';
+
 import { Locale } from '@/i18n.config';
 import { FAQ } from '@/types';
+import { Button } from '@core';
 
 type Props = {
     faq: FAQ;
@@ -19,7 +22,11 @@ export const FAQBlock = ({ faq, lang }: Props) => {
             <div className='flex flex-row'>
                 <p className='text-xl'>Votes: {votes.length}</p>
             </div>
-            <div className='h-1 bg-black'></div>
+            <div>
+                <Button onClick={() => {}} label='Up Vote' />
+                <Button onClick={() => {}} label='Down Vote' />
+            </div>
+            <div className='h-1 bg-black m-2'></div>
         </div>
     );
 };
