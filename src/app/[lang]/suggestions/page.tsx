@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { SuggestionPost, SuggestionPostComment } from '@/types';
 import {
     PostHeadersInModal,
@@ -7,11 +7,9 @@ import {
     PostForm,
     PostsContainer,
 } from './_components';
-
 import { useSession } from 'next-auth/react';
 import { PostPage } from './_components/PostPage';
 import { suggestionPostsData } from '@/data/suggestionPostsData';
-import SuggestionsPost from '@/models/suggestionsPagePost';
 
 const Page = () => {
     const { data: session } = useSession();
