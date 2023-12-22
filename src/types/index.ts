@@ -97,6 +97,23 @@ export type IconProps = {
 
 export type MainColorCategories = 'primary' | 'secondary' | 'tertiary';
 
+export type Vote = {
+    userId: string;
+    value: 1 | -1;
+};
+
+export type FAQ = {
+    votes: Vote[];
+    question: {
+        en: string;
+        he: string;
+    };
+    answer: {
+        en: string;
+        he: string;
+    };
+};
+
 export * from './achievements';
 export * from './gameItems';
 export * from './gameLogic';
