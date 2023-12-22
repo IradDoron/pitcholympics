@@ -1,11 +1,9 @@
-import Vote from '@/models/vote';
 import { Schema, model, models } from 'mongoose';
 
 const FAQSchema = new Schema({
     votes: {
-        type: [Schema.Types.ObjectId],
-        ref: Vote,
-        default: [],
+        type: Map,
+        default: {},
     },
     originalQuestion: {
         type: String,

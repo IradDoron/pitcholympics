@@ -30,13 +30,21 @@ export const FAQBlock = ({ faq, lang }: Props) => {
         });
     };
 
+    const calculateVoteCount = () => {
+        let total = 0;
+        Object.keys(votes).forEach(key => {
+            total += votes[key];
+        });
+        return total;
+    };
+
     return (
         <div className='flex flex-col mx-2 my-12'>
             <div className='flex flex-row'>
                 <h2 className='text-xl font-bold'>{originalQuestion}</h2>
             </div>
             <div className='flex flex-row'>
-                <p className='text-xl'>Votes: {votes.length}</p>
+                <p className='text-xl'>Votes: {calculateVoteCount()}</p>
             </div>
             <div>
                 <Button onClick={() => handleVoteClick(1)} label='Up Vote' />

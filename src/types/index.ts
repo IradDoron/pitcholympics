@@ -1,5 +1,4 @@
 import { Locale } from '@/i18n.config';
-import { ObjectId } from 'mongoose';
 import { StaticImageData } from 'next/image';
 import { GameNames } from '.';
 import { MemoBlocksGame, MemoTheMeloGame, PitchCatchGame } from './games';
@@ -99,14 +98,14 @@ export type IconProps = {
 export type MainColorCategories = 'primary' | 'secondary' | 'tertiary';
 
 export type Vote = {
-    userId: ObjectId;
+    userId: string;
     value: 1 | -1;
 };
 
 export type FAQ = {
-    _id: ObjectId;
+    _id: string;
     originalQuestion: string;
-    votes: Vote[];
+    votes: { [key: string]: number };
     question: {
         en: string;
         he: string;
