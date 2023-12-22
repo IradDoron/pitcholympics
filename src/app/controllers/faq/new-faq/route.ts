@@ -2,7 +2,7 @@ import { submitFAQService } from '@/app/services/submitFAQService';
 import { NextRequest, NextResponse } from 'next/server';
 
 export const POST = async (request: NextRequest) => {
-    const { question } = await request.json();
-    await submitFAQService(question);
-    return NextResponse.json({ question }, { status: 200 });
+    const { originalQuestion } = await request.json();
+    await submitFAQService(originalQuestion);
+    return NextResponse.json({ originalQuestion }, { status: 200 });
 };

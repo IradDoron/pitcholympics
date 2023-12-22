@@ -1,13 +1,13 @@
 import FAQ from '@/models/faq';
 import { connectToDB } from '@/utils/database';
 
-export const submitFAQService = async (question: string) => {
+export const submitFAQService = async (originalQuestion: string) => {
     connectToDB();
     try {
         const faq = new FAQ({
-            votes: [],
-            question,
+            originalQuestion: originalQuestion,
         });
+
         await FAQ.create(faq);
     } catch (error) {
         // eslint-disable-next-line no-console

@@ -1,9 +1,10 @@
 'use client';
 
 import { Locale } from '@/i18n.config';
-import { faqMockData } from '@/mockData/faqMockData';
+import { FAQ } from '@/types';
 import { Link } from '@core';
 import { useSession } from 'next-auth/react';
+import { useEffect, useState } from 'react';
 import { FAQBlock } from './_components';
 
 type Props = {
@@ -14,7 +15,19 @@ type Props = {
 
 const Page = ({ params: { lang } }: Props) => {
     const { data: session } = useSession();
+    const [faqs, setFAQs] = useState<FAQ[]>([]);
 
+    const getAllFAQs = async () => {
+        const url = '/controllers/faq/all-faqs';
+        const response = await fetch(url);
+        const faqs = await response.json();
+        setFAQs(faqs);
+    };
+
+    useEffect(() => {
+        getAllFAQs();
+        console.log('FAQs', faqs);
+    }, []);
     if (!session) {
         return (
             <div>
@@ -29,8 +42,10 @@ const Page = ({ params: { lang } }: Props) => {
             <Link url='faq/new-question' label='New Question' />
 
             <div>
-                {faqMockData.map((faq, index) => (
-                    <FAQBlock key={index} faq={faq} lang={lang} />
+                {faqs.map((faq, index) => (
+                    <div key={index}>
+                        <FAQBlock faq={faq} lang={lang} />
+                    </div>
                 ))}
             </div>
         </div>

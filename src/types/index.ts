@@ -103,6 +103,8 @@ export type Vote = {
 };
 
 export type FAQ = {
+    _id: string;
+    originalQuestion: string;
     votes: Vote[];
     question: {
         en: string;

@@ -15,7 +15,21 @@ const Page = ({ params: { lang } }: Props) => {
     const [currentQuestion, setCurrentQuestion] = useState('');
     const router = useRouter();
 
+    const submitFAQ = async () => {
+        const url = '/controllers/faq/new-faq';
+        await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                originalQuestion: currentQuestion,
+            }),
+        });
+    };
+
     const handleSubmitClick = () => {
+        submitFAQ();
         router.push(`/${lang}/faq`);
     };
 
