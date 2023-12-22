@@ -1,16 +1,23 @@
 'use client';
-import { PostPage, PostsContainer, PostsForm } from '@shared';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SuggestionPost, SuggestionPostComment } from '@/types';
-import SuggestionPageModalComponent from '../_components/suggestionPageModal';
-import { Button } from '@/components/core/Button';
-import PostHeadersInModal from './_components/postHeadersInModal';
-import ButtonContainer from './_components/buttonContainer';
+import {
+    PostHeadersInModal,
+    SuggestionPageModalComment,
+    PostForm,
+    PostsContainer,
+} from './_components';
+
+import { useSession } from 'next-auth/react';
+import { PostPage } from './_components/PostPage';
+import { suggestionPostsData } from '@/data/suggestionPostsData';
+import SuggestionsPost from '@/models/suggestionsPagePost';
 
 const Page = () => {
-    const [posts, setPosts] = useState<SuggestionPost[]>([]);
+    const { data: session } = useSession();
+    const [posts, setPosts] = useState<SuggestionPost[]>(suggestionPostsData);
     const [currComment, setCurrComment] = useState<SuggestionPostComment>(null);
-    const [post, setPost] = useState<SuggestionPost>({
+    const [currPost, setCurrPost] = useState<SuggestionPost>({
         title: '',
         content: '',
         category: '',
@@ -19,41 +26,29 @@ const Page = () => {
         reactions: null,
     });
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-    const addPost = (e: React.MouseEvent<HTMLButtonElement>): void => {
-        setPosts([...posts, post]);
-        setPost({
-            title: '',
-            content: '',
-            category: '',
-            comments: [],
-            reactions: null,
-            authorId: '',
-        });
-        sendPost(post);
-    };
 
-    async function sendPost(post: SuggestionPost) {
+    async function sendPost() {
         try {
-            const response = await fetch(
-                `${process.env.BASE_URL}/api/suggestions`,
+            await fetch(
+                // @ts-ignore
+                `/controllers/posts/create-posts/${session?.user?.id}`,
                 {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify(post),
+                    body: JSON.stringify(currPost),
                 },
             );
-            const data = await response.json();
-            console.log(data);
         } catch (error) {
             console.log(error);
         }
-       
     }
     function handleSubmitCommentClick(comment: SuggestionPostComment) {
         console.log(comment);
         console.log('hail');
+        setCurrPost({ ...currPost, comments: [comment] });
+        setCurrComment(null);
         handleCommentChange(null);
         setIsModalOpen(false);
     }
@@ -64,16 +59,16 @@ const Page = () => {
             | React.ChangeEvent<HTMLTextAreaElement>
             | React.ChangeEvent<HTMLSelectElement>,
     ) {
-        setPost({ ...post, [e.target.name]: e.target.value });
+        setCurrPost({ ...currPost, [e.target.name]: e.target.value });
     }
 
     function handleCommentChange(comment: SuggestionPostComment) {
-        setPost({ ...post, comments: [comment] });
+        setCurrPost({ ...currPost, comments: [comment] });
     }
 
     return (
         <>
-            <PostsForm handleChange={handlePostChange} addPost={addPost} />
+            <PostForm handleChange={handlePostChange} sendPost={sendPost} />
             <PostsContainer>
                 {posts.map((post, index) => (
                     <div key={index}>
@@ -86,15 +81,21 @@ const Page = () => {
                                 setIsModalOpen={setIsModalOpen}
                             />
                         ) : (
-                            <SuggestionPageModalComponent
+                            <SuggestionPageModalComment
+                                post={post}
                                 title={post.title}
-                                content={post.content}>
+                                content={post.content}
+                                handleSubmitCommentClick={
+                                    handleSubmitCommentClick
+                                }
+                                currComment={currComment}
+                                setIsModalOpen={setIsModalOpen}>
                                 <div className='flex flex-col justify-center items-center'>
                                     <PostHeadersInModal
                                         title={post.title}
                                         content={post.content}
                                     />
-                                    {post.comments.map((comment, index) => (
+                                    {currPost.comments.map((comment, index) => (
                                         <div key={index}>
                                             <p>{comment?.content}</p>
                                             <p>{index}</p>
@@ -112,15 +113,7 @@ const Page = () => {
                                             comments: [],
                                         })
                                     }></textarea>
-
-                                <ButtonContainer
-                                    handleSubmitCommentClick={
-                                        handleSubmitCommentClick
-                                    }
-                                    currComment={currComment}
-                                    setIsModalOpen={setIsModalOpen}
-                                />
-                            </SuggestionPageModalComponent>
+                            </SuggestionPageModalComment>
                         )}
                     </div>
                 ))}

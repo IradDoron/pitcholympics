@@ -6,12 +6,19 @@ type Props = {
     setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const PostPage = ({ title, picSrc, content, category, setIsModalOpen }: Props) => {
-   function handleComment() {
-       setIsModalOpen(true); }
-   
+export const PostPage = ({
+    title,
+    picSrc,
+    content,
+    category,
+    setIsModalOpen,
+}: Props) => {
+    function handleComment() {
+        setIsModalOpen(true);
+    }
+
     return (
-        <div className='flex flex-col bg-white h-[40%] w-[60%] items-center justify-center rounded-lg'>
+        <div className='flex flex-col bg-white items-center justify-center rounded-lg'>
             <div className='w-full flex flex-row  justify-center'>
                 <div className='w-10 h-10 rounded-full bg-slate-500'>
                     <img src={picSrc} />
@@ -22,11 +29,7 @@ const PostPage = ({ title, picSrc, content, category, setIsModalOpen }: Props) =
                 <p>{content}</p>
                 <p>{category}</p>
             </div>
-            <button onClick={handleComment}>
-                Comment
-            </button>
+            <button onClick={handleComment}>Comment</button>
         </div>
     );
 };
-
-export default PostPage;

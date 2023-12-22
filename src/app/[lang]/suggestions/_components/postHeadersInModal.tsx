@@ -3,7 +3,7 @@ type Props = {
     content: string;
 };
 
-const PostHeadersInModal = ({ title, content }: Props) => {
+export const PostHeadersInModal = ({ title, content }: Props) => {
     return (
         <div className='post-headers'>
             <h1>Post a Suggestion</h1>
@@ -14,4 +14,4 @@ const PostHeadersInModal = ({ title, content }: Props) => {
     );
 };
 
-export default PostHeadersInModal;
+

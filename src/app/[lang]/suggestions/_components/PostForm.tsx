@@ -1,6 +1,6 @@
 'use client';
+import { SuggestionPost } from '@/types';
 import { PageFiller } from '@shared';
-
 
 type Props = {
     handleChange: (
@@ -9,21 +9,21 @@ type Props = {
             | React.ChangeEvent<HTMLTextAreaElement>
             | React.ChangeEvent<HTMLSelectElement>,
     ) => void;
-    addPost: (e: React.MouseEvent<HTMLButtonElement>) => void;
+
+    sendPost: () => Promise<void>;
 };
 
-const PostsForm = ({ handleChange, addPost }: Props) => {
+export const PostForm = ({ handleChange, sendPost }: Props) => {
     return (
         <div className='flex flex-col h-full justify-center items-center gap-5'>
             <PageFiller />
-          
+
             <input
                 name='title'
                 type='text'
                 placeholder='enter Your title'
                 className='border-2 border-gray-500 rounded-md p-2'
                 onChange={handleChange}
-
             />
             <textarea
                 name='content'
@@ -42,10 +42,10 @@ const PostsForm = ({ handleChange, addPost }: Props) => {
             </select>
             <button
                 className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded'
-              onClick={addPost} >
+                onClick={sendPost}>
                 שלח
             </button>
-       
+
             <div className='flex flex-row gap-8'>
                 <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'>
                     הצג הכל
@@ -63,5 +63,3 @@ const PostsForm = ({ handleChange, addPost }: Props) => {
         </div>
     );
 };
-
-export default PostsForm;

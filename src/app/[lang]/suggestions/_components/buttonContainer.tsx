@@ -7,8 +7,8 @@ type Props = {
     setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const ButtonContainer = ({
-    handleSubmitCommentClick,
+export const ButtonContainer = ({
+     handleSubmitCommentClick,
     currComment,
     setIsModalOpen,
 }: Props) => {
@@ -22,4 +22,4 @@ const ButtonContainer = ({
         </div>
     );
 };
-export default ButtonContainer;
+
