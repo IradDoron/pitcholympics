@@ -1,4 +1,5 @@
 import FAQ from '@/models/faq';
+import { NextRequest } from 'next/server';
 
 type RouteParams = {
     params: {
@@ -6,7 +7,7 @@ type RouteParams = {
     };
 };
 
-export const GET = async ({ params }: RouteParams) => {
+export const GET = async (request: NextRequest, { params }: RouteParams) => {
     const { faqId } = params;
 
     const faq = await FAQ.findById(faqId);
