@@ -1,41 +1,24 @@
 import FAQ from '@/models/faq';
-import { FAQ as FAQType, Vote } from '@/types';
+import { mapToObject } from '@/utils';
 import { connectToDB } from '@/utils/database';
-import { ObjectId } from 'mongoose';
 
 export const voteFAQService = async (
-    faqId: ObjectId,
-    userId: ObjectId,
+    faqId: string,
+    userId: string,
     voteValue: 1 | -1,
 ) => {
     connectToDB();
 
     try {
-        const faq = (await FAQ.findById(faqId)) as FAQType;
-        // check if user has already voted
-        let isUserVote = false as boolean;
-        faq.votes.forEach((vote: Vote) => {
-            if (vote.userId === userId) {
-                isUserVote = true;
-            }
-        });
+        const faq = await FAQ.findById(faqId);
 
-        // if user has already voted, update vote value
-        if (isUserVote) {
-            const voteIndex = faq.votes.findIndex(
-                (vote: { userId: ObjectId; value: number }) =>
-                    vote.userId === userId,
-            );
-            faq.votes[voteIndex].value = voteValue;
-        } else {
-            // if user has not voted, add new vote
-            const newVote = { userId, value: voteValue } as Vote;
-            const newVotes = [...faq.votes, newVote] as Vote[];
+        const votes = faq.votes;
 
-            console.log('update faq');
-        }
+        const votesObject = mapToObject(votes);
 
-        // update FAQ document
+        votesObject[userId] = voteValue;
+
+        await FAQ.findByIdAndUpdate(faqId, { votes: votesObject });
     } catch (error) {
         console.log(error);
     }
