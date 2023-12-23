@@ -19,6 +19,33 @@ const Navbar = ({ params: { lang } }: LangParam) => {
     const dict = getDictionaryClient(lang);
     const { pages } = dict.shared.navbar;
 
+    const navPages = [
+        { url: `/${lang}`, label: pages.home },
+        { url: `/${lang}/about`, label: pages.about },
+        { url: `/${lang}/courses`, label: pages.courses },
+        { url: `/${lang}/dev-info/tech`, label: pages.devInfo },
+        { url: `/${lang}/faq`, label: pages.faq },
+        { url: `/${lang}/games`, label: pages.games },
+        { url: `/${lang}/how-to-contribute`, label: pages.howToContribute },
+        { url: `/${lang}/instruments`, label: pages.instruments },
+        { url: `/${lang}/items`, label: pages.items },
+        { url: `/${lang}/leaderboard`, label: pages.leaderboard },
+        { url: `/${lang}/library`, label: pages.library },
+        { url: `/${lang}/music-history`, label: pages.musicHistory },
+        { url: `/${lang}/musical-patterns`, label: pages.musicalPatterns },
+        { url: `/${lang}/patch-note`, label: pages.patchNote },
+        { url: `/${lang}/pieces`, label: pages.pieces },
+        { url: `/${lang}/polls`, label: pages.polls },
+        { url: `/${lang}/practice`, label: pages.practice },
+        { url: `/${lang}/profile`, label: pages.profile },
+        { url: `/${lang}/q&a`, label: pages['q&a'] },
+        { url: `/${lang}/roadmap`, label: pages.roadmap },
+        { url: `/${lang}/shop`, label: pages.shop },
+        { url: `/${lang}/stats`, label: pages.stats },
+        { url: `/${lang}/suggestions`, label: pages.suggestions },
+        { url: `/${lang}/website-analytics`, label: pages.websiteAnalytics },
+    ];
+
     return (
         <div className=' flex flex-row justify-center'>
             <Accesibility />
@@ -30,81 +57,9 @@ const Navbar = ({ params: { lang } }: LangParam) => {
                     </div>
                 </div>
                 <ul className='gap-5 hidden sm:flex sm:flex-wrap sm:w-full justify-self-center'>
-                    <li>
-                        <NavbarLink url={`/${lang}`} label={pages.home} />
-                    </li>
-                    <li>
-                        <NavbarLink
-                            url={`/${lang}/games`}
-                            label={pages.games}
-                        />
-                    </li>
-                    <li>
-                        <NavbarLink
-                            url={`/${lang}/about`}
-                            label={pages.about}
-                        />
-                    </li>
-                    <li>
-                        <NavbarLink
-                            url={`/${lang}/stats`}
-                            label={pages.stats}
-                        />
-                    </li>
-                    <li>
-                        <NavbarLink
-                            url={`/${lang}/library`}
-                            label={pages.library}
-                        />
-                    </li>
-                    <li>
-                        <NavbarLink
-                            url={`/${lang}/suggestions`}
-                            label={pages.suggestions}
-                        />
-                    </li>
-                    <li>
-                        <NavbarLink
-                            url={`/${lang}/courses`}
-                            label={pages.courses}
-                        />
-                    </li>
-                    <li>
-                        <NavbarLink
-                            url={`/${lang}/website-analytics`}
-                            label={pages.websiteAnalytics}
-                        />
-                    </li>
-                    <li>
-                        <NavbarLink
-                            url={`/${lang}/music-history`}
-                            label={pages.musicHistory}
-                        />
-                    </li>
-                    <li>
-                        <NavbarLink
-                            url={`/${lang}/leaderboard`}
-                            label={pages.leaderboard}
-                        />
-                    </li>
-                    <li>
-                        <NavbarLink
-                            url={`/${lang}/pieces`}
-                            label={pages.pieces}
-                        />
-                    </li>
-                    <li>
-                        <NavbarLink
-                            url={`/${lang}/practice`}
-                            label={pages.practice}
-                        />
-                    </li>
-                    <li>
-                        <NavbarLink
-                            url={`/${lang}/instruments`}
-                            label={pages.instruments}
-                        />
-                    </li>
+                    {navPages.map(({ url, label }) => (
+                        <NavbarLink key={url} url={url} label={label} />
+                    ))}
                 </ul>
                 <div className='flex justify-self-end pe-10 relative w-fit'>
                     <AuthButton

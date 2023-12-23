@@ -101,6 +101,11 @@
                     "totalGamesPlayed": "סך משחקים ששוחקו"
                 }
             }
+        },
+        "patchNote": {
+            "page": {
+                "title": "עדכוני גירסה"
+            }
         }
     },
     "shared": {
@@ -111,18 +116,29 @@
         "navbar": {
             "pages": {
                 "home": "בית",
-                "games": "משחקים",
-                "stats": "סטטיסטיקה",
                 "about": "אודות",
-                "suggestions": "הצעות",
-                "library": "ספרייה",
                 "courses": "קורסים",
-                "websiteAnalytics": "נתוני אתר",
-                "musicHistory": "היסטוריה המוזיקה",
+                "devInfo": "מידע למפתחים",
+                "faq": "שאלות נפוצות",
+                "games": "משחקים",
+                "howToContribute": "איך לתרום לפרויקט",
+                "instruments": "כלי נגינה",
+                "items": "פריטים",
                 "leaderboard": "טבלת מובילים",
+                "library": "ספרייה",
+                "musicHistory": "היסטוריה המוזיקה",
+                "musicalPatterns": "תבניות מוזיקליות",
+                "patchNote": "עדכונים",
                 "pieces": "יצירות",
+                "polls": "סקרים",
                 "practice": "תרגול",
-                "instruments": "כלי נגינה"
+                "profile": "פרופיל",
+                "q&a": "שאלות ותשובות",
+                "roadmap": "מפת הדרכים",
+                "shop": "חנות",
+                "stats": "סטטיסטיקה",
+                "suggestions": "הצעות",
+                "websiteAnalytics": "נתוני אתר"
             },
             "title": "עמוד",
             "MobileNav": {

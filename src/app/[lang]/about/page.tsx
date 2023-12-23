@@ -23,7 +23,7 @@ const Page = async () => {
                         />
                     );
                 })}
-            </div>
+            </div>  
         </div>
     );
 };

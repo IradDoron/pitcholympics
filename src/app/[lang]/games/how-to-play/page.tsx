@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/core';
 import { Locale } from '@/i18n.config';
+import { GameNamesToSlug } from '@/types';
 import { getDictionaryClient } from '@/utils/getDictionaryClient';
 import { PageFiller } from '@shared';
 import { useRouter } from 'next/navigation';
@@ -10,7 +11,7 @@ type Props = {
     params: { lang: Locale };
     searchParams: Record<
         'game',
-        'memo-the-melo' | 'pitch-catch' | 'memo-blocks'
+        GameNamesToSlug
     >;
 };
 

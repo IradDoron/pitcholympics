@@ -101,6 +101,11 @@
                     "totalGamesPlayed": "Total Games Played"
                 }
             }
+        },
+        "patchNote": {
+            "page": {
+                "title": "Patch Notes"
+            }
         }
     },
     "shared": {
@@ -111,18 +116,29 @@
         "navbar": {
             "pages": {
                 "home": "Home",
-                "games": "Games",
-                "stats": "Stats",
                 "about": "About",
-                "suggestions": "Suggestions",
-                "library": "Library",
                 "courses": "Courses",
-                "websiteAnalytics": "Website Analytics",
-                "musicHistory": "Music History",
+                "devInfo": "Dev Info",
+                "faq": "FAQ",
+                "games": "Games",
+                "howToContribute": "How to Contribute",
+                "instruments": "Instruments",
+                "items": "Items",
                 "leaderboard": "Leaderboard",
+                "library": "Library",
+                "musicHistory": "Music History",
+                "musicalPatterns": "Musical Patterns",
+                "patchNote": "PatchNotes",
                 "pieces": "Pieces",
+                "polls": "Polls",
                 "practice": "Practice",
-                "instruments": "Instruments"
+                "profile": "Profile",
+                "q&a": "Q&A",
+                "roadmap": "Roadmap",
+                "shop": "Shop",
+                "stats": "Stats",
+                "suggestions": "Suggestions",
+                "websiteAnalytics": "Website Analytics"
             },
             "title": "Page",
             "MobileNav": {
