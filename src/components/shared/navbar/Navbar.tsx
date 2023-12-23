@@ -3,12 +3,16 @@
 import { LangParam } from '@/types';
 import { getDictionaryClient } from '@/utils/getDictionaryClient';
 import { SettingsMenu } from '@shared';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import AuthButton from './AuthButton';
 import LocaleSwitcher from './LocaleSwitcher';
 import NavbarLink from './NavbarLink';
 import Theme from './Theme';
 import MobileNav from './mobileNav';
+import { AccessibilityIcon } from '@/components/icons';
+import { AnimatePresence, motion } from 'framer-motion';
+import Accesibility from '../accessibility/Accesibility';
+import CursorBig from '../accessibility/CursorBig';
 
 const Navbar = ({ params: { lang } }: LangParam) => {
     const [isSettingsMenuOpen, setIsSettingsMenuOpen] = useState(false);
@@ -43,7 +47,8 @@ const Navbar = ({ params: { lang } }: LangParam) => {
     ];
 
     return (
-        <div className='flex flex-row justify-center z-50'>
+        <div className=' flex flex-row justify-center'>
+            <Accesibility />
             <nav className='flex flex-row p-2 sticky w-full bg-light-background-defaultBlur dark:bg-dark-background-defaultBlur '>
                 <div className='flex justify-self-start px-10 w-fit'>
                     <LocaleSwitcher params={{ lang }} />

@@ -53,6 +53,9 @@ dependencies:
   clsx:
     specifier: ^2.0.0
     version: 2.0.0
+  framer-motion:
+    specifier: ^10.16.16
+    version: 10.16.16(react-dom@18.2.0)(react@18.2.0)
   i:
     specifier: ^0.3.7
     version: 0.3.7
@@ -79,7 +82,7 @@ dependencies:
     version: 18.2.0(react@18.2.0)
   styled-components:
     specifier: ^6.1.1
-    version: 6.1.1(react-dom@18.2.0)(react@18.2.0)
+    version: 6.1.3(react-dom@18.2.0)(react@18.2.0)
   tailwind-merge:
     specifier: ^1.14.0
     version: 1.14.0
@@ -108,7 +111,7 @@ devDependencies:
     version: 0.3.0(@babel/traverse@7.23.6)(@babel/types@7.23.6)(next@14.0.3)
   '@swc/plugin-styled-components':
     specifier: ^1.5.105
-    version: 1.5.105
+    version: 1.5.108
   '@types/bcrypt':
     specifier: ^5.0.1
     version: 5.0.1
@@ -135,7 +138,7 @@ devDependencies:
     version: 10.4.16(postcss@8.4.31)
   babel-plugin-styled-components:
     specifier: ^2.1.4
-    version: 2.1.4(@babel/core@7.23.6)(styled-components@6.1.1)
+    version: 2.1.4(@babel/core@7.23.6)(styled-components@6.1.3)
   cypress:
     specifier: ^13.6.0
     version: 13.6.0
@@ -505,16 +508,30 @@ packages:
       tslib: 2.6.2
     dev: false
 
+  /@emotion/is-prop-valid@0.8.8:
+    resolution: {integrity: sha512-u5WtneEAr5IDG2Wv65yhunPSMLIpuKsbuOktRojfrEiEvRyC85LgPMZI63cr7NUqT8ZIGdSVg8ZKGxIug4lXcA==}
+    requiresBuild: true
+    dependencies:
+      '@emotion/memoize': 0.7.4
+    dev: false
+    optional: true
+
   /@emotion/is-prop-valid@1.2.1:
     resolution: {integrity: sha512-61Mf7Ufx4aDxx1xlDeOm8aFFigGHE4z+0sKCa+IHCeZKiyP9RLD0Mmx7m8b9/Cf37f7NAvQOOJAbQQGVr5uERw==}
     dependencies:
       '@emotion/memoize': 0.8.1
 
+  /@emotion/memoize@0.7.4:
+    resolution: {integrity: sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==}
+    requiresBuild: true
+    dev: false
+    optional: true
+
   /@emotion/memoize@0.8.1:
     resolution: {integrity: sha512-W2P2c/VRW1/1tLox0mVUalvnWXxavmv/Oum2aPsRcoDJuob75FC3Y8FbpfLwUegRcxINtGUMPq0tFCvYNTBXNA==}
 
-  /@emotion/unitless@0.8.1:
-    resolution: {integrity: sha512-KOEGMu6dmJZtpadb476IsZBclKvILjopjUii3V+7MnXIQCYh8W3NgNcgwo21n9LXZX6EDIKvqfjYxXebDwxKmQ==}
+  /@emotion/unitless@0.8.0:
+    resolution: {integrity: sha512-VINS5vEYAscRl2ZUDiT3uMPlrFQupiKgHz5AA4bCH1miKBg4qtwkim1qPmJj/4WG6TreYMY111rEFsjupcOKHw==}
 
   /@eslint-community/eslint-utils@4.4.0(eslint@8.54.0):
     resolution: {integrity: sha512-1/sA4dwrzBAyeUoQ6oxahHKmrZvsnLCg4RfxW3ZFGGmQkSNQPFNLV9CUEFQP1x9EYXHTo5p6xdhZM1Ne9p/AfA==}
@@ -1367,8 +1384,8 @@ packages:
     dependencies:
       tslib: 2.6.2
 
-  /@swc/plugin-styled-components@1.5.105:
-    resolution: {integrity: sha512-leeYLY/NM6PzUunGONy6QJKNjfdUagXRB5GHoqIZhixR8FE+yfzYbDDPLZG+1sEUogL6tGqIhW8PgCVg6K8SGA==}
+  /@swc/plugin-styled-components@1.5.108:
+    resolution: {integrity: sha512-hTlkcX3lY+FJjrpCjjVv05WuYjyRZB96F1eG12ZT5vq7UCzJnWkx9FRRSfBenPRpP1Y3SPFqWVWbEJdQ7PdzLg==}
     dev: true
 
   /@tailwindcss/typography@0.5.10(tailwindcss@3.3.3):
@@ -1454,8 +1471,8 @@ packages:
     resolution: {integrity: sha512-0vWLNK2D5MT9dg0iOo8GlKguPAU02QjmZitPEsXRuJXU/OGIOt9vT9Fc26wtYuavLxtO45v9PGleoL9Z0k1LHg==}
     dev: true
 
-  /@types/stylis@4.2.4:
-    resolution: {integrity: sha512-36ZrGJ8fgtBr6nwNnuJ9jXIj+bn/pF6UoqmrQT7+Y99+tFFeHHsoR54+194dHdyhPjgbeoNz3Qru0oRt0l6ASQ==}
+  /@types/stylis@4.2.0:
+    resolution: {integrity: sha512-n4sx2bqL0mW1tvDf/loQ+aMX7GQD3lc3fkCMC55VFNDu/vBOabO+LTIeXKM14xK0ppk5TUGcWRjiSpIlUpghKw==}
 
   /@types/webidl-conversions@7.0.2:
     resolution: {integrity: sha512-uNv6b/uGRLlCVmelat2rA8bcVd3k/42mV2EmjhPh6JLkd35T5bgwR/t6xy7a9MWhd9sixIeBUzhBenvk3NO+DQ==}
@@ -1913,7 +1930,7 @@ packages:
       dequal: 2.0.3
     dev: true
 
-  /babel-plugin-styled-components@2.1.4(@babel/core@7.23.6)(styled-components@6.1.1):
+  /babel-plugin-styled-components@2.1.4(@babel/core@7.23.6)(styled-components@6.1.3):
     resolution: {integrity: sha512-Xgp9g+A/cG47sUyRwwYxGM4bR/jDRg5N6it/8+HxCnbT5XNKSKDT9xm4oag/osgqjC2It/vH0yXsomOG6k558g==}
     peerDependencies:
       styled-components: '>= 2'
@@ -1923,7 +1940,7 @@ packages:
       '@babel/plugin-syntax-jsx': 7.23.3(@babel/core@7.23.6)
       lodash: 4.17.21
       picomatch: 2.3.1
-      styled-components: 6.1.1(react-dom@18.2.0)(react@18.2.0)
+      styled-components: 6.1.3(react-dom@18.2.0)(react@18.2.0)
     transitivePeerDependencies:
       - '@babel/core'
     dev: true
@@ -2992,6 +3009,24 @@ packages:
   /fraction.js@4.3.7:
     resolution: {integrity: sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==}
     dev: true
+
+  /framer-motion@10.16.16(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-je6j91rd7NmUX7L1XHouwJ4v3R+SO4umso2LUcgOct3rHZ0PajZ80ETYZTajzEXEl9DlKyzjyt4AvGQ+lrebOw==}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      tslib: 2.6.2
+    optionalDependencies:
+      '@emotion/is-prop-valid': 0.8.8
+    dev: false
 
   /fs-extra@9.1.0:
     resolution: {integrity: sha512-hcg3ZmepS30/7BSFqRvoo3DOMQu7IjqxO5nCDt+zM9XWjb33Wg7ziNT+Qvqbuc3+gWpzO02JubVyk2G4Zvo1OQ==}
@@ -4825,16 +4860,16 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /styled-components@6.1.1(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-cpZZP5RrKRIClBW5Eby4JM1wElLVP4NQrJbJ0h10TidTyJf4SIIwa3zLXOoPb4gJi8MsJ8mjq5mu2IrEhZIAcQ==}
+  /styled-components@6.1.3(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-kLerFjTAABuEZ870O4q4dyT/VCOJC/HA08+VeIGhkiOKkwJLP17HAWHCiqZWnUMV19m3axlOKR/+/EbCbuJAZg==}
     engines: {node: '>= 16'}
     peerDependencies:
       react: '>= 16.8.0'
       react-dom: '>= 16.8.0'
     dependencies:
       '@emotion/is-prop-valid': 1.2.1
-      '@emotion/unitless': 0.8.1
-      '@types/stylis': 4.2.4
+      '@emotion/unitless': 0.8.0
+      '@types/stylis': 4.2.0
       css-to-react-native: 3.2.0
       csstype: 3.1.2
       postcss: 8.4.31
@@ -4842,7 +4877,7 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
       shallowequal: 1.1.0
       stylis: 4.3.0
-      tslib: 2.6.2
+      tslib: 2.5.0
 
   /styled-jsx@5.1.1(@babel/core@7.23.6)(react@18.2.0):
     resolution: {integrity: sha512-pW7uC1l4mBZ8ugbiZrcIsiIvVx1UmTfw7UkC3Um2tmfUq9Bhk8IiyEIPl6F8agHgjzku6j0xQEZbfA5uSgSaCw==}
@@ -5081,6 +5116,9 @@ packages:
       minimist: 1.2.8
       strip-bom: 3.0.0
     dev: true
+
+  /tslib@2.5.0:
+    resolution: {integrity: sha512-336iVw3rtn2BUK7ORdIAHTyxHGRIHVReokCR3XjbckJMK7ms8FysBfhLR8IXnAgy7T0PTPNBWKiH514FOW/WSg==}
 
   /tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}

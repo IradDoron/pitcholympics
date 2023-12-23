@@ -90,9 +90,11 @@ export type SuggestionPost = {
 
 export type IconProps = {
     color?: MainColorCategories;
-    size?: 'small' | 'medium' | 'large';
+    size?: 'small' | 'medium' | 'large' | 'extraLarge';
     onClick?: () => void;
+    isActive?: boolean;
     className?: string;
+    exit?: object;
 };
 
 export type MainColorCategories = 'primary' | 'secondary' | 'tertiary';
