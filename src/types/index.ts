@@ -74,10 +74,10 @@ export type Reactions =
 export type SuggestionPostComment = {
     content: string;
     authorId: string;
-    date: number;
+    date: number|null;
     reactions: Reactions;
     comments: SuggestionPostComment[];
-} | null;
+} ;
 
 export type SuggestionPost = {
     authorId: string;
