@@ -107,7 +107,7 @@ export type Vote = {
 export type FAQ = {
     _id: string;
     originalQuestion: string;
-    votes: { [key: string]: number };
+    votes: { [key: string]: 1 | -1 | 0 };
     question: {
         en: string;
         he: string;
