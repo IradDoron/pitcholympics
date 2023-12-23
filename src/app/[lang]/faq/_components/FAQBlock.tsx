@@ -4,7 +4,7 @@ import { Locale } from '@/i18n.config';
 import { FAQ } from '@/types';
 import { Button } from '@core';
 import { useSession } from 'next-auth/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type Props = {
     faq: FAQ;
@@ -13,9 +13,10 @@ type Props = {
 
 export const FAQBlock = ({ faq, lang }: Props) => {
     const { data: session } = useSession();
-    const [currentVotes, setCurrentVotes] = useState<Record<string, number>>(
-        faq.votes,
-    );
+    const [currentVotes, setCurrentVotes] = useState<
+        Record<string, 1 | -1 | 0>
+    >(faq.votes);
+    const [currentUserVote, setCurrentUserVote] = useState<1 | -1 | 0>(0);
     const { originalQuestion, _id: faqId } = faq;
 
     const calculateVoteCount = (votes: Record<string, number>) => {
@@ -41,13 +42,19 @@ export const FAQBlock = ({ faq, lang }: Props) => {
             }),
         });
 
-        const newVotes = { ...currentVotes } as Record<string, number>;
+        const newVotes = { ...currentVotes } as Record<string, 1 | -1 | 0>;
 
         // @ts-expect-error - session is not null
         newVotes[session?.user?.id] = value;
 
         setCurrentVotes(newVotes);
     };
+
+    useEffect(() => {
+        // @ts-expect-error - session is not null
+        const userVote = currentVotes[session?.user?.id];
+        setCurrentUserVote(userVote);
+    });
 
     return (
         <div className='flex flex-col mx-2 my-12'>
@@ -60,8 +67,16 @@ export const FAQBlock = ({ faq, lang }: Props) => {
                 </p>
             </div>
             <div>
-                <Button onClick={() => handleVoteClick(1)} label='Up Vote' />
-                <Button onClick={() => handleVoteClick(-1)} label='Down Vote' />
+                <Button
+                    onClick={() => handleVoteClick(1)}
+                    label='Up Vote'
+                    state={currentUserVote === 1 ? 'clicked' : 'default'}
+                />
+                <Button
+                    onClick={() => handleVoteClick(-1)}
+                    label='Down Vote'
+                    state={currentUserVote === -1 ? 'clicked' : 'default'}
+                />
             </div>
             <div className='h-1 bg-black m-2'></div>
         </div>
