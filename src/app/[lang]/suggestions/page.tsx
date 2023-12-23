@@ -1,20 +1,14 @@
 'use client';
 import { useState } from 'react';
 import { SuggestionPost, SuggestionPostComment } from '@/types';
-import {
-    PostHeadersInModal,
-    SuggestionPageModalComment,
-    PostForm,
-    PostsContainer,
-} from './_components';
+import { ModalComment, PostForm, PostsContainer } from './_components';
 import { useSession } from 'next-auth/react';
-import { PostPage } from './_components/PostPage';
+import { Post } from './_components/Post';
 import { suggestionPostsData } from '@/data/suggestionPostsData';
 
 const Page = () => {
     const { data: session } = useSession();
     const [posts, setPosts] = useState<SuggestionPost[]>(suggestionPostsData);
-    const [currComment, setCurrComment] = useState<SuggestionPostComment>(null);
     const [currPost, setCurrPost] = useState<SuggestionPost>({
         title: '',
         content: '',
@@ -42,14 +36,7 @@ const Page = () => {
             console.log(error);
         }
     }
-    function handleSubmitCommentClick(comment: SuggestionPostComment) {
-        console.log(comment);
-        console.log('hail');
-        setCurrPost({ ...currPost, comments: [comment] });
-        setCurrComment(null);
-        handleCommentChange(null);
-        setIsModalOpen(false);
-    }
+  
 
     function handlePostChange(
         e:
@@ -71,47 +58,12 @@ const Page = () => {
                 {posts.map((post, index) => (
                     <div key={index}>
                         {!isModalOpen ? (
-                            <PostPage
-                                title={post.title}
-                                picSrc=''
-                                content={post.content}
-                                category={post.category}
+                            <Post post={post} setIsModalOpen={setIsModalOpen} />
+                        ) : (
+                            <ModalComment
+                                post={post}
                                 setIsModalOpen={setIsModalOpen}
                             />
-                        ) : (
-                            <SuggestionPageModalComment
-                                post={post}
-                                title={post.title}
-                                content={post.content}
-                                handleSubmitCommentClick={
-                                    handleSubmitCommentClick
-                                }
-                                currComment={currComment}
-                                setIsModalOpen={setIsModalOpen}>
-                                <div className='flex flex-col justify-center items-center'>
-                                    <PostHeadersInModal
-                                        title={post.title}
-                                        content={post.content}
-                                    />
-                                    {currPost.comments.map((comment, index) => (
-                                        <div key={index}>
-                                            <p>{comment?.content}</p>
-                                            <p>{index}</p>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <textarea
-                                    onChange={e =>
-                                        setCurrComment({
-                                            content: e.target.value,
-                                            authorId: '',
-                                            date: Date.now(),
-                                            reactions: null,
-                                            comments: [],
-                                        })
-                                    }></textarea>
-                            </SuggestionPageModalComment>
                         )}
                     </div>
                 ))}

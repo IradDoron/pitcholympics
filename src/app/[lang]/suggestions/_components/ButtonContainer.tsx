@@ -14,10 +14,10 @@ export const ButtonContainer = ({
 }: Props) => {
     return (
         <div className='flex flex-col items-center mt-8'>
-            <button
-                type='submit'
+            <Button
+                label='Submit'
                 onClick={() => handleSubmitCommentClick(currComment)}
-                className='bg-green-500 text-white rounded-md p-2'></button>
+               />
             <Button label={'Close'} onClick={() => setIsModalOpen(false)} />
         </div>
     );
