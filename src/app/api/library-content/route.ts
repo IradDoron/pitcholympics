@@ -23,7 +23,18 @@ export async function POST(newPost: any) {
         content: newPost.description,
         topic: newPost.topic,
         tags: newPost.tags,
-        content: newPost.content,
+        reactions: {
+            like: [],
+            dislike: [],
+            love: [],
+            haha: [],
+            wow: [],
+            sad: [],
+            angry: [],
+        },
+        comments: [],
+        
+        
     });
     //await Post.create(newPost);
 }
