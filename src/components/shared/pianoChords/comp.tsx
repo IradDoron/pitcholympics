@@ -1,8 +1,9 @@
 'use client';
-import React,{ useState } from 'react';
+import React,{ useState, useEffect } from 'react';
 import * as Tone from 'tone'
 import IToneSampler from '@/models/IToneSampler';
 import PianoSoundMap from '@/models/SoundsMap/piano-sound-map';
+import ChordDetector from './chord-detector';
 interface IKeyboardPianoMap{
     C:string;
     Cd:string;
@@ -107,19 +108,17 @@ class SoundConfig {
     }
 }
 const Comp = () => {
+    var cd = new ChordDetector();
+    const [chord,setChord] = useState("");
     const [dic,setDic] = useState(Object);
     const [config,setConfig] = useState(new SoundConfig);
-    const changeKeyValue=(key : string,bool : Boolean)=>{
+    const changeKeyValue = (key : string,bool : Boolean) => {
         var temp = dic;
         temp[key] = bool;
         setDic(temp);
     }
-
-    const sampler = new Tone.Sampler({
-        urls: config.sound.urls,
-        baseUrl: config.sound.baseUrl,
-    }).toDestination();
-
+    
+    var sampler:Tone.Sampler;
 
     const onClickZ=() => sampler.triggerAttackRelease(["C1"], 1);
     const onClickS=() => sampler.triggerAttackRelease(["C#1"], 1);
@@ -134,10 +133,11 @@ const Comp = () => {
     const onClickJ=() => sampler.triggerAttackRelease(["A#1"], 1);
     const onClickM=() => sampler.triggerAttackRelease(["B1"], 1);
     const onClickComma=() => sampler.triggerAttackRelease(["C2"], 1);
+
+    
     
     const playKey = (key:string) =>{
-        console.log(config.KeyBoard.C);
-        console.log(key);
+        
         switch(key){
             case config.KeyBoard.C: document.getElementById('c')?.click(); break;
             case config.KeyBoard.Cd: document.getElementById('cd')?.click(); break;
@@ -158,17 +158,33 @@ const Comp = () => {
         if(event.repeat) return;
         if(!dic[event.code]){
             changeKeyValue(event.code, true);
-            console.log("Key Down:" + event.key);
-            console.log()
+            // console.log("Key Down:" + event.key);
+            // console.log()
             // console.log(event);
             playKey(event.code);
+            var chord = cd.detect(dic,config.KeyBoard);
+            if(chord.length > 0){
+                var fullChordString : string ="";
+                for(var i=0;i<chord.length;i++){
+                    fullChordString += chord[i];
+                    if(i != chord.length -1){
+                        fullChordString += " -- "
+                    }
+                }
+                setChord(fullChordString);
+            }
         }
     }
     const onKeyUp = (event:KeyboardEvent) =>{
         if(event.repeat) return;
         if(dic[event.code]){
             changeKeyValue(event.code, false);
-            console.log("Key Up:" + event.key);
+            // console.log("Key Up:" + event.key);
+            
+            var chord = cd.detect(dic,config.KeyBoard);
+            if(chord.length == 0){
+                setChord("");
+            }
         }
     }
     const changeKeyboardMap = (direction:number) =>{
@@ -190,6 +206,12 @@ const Comp = () => {
     React.useEffect(() => {
         addEventListener('keydown', onKeyDown,{once:false,passive:false,capture:false,});
         addEventListener('keyup', onKeyUp,true);
+
+        sampler = new Tone.Sampler({
+            urls: config.sound.urls,
+            baseUrl: config.sound.baseUrl,
+        }).toDestination();
+
         return () => {
             removeEventListener('keypress', onKeyDown);
             removeEventListener('keyup', onKeyUp);
@@ -205,33 +227,24 @@ const Comp = () => {
                 <button className='m-5' onClick={()=>{changeKeyboardMap(3);}}>Move Mapping Left</button>
             </div>
             <div className='h-half flex justify-center items-center'>
-                
-                <button id='cd' className='m-5' onClick={onClickS}>Play C#</button>
-                
-                <button id='dd' className='m-5' onClick={onClickD}>Play D#</button>
-                
-                <button id='fd' className='m-5' onClick={onClickG}>Play F#</button>
-                
-                <button id='gd' className='m-5' onClick={onClickH}>Play G#</button>
-                
-                <button id='ad' className='m-5' onClick={onClickJ}>Play A#</button>
-                
-            </div>
-            <div className='h-40 w-150 block relative'>
-                <div className='flex-row absolute '>
+                <div className='flex-row justify-center items-center '>
                     <button id='c' className='bg-gray-400 h-40 w-10 m-1' onClick={onClickZ}>Play C</button>
+                    <button id='cd' className='bg-black h-40 w-10 m-1 text-white' onClick={onClickS}>Play C#</button>
                     <button id='d' className='bg-gray-400 h-40 w-10 m-1' onClick={onClickX}>Play D</button>
+                    <button id='dd' className='bg-black h-40 w-10 m-1 text-white' onClick={onClickD}>Play D#</button>
                     <button id='e' className='bg-gray-400 h-40 w-10 m-1' onClick={onClickC}>Play E</button>
                     <button id='f' className='bg-gray-400 h-40 w-10 m-1' onClick={onClickV}>Play F</button>
+                    <button id='fd' className='bg-black h-40 w-10 m-1 text-white' onClick={onClickG}>Play F#</button>
                     <button id='g' className='bg-gray-400 h-40 w-10 m-1' onClick={onClickB}>Play G</button>
+                    <button id='gd' className='bg-black h-40 w-10 m-1 text-white' onClick={onClickH}>Play G#</button>
                     <button id='a' className='bg-gray-400 h-40 w-10 m-1' onClick={onClickN}>Play A</button>
+                    <button id='ad' className='bg-black h-40 w-10 m-1 text-white' onClick={onClickJ}>Play A#</button>
                     <button id='b' className='bg-gray-400 h-40 w-10 m-1' onClick={onClickM}>Play B</button>
                     <button id='c2' className='bg-gray-400 h-40 w-10 m-1' onClick={onClickComma}>Play C2</button>
                 </div>
-                <div className=''>
-                    <button id='cd' className='bg-black text-white h-25 w-10 m-1' onClick={onClickS}>Play C#</button>
-
-                </div>
+            </div>
+            <div className='h-100 flex justify-center items-center'>
+                <span className='text-xl m-8'>{chord}</span>
             </div>
         </div>
     );
