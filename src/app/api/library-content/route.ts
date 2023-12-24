@@ -20,7 +20,7 @@ export async function POST(newPost: any) {
         .catch(err => console.log('err'));
     await Post.create({
         title: newPost.title,
-        description: newPost.description,
+        content: newPost.description,
         topic: newPost.topic,
         tags: newPost.tags,
         content: newPost.content,

@@ -71,21 +71,22 @@ export type Reactions =
       }
     | null;
 
-export type SuggestionPostComment = {
+export type PostComment = {
     content: string;
     authorId: string;
     date: number|null;
     reactions: Reactions;
-    comments: SuggestionPostComment[];
+    comments: PostComment[];
 } ;
 
-export type SuggestionPost = {
+export type Post = {
     authorId: string;
     title: string;
     content: string;
+    tags: string[];
     category: string;
     reactions: Reactions;
-    comments: SuggestionPostComment[];
+    comments: PostComment[];
 };
 
 export type IconProps = {

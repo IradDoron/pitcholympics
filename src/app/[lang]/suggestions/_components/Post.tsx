@@ -1,8 +1,8 @@
 import { Button } from '@/components/core/Button';
-import { SuggestionPost } from '@/types';
+import { Post as PostType } from '@/types';
 
 type Props = {
-    post: SuggestionPost;
+    post: PostType;
     setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
