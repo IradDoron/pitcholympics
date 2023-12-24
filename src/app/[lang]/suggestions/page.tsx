@@ -1,8 +1,13 @@
 'use client';
-import { useEffect, useState } from 'react';
-import { Post as PostType, PostComment } from '@/types';
-import { ModalComment, PostForm, PostsContainer } from './_components';
+import { PostComment, Post as PostType } from '@/types';
 import { useSession } from 'next-auth/react';
+import { useEffect, useState } from 'react';
+import {
+    ModalComment,
+    PostForm,
+    PostPreview,
+    PostsContainer,
+} from './_components';
 import { Post } from './_components/Post';
 
 const Page = () => {
@@ -12,18 +17,15 @@ const Page = () => {
         title: '',
         content: '',
         tags: [],
-        category: '',
+        category: 'bugs',
         comments: [],
         authorId: '',
         reactions: null,
     });
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-    useEffect(() => {
-        //@ts-expect-error - session is not null
-        const authorId = session?.user?.id;
-        setCurrPost({ ...currPost, authorId });
-    }, [session]);
+
     async function sendPost() {
+        console.log('currPost from sendPost', currPost);
         try {
             await fetch(
                 // @ts-ignore
@@ -33,7 +35,9 @@ const Page = () => {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify(currPost),
+                    body: JSON.stringify({
+                        post: currPost,
+                    }),
                 },
             );
         } catch (error) {
@@ -54,6 +58,12 @@ const Page = () => {
         setCurrPost({ ...currPost, comments: [comment] });
     }
 
+    useEffect(() => {
+        //@ts-expect-error - session is not null
+        const authorId = session?.user?.id;
+        setCurrPost({ ...currPost, authorId });
+    }, [session]);
+
     if (!session)
         return (
             <div>
@@ -69,7 +79,9 @@ const Page = () => {
                 handleChange={handlePostChange}
                 sendPost={sendPost}
                 setCurrPost={setCurrPost}
+                currPost={currPost}
             />
+            <PostPreview post={currPost} />
             <PostsContainer>
                 {posts.map((post, index) => (
                     <div key={index}>

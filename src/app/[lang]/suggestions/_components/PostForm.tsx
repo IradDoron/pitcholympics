@@ -1,7 +1,7 @@
 'use client';
-import { PageFiller } from '@shared';
-import { ChangeEventHandler, Dispatch, SetStateAction, useState } from 'react';
 import { Post as PostType } from '@/types';
+import { PageFiller } from '@shared';
+import { Dispatch, SetStateAction, useState } from 'react';
 
 type Props = {
     handleChange: (
@@ -13,9 +13,15 @@ type Props = {
 
     sendPost: () => Promise<void>;
     setCurrPost: Dispatch<SetStateAction<PostType>>;
+    currPost: PostType;
 };
 
-export const PostForm = ({ handleChange, sendPost, setCurrPost }: Props) => {
+export const PostForm = ({
+    handleChange,
+    sendPost,
+    setCurrPost,
+    currPost,
+}: Props) => {
     const [currTag, setCurrTag] = useState<string>('');
 
     const handleCurrTagChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,6 +63,7 @@ export const PostForm = ({ handleChange, sendPost, setCurrPost }: Props) => {
                 name='tags'
                 type='text'
                 placeholder='enter Your tags'
+                value={currTag}
                 className='border-2 border-gray-500 rounded-md p-2'
                 onChange={handleCurrTagChange}
             />
