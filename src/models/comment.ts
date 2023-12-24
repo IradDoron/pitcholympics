@@ -1,22 +1,13 @@
-// send to dataBase
 
 import mongoose, { Schema, model, models } from 'mongoose';
 
-const PostSchema = new Schema({
-    title: {
-        type: String,
-        required: [true, 'Title is required!'],
-    },
+const CommentSchema = new Schema({
     content: {
         type: String,
+        required: [true, 'Content is required!'],
     },
-    category: {
-        type: String,
-        required: [true, 'Category is required!'],
-    },
-    tags: {
-        type: [String],
-    },
+    authorId: { type: String, required: [true, 'AuthorId is required!'] },
+    date: { type: Date, default: Date.now },
     reactions: {
         type: {
             like: {
@@ -63,10 +54,7 @@ const PostSchema = new Schema({
         default: [],
         ref: 'Comment',
     },
-    authorId: {
-        type: String,
-        required: [true, 'Author is required!'],
-    },
 });
-const Post = models.Post || model('Post', PostSchema);
-export default Post;
+
+const Comment = models.Comment || model('Comment', CommentSchema);
+export default Comment;

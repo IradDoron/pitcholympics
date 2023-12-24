@@ -1,29 +1,33 @@
 'use client';
-import { useState } from 'react';
-import { SuggestionPost, SuggestionPostComment } from '@/types';
+import { useEffect, useState } from 'react';
+import { Post as PostType, PostComment } from '@/types';
 import { ModalComment, PostForm, PostsContainer } from './_components';
 import { useSession } from 'next-auth/react';
 import { Post } from './_components/Post';
-import { suggestionPostsData } from '@/data/suggestionPostsData';
 
 const Page = () => {
     const { data: session } = useSession();
-    const [posts, setPosts] = useState<SuggestionPost[]>(suggestionPostsData);
-    const [currPost, setCurrPost] = useState<SuggestionPost>({
+    const [posts, setPosts] = useState<PostType[]>([]);
+    const [currPost, setCurrPost] = useState<PostType>({
         title: '',
         content: '',
+        tags: [],
         category: '',
         comments: [],
         authorId: '',
         reactions: null,
     });
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-
+    useEffect(() => {
+        //@ts-expect-error - session is not null
+        const authorId = session?.user?.id;
+        setCurrPost({ ...currPost, authorId });
+    }, [session]);
     async function sendPost() {
         try {
             await fetch(
                 // @ts-ignore
-                `/controllers/posts/create-posts/${session?.user?.id}`,
+                `/controllers/suggestions`,
                 {
                     method: 'POST',
                     headers: {
@@ -36,7 +40,6 @@ const Page = () => {
             console.log(error);
         }
     }
-  
 
     function handlePostChange(
         e:
@@ -47,13 +50,26 @@ const Page = () => {
         setCurrPost({ ...currPost, [e.target.name]: e.target.value });
     }
 
-    function handleCommentChange(comment: SuggestionPostComment) {
+    function handleCommentChange(comment: PostComment) {
         setCurrPost({ ...currPost, comments: [comment] });
     }
 
+    if (!session)
+        return (
+            <div>
+                <p className='text-center text-xl text-light-background-onDefault dark:text-dark-background-onDefault'>
+                    You need to be logged in to see this page
+                </p>
+            </div>
+        );
+
     return (
         <>
-            <PostForm handleChange={handlePostChange} sendPost={sendPost} />
+            <PostForm
+                handleChange={handlePostChange}
+                sendPost={sendPost}
+                setCurrPost={setCurrPost}
+            />
             <PostsContainer>
                 {posts.map((post, index) => (
                     <div key={index}>

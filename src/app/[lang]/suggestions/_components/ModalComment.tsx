@@ -4,14 +4,14 @@ import { ButtonContainer } from './ButtonContainer';
 import {
     ReactionType,
     Reactions,
-    SuggestionPost,
-    SuggestionPostComment,
+    Post,
+    PostComment,
 } from '@/types';
 import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 type Props = {
     setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-    post: SuggestionPost;
+    post: Post;
 };
 
 const Modal = styled.div`
@@ -70,7 +70,7 @@ const reactionsArray = [
 export function ModalComment({ post, setIsModalOpen }: Props) {
     const { data: session } = useSession();
     const [currComment, setCurrComment] =
-        useState<SuggestionPostComment>(initialComment);
+        useState<PostComment>(initialComment);
     const [currReaction, setCurrReaction] = useState<ReactionType | null>(null);
 
     function handleSubmitCommentClick() {
