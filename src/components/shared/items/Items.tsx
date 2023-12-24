@@ -5,22 +5,22 @@ import { GameItem } from '@/types';
 import gameItems from '@/mockData/gameItems';
 
 const Items = () => {
-  const items: GameItem[] = gameItems;
+    const items: GameItem[] = gameItems;
 
-  const containerStyle: React.CSSProperties = {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    maxWidth: '1200px',
-  };
+    const containerStyle: React.CSSProperties = {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        maxWidth: '1200px',
+    };
 
-  return (
-    <div style={containerStyle}>
-      {items.map((item) => (
-        <ItemCard key={item.id} item={item} />
-      ))}
-    </div>
-  );
+    return (
+        <div style={containerStyle}>
+            {items.map(item => (
+                <ItemCard key={item.id} item={item} />
+            ))}
+        </div>
+    );
 };
 
 export default Items;

@@ -9,9 +9,9 @@ const ContentContainer = () => {
         <div className='flex flex-col box-border w-full m-auto px-[60px] text-left'>
             <div className='mt-10'></div>
             <IntroCard />
-            <BugFixedCard />
+            {/* <BugFixedCard />
             <FeatureCard />
-            <AdjustmentsCard />
+            <AdjustmentsCard /> */}
         </div>
     );
 };

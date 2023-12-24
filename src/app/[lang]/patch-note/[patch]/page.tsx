@@ -1,5 +1,5 @@
-import ContentContainer from '@/components/shared/PatchNotePage/ContentContainer';
-import HeaderContainer from '@/components/shared/PatchNotePage/HeaderContainer';
+import ContentContainer from './_components/ContentContainer';
+import HeaderContainer from './_components/HeaderContainer';
 
 const page = () => {
     const backgroundColorStyle = {
@@ -7,6 +7,7 @@ const page = () => {
     };
     return (
         <div className='text-white' style={backgroundColorStyle}>
+            {/*get from the params the patch note version */}
             <HeaderContainer />
             <ContentContainer />
         </div>
