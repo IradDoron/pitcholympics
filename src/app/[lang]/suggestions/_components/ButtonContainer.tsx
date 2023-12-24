@@ -1,9 +1,9 @@
 import { Button } from '@/components/core';
-import { SuggestionPostComment } from '@/types';
+import { PostComment } from '@/types';
 
 type Props = {
-    handleSubmitCommentClick: (currComment: SuggestionPostComment) => void;
-    currComment: SuggestionPostComment;
+    handleSubmitCommentClick: (currComment: PostComment) => void;
+    currComment: PostComment;
     setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 

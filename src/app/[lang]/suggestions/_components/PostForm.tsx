@@ -1,6 +1,7 @@
 'use client';
-import { SuggestionPost } from '@/types';
 import { PageFiller } from '@shared';
+import { ChangeEventHandler, Dispatch, SetStateAction, useState } from 'react';
+import { Post as PostType } from '@/types';
 
 type Props = {
     handleChange: (
@@ -11,9 +12,21 @@ type Props = {
     ) => void;
 
     sendPost: () => Promise<void>;
+    setCurrPost: Dispatch<SetStateAction<PostType>>;
 };
 
-export const PostForm = ({ handleChange, sendPost }: Props) => {
+export const PostForm = ({ handleChange, sendPost, setCurrPost }: Props) => {
+    const [currTag, setCurrTag] = useState<string>('');
+
+    const handleCurrTagChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setCurrTag(e.target.value);
+    };
+
+    const handleAddTagClick = () => {
+        setCurrPost(prev => ({ ...prev, tags: [...prev.tags, currTag] }));
+        setCurrTag('');
+    };
+
     return (
         <div className='flex flex-col h-full justify-center items-center gap-5'>
             <PageFiller />
@@ -40,6 +53,18 @@ export const PostForm = ({ handleChange, sendPost }: Props) => {
                 <option value='general'>כללי</option>
                 <option value='features'>פיצ׳רים</option>
             </select>
+            <input
+                name='tags'
+                type='text'
+                placeholder='enter Your tags'
+                className='border-2 border-gray-500 rounded-md p-2'
+                onChange={handleCurrTagChange}
+            />
+            <button
+                className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+                onClick={handleAddTagClick}>
+                הוסף תגיות
+            </button>
             <button
                 className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded'
                 onClick={sendPost}>
