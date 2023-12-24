@@ -64,6 +64,73 @@ const patchNotes: PatchNote[] = [
             },
         ],
     },
+    {
+        version: '4.1',
+        introSection: {
+            paragraphs: ['Intro section'],
+        },
+        contentSecions: [
+            {
+                title: 'BugFixed',
+                content: [
+                    {
+                        title: 'BugFixed',
+                        list: [
+                            'In an effort to simplify the 4.1 Stats tab in the client...',
+                        ],
+                    },
+                    {
+                        title: 'Bug Fixes',
+                        list: ['fix Bug1 4.1', 'fix Bug2 4.1', 'fix Bug2 4.1'],
+                    },
+                ],
+            },
+            {
+                title: 'Feature',
+                content: [
+                    {
+                        title: 'Intro Features',
+                        list: [
+                            'In an effort to simplify the Career Stats tab in the client...',
+                        ],
+                    },
+                    {
+                        title: 'Features',
+                        list: [
+                            'Feature 1 - 4.1',
+                            'Feature 2 - 4.1',
+                            'Feature 3 - 4.1',
+                        ],
+                    },
+                ],
+            },
+            {
+                title: 'Adjustments',
+                content: [
+                    {
+                        title: 'Buffs',
+                        list: [
+                            'Rumble: Damage Taken: 95% ⇒ 100%',
+                            'Rumble: Damage Taken: 95% ⇒ 100%',
+                            'Rumble: Damage Taken: 95% ⇒ 100%',
+                        ],
+                    },
+                    {
+                        title: 'nerfs',
+                        list: [
+                            'Heart: 10 ⇒ 2',
+                            'Rumble: Damage Taken: 95% ⇒ 100%',
+                            'Rumble: Damage Taken: 95% ⇒ 100%',
+                        ],
+                    },
+                    {
+                        title: 'Adjustment',
+                        list: ['we changed memoTheMelo to be more difficult'],
+                    },
+                ],
+            },
+        ],
+    },
 ];
 
 export default patchNotes;
