@@ -3,16 +3,13 @@
 import { LangParam } from '@/types';
 import { getDictionaryClient } from '@/utils/getDictionaryClient';
 import { SettingsMenu } from '@shared';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import Accesibility from '../accessibility/Accesibility';
 import AuthButton from './AuthButton';
 import LocaleSwitcher from './LocaleSwitcher';
 import NavbarLink from './NavbarLink';
 import Theme from './Theme';
 import MobileNav from './mobileNav';
-import { AccessibilityIcon } from '@/components/icons';
-import { AnimatePresence, motion } from 'framer-motion';
-import Accesibility from '../accessibility/Accesibility';
-import CursorBig from '../accessibility/CursorBig';
 
 const Navbar = ({ params: { lang } }: LangParam) => {
     const [isSettingsMenuOpen, setIsSettingsMenuOpen] = useState(false);
@@ -44,6 +41,7 @@ const Navbar = ({ params: { lang } }: LangParam) => {
         { url: `/${lang}/stats`, label: pages.stats },
         { url: `/${lang}/suggestions`, label: pages.suggestions },
         { url: `/${lang}/website-analytics`, label: pages.websiteAnalytics },
+        { url: `/${lang}/teaching`, label: pages.teaching },
     ];
 
     return (
