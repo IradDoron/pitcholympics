@@ -1,41 +1,46 @@
 'use client';
-import { useEffect, useState } from 'react';
-import { Post as PostType, PostComment } from '@/types';
-import { ModalComment, PostForm, PostsContainer } from './_components';
+import { Button } from '@/components/core';
+import { PostComment, Post as PostType } from '@/types';
 import { useSession } from 'next-auth/react';
+import { useEffect, useState } from 'react';
+import {
+    Filters,
+    ModalComment,
+    PostForm,
+    PostPreview,
+    PostsContainer,
+} from './_components';
 import { Post } from './_components/Post';
+
+const initCurrPost: PostType = {
+    title: '',
+    content: '',
+    tags: [],
+    category: 'general',
+    comments: [],
+    authorId: '',
+    reactions: null,
+};
 
 const Page = () => {
     const { data: session } = useSession();
     const [posts, setPosts] = useState<PostType[]>([]);
-    const [currPost, setCurrPost] = useState<PostType>({
-        title: '',
-        content: '',
-        tags: [],
-        category: '',
-        comments: [],
-        authorId: '',
-        reactions: null,
-    });
+    const [currPost, setCurrPost] = useState<PostType>(initCurrPost);
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-    useEffect(() => {
-        //@ts-expect-error - session is not null
-        const authorId = session?.user?.id;
-        setCurrPost({ ...currPost, authorId });
-    }, [session]);
+
     async function sendPost() {
+        console.log('currPost', currPost);
         try {
-            await fetch(
-                // @ts-ignore
-                `/controllers/suggestions`,
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(currPost),
+            await fetch(`/controllers/suggestions`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
                 },
-            );
+                body: JSON.stringify({
+                    post: currPost,
+                }),
+            });
+            setCurrPost(initCurrPost);
         } catch (error) {
             console.log(error);
         }
@@ -54,6 +59,12 @@ const Page = () => {
         setCurrPost({ ...currPost, comments: [comment] });
     }
 
+    useEffect(() => {
+        //@ts-expect-error - session is not null
+        const authorId = session?.user?.id;
+        setCurrPost({ ...currPost, authorId });
+    }, [session]);
+
     if (!session)
         return (
             <div>
@@ -65,25 +76,34 @@ const Page = () => {
 
     return (
         <>
-            <PostForm
-                handleChange={handlePostChange}
-                sendPost={sendPost}
-                setCurrPost={setCurrPost}
-            />
-            <PostsContainer>
-                {posts.map((post, index) => (
-                    <div key={index}>
-                        {!isModalOpen ? (
-                            <Post post={post} setIsModalOpen={setIsModalOpen} />
-                        ) : (
-                            <ModalComment
-                                post={post}
-                                setIsModalOpen={setIsModalOpen}
-                            />
-                        )}
-                    </div>
-                ))}
-            </PostsContainer>
+            <div className='flex flex-col items-center'>
+                <PostForm
+                    handleChange={handlePostChange}
+                    sendPost={sendPost}
+                    setCurrPost={setCurrPost}
+                    currPost={currPost}
+                />
+                <PostPreview post={currPost} />
+                <Button label='Submit' onClick={sendPost} />
+                <Filters />
+                <PostsContainer>
+                    {posts.map((post, index) => (
+                        <div key={index}>
+                            {!isModalOpen ? (
+                                <Post
+                                    post={post}
+                                    setIsModalOpen={setIsModalOpen}
+                                />
+                            ) : (
+                                <ModalComment
+                                    post={post}
+                                    setIsModalOpen={setIsModalOpen}
+                                />
+                            )}
+                        </div>
+                    ))}
+                </PostsContainer>
+            </div>
         </>
     );
 };
