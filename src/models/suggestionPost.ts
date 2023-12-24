@@ -2,7 +2,7 @@
 
 import mongoose, { Schema, model, models } from 'mongoose';
 
-const PostSchema = new Schema({
+const SuggestionPostSchema = new Schema({
     title: {
         type: String,
         required: [true, 'Title is required!'],
@@ -68,5 +68,6 @@ const PostSchema = new Schema({
         required: [true, 'Author is required!'],
     },
 });
-const Post = models.Post || model('Post', PostSchema);
-export default Post;
+const SuggestionPost =
+    models.SuggestionPost || model('SuggestionPost', SuggestionPostSchema);
+export default SuggestionPost;
