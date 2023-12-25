@@ -51,6 +51,7 @@ export type Reactions =
     | null;
 */
 const initialComment = {
+    id: '',
     content: '',
     authorId: '',
     date: null,
