@@ -72,6 +72,7 @@ export type Reactions =
     | null;
 
 export type PostComment = {
+    id: string;
     content: string;
     authorId: string;
     date: number|null;
@@ -80,6 +81,7 @@ export type PostComment = {
 } ;
 
 export type Post = {
+    _id: string;
     authorId: string;
     title: string;
     content: string;

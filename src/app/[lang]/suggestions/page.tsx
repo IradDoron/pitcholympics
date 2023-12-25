@@ -1,4 +1,5 @@
 'use client';
+import { v4 as uuidv4 } from 'uuid';
 import { Button } from '@/components/core';
 import { PostComment, Post as PostType } from '@/types';
 import { useSession } from 'next-auth/react';
@@ -20,6 +21,7 @@ const initCurrPost: PostType = {
     comments: [],
     authorId: '',
     reactions: null,
+   _id: '',
 };
 
 const Page = () => {
@@ -45,6 +47,20 @@ const Page = () => {
             console.log(error);
         }
     }
+    async function getPosts() {
+        try {
+            const res = await fetch(`/controllers/suggestions`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            const data = await res.json();
+            setPosts(data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     function handlePostChange(
         e:
@@ -58,6 +74,10 @@ const Page = () => {
     function handleCommentChange(comment: PostComment) {
         setCurrPost({ ...currPost, comments: [comment] });
     }
+
+    useEffect(() => {
+        getPosts();
+    }, [currPost]);
 
     useEffect(() => {
         //@ts-expect-error - session is not null
@@ -76,7 +96,7 @@ const Page = () => {
 
     return (
         <>
-            <div className='flex flex-col items-center'>
+            <div className='flex flex-col items-center justify-end'>
                 <PostForm
                     handleChange={handlePostChange}
                     sendPost={sendPost}
@@ -87,7 +107,7 @@ const Page = () => {
                 <Button label='Submit' onClick={sendPost} />
                 <Filters />
                 <PostsContainer>
-                    {posts.map((post, index) => (
+                    {posts.reverse().map((post, index) => (
                         <div key={index}>
                             {!isModalOpen ? (
                                 <Post
