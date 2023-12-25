@@ -1,7 +1,12 @@
 import Image from 'next/image';
 import CardImgPatch from '@/assets/patch-notes/CardImgPatch.jpg';
 
-const HeaderContainer = () => {
+type Props = {
+    version: string;
+    authorName: string | null | undefined;
+};
+
+export const HeaderContainer = ({ version, authorName = '' }: Props) => {
     return (
         //image container
         <div className='flex flex-col w-full justify-center items-center'>
@@ -15,7 +20,7 @@ const HeaderContainer = () => {
             <div className='flex flex-col w-full px-14'>
                 <div className='border-slate-800 border-x-2 border-t-2'>
                     <span className='-mt-10 font-bold text-7xl justify-center border-t-black items-center w-full flex tracking-wide'>
-                        Patch 1.0.0 Notes
+                        Patch {version} Notes
                     </span>
                 </div>
                 <div className='flex items-center justify-between border-slate-800 border-t-2 border'>
@@ -24,7 +29,7 @@ const HeaderContainer = () => {
                     </div>
                     <div className='p-4 border-x-2 border-slate-800 flex-5 flex-shrink-1 flex-auto justify-center items-center'>
                         <span className='text-sm flex justify-center'>
-                            Author Amit Halevi
+                            {authorName}
                         </span>
                     </div>
                     <div>
@@ -35,5 +40,3 @@ const HeaderContainer = () => {
         </div>
     );
 };
-
-export default HeaderContainer;
