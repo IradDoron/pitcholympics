@@ -2,12 +2,11 @@ import SuggestionPost from '@/models/suggestionPost';
 import { Post as PostType } from '@/types';
 import { connectToDB } from '@/utils/database';
 
-export const submitSuggestionPostService = async (post: PostType) => {
+export async function updateSuggestionPostService(postId: string, post: PostType) {
     connectToDB();
     try {
-        await SuggestionPost.create(post);
+        await SuggestionPost.findByIdAndUpdate(postId, post);
     } catch (error) {
-        // eslint-disable-next-line no-console
         console.log(error);
     }
-};
+}
