@@ -1,36 +1,35 @@
+import Image from 'next/image';
 import React from 'react';
 
-const IntroCard = () => {
+type Props = {
+    paragraphs: string[];
+    authorName: string;
+    authorImage: string;
+};
+
+export const IntroCard = ({ paragraphs, authorName, authorImage }: Props) => {
     return (
         <>
-            {/* intro Paragraph */}
             <div className='px-10 py-10'>
                 <span className='leading-6'>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Laudantium cupiditate corrupti, quibusdam expedita sed atque
-                    rerum natus dolor harum! Labore sint recusandae, dicta illum
-                    aperiam dignissimos at quae iusto nobis delectus itaque
-                    pariatur totam temporibus et minus deserunt! Iste facere
-                    repellendus officia ipsam sit explicabo atque sed itaque
-                    saepe recusandae!
-                    <br />
-                    <br />
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Ipsum, voluptate!
-                    <br />
-                    <br />
-                    Lorem ipsum dolor sit amet.
+                    {paragraphs.map((paragraph, index, arr) => {
+                        return (
+                            <>
+                                <p>{paragraph}</p>
+                                {index < arr.length - 1 && (
+                                    <>
+                                        <br />
+                                    </>
+                                )}
+                            </>
+                        );
+                    })}
                 </span>
             </div>
-            {/* the authorId name and logo author */}
             <div className='px-10'>
-                logo+{' '}
-                <span className='text-xs text-stone-500'>
-                    Amit Halevi Web Developer
-                </span>
+                <Image src={authorImage} alt={authorName} />
+                <span className='text-xs text-stone-500'>{authorName}</span>
             </div>
         </>
     );
 };
-
-export default IntroCard;
