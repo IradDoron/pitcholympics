@@ -1,2 +1,3 @@
-import PitchButton from "./PitchButton";
-export default PitchButton;
+import PitchButton from './PitchButton';
+
+export { PitchButton };

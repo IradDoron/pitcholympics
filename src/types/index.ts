@@ -1,6 +1,11 @@
 import { Locale } from '@/i18n.config';
-import { GameNames } from '.';
 import { StaticImageData } from 'next/image';
+import { GameNames } from '.';
+import { MemoBlocksGame, MemoTheMeloGame, PitchCatchGame } from './games';
+
+export type FilterObject = {
+    [key: string]: boolean;
+};
 
 export type LangParam = {
     params: { lang: Locale };
@@ -26,29 +31,9 @@ export type SidebarLink = {
     label: string;
 };
 
-export type MemoTheMeloLevel = {
-    pitchOptions: string[];
-    melody: number[];
-};
-
 export type Game = {
     name: GameNames;
-    game: MemoTheMeloGame | PitchCatchGame;
-};
-
-export type MemoTheMeloStage = MemoTheMeloLevel[];
-
-export type MemoTheMeloGame = MemoTheMeloStage[];
-
-export type PitchCatchLevel = PitchCatchQuestion[];
-
-export type PitchCatchStage = PitchCatchLevel[];
-
-export type PitchCatchGame = PitchCatchStage[];
-
-export type PitchCatchQuestion = {
-    currPitch: string[];
-    userOptions: string[][];
+    game: MemoTheMeloGame | PitchCatchGame | MemoBlocksGame;
 };
 
 export type ThemeMode = 'light' | 'dark' | 'system';
@@ -70,17 +55,76 @@ export type Collaborator = {
     linkedin?: string;
     portfolio?: string;
 };
+export type ReactionType =
+    | 'like'
+    | 'dislike'
+    | 'love'
+    | 'haha'
+    | 'wow'
+    | 'sad'
+    | 'angry';
+
+export type Reactions =
+    | {
+          // eslint-disable-next-line no-unused-vars
+          [key in ReactionType]: string[]; //array of userIds
+      }
+    | null;
+
+export type PostComment = {
+    id: string;
+    content: string;
+    authorId: string;
+    date: number|null;
+    reactions: Reactions;
+    comments: PostComment[];
+} ;
+
+export type Post = {
+    _id: string;
+    authorId: string;
+    title: string;
+    content: string;
+    tags: string[];
+    category: string;
+    reactions: Reactions;
+    comments: PostComment[];
+};
 
 export type IconProps = {
     color?: MainColorCategories;
-    size?: 'small' | 'medium' | 'large';
+    size?: 'small' | 'medium' | 'large' | 'extraLarge';
     onClick?: () => void;
+    isActive?: boolean;
     className?: string;
+    exit?: object;
 };
 
 export type MainColorCategories = 'primary' | 'secondary' | 'tertiary';
 
-export * from './gameItems';
+export type Vote = {
+    userId: string;
+    value: 1 | -1;
+};
+
+export type FAQ = {
+    _id: string;
+    originalQuestion: string;
+    votes: { [key: string]: 1 | -1 | 0 };
+    question: {
+        en: string;
+        he: string;
+    };
+    answer: {
+        en: string;
+        he: string;
+    };
+};
+
 export * from './achievements';
+export * from './gameItems';
 export * from './gameLogic';
-export * from './memo-blocks';
+export * from './games';
+export * from './patchNote';
+export * from './pianoTypes';
+export * from './piecesTypes';

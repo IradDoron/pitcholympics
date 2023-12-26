@@ -9,3 +9,4 @@ export * from './PortfolioLogo';
 export * from './SunIcon';
 export * from './VMark';
 export * from './XMark';
+export * from './AccessibilityIcon';

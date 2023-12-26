@@ -1,26 +1,31 @@
 'use client';
 
+import { Locale } from '@/i18n.config';
+import type { Session } from 'next-auth';
+import { useSession } from 'next-auth/react';
+import LevelLink from './LevelLink';
 import LevelsLinksContainer from './LevelsLinksContainer';
-import React, { useEffect, useState } from 'react';
-import { MemoTheMeloGame, PitchCatchGame } from '@/types';
+import { useEffect, useState } from 'react';
+import { MemoTheMeloGame, PitchCatchGame, LevelStatus, GameNamesToSlug, MemoBlocksGame } from '@/types';
 import StageTitle from './StageTitle';
 import StageLevelsContainer from './StageLevelsContainer';
-import LevelLink from './LevelLink';
-import { useSession } from 'next-auth/react';
-import { LevelStatus } from '@/types';
-import { Locale } from '@/i18n.config';
 
 type Props = {
-    levelsData: MemoTheMeloGame | PitchCatchGame;
+    levelsData: MemoTheMeloGame | PitchCatchGame | MemoBlocksGame;
     lang: Locale;
-    game: string;
+    game: GameNamesToSlug;
 };
-type UserProgressEntry = {
-    [key: string]: LevelStatus;
+
+type UserProgressEntry = Record<string, LevelStatus>
+
+type ExtendedSession = Session & {
+    user: Session['user'] & {
+        id: string; // Change the type of id according to your setup
+    };
 };
 
 const GameLevelsLinks = ({ levelsData, lang, game }: Props) => {
-    const { data: session } = useSession();
+    const { data: session } = useSession() as { data: ExtendedSession | null };
     const [userProgress, setUserProgress] = useState<UserProgressEntry>({});
 
     const getStatus = (
@@ -28,6 +33,7 @@ const GameLevelsLinks = ({ levelsData, lang, game }: Props) => {
         levelIndex: number,
         stageIndex: number,
     ): LevelStatus => {
+
         if (!userProgress) {
             return 'locked';
         }
@@ -39,18 +45,19 @@ const GameLevelsLinks = ({ levelsData, lang, game }: Props) => {
         if (!isKeyInUserProgress) {
             return 'locked';
         } else {
+
+            if (userProgress[levelKey] === 'locked' && levelIndex === 0) { // allow first level to be unlocked by default in each stage
+                return 'pending';
+            }
             return userProgress[levelKey];
         }
     };
 
     useEffect(() => {
         // Fetch user progress from the backend using the user's ID (session.id)
-        console.log('game', game);
         const fetchUserProgress = async () => {
             try {
-                //@ts-ignore
                 const response = await fetch(
-                    //@ts-ignore
                     `/api/games/${game}/${session?.user?.id}`,
                 );
                 const data = await response.json();

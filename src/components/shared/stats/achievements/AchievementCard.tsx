@@ -1,6 +1,6 @@
 'use strict';
 import { useState } from 'react';
-import ProgressBar from '@/components/core/progressBar/progressBar';
+import { ProgressBar } from '@/components/core';
 import type { Achievement, User } from '@/types';
 type Props = {
     achievement: Achievement;

@@ -2,11 +2,8 @@ import {
     Colors,
     IconProps,
     Matrix,
-    SidebarLink,
     // ThemeModeDragEvent,
 } from '@/types';
-import { MatrixWithId } from '@/types';
-import { ThemeMode } from '@/types';
 export const LANGS_FULL_NAMES = {
     en: 'English',
     he: 'עברית',
@@ -16,6 +13,7 @@ export const ICON_SIZES = {
     small: 'w-6 h-6',
     medium: 'w-8 h-8',
     large: 'w-12 h-12',
+    extraLarge: 'w-24 h-24',
 };
 
 export const ICON_COLORS = {
@@ -63,4 +61,4 @@ export const DOMAINS = {
     PRODUCTION: 'https://pitcholympics.vercel.app',
 };
 
-export const CURRENT_DOMAIN = DOMAINS.DEV;
+export const CURRENT_DOMAIN = DOMAINS.PRODUCTION;

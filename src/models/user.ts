@@ -1,6 +1,10 @@
 import { Schema, model, models } from 'mongoose';
 
 const UserSchema = new Schema({
+    _id: {
+        type: Schema.Types.ObjectId,
+        required: true,
+    },
     email: {
         type: String,
         unique: [true, 'Email already exists!'],
@@ -30,11 +34,16 @@ const UserSchema = new Schema({
         memoTheMelo: {
             type: Map,
             default: {
-                '1_1': 'locked',
+                '1_1': 'pending',
             },
         },
-
         pitchCatch: {
+            type: Map,
+            default: {
+                '1_1': 'pending',
+            },
+        },
+        memoBlocks: {
             type: Map,
             default: {
                 '1_1': 'locked',

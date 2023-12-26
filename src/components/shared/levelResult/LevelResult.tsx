@@ -1,7 +1,7 @@
-import Button from '@/components/core/button';
+import { Button } from '@/components/core';
+import { Locale } from '@/i18n.config';
 import ResultData from './ResultData';
 import ResultTitle from './ResultTitle';
-import { Locale } from '@/i18n.config';
 
 type Props = {
     level: number;

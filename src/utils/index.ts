@@ -1,6 +1,6 @@
-import { LevelStatus } from '@/types';
-import { Locale } from '@/i18n.config';
-import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
+import { LibraryContentCourse } from '@/types/libraryPageTypes';
+
+export * from './gameLogic';
 
 export const getXpForLevel = (level: number): number => {
     const x = 0.07;
@@ -9,62 +9,32 @@ export const getXpForLevel = (level: number): number => {
     return Math.floor(Math.pow(level / x, y));
 };
 
-export const isTwoArraysEqual = (arr1: any[], arr2: any[]): boolean => {
+export const compareArrays = (
+    arr1: any[],
+    arr2: any[],
+    cmpFunc = (i1: any, i2: any) => i1 === i2
+): boolean => {
     if (arr1.length !== arr2.length) return false;
-    return arr1.every((item, index) => item === arr2[index]);
+    return arr1.every((item, index) => cmpFunc(item, arr2[index]));
 };
 
-export const calcLevelScore = (stage: number, level: number) => {
-    const score = stage * 4 + level * 2;
-    return score;
-};
+export const shuffleArray = (array: any[]) => {
+    let currentIndex = array.length,
+        temporaryValue,
+        randomIndex;
 
-export const isLevelExisting = (
-    stage: number,
-    level: number,
-    gameData: {
-        [key: string]: LevelStatus;
-    },
-) => {
-    const levelKey = `${stage}_${level}`;
+    // While there remain elements to shuffle...
+    while (currentIndex !== 0) {
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex--);
 
-    if (gameData[levelKey]) {
-        return true;
-    } else {
-        return false;
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
     }
-};
 
-export const handleEndLevel = (
-    stage: number,
-    level: number,
-    lang: Locale,
-    game: 'memo-the-melo' | 'pitch-catch' | 'memo-blocks',
-    status: 'win' | 'lose',
-    router: AppRouterInstance,
-) => {
-    if (status === 'win') {
-        const score = calcLevelScore(stage, level);
-        localStorage.setItem('score', score.toString());
-        router.push(`/${lang}/games/${game}/${stage}/${level}/win`);
-    } else {
-        localStorage.setItem('score', '0');
-        router.push(`/${lang}/games/${game}/${stage}/${level}/lose`);
-    }
-};
-
-/**
- * @param pitches array of pitches, for example ['440', '880', '220', '440', '880', '220']
- * @param pitchOptions array of pitches options, for example ['440', '880', '220']
- * @returns array of indexes, for example [0, 1, 2, 0, 1, 2]
- */
-export const convertPitchesToIndexes = (
-    pitches: string[],
-    pitchOptions: string[],
-) => {
-    return pitches.map(pitch => {
-        return pitchOptions.indexOf(pitch);
-    });
+    return array;
 };
 
 export const convertKebabCaseToCamelCase = (str: string) => {
@@ -83,4 +53,25 @@ export const mapToObject = (map: Map<any, any>) => {
 
 export const getTimeZone = (): string => {
     return /\((.*)\)/.exec(new Date().toString())![1];
+};
+
+export const getRandomItemFromArray = (arr: any) => {
+    return arr[Math.floor(Math.random() * arr.length)];
+};
+
+export const countLessonsInCourse = (course: LibraryContentCourse) => {
+    let count = 0;
+
+    course.tracks.forEach(track => {
+        track.sections.forEach(section => {
+            count += section.lessons.length;
+        });
+    });
+
+    return count;
+};
+
+export const getCurrentTab = (pathname: string) => {
+    const tabs = pathname.split('/');
+    return tabs[tabs.length - 1];
 };

@@ -1,7 +1,7 @@
 'use client';
 
 import { useTheme } from '@/context/ThemeProvider';
-import Menubar from '@/components/core/menubar';
+import { Menubar } from '@/components/core';
 import { SunIcon, MoonIcon, GearIcon } from '@icons';
 import { IconProps, ThemeMode } from '@/types';
 
@@ -49,11 +49,10 @@ const Theme = () => {
                                 }}>
                                 <Icon color='primary' size='medium' />
                                 <p
-                                    className={`body-semibold text-light-500 ${
-                                        mode === item.value
+                                    className={`body-semibold text-light-500 ${mode === item.value
                                             ? 'text-primary-500'
                                             : 'text-dark100_light900'
-                                    }`}>
+                                        }`}>
                                     {item.label}
                                 </p>
                             </div>
