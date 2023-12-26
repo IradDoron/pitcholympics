@@ -9,5 +9,4 @@ export * from './StatsCard';
 export * from './Link';
 export * from './ProgressBar';
 export * from './notesCircle';
-
-
+export * from './Chip';
