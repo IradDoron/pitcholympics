@@ -119,6 +119,7 @@
                 "about": "About",
                 "courses": "Courses",
                 "devInfo": "Dev Info",
+                "faq": "FAQ",
                 "games": "Games",
                 "howToContribute": "How to Contribute",
                 "instruments": "Instruments",
@@ -137,6 +138,7 @@
                 "shop": "Shop",
                 "stats": "Stats",
                 "suggestions": "Suggestions",
+                "teaching": "Teaching",
                 "websiteAnalytics": "Website Analytics"
             },
             "title": "Page",

@@ -71,31 +71,55 @@ export type Reactions =
       }
     | null;
 
-export type SuggestionPostComment = {
+export type PostComment = {
+    id: string;
     content: string;
     authorId: string;
-    date: number;
+    date: number|null;
     reactions: Reactions;
-    comments: SuggestionPostComment[];
-} | null;
+    comments: PostComment[];
+} ;
 
-export type SuggestionPost = {
+export type Post = {
+    
     authorId: string;
     title: string;
     content: string;
+    tags: string[];
     category: string;
     reactions: Reactions;
-    comments: SuggestionPostComment[];
+    comments: PostComment[];
 };
 
 export type IconProps = {
     color?: MainColorCategories;
-    size?: 'small' | 'medium' | 'large';
+    size?: 'small' | 'medium' | 'large' | 'extraLarge';
     onClick?: () => void;
+    isActive?: boolean;
     className?: string;
+    exit?: object;
 };
 
 export type MainColorCategories = 'primary' | 'secondary' | 'tertiary';
+
+export type Vote = {
+    userId: string;
+    value: 1 | -1;
+};
+
+export type FAQ = {
+    _id: string;
+    originalQuestion: string;
+    votes: { [key: string]: 1 | -1 | 0 };
+    question: {
+        en: string;
+        he: string;
+    };
+    answer: {
+        en: string;
+        he: string;
+    };
+};
 
 export * from './achievements';
 export * from './gameItems';

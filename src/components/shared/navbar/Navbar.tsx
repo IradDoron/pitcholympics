@@ -4,6 +4,7 @@ import { LangParam } from '@/types';
 import { getDictionaryClient } from '@/utils/getDictionaryClient';
 import { SettingsMenu } from '@shared';
 import { useState } from 'react';
+import Accesibility from '../accessibility/Accesibility';
 import AuthButton from './AuthButton';
 import LocaleSwitcher from './LocaleSwitcher';
 import NavbarLink from './NavbarLink';
@@ -20,6 +21,7 @@ const Navbar = ({ params: { lang } }: LangParam) => {
         { url: `/${lang}/about`, label: pages.about },
         { url: `/${lang}/courses`, label: pages.courses },
         { url: `/${lang}/dev-info/tech`, label: pages.devInfo },
+        { url: `/${lang}/faq`, label: pages.faq },
         { url: `/${lang}/games`, label: pages.games },
         { url: `/${lang}/how-to-contribute`, label: pages.howToContribute },
         { url: `/${lang}/instruments`, label: pages.instruments },
@@ -39,10 +41,12 @@ const Navbar = ({ params: { lang } }: LangParam) => {
         { url: `/${lang}/stats`, label: pages.stats },
         { url: `/${lang}/suggestions`, label: pages.suggestions },
         { url: `/${lang}/website-analytics`, label: pages.websiteAnalytics },
+        { url: `/${lang}/teaching`, label: pages.teaching },
     ];
 
     return (
-        <div className='flex flex-row justify-center z-50'>
+        <div className=' flex flex-row justify-center'>
+            <Accesibility />
             <nav className='flex flex-row p-2 sticky w-full bg-light-background-defaultBlur dark:bg-dark-background-defaultBlur '>
                 <div className='flex justify-self-start px-10 w-fit'>
                     <LocaleSwitcher params={{ lang }} />

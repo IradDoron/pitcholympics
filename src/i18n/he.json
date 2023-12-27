@@ -119,6 +119,7 @@
                 "about": "אודות",
                 "courses": "קורסים",
                 "devInfo": "מידע למפתחים",
+                "faq": "שאלות נפוצות",
                 "games": "משחקים",
                 "howToContribute": "איך לתרום לפרויקט",
                 "instruments": "כלי נגינה",
@@ -137,6 +138,7 @@
                 "shop": "חנות",
                 "stats": "סטטיסטיקה",
                 "suggestions": "הצעות",
+                "teaching": "הוראה",
                 "websiteAnalytics": "נתוני אתר"
             },
             "title": "עמוד",
