@@ -1,17 +1,21 @@
-import ISoundMap from '../ISoundMap';
-class PianoSoundMap implements ISoundMap {
-    C = '/sounds/piano/piano_C3.mp3';
-    Cd = '/sounds/piano/piano_Cd3.mp3';
-    D = '/sounds/piano/piano_D3.mp3';
-    Dd = '/sounds/piano/piano_Dd3.mp3';
-    E = '/sounds/piano/piano_E3.mp3';
-    F = '/sounds/piano/piano_F3.mp3';
-    Fd = '/sounds/piano/piano_Fd3.mp3';
-    G = '/sounds/piano/piano_G3.mp3';
-    Gd = '/sounds/piano/piano_Gd3.mp3';
-    A = '/sounds/piano/piano_A3.mp3';
-    Ad = '/sounds/piano/piano_Ad3.mp3';
-    B = '/sounds/piano/piano_B3.mp3';
-    C2 = '/sounds/piano/piano_C4.mp3';
-};
+import IToneSampler from '../IToneSampler';
+class PianoSoundMap implements IToneSampler {
+    urls  = {
+        "C1" :"piano_C3.mp3",
+        "C#1":"piano_Cc3.mp3",
+        "D1" :"piano_D3.mp3",
+        "D#1":"piano_Dc3.mp3",
+        "E1" :"piano_E3.mp3",
+        "F1" :"piano_F3.mp3",
+        "F#1":"piano_Fc3.mp3",
+        "G1" :"piano_G3.mp3",
+        "G#1":"piano_Gc3.mp3",
+        "A1" :"piano_A3.mp3",
+        "A#1":"piano_Ac3.mp3",
+        "B1"  :"piano_B3.mp3",
+        "C2" :"piano_C4.mp3",
+    };
+    baseUrl  = "/sounds/piano/";
+}
+
 export default PianoSoundMap;

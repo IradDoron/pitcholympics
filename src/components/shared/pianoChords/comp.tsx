@@ -1,21 +1,23 @@
 'use client';
-// import useSound from 'use-sound';
-import ISoundsMap from '@/models/ISoundMap';
+import React,{ useState, useEffect } from 'react';
+import * as Tone from 'tone'
+import IToneSampler from '@/models/IToneSampler';
 import PianoSoundMap from '@/models/SoundsMap/piano-sound-map';
-interface IKeyboardPianoMap {
-    C: string;
-    Cd: string;
-    D: string;
-    Dd: string;
-    E: string;
-    F: string;
-    Fd: string;
-    G: string;
-    Gd: string;
-    A: string;
-    Ad: string;
-    B: string;
-    C2: string;
+import ChordDetector from './chord-detector';
+interface IKeyboardPianoMap{
+    C:string;
+    Cd:string;
+    D:string;
+    Dd:string;
+    E:string;
+    F:string;
+    Fd:string;
+    G:string;
+    Gd:string;
+    A:string;
+    Ad:string;
+    B:string;
+    C2:string;
 }
 class keyboardMapper {
     private usableKeys: string[][] = [
@@ -78,165 +80,222 @@ class keyboardMapper {
     startKeyY: number = 0; //max = 4
     MapUp() {
         //validation
-        this.startKeyY++;
+        if(this.startKeyY<3){
+            this.startKeyY++;
+        }
+        else{
+            alert("Cant Move The Keyboard MIDI Up");
+        }
         return this.Piano;
+        
     }
     MapDown() {
         //validation
-        this.startKeyY--;
+        if(this.startKeyY>0){
+            this.startKeyY--;
+        }
+        else{
+            alert("Cant Move The Keyboard MIDI Down");
+        }
         return this.Piano;
     }
     MapRight() {
         //validation
-        this.startKeyX++;
+        if(this.startKeyX+7<12){
+            this.startKeyX++;
+        }
+        else{
+            alert("Cant Move The Keyboard MIDI Right");
+        }
         return this.Piano;
     }
     MapLeft() {
         //validation
         //maybe just try and catch;
-        this.startKeyX--;
+        if(this.startKeyX>0){
+
+            this.startKeyX--;
+        }
+        else{
+            alert("Cant Move The Keyboard MIDI Left");
+        }
         return this.Piano;
     }
     get Piano(): IKeyboardPianoMap {
         return {
-            C: this.usableKeys[this.startKeyX][this.startKeyY],
-            Cd: this.usableKeys[this.startKeyX + 1][this.startKeyY + 1],
-            D: this.usableKeys[this.startKeyX + 1][this.startKeyY],
-            Dd: this.usableKeys[this.startKeyX + 2][this.startKeyY + 1],
-            E: this.usableKeys[this.startKeyX + 2][this.startKeyY],
-            F: this.usableKeys[this.startKeyX + 3][this.startKeyY],
-            Fd: this.usableKeys[this.startKeyX + 4][this.startKeyY + 1],
-            G: this.usableKeys[this.startKeyX + 4][this.startKeyY],
-            Gd: this.usableKeys[this.startKeyX + 5][this.startKeyY + 1],
-            A: this.usableKeys[this.startKeyX + 5][this.startKeyY],
-            Ad: this.usableKeys[this.startKeyX + 6][this.startKeyY + 1],
-            B: this.usableKeys[this.startKeyX + 6][this.startKeyY],
-            C2: this.usableKeys[this.startKeyX + 7][this.startKeyY],
+            C:this.usableKeys [this.startKeyY]    [this.startKeyX],
+            Cd:this.usableKeys[this.startKeyY + 1][this.startKeyX + 1],
+            D:this.usableKeys [this.startKeyY]    [this.startKeyX + 1],
+            Dd:this.usableKeys[this.startKeyY + 1][this.startKeyX + 2],
+            E:this.usableKeys [this.startKeyY]    [this.startKeyX + 2],
+            F:this.usableKeys [this.startKeyY]    [this.startKeyX + 3],
+            Fd:this.usableKeys[this.startKeyY + 1][this.startKeyX + 4],
+            G:this.usableKeys [this.startKeyY]    [this.startKeyX + 4],
+            Gd:this.usableKeys[this.startKeyY + 1][this.startKeyX + 5],
+            A:this.usableKeys [this.startKeyY]    [this.startKeyX + 5],
+            Ad:this.usableKeys[this.startKeyY + 1][this.startKeyX + 6],
+            B:this.usableKeys [this.startKeyY]    [this.startKeyX + 6],
+            C2:this.usableKeys[this.startKeyY]    [this.startKeyX + 7],
         };
     }
 }
 class SoundConfig {
-    volume: number = 1;
-    sound: ISoundsMap = new PianoSoundMap();
-    private keyboard: keyboardMapper = new keyboardMapper();
-    get Keyboard(): IKeyboardPianoMap {
-        return this.keyboard.Piano;
+    volume : number = 1;
+    sound : IToneSampler = new PianoSoundMap;
+    private keyboard : keyboardMapper = new keyboardMapper;
+    KeyBoard : IKeyboardPianoMap = this.keyboard.Piano;
+    KeyboardUp(){
+        this.KeyBoard = this.keyboard.MapUp();
     }
-    get KeyboardUp(): IKeyboardPianoMap {
-        return this.keyboard.MapUp();
+    KeyboardDown(){
+        this.KeyBoard = this.keyboard.MapDown();
     }
-    get KeyboardDown(): IKeyboardPianoMap {
-        return this.keyboard.MapDown();
+    KeyboardLeft(){
+        this.KeyBoard = this.keyboard.MapLeft();
     }
-    get KeyboardLeft(): IKeyboardPianoMap {
-        return this.keyboard.MapLeft();
-    }
-    get KeyboardRight(): IKeyboardPianoMap {
-        return this.keyboard.MapRight();
+    KeyboardRight(){
+        this.KeyBoard = this.keyboard.MapRight();
     }
 }
 const Comp = () => {
-    // const [dic,setDic] = useState(Object);
-    // const [config,setConfig] = useState(new SoundConfig);
-    // const changeKeyValue=(key : string,bool : Boolean)=>{
-    //     var temp = dic;
-    //     temp[key] = bool;
-    //     setDic(temp);
-    // }
-    // const [playC] = useSound(config.sound.C,{volume:config.volume});
-    // const [playCd] = useSound(config.sound.Cd,{volume:config.volume});
-    // const [playD] = useSound(config.sound.D,{volume:config.volume});
-    // const [playDd] = useSound(config.sound.Dd,{volume:config.volume});
-    // const [playE] = useSound(config.sound.E,{volume:config.volume});
-    // const [playF] = useSound(config.sound.F,{volume:config.volume});
-    // const [playFd] = useSound(config.sound.Fd,{volume:config.volume});
-    // const [playG] = useSound(config.sound.G,{volume:config.volume});
-    // const [playGd] = useSound(config.sound.Gd,{volume:config.volume});
-    // const [playA] = useSound(config.sound.A,{volume:config.volume});
-    // const [playAd] = useSound(config.sound.Ad,{volume:config.volume});
-    // const [playB] = useSound(config.sound.B,{volume:config.volume});
-    // const [playC2] = useSound(config.sound.C2,{volume:config.volume});
+    var cd = new ChordDetector();
+    const [chord,setChord] = useState("");
+    const [dic,setDic] = useState(Object);
+    const [config,setConfig] = useState(new SoundConfig);
+    const changeKeyValue = (key : string,bool : Boolean) => {
+        var temp = dic;
+        temp[key] = bool;
+        setDic(temp);
+    }
+    
+    var sampler:Tone.Sampler;
 
-    // const onClickZ=()=>playC();
-    // const onClickS=()=>playCd();
-    // const onClickX=()=>playD();
-    // const onClickD=()=>playDd();
-    // const onClickC=()=>playE();
-    // const onClickV=()=>playF();
-    // const onClickG=()=>playFd();
-    // const onClickB=()=>playG();
-    // const onClickH=()=>playGd();
-    // const onClickN=()=>playA();
-    // const onClickJ=()=>playAd();
-    // const onClickM=()=>playB();
-    // const onClickComma=()=>playC2();
+    const onClickZ=() => sampler.triggerAttackRelease(["C1"], 1);
+    const onClickS=() => sampler.triggerAttackRelease(["C#1"], 1);
+    const onClickX=() => sampler.triggerAttackRelease(["D1"], 1);
+    const onClickD=() => sampler.triggerAttackRelease(["D#1"], 1);
+    const onClickC=() => sampler.triggerAttackRelease(["E1"], 1);
+    const onClickV=() => sampler.triggerAttackRelease(["F1"], 1);
+    const onClickG=() => sampler.triggerAttackRelease(["F#1"], 1);
+    const onClickB=() => sampler.triggerAttackRelease(["G1"], 1);
+    const onClickH=() => sampler.triggerAttackRelease(["G#1"], 1);
+    const onClickN=() => sampler.triggerAttackRelease(["A1"], 1);
+    const onClickJ=() => sampler.triggerAttackRelease(["A#1"], 1);
+    const onClickM=() => sampler.triggerAttackRelease(["B1"], 1);
+    const onClickComma=() => sampler.triggerAttackRelease(["C2"], 1);
 
-    // const playKey = (key:string) =>{
-    //     switch(key){
-    //         case config.Keyboard.C: document.getElementById('c')?.click(); break;
-    //         case config.Keyboard.Cd: document.getElementById('cd')?.click(); break;
-    //         case config.Keyboard.D: document.getElementById('d')?.click(); break;
-    //         case config.Keyboard.Dd: document.getElementById('dd')?.click(); break;
-    //         case config.Keyboard.E: document.getElementById('e')?.click(); break;
-    //         case config.Keyboard.F: document.getElementById('f')?.click(); break;
-    //         case config.Keyboard.Fd: document.getElementById('fd')?.click(); break;
-    //         case config.Keyboard.G: document.getElementById('g')?.click(); break;
-    //         case config.Keyboard.Gd: document.getElementById('gd')?.click(); break;
-    //         case config.Keyboard.A: document.getElementById('a')?.click(); break;
-    //         case config.Keyboard.Ad: document.getElementById('ad')?.click(); break;
-    //         case config.Keyboard.B: document.getElementById('b')?.click(); break;
-    //         case config.Keyboard.C2: document.getElementById('c2')?.click(); break;
-    //     }
-    // }
-    // const onKeyDown = (event:KeyboardEvent) =>{
-    //     if(event.repeat) return;
-    //     if(!dic[event.code]){
-    //         changeKeyValue(event.code, true);
-    //         console.log("Key Down:" + event.key);
-    //         console.log()
-    //         // console.log(event);
-    //         playKey(event.code);
-    //     }
-    // }
-    // const onKeyUp = (event:KeyboardEvent) =>{
-    //     if(event.repeat) return;
-    //     if(dic[event.code]){
-    //         changeKeyValue(event.code, false);
-    //         console.log("Key Up:" + event.key);
-    //     }
-    // }
-    // const changeKeyboardMap = () =>{
+    
+    
+    const playKey = (key:string) =>{
+        
+        switch(key){
+            case config.KeyBoard.C: document.getElementById('c')?.click(); break;
+            case config.KeyBoard.Cd: document.getElementById('cd')?.click(); break;
+            case config.KeyBoard.D: document.getElementById('d')?.click(); break;
+            case config.KeyBoard.Dd: document.getElementById('dd')?.click(); break;
+            case config.KeyBoard.E: document.getElementById('e')?.click(); break;
+            case config.KeyBoard.F: document.getElementById('f')?.click(); break;
+            case config.KeyBoard.Fd: document.getElementById('fd')?.click(); break;
+            case config.KeyBoard.G: document.getElementById('g')?.click(); break;
+            case config.KeyBoard.Gd: document.getElementById('gd')?.click(); break;
+            case config.KeyBoard.A: document.getElementById('a')?.click(); break;
+            case config.KeyBoard.Ad: document.getElementById('ad')?.click(); break;
+            case config.KeyBoard.B: document.getElementById('b')?.click(); break;
+            case config.KeyBoard.C2: document.getElementById('c2')?.click(); break;
+        }
+    }
+    const onKeyDown = (event:KeyboardEvent) =>{
+        if(event.repeat) return;
+        if(!dic[event.code]){
+            changeKeyValue(event.code, true);
+            // console.log("Key Down:" + event.key);
+            // console.log()
+            // console.log(event);
+            playKey(event.code);
+            var chord = cd.detect(dic,config.KeyBoard);
+            if(chord.length > 0){
+                var fullChordString : string ="";
+                for(var i=0;i<chord.length;i++){
+                    fullChordString += chord[i];
+                    if(i != chord.length -1){
+                        fullChordString += " -- "
+                    }
+                }
+                setChord(fullChordString);
+            }
+        }
+    }
+    const onKeyUp = (event:KeyboardEvent) =>{
+        if(event.repeat) return;
+        if(dic[event.code]){
+            changeKeyValue(event.code, false);
+            // console.log("Key Up:" + event.key);
+            
+            var chord = cd.detect(dic,config.KeyBoard);
+            if(chord.length == 0){
+                setChord("");
+            }
+        }
+    }
+    const changeKeyboardMap = (direction:number) =>{
+        switch(direction){
+            case 0: 
+                config.KeyboardUp();
+            break;
+            case 1: 
+                config.KeyboardDown();
+            break;
+            case 2: 
+                config.KeyboardRight();
+            break;
+            case 3: 
+                config.KeyboardLeft();
+            break;
+        }
+    }
+    React.useEffect(() => {
+        addEventListener('keydown', onKeyDown,{once:false,passive:false,capture:false,});
+        addEventListener('keyup', onKeyUp,true);
 
-    // }
-    // React.useEffect(() => {
-    //     addEventListener('keydown', onKeyDown,{once:false,passive:false,capture:false,});
-    //     addEventListener('keyup', onKeyUp,true);
-    //     return () => {
-    //         removeEventListener('keypress', onKeyDown);
-    //         removeEventListener('keyup', onKeyUp);
-    //     };
-    // });
+        sampler = new Tone.Sampler({
+            urls: config.sound.urls,
+            baseUrl: config.sound.baseUrl,
+        }).toDestination();
 
-    return (
-        <div className='h-full flex justify-center items-center'>
-            {/* <div>
-                <button id='c' className='m-5' onClick={changeKeyboardMap}>Up</button>
+        return () => {
+            removeEventListener('keypress', onKeyDown);
+            removeEventListener('keyup', onKeyUp);
+        };
+    });
+   
+    return(
+        <div className='h-full flex-row justify-center items-center column'>   
+            <div>
+                <button className='m-5' onClick={()=>{changeKeyboardMap(0);}}>Move Mapping Up</button>
+                <button className='m-5' onClick={()=>{changeKeyboardMap(1);}}>Move Mapping Down</button>
+                <button className='m-5' onClick={()=>{changeKeyboardMap(2);}}>Move Mapping Right</button>
+                <button className='m-5' onClick={()=>{changeKeyboardMap(3);}}>Move Mapping Left</button>
             </div>
-            <div className='h-full flex justify-center items-center'>
-                <button id='c' className='m-5' onClick={onClickZ}>Play C</button>
-                <button id='cd' className='m-5' onClick={onClickS}>Play C#</button>
-                <button id='d' className='m-5' onClick={onClickX}>Play D</button>
-                <button id='dd' className='m-5' onClick={onClickD}>Play D#</button>
-                <button id='e' className='m-5' onClick={onClickC}>Play E</button>
-                <button id='f' className='m-5' onClick={onClickV}>Play F</button>
-                <button id='fd' className='m-5' onClick={onClickG}>Play F#</button>
-                <button id='g' className='m-5' onClick={onClickB}>Play G</button>
-                <button id='gd' className='m-5' onClick={onClickH}>Play G#</button>
-                <button id='a' className='m-5' onClick={onClickN}>Play A</button>
-                <button id='ad' className='m-5' onClick={onClickJ}>Play A#</button>
-                <button id='b' className='m-5' onClick={onClickM}>Play B</button>
-                <button id='c2' className='m-5' onClick={onClickComma}>Play High C</button>
-            </div> */}
+            <div className='h-half flex justify-center items-center'>
+                <div className='flex-row justify-center items-center '>
+                    <button id='c' className='bg-gray-400 h-40 w-10 m-1' onClick={onClickZ}>Play C</button>
+                    <button id='cd' className='bg-black h-40 w-10 m-1 text-white' onClick={onClickS}>Play C#</button>
+                    <button id='d' className='bg-gray-400 h-40 w-10 m-1' onClick={onClickX}>Play D</button>
+                    <button id='dd' className='bg-black h-40 w-10 m-1 text-white' onClick={onClickD}>Play D#</button>
+                    <button id='e' className='bg-gray-400 h-40 w-10 m-1' onClick={onClickC}>Play E</button>
+                    <button id='f' className='bg-gray-400 h-40 w-10 m-1' onClick={onClickV}>Play F</button>
+                    <button id='fd' className='bg-black h-40 w-10 m-1 text-white' onClick={onClickG}>Play F#</button>
+                    <button id='g' className='bg-gray-400 h-40 w-10 m-1' onClick={onClickB}>Play G</button>
+                    <button id='gd' className='bg-black h-40 w-10 m-1 text-white' onClick={onClickH}>Play G#</button>
+                    <button id='a' className='bg-gray-400 h-40 w-10 m-1' onClick={onClickN}>Play A</button>
+                    <button id='ad' className='bg-black h-40 w-10 m-1 text-white' onClick={onClickJ}>Play A#</button>
+                    <button id='b' className='bg-gray-400 h-40 w-10 m-1' onClick={onClickM}>Play B</button>
+                    <button id='c2' className='bg-gray-400 h-40 w-10 m-1' onClick={onClickComma}>Play C2</button>
+                </div>
+            </div>
+            <div className='h-100 flex justify-center items-center'>
+                <span className='text-xl m-8'>{chord}</span>
+            </div>
         </div>
     );
 };
