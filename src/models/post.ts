@@ -1,35 +1,72 @@
 // send to dataBase
 
-import { Schema, model, models } from 'mongoose';
+import mongoose, { Schema, model, models } from 'mongoose';
 
 const PostSchema = new Schema({
     title: {
         type: String,
         required: [true, 'Title is required!'],
     },
-    description: {
+    content: {
         type: String,
     },
-    topic: {
+    category: {
         type: String,
-        required: [true, 'Topic is required!'],
+        required: [true, 'Category is required!'],
     },
     tags: {
         type: [String],
     },
-    content: {
-        type: String,
-        required: [true, 'Content is required!'],
+    reactions: {
+        type: {
+            like: {
+                type: [String],
+                default: [],
+            },
+            dislike: {
+                type: [String],
+                default: [],
+            },
+            love: {
+                type: [String],
+                default: [],
+            },
+            haha: {
+                type: [String],
+                default: [],
+            },
+            wow: {
+                type: [String],
+                default: [],
+            },
+            sad: {
+                type: [String],
+                default: [],
+            },
+            angry: {
+                type: [String],
+                default: [],
+            },
+        },
+        default: {
+            like: [],
+            dislike: [],
+            love: [],
+            haha: [],
+            wow: [],
+            sad: [],
+            angry: [],
+        },
     },
-    //   author: {
-    //     type: String,
-    //     required: [true, 'Author is required!'],
-    // },
-    // image: {
-    //     type: String,
-    // },
+    comments: {
+        type: [mongoose.Schema.Types.ObjectId],
+        default: [],
+        ref: 'Comment',
+    },
+    authorId: {
+        type: String,
+        required: [true, 'Author is required!'],
+    },
 });
-const Post =  model('Post', PostSchema);
-console.log(Post);
-console.log(models.Post);
+const Post = models.Post || model('Post', PostSchema);
 export default Post;

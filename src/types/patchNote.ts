@@ -13,6 +13,7 @@ export type PatchNoteContentSectionCatrgory = {
 };
 
 export type PatchNote = {
+    authorId: string;
     version: string;
     introSection: PatchNoteIntroSection;
     contentSecions: PatchNoteContentSection[];
