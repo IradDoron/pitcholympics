@@ -1,0 +1,29 @@
+import { Locale } from '@/i18n.config';
+import { Link } from '@core';
+
+type Props = {
+    children: React.ReactNode;
+    params: {
+        lang: Locale;
+    };
+};
+
+const Layout = ({ children, params }: Props) => {
+    const { lang } = params;
+    return (
+        <div>
+            <h1 className='text-2xl font-bold'>Learn to play an instrument</h1>
+            <ul className='flex gap-4 m-4'>
+                <li>
+                    <Link url={`/${lang}/instruments/piano`} label='Piano' />
+                </li>
+                <li>
+                    <Link url={`/${lang}/instruments/guitar`} label='Guitar' />
+                </li>
+            </ul>
+            {children}
+        </div>
+    );
+};
+
+export default Layout;

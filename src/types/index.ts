@@ -1,8 +1,7 @@
 import { Locale } from '@/i18n.config';
-import { GameNames } from '.';
 import { StaticImageData } from 'next/image';
-import { MemoTheMeloGame, PitchCatchGame } from './games';
-
+import { GameNames } from '.';
+import { MemoBlocksGame, MemoTheMeloGame, PitchCatchGame } from './games';
 
 export type FilterObject = {
     [key: string]: boolean;
@@ -34,7 +33,7 @@ export type SidebarLink = {
 
 export type Game = {
     name: GameNames;
-    game: MemoTheMeloGame | PitchCatchGame;
+    game: MemoTheMeloGame | PitchCatchGame | MemoBlocksGame;
 };
 
 export type ThemeMode = 'light' | 'dark' | 'system';
@@ -56,6 +55,38 @@ export type Collaborator = {
     linkedin?: string;
     portfolio?: string;
 };
+export type ReactionType =
+    | 'like'
+    | 'dislike'
+    | 'love'
+    | 'haha'
+    | 'wow'
+    | 'sad'
+    | 'angry';
+
+export type Reactions =
+    | {
+          // eslint-disable-next-line no-unused-vars
+          [key in ReactionType]: string[]; //array of userIds
+      }
+    | null;
+
+export type SuggestionPostComment = {
+    content: string;
+    authorId: string;
+    date: number;
+    reactions: Reactions;
+    comments: SuggestionPostComment[];
+} | null;
+
+export type SuggestionPost = {
+    authorId: string;
+    title: string;
+    content: string;
+    category: string;
+    reactions: Reactions;
+    comments: SuggestionPostComment[];
+};
 
 export type IconProps = {
     color?: MainColorCategories;
@@ -66,7 +97,10 @@ export type IconProps = {
 
 export type MainColorCategories = 'primary' | 'secondary' | 'tertiary';
 
-export * from './gameItems';
 export * from './achievements';
+export * from './gameItems';
 export * from './gameLogic';
 export * from './games';
+export * from './patchNote';
+export * from './pianoTypes';
+export * from './piecesTypes';

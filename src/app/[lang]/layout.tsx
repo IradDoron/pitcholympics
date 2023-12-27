@@ -5,8 +5,9 @@ import '@/styles/globals.css';
 import { getHtmlDirection } from '@/utils/getHtmlDirection';
 import { Navbar } from '@shared';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-const inter = Inter({ subsets: ['latin'] });
+import Providers from './_components/Providers';
+import GlobalStyles from '@/styles/globalStyles';
+// const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
     title: 'Pitch Olympics',
@@ -28,10 +29,13 @@ export default async function RootLayout({
         <html lang={params.lang} dir={getHtmlDirection(params.lang)}>
             <ThemeProvider>
                 <body
-                    className={`${inter.className} bg-light-background-default dark:bg-dark-background-default`}>
+                    className={` bg-light-background-default dark:bg-dark-background-default`}>
                     <NextAuthProvider>
                         <Navbar params={params} />
-                        {children}
+                        <Providers>
+                            <GlobalStyles />
+                            {children}
+                        </Providers>
                     </NextAuthProvider>
                 </body>
             </ThemeProvider>
