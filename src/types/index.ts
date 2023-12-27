@@ -81,7 +81,7 @@ export type PostComment = {
 } ;
 
 export type Post = {
-    _id: string;
+    
     authorId: string;
     title: string;
     content: string;
