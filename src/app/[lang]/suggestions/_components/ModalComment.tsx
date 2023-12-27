@@ -1,17 +1,16 @@
 'use client';
 import styled from 'styled-components';
 import { ButtonContainer } from './ButtonContainer';
-import {
-    ReactionType,
-    Reactions,
-    Post,
-    PostComment,
-} from '@/types';
-import { useEffect, useState } from 'react';
+import { ReactionType, Post, PostComment } from '@/types';
+import { SetStateAction, useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
+
 type Props = {
     setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
     post: Post;
+    setCurrPost: React.Dispatch<SetStateAction<Post>>;
+    sendComment: () => void;
+    currPost: Post;
 };
 
 const Modal = styled.div`
@@ -68,11 +67,16 @@ const reactionsArray = [
     'angry',
 ];
 
-export function ModalComment({ post, setIsModalOpen }: Props) {
+export function ModalComment({ post, setIsModalOpen, setCurrPost, sendComment, currPost }: Props) {
     const { data: session } = useSession();
-    const [currComment, setCurrComment] =
-        useState<PostComment>(initialComment);
+    const [currComment, setCurrComment] = useState<PostComment>(
+        post.comments[0] || initialComment,
+    );
     const [currReaction, setCurrReaction] = useState<ReactionType | null>(null);
+
+    function updateCurrPost() {
+        setCurrPost({ ...post, comments: [currComment] });
+    }
 
     function handleSubmitCommentClick() {
         let newReactions = null;
@@ -94,11 +98,15 @@ export function ModalComment({ post, setIsModalOpen }: Props) {
             date: newDate,
         };
         alert(JSON.stringify(newComment));
+        updateCurrPost();
         setIsModalOpen(false);
     }
 
     function handleContentChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
         setCurrComment({ ...currComment, content: e.target.value });
+        setCurrPost({ ...post, comments: [currComment] });
+        sendComment();
+        console.log(currComment)
     }
     function handleCurrReactionChange(e: React.ChangeEvent<HTMLSelectElement>) {
         setCurrReaction(e.target.value as ReactionType);

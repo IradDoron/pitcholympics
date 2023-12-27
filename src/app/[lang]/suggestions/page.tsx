@@ -21,7 +21,6 @@ const initCurrPost: PostType = {
     comments: [],
     authorId: '',
     reactions: null,
-   _id: '',
 };
 
 const Page = () => {
@@ -31,7 +30,6 @@ const Page = () => {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
     async function sendPost() {
-        console.log('currPost', currPost);
         try {
             await fetch(`/controllers/suggestions`, {
                 method: 'POST',
@@ -42,7 +40,10 @@ const Page = () => {
                     post: currPost,
                 }),
             });
-            setCurrPost(initCurrPost);
+            // @ts-expect-error - Session is not null
+            const authorId = session?.user?.id;
+            setCurrPost({ ...initCurrPost, authorId });
+            console.log(currPost);
         } catch (error) {
             console.log(error);
         }
@@ -62,6 +63,26 @@ const Page = () => {
         }
     }
 
+    async function sendComment() {
+        try {
+            await fetch(`/controllers/suggestions/`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    post: currPost,
+                }),
+            });
+            // @ts-expect-error - Session is not null
+            const authorId = session?.user?.id;
+            setCurrPost({ ...initCurrPost, authorId });
+        
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     function handlePostChange(
         e:
             | React.ChangeEvent<HTMLInputElement>
@@ -72,18 +93,15 @@ const Page = () => {
     }
 
     function handleCommentChange(comment: PostComment) {
-        setCurrPost({ ...currPost, comments: [comment] });
+        setCurrPost({
+            ...currPost,
+            comments: [...currPost.comments, comment],
+        });
     }
 
     useEffect(() => {
         getPosts();
     }, [currPost]);
-
-    useEffect(() => {
-        //@ts-expect-error - session is not null
-        const authorId = session?.user?.id;
-        setCurrPost({ ...currPost, authorId });
-    }, [session]);
 
     if (!session)
         return (
@@ -117,7 +135,10 @@ const Page = () => {
                             ) : (
                                 <ModalComment
                                     post={post}
+                                    currPost={currPost}
+                                    sendComment={sendComment}
                                     setIsModalOpen={setIsModalOpen}
+                                    setCurrPost={setCurrPost}
                                 />
                             )}
                         </div>

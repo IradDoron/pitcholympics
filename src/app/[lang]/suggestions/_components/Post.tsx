@@ -7,7 +7,8 @@ type Props = {
 };
 
 export const Post = ({ post, setIsModalOpen }: Props) => {
-    function handleComment() {
+    function openModal() {
+       
         setIsModalOpen(true);
     }
 
@@ -23,8 +24,14 @@ export const Post = ({ post, setIsModalOpen }: Props) => {
                 <h1 className='text-2xl'>{post.title}</h1>
                 <p>{post.content}</p>
                 <p>{post.category}</p>
+                {post.comments.map((comment, index) => (
+                    <div key={index}>
+                        <p>{comment?.content}</p>
+                      
+                    </div>
+                ))}
             </div>
-            <Button label='Comment' onClick={handleComment} />
+            <Button label='Make A Comment' onClick={openModal} />
         </div>
     );
 };
