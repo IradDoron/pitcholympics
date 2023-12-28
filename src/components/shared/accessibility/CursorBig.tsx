@@ -1,15 +1,8 @@
-import { SunIcon } from 'lucide-react';
-import { useState, useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import CursorBigIcon from '@/components/icons/CursorBig';
+import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
-type Props = {
-    x: number;
-    y: number;
-    event: MouseEvent;
-};
-
-const CursorBig = () => {
+export const CursorBig = () => {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
     useEffect(() => {
@@ -40,5 +33,3 @@ const CursorBig = () => {
         </motion.div>
     );
 };
-
-export default CursorBig;

@@ -1,5 +1,5 @@
-import User from '@/models/user';
-import { connectToDB } from '@/utils/database';
+import { User } from '@models';
+import { connectToDB } from '@utils';
 import { getServerSession } from 'next-auth';
 
 export async function GET() {

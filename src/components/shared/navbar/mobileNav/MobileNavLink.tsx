@@ -7,7 +7,7 @@ type Props = {
     handleClose: () => void;
 };
 
-const MobileNavLink = ({ label, href, icon, handleClose }: Props) => {
+export const MobileNavLink = ({ label, href, icon, handleClose }: Props) => {
     return (
         <Link
             className='flex justify-center items-center gap-4'
@@ -22,5 +22,3 @@ const MobileNavLink = ({ label, href, icon, handleClose }: Props) => {
         </Link>
     );
 };
-
-export default MobileNavLink;

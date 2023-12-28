@@ -1,8 +1,8 @@
 'use client';
 
 import { Locale } from '@/i18n.config';
-import { getDictionaryClient } from '@/utils/getDictionaryClient';
-import MobileNavLink from './MobileNavLink';
+import { getDictionaryClient } from '@utils';
+import { MobileNavLink } from './MobileNavLink';
 
 type NavLinkProps = {
     label: string;
@@ -15,7 +15,7 @@ type Props = {
     handleClose: () => void;
 };
 
-const MobileNavContent = ({ lang, handleClose }: Props) => {
+export const MobileNavContent = ({ lang, handleClose }: Props) => {
     const dict = getDictionaryClient(lang);
 
     const { sidebarLinks } = dict.shared.navbar.MobileNav;
@@ -52,5 +52,3 @@ const MobileNavContent = ({ lang, handleClose }: Props) => {
         </div>
     );
 };
-
-export default MobileNavContent;

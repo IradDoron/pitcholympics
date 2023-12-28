@@ -1,5 +1,5 @@
 import { splitCamelCaseToString } from '@/lib/utils';
-import { Game, User } from '@/types';
+import { Game, User } from '@types';
 
 type Props = {
     game: Game;

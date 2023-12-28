@@ -1,3 +1,3 @@
-import LevelResult from './LevelResult';
+import {LevelResult} from './LevelResult';
 
 export { LevelResult };

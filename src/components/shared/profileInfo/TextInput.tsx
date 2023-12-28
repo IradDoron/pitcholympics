@@ -1,5 +1,3 @@
-import React from 'react';
-
 type Props = {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-unused-vars
     onChange: (event: any) => void;
@@ -14,7 +12,7 @@ const getStyle = (isDisabled: boolean) => {
     }
 };
 
-const TextInput = ({ onChange, value, disabled = false }: Props) => {
+export const TextInput = ({ onChange, value, disabled = false }: Props) => {
     return (
         <input
             className={getStyle(disabled)}
@@ -24,5 +22,3 @@ const TextInput = ({ onChange, value, disabled = false }: Props) => {
         />
     );
 };
-
-export default TextInput;

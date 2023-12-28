@@ -1,8 +1,8 @@
-import { Card } from '@/components/core';
-import TextInfo from '@/components/shared/collaboratorCard/TextInfo';
-import { Collaborator, CollaboratorRoles } from '@/types';
-import Image from './Image';
-import Links from './Links';
+import { Card } from '@core';
+import { Collaborator, CollaboratorRoles } from '@types';
+import { Image } from './Image';
+import { Links } from './Links';
+import { TextInfo } from './TextInfo';
 import { CardComponentsColor } from './types';
 
 type Props = {
@@ -11,7 +11,7 @@ type Props = {
     cardIndex: number;
 };
 
-const CollaboratorCard = ({ collaborator, color, cardIndex }: Props) => {
+export const CollaboratorCard = ({ collaborator, color, cardIndex }: Props) => {
     const {
         firstName,
         lastName,
@@ -73,5 +73,3 @@ const CollaboratorCard = ({ collaborator, color, cardIndex }: Props) => {
         </Card>
     );
 };
-
-export default CollaboratorCard;

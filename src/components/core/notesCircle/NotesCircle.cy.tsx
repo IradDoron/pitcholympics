@@ -1,5 +1,4 @@
-import React from 'react';
-import NotesCircle from './NotesCircle';
+import { NotesCircle } from './NotesCircle';
 
 describe('<NotesCircle />', () => {
     it('renders', () => {

@@ -1,6 +1,6 @@
-import { Collaborator, MainColorCategories } from '@/types';
-import Link from 'next/link';
 import { GithubLogo, LinkedinLogo, PortfolioLogo } from '@icons';
+import { Collaborator, MainColorCategories } from '@types';
+import Link from 'next/link';
 
 type Props = {
     github: Collaborator['github'];
@@ -9,7 +9,7 @@ type Props = {
     color: MainColorCategories;
 };
 
-const Links = ({ github, linkedin, portfolio, color }: Props) => {
+export const Links = ({ github, linkedin, portfolio, color }: Props) => {
     return (
         <div className='flex flex-row gap-4 items-center justify-center sm:justify-start'>
             {github && (
@@ -33,5 +33,3 @@ const Links = ({ github, linkedin, portfolio, color }: Props) => {
         </div>
     );
 };
-
-export default Links;

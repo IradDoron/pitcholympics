@@ -1,6 +1,6 @@
-import Label from '@/components/shared/profileInfo/Label';
-import SelectInput from '@/components/shared/profileInfo/SelectInput';
-import TextInput from '@/components/shared/profileInfo/TextInput';
+import { Label } from '@/components/shared/ProfileInfo/Label';
+import { SelectInput } from './SelectInput';
+import { TextInput } from './TextInput';
 
 type Props = {
     label: string;
@@ -12,7 +12,7 @@ type Props = {
     value?: string;
 };
 
-const ProfileInfo = ({
+export const ProfileInfo = ({
     label,
     inputType,
     options = [],
@@ -30,5 +30,3 @@ const ProfileInfo = ({
         </Label>
     );
 };
-
-export default ProfileInfo;

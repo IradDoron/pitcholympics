@@ -1,15 +1,15 @@
-import { Locale } from '@/i18n.config';
 import { Card } from '@/components/core';
+import { Locale } from '@/i18n.config';
 import { CloseIcon } from '@icons';
 import { useState } from 'react';
-import MobileNavContent from './MobileNavContent';
-import MobileNavTrigger from './MobileNavTrigger';
+import { MobileNavContent } from './MobileNavContent';
+import { MobileNavTrigger } from './MobileNavTrigger';
 
 type Props = {
     lang: Locale;
 };
 
-const MobileNav = ({ lang }: Props) => {
+export const MobileNav = ({ lang }: Props) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const handleClose = () => {
@@ -33,5 +33,3 @@ const MobileNav = ({ lang }: Props) => {
         </div>
     );
 };
-
-export default MobileNav;

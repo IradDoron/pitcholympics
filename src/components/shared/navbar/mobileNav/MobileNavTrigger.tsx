@@ -5,7 +5,7 @@ type Props = {
     setOpen: Dispatch<SetStateAction<boolean>>;
 };
 
-const MobileNavTrigger = ({ setOpen }: Props) => {
+export const MobileNavTrigger = ({ setOpen }: Props) => {
     const handleOpen = () => {
         setOpen(true);
     };
@@ -16,5 +16,3 @@ const MobileNavTrigger = ({ setOpen }: Props) => {
         </div>
     );
 };
-
-export default MobileNavTrigger;

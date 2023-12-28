@@ -1,7 +1,7 @@
-import NextAuth, { NextAuthOptions } from 'next-auth';
+import { User } from '@models';
+import { connectToDB } from '@utils';
+import { NextAuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
-import User from '@/models/user';
-import { connectToDB } from '@/utils/database';
 
 export const authOptions: NextAuthOptions = {
     providers: [

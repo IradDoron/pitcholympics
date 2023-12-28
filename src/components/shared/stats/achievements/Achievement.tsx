@@ -1,7 +1,7 @@
 'use client';
 
 // import achievements from '@/mockData/achievements';
-import users from '@/mockData/users';
+import { users } from '@mocks';
 // import AchievementCard from './AchievementCard';
 import { Locale } from '@/i18n.config';
 import { ComingSoonSection } from '@shared';

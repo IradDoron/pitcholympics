@@ -16,7 +16,7 @@ const getStepColor = (status: Props['status']) => {
     }
 };
 
-const Step = ({ number, status }: Props) => {
+export const Step = ({ number, status }: Props) => {
     const colors = getStepColor(status);
     return (
         <div
@@ -25,5 +25,3 @@ const Step = ({ number, status }: Props) => {
         </div>
     );
 };
-
-export default Step;

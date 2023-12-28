@@ -1,13 +1,13 @@
+import { StatsCard } from '@/components/core';
+import { Locale } from '@/i18n.config';
 import type {
-    User,
     GameAnalytics,
     GameNames,
     GamesStats,
     Resources,
-} from '@/types';
-import { getDictionaryClient } from '@/utils/getDictionaryClient';
-import { StatsCard } from '@/components/core';
-import { Locale } from '@/i18n.config';
+    User,
+} from '@types';
+import { getDictionaryClient } from '@utils';
 
 type Props = {
     type: 'resources' | 'gamesStats';
@@ -16,18 +16,22 @@ type Props = {
 };
 
 const StatsSection = async ({ type, lang, color }: Props) => {
-    const user = await fetch(`${process.env.BASE_URL}/api/users/`).then((res) => res.json());
+    const user = await fetch(`${process.env.BASE_URL}/api/users/`).then(res =>
+        res.json(),
+    );
 
     function countGames(user: User, gameName: GameNames): number {
-        return user?.gamesAnalytics?.reduce(
-            (count: number, curr: GameAnalytics) => {
-                if (curr.gameName === gameName) {
-                    count += 1;
-                }
-                return count;
-            },
-            0,
-        ) || 0;
+        return (
+            user?.gamesAnalytics?.reduce(
+                (count: number, curr: GameAnalytics) => {
+                    if (curr.gameName === gameName) {
+                        count += 1;
+                    }
+                    return count;
+                },
+                0,
+            ) || 0
+        );
     }
 
     const stats = {

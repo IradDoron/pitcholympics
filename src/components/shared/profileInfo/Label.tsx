@@ -1,12 +1,10 @@
-import React from 'react';
-
 type Props = {
     label: string;
     children: React.ReactNode;
     className?: string;
 };
 
-const Label = ({ label, children, className = '' }: Props) => {
+export const Label = ({ label, children, className = '' }: Props) => {
     return (
         <label
             className={`w-full text-light-surface-onPrimary dark:text-dark-surface-onPrimary ${className}`}>
@@ -15,5 +13,3 @@ const Label = ({ label, children, className = '' }: Props) => {
         </label>
     );
 };
-
-export default Label;

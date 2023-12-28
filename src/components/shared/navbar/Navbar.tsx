@@ -1,17 +1,16 @@
 'use client';
 
-import { LangParam } from '@/types';
-import { getDictionaryClient } from '@/utils/getDictionaryClient';
-import { SettingsMenu } from '@shared';
+import { Accessibility, SettingsMenu } from '@shared';
+import { LangParam } from '@types';
+import { getDictionaryClient } from '@utils';
 import { useState } from 'react';
-import Accesibility from '../accessibility/Accesibility';
-import AuthButton from './AuthButton';
-import LocaleSwitcher from './LocaleSwitcher';
-import NavbarLink from './NavbarLink';
-import Theme from './Theme';
-import MobileNav from './mobileNav';
+import { AuthButton } from './AuthButton';
+import { LocaleSwitcher } from './LocaleSwitcher';
+import { NavbarLink } from './NavbarLink';
+import { Theme } from './Theme';
+import { MobileNav } from './mobileNav';
 
-const Navbar = ({ params: { lang } }: LangParam) => {
+export const Navbar = ({ params: { lang } }: LangParam) => {
     const [isSettingsMenuOpen, setIsSettingsMenuOpen] = useState(false);
     const dict = getDictionaryClient(lang);
     const { pages } = dict.shared.navbar;
@@ -46,7 +45,7 @@ const Navbar = ({ params: { lang } }: LangParam) => {
 
     return (
         <div className=' flex flex-row justify-center'>
-            <Accesibility />
+            <Accessibility />
             <nav className='flex flex-row p-2 sticky w-full bg-light-background-defaultBlur dark:bg-dark-background-defaultBlur '>
                 <div className='flex justify-self-start px-10 w-fit'>
                     <LocaleSwitcher params={{ lang }} />
@@ -75,5 +74,3 @@ const Navbar = ({ params: { lang } }: LangParam) => {
         </div>
     );
 };
-
-export default Navbar;

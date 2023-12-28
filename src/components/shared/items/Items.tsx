@@ -1,13 +1,16 @@
-import { Locale } from '@/i18n.config';
-import React from 'react';
-import ItemCard from './ItemCard';
-import { GameItem } from '@/types';
-import gameItems from '@/mockData/gameItems';
+import { gameItems } from '@mocks';
+import { GameItem } from '@types';
+import { CSSProperties } from 'react';
+import { ItemCard } from './ItemCard';
 
-const Items = () => {
+const GAME_ITEMS = {
+
+}
+
+export const Items = () => {
     const items: GameItem[] = gameItems;
 
-    const containerStyle: React.CSSProperties = {
+    const containerStyle: CSSProperties = {
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'center',
@@ -22,5 +25,3 @@ const Items = () => {
         </div>
     );
 };
-
-export default Items;

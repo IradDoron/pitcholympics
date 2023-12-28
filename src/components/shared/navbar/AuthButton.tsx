@@ -1,20 +1,23 @@
 'use client';
 
-import { useState, useEffect, Dispatch, SetStateAction } from 'react';
 import {
+    ClientSafeProvider,
+    getProviders,
     signIn,
     useSession,
-    getProviders,
-    ClientSafeProvider,
 } from 'next-auth/react';
 import Image from 'next/image';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 type Props = {
     isSettingsMenuOpen: boolean;
     setIsSettingsMenuOpen: Dispatch<SetStateAction<boolean>>;
 };
 
-function AuthButton({ isSettingsMenuOpen, setIsSettingsMenuOpen }: Props) {
+export const AuthButton = ({
+    isSettingsMenuOpen,
+    setIsSettingsMenuOpen,
+}: Props) => {
     const { data: session } = useSession();
 
     const [providers, setProviders] = useState<Record<
@@ -57,6 +60,4 @@ function AuthButton({ isSettingsMenuOpen, setIsSettingsMenuOpen }: Props) {
                 ))}
         </>
     );
-}
-
-export default AuthButton;
+};

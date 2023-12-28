@@ -12,10 +12,10 @@ import {
 } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import MenuItem from './MenuItem';
-import MenuSection from './MenuSection';
-import TransparentBg from './TransparentBg';
-import UserName from './UserName';
+import { MenuItem } from './MenuItem';
+import { MenuSection } from './MenuSection';
+import { TransparentBg } from './TransparentBg';
+import { UserName } from './UserName';
 
 type Props = {
     isOpen: boolean;
@@ -23,7 +23,7 @@ type Props = {
     lang: Locale;
 };
 
-const SettingsMenu = ({ isOpen, setIsOpen, lang }: Props) => {
+export const SettingsMenu = ({ isOpen, setIsOpen, lang }: Props) => {
     const router = useRouter();
     const { data: session } = useSession();
 
@@ -86,5 +86,3 @@ const SettingsMenu = ({ isOpen, setIsOpen, lang }: Props) => {
         </Card>
     );
 };
-
-export default SettingsMenu;

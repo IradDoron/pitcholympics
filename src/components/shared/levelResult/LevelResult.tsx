@@ -1,7 +1,7 @@
-import { Button } from '@/components/core';
 import { Locale } from '@/i18n.config';
-import ResultData from './ResultData';
-import ResultTitle from './ResultTitle';
+import { Button } from '@core';
+import { ResultData } from './ResultData';
+import { ResultTitle } from './ResultTitle';
 
 type Props = {
     level: number;
@@ -13,7 +13,7 @@ type Props = {
     lang: Locale;
 };
 
-const LevelResult = ({
+export const LevelResult = ({
     level,
     score,
     actionButtonLabel,
@@ -59,5 +59,3 @@ const LevelResult = ({
 // //    <Button label={actionButtonLabel} onClick={actionButtonOnClick} />
 
 // // </div>))
-
-export default LevelResult;

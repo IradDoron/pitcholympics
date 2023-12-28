@@ -4,7 +4,7 @@ type Props = {
     setIsOpen: Dispatch<SetStateAction<boolean>>;
 };
 
-const TransparentBg = ({ setIsOpen }: Props) => {
+export const TransparentBg = ({ setIsOpen }: Props) => {
     const handleClick = (e: any) => {
         e.stopPropagation(); // Stop the event propagation
         setIsOpen(false);
@@ -16,5 +16,3 @@ const TransparentBg = ({ setIsOpen }: Props) => {
             onClick={handleClick}></div>
     );
 };
-
-export default TransparentBg;

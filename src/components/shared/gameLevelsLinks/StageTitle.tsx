@@ -1,7 +1,7 @@
 'use client';
 
 import { Locale } from '@/i18n.config';
-import { getDictionaryClient } from '@/utils/getDictionaryClient';
+import { getDictionaryClient } from '@utils';
 import { usePathname } from 'next/navigation';
 
 type Props = {

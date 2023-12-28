@@ -26,7 +26,7 @@ const NotCurrentLink = ({ label }: Props) => {
     );
 };
 
-const NavbarLink = ({ url, label }: Props) => {
+export const NavbarLink = ({ url, label }: Props) => {
     const isCurrent = url === usePathname();
     return (
         <Link href={url}>
@@ -38,5 +38,3 @@ const NavbarLink = ({ url, label }: Props) => {
         </Link>
     );
 };
-
-export default NavbarLink;

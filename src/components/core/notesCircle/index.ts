@@ -1,2 +1,3 @@
-import NotesCircle from './NotesCircle';
+import { NotesCircle } from './NotesCircle';
+
 export default NotesCircle;

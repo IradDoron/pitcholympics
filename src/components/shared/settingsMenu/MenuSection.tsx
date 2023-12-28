@@ -1,4 +1,4 @@
-import Divider from './Divider';
+import { Divider } from './Divider';
 
 type Props = {
     children: React.ReactNode;
@@ -8,7 +8,7 @@ type Props = {
     onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
 };
 
-const MenuSection = ({
+export const MenuSection = ({
     children,
     isLast = false,
     className = '',
@@ -25,5 +25,3 @@ const MenuSection = ({
         </>
     );
 };
-
-export default MenuSection;

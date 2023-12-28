@@ -1,9 +1,9 @@
 'use client';
 
-import { useTheme } from '@/context/ThemeProvider';
 import { Menubar } from '@/components/core';
-import { SunIcon, MoonIcon, GearIcon } from '@icons';
-import { IconProps, ThemeMode } from '@/types';
+import { useTheme } from '@/context/ThemeProvider';
+import { GearIcon, MoonIcon, SunIcon } from '@icons';
+import { IconProps, ThemeMode } from '@types';
 
 type ThemesObject = {
     value: ThemeMode;
@@ -17,7 +17,7 @@ export const themes = [
     { value: 'system', label: 'System', icon: GearIcon },
 ] as ThemesObject[];
 
-const Theme = () => {
+export const Theme = () => {
     const { mode, setMode } = useTheme();
 
     return (
@@ -49,10 +49,11 @@ const Theme = () => {
                                 }}>
                                 <Icon color='primary' size='medium' />
                                 <p
-                                    className={`body-semibold text-light-500 ${mode === item.value
+                                    className={`body-semibold text-light-500 ${
+                                        mode === item.value
                                             ? 'text-primary-500'
                                             : 'text-dark100_light900'
-                                        }`}>
+                                    }`}>
                                     {item.label}
                                 </p>
                             </div>
@@ -62,5 +63,3 @@ const Theme = () => {
             }></Menubar>
     );
 };
-
-export default Theme;

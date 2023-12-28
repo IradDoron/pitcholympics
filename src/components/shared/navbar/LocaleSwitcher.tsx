@@ -1,17 +1,27 @@
 'use client';
 
-import { LANGS_FULL_NAMES } from '@/constants';
-import { i18n } from '@/i18n.config';
-import { LangParam } from '@/types';
-import { redirectedPathName } from '@/utils/redirectedPathName';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { Menubar } from '@/components/core';
-import Image from 'next/image';
 import FlagIsrael from '@/assets/icons/flags/israel-flag-icon.svg';
 import FlagUnitedStates from '@/assets/icons/flags/united-states-flag-icon.svg';
+import { Locale, i18n } from '@/i18n.config';
+import { Menubar } from '@core';
+import { redirectedPathName } from '@utils';
+import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
-const LocaleSwitcher = ({ params: { lang } }: LangParam) => {
+export const LANGS_FULL_NAMES = {
+    en: 'English',
+    he: 'עברית',
+};
+
+type Props = {
+    params: {
+        lang: Locale;
+    };
+};
+
+export const LocaleSwitcher = ({ params }: Props) => {
+    const { lang } = params;
     const pathName = usePathname();
     return (
         <Menubar
@@ -54,5 +64,3 @@ const LocaleSwitcher = ({ params: { lang } }: LangParam) => {
         />
     );
 };
-
-export default LocaleSwitcher;
