@@ -101,6 +101,11 @@
                     "totalGamesPlayed": "סך משחקים ששוחקו"
                 }
             }
+        },
+        "patchNote": {
+            "page": {
+                "title": "עדכוני גירסה"
+            }
         }
     },
     "shared": {
@@ -111,14 +116,30 @@
         "navbar": {
             "pages": {
                 "home": "בית",
-                "stats": "סטטיסטיקה",
                 "about": "אודות",
-                "suggestions": "הצעות",
-                "library": "ספרייה",
                 "courses": "קורסים",
-                "websiteAnalytics": "נתוני אתר",
+                "devInfo": "מידע למפתחים",
+                "faq": "שאלות נפוצות",
+                "games": "משחקים",
+                "howToContribute": "איך לתרום לפרויקט",
+                "instruments": "כלי נגינה",
+                "items": "פריטים",
+                "leaderboard": "טבלת מובילים",
+                "library": "ספרייה",
                 "musicHistory": "היסטוריה המוזיקה",
-                "leaderboard": "טבלת מובילים"
+                "musicalPatterns": "תבניות מוזיקליות",
+                "patchNote": "עדכונים",
+                "pieces": "יצירות",
+                "polls": "סקרים",
+                "practice": "תרגול",
+                "profile": "פרופיל",
+                "q&a": "שאלות ותשובות",
+                "roadmap": "מפת הדרכים",
+                "shop": "חנות",
+                "stats": "סטטיסטיקה",
+                "suggestions": "הצעות",
+                "teaching": "הוראה",
+                "websiteAnalytics": "נתוני אתר"
             },
             "title": "עמוד",
             "MobileNav": {
@@ -135,6 +156,40 @@
         "snackbar": {
             "Success": ["עבודה טובה!", "יפה!", "גאון"],
             "Failed": ["נסה שוב", "אולי בפעם הבאה.."]
+        }
+    },
+    "data": {
+        "pianoDataDict": {
+            "pianoAccompanimentPatternCategoriesDict": {
+                "whole-notes-arrepegio": {
+                    "name": "פירוקי שלמים",
+                    "description": "נגינת פירוקי שלמים"
+                },
+                "quater-notes-arrepegio": {
+                    "name": "פירוקי רבעים",
+                    "description": "נגינת פירוקי רבעים"
+                },
+                "eight-notes-arrepegio": {
+                    "name": "פירוקי שמיניות",
+                    "description": "נגינת פירוקי שמיניות"
+                }
+            },
+            "pianoAccompanimentPatternsDict": {
+                "1": {
+                    "name": "תבנית ליווי בסיסית 1",
+                    "description": "תבנית ליווי בסיסית 1",
+                    "useCases": [
+                        "שימושי כאשר אתה רוצה לנגן שיר עם ליווי פשוט",
+                        "שימושי כאשר אתה רוצה לנגן שיר עם ליווי פשוט",
+                        "שימושי כאשר אתה רוצה לנגן שיר עם ליווי פשוט"
+                    ]
+                }
+            },
+            "handDict": {
+                "left": "יד שמאל",
+                "right": "יד ימין",
+                "both": "שתי ידיים"
+            }
         }
     }
 }

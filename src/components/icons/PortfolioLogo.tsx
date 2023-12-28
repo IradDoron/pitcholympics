@@ -9,6 +9,7 @@ export const PortfolioLogo = ({
         small: 'w-[112px] h-[18px]',
         medium: 'w-[130px] h-[25px]',
         large: 'w-[178px] h-[34px]',
+        extraLarge: 'w-[200px] h-[200x]',
     };
     return (
         <svg

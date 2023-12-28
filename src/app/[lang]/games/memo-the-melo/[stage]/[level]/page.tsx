@@ -4,11 +4,7 @@ import { CURRENT_DOMAIN } from '@/constants';
 import { Locale } from '@/i18n.config';
 import memoTheMeloMockData from '@/mockData/memoTheMelo';
 import { MemoTheMeloGame } from '@/types';
-import {
-    compareArrays,
-    convertPitchesToIndexes,
-    handleEndLevel,
-} from '@/utils';
+import { compareArrays, handleEndLevel, convertPitchesToIndexes } from '@/utils';
 import { getDictionaryClient } from '@/utils/getDictionaryClient';
 import { Button } from '@core';
 import { ButtonMelody, LevelStepper } from '@shared';
@@ -57,7 +53,7 @@ const Page = ({ params }: Props) => {
 
     const { startMelody, checkGuess } = dict.app['memo-the-melo'];
 
-    const handleWin = async () => {
+    const handleResult = async (result: 'passed' | 'failed') => {
         // update the status level and stage to database
         try {
             // TODO: fix the session error
@@ -71,91 +67,29 @@ const Page = ({ params }: Props) => {
                         'Content-type': 'application/json',
                     },
                     body: JSON.stringify({
-                        status: 'passed',
+                        status: result,
                         stage: params.stage,
                         level: params.level,
+                        isLastLevel: result === 'passed' && level >= currentStageLevels
                     }),
                 },
             );
 
             if (!res.ok) {
                 throw new Error('Failed to update');
-            }
-            if (!(level >= currentStageLevels)) {
-                const nextLevelRes = await fetch(
-                    //@ts-ignore
-
-                    `http://localhost:3000/api/games/memo-the-melo/${session?.user?.id}`,
-                    {
-                        method: 'PUT',
-                        headers: {
-                            'Content-type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            status: 'pending',
-                            stage: +params.stage,
-                            level: +params.level + 1,
-                        }),
-                    },
-                );
-
-                if (!nextLevelRes.ok) {
-                    throw new Error('Failed to update next level');
-                }
-            } else {
-                const nextLevelRes = await fetch(
-                    //@ts-ignore
-
-                    `http://localhost:3000/api/games/memo-the-melo/${session?.user?.id}`,
-                    {
-                        method: 'PUT',
-                        headers: {
-                            'Content-type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            status: 'pending',
-                            stage: +params.stage + 1,
-                            level: 1,
-                        }),
-                    },
-                );
-
-                if (!nextLevelRes.ok) {
-                    throw new Error('Failed to update next level');
-                }
             }
         } catch (error) {
             console.log(error);
         }
     };
 
-    const handleLose = async () => {
-        // update the status level and stage to database
-        try {
-            // TODO: fix the session error
-            //@ts-ignore
-            const res = await fetch(
-                //@ts-ignore
-                `${CURRENT_DOMAIN}/api/games/memo-the-melo/${session?.user?.id}`,
-                {
-                    method: 'PUT',
-                    headers: {
-                        'Content-type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        status: 'failed',
-                        stage: params.stage,
-                        level: params.level,
-                    }),
-                },
-            );
 
-            if (!res.ok) {
-                throw new Error('Failed to update');
-            }
-        } catch (error) {
-            console.log(error);
-        }
+    const handleWin = async () => {
+        await handleResult('passed');
+    };
+
+    const handleLose = async () => {
+        await handleResult('failed');
     };
 
     /**

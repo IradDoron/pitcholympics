@@ -1,24 +1,22 @@
 'use client';
 
 import { Locale } from '@/i18n.config';
-import { LevelStatus, MemoTheMeloGame, PitchCatchGame } from '@/types';
 import type { Session } from 'next-auth';
 import { useSession } from 'next-auth/react';
-import { useEffect, useState } from 'react';
 import LevelLink from './LevelLink';
 import LevelsLinksContainer from './LevelsLinksContainer';
-import StageLevelsContainer from './StageLevelsContainer';
+import { useEffect, useState } from 'react';
+import { MemoTheMeloGame, PitchCatchGame, LevelStatus, GameNamesToSlug, MemoBlocksGame } from '@/types';
 import StageTitle from './StageTitle';
+import StageLevelsContainer from './StageLevelsContainer';
 
 type Props = {
-    levelsData: MemoTheMeloGame | PitchCatchGame;
+    levelsData: MemoTheMeloGame | PitchCatchGame | MemoBlocksGame;
     lang: Locale;
-    game: string;
+    game: GameNamesToSlug;
 };
 
-type UserProgressEntry = {
-    [key: string]: LevelStatus;
-};
+type UserProgressEntry = Record<string, LevelStatus>
 
 type ExtendedSession = Session & {
     user: Session['user'] & {
@@ -35,6 +33,7 @@ const GameLevelsLinks = ({ levelsData, lang, game }: Props) => {
         levelIndex: number,
         stageIndex: number,
     ): LevelStatus => {
+
         if (!userProgress) {
             return 'locked';
         }
@@ -46,6 +45,10 @@ const GameLevelsLinks = ({ levelsData, lang, game }: Props) => {
         if (!isKeyInUserProgress) {
             return 'locked';
         } else {
+
+            if (userProgress[levelKey] === 'locked' && levelIndex === 0) { // allow first level to be unlocked by default in each stage
+                return 'pending';
+            }
             return userProgress[levelKey];
         }
     };
