@@ -1,8 +1,8 @@
 'use client';
-import { IconProps } from '@/types';
-import { ICON_COLORS, ICON_SIZES } from '@/constants';
+
+import { ICON_COLORS, ICON_SIZES } from '@constants';
+import { IconProps } from '@types';
 import { motion } from 'framer-motion';
-import { Scale } from 'lucide-react';
 
 export const AccessibilityIcon = ({
     color = 'primary',

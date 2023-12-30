@@ -1,5 +1,5 @@
-import { ICON_COLORS } from '@/constants';
-import { IconProps } from '@/types';
+import { ICON_COLORS } from '@constants';
+import { IconProps } from '@types';
 
 export const PortfolioLogo = ({
     color = 'primary',

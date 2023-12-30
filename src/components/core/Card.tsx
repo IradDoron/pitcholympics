@@ -1,4 +1,4 @@
-import { reduceClasses } from '@/utils/reduceClasses';
+import { reduceClasses } from '@utils';
 
 type CardShadow = 'none' | 'medium' | 'large';
 type CardColor = 'primary' | 'secondary' | 'tertiary';

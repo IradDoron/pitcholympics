@@ -1,16 +1,14 @@
-import { connectToDB } from '@/utils/database';
-import User from '@/models/user';
-import { NextResponse, NextRequest } from 'next/server';
-import { convertKebabCaseToCamelCase, mapToObject } from '@/utils';
-import { GameNames, GameNamesToSlug, LevelStatus } from '@/types';
+import { User } from '@models';
+import { GameNames, GameNamesToSlug, LevelStatus } from '@types';
+import { connectToDB, convertKebabCaseToCamelCase, mapToObject } from '@utils';
+import { NextRequest, NextResponse } from 'next/server';
 
 type RouteParams = {
-    params:
-    {
-        id: string,
-        game: GameNamesToSlug,
-    }
-}
+    params: {
+        id: string;
+        game: GameNamesToSlug;
+    };
+};
 
 /**
  *  update and add the user stage level and status with the id of the user
@@ -29,7 +27,7 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
         const levelKey = `${stage}_${level}`;
 
         // if level already passed return
-        if (gameDataObject[levelKey] as LevelStatus === 'passed') {
+        if ((gameDataObject[levelKey] as LevelStatus) === 'passed') {
             return NextResponse.json(
                 { message: 'Level already passed' },
                 { status: 200 },
@@ -43,10 +41,12 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
         });
 
         // update the next level status to pending
-        const nextLevelKey = isLastLevel ? `${stage + 1}_${level}` : `${stage}_${level + 1}`;
+        const nextLevelKey = isLastLevel
+            ? `${stage + 1}_${level}`
+            : `${stage}_${level + 1}`;
         const nextKey = `gameProgress.${gameName}.${nextLevelKey}`;
         await User.findByIdAndUpdate(id, {
-            $set: { [nextKey]: 'pending' }
+            $set: { [nextKey]: 'pending' },
         });
 
         return NextResponse.json(
