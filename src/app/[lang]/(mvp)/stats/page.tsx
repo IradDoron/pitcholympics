@@ -1,8 +1,6 @@
-import Achievements from '@/components/shared/Stats/achievements';
-import GameProgress from '@/components/shared/Stats/gamesProgress';
-import StatsSection from '@/components/shared/Stats/statsSection';
 import { Locale } from '@/i18n.config';
-import { getServerSession } from 'next-auth';
+import { auth } from '@/lib/auth';
+import { Achievements, GameProgress, StatsSection } from './_components';
 
 type Props = {
     params: {
@@ -11,7 +9,8 @@ type Props = {
 };
 
 const Page = async ({ params }: Props) => {
-    const session = await getServerSession();
+    const session = await auth();
+    console.log('session from stats page', session);
     const { lang } = params;
 
     if (!session)

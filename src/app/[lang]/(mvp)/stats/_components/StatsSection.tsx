@@ -1,5 +1,7 @@
-import { StatsCard } from '@/components/core';
+'use client';
+
 import { Locale } from '@/i18n.config';
+import { StatsCard } from '@core';
 import type {
     GameAnalytics,
     GameNames,
@@ -8,6 +10,7 @@ import type {
     User,
 } from '@types';
 import { getDictionaryClient } from '@utils';
+import { useEffect } from 'react';
 
 type Props = {
     type: 'resources' | 'gamesStats';
@@ -15,10 +18,16 @@ type Props = {
     color: 'primary' | 'secondary' | 'tertiary';
 };
 
-const StatsSection = async ({ type, lang, color }: Props) => {
-    const user = await fetch(`${process.env.BASE_URL}/api/users/`).then(res =>
-        res.json(),
-    );
+export const StatsSection = async ({ type, lang, color }: Props) => {
+    let user: User | null = null;
+
+    useEffect(() => {
+        async function fetchData() {
+            const data = await fetch(`${process.env.BASE_URL}/api/users/`);
+            user = await data.json();
+        }
+        fetchData();
+    }, []);
 
     function countGames(user: User, gameName: GameNames): number {
         return (
@@ -34,13 +43,15 @@ const StatsSection = async ({ type, lang, color }: Props) => {
         );
     }
 
+    if (!user) return null;
+
     const stats = {
-        resources: { ...user.resources },
+        resources: { ...(user as User)?.resources },
         gamesStats: {
             memoBlocks: countGames(user, 'memoTheMelo'),
             memoTheMelo: countGames(user, 'pitchCatch'),
             pitchCatch: countGames(user, 'memoBlocks'),
-            totalGamesPlayed: user?.gamesAnalytics?.length || 0,
+            totalGamesPlayed: (user as User)?.gamesAnalytics?.length ?? 0,
         },
     };
     const dict = getDictionaryClient(lang);
@@ -77,5 +88,3 @@ const StatsSection = async ({ type, lang, color }: Props) => {
         </div>
     );
 };
-
-export default StatsSection;

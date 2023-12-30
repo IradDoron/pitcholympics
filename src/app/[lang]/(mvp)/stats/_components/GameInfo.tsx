@@ -1,12 +1,12 @@
-import { splitCamelCaseToString } from '@/lib/utils';
 import { Game, User } from '@types';
+import { splitCamelCaseToString } from '@utils';
 
 type Props = {
     game: Game;
     user: User;
 };
 
-const GameInfo = ({ game, user }: Props) => {
+export const GameInfo = ({ game, user }: Props) => {
     const name = splitCamelCaseToString(game.name); // Get the game name
     const gameProgress = user.gameProgress[game.name];
     const passedLevels = gameProgress
@@ -33,4 +33,3 @@ const GameInfo = ({ game, user }: Props) => {
         </div>
     );
 };
-export default GameInfo;

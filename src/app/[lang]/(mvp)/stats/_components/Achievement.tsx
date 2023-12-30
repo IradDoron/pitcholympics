@@ -10,7 +10,7 @@ type Props = {
     lang: Locale;
 };
 
-const Achievements = ({ lang }: Props) => {
+export const Achievements = ({ lang }: Props) => {
     const user = users[0]; // TODO: get user from context
     const userAchievements = user.achievements;
 
@@ -40,4 +40,3 @@ const Achievements = ({ lang }: Props) => {
         </>
     );
 };
-export default Achievements;

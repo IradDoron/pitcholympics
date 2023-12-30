@@ -1,13 +1,15 @@
-'use strict';
-import { ProgressBar } from '@/components/core';
+'use client';
+
+import { ProgressBar } from '@core';
 import type { Achievement, User } from '@types';
 import { useState } from 'react';
+
 type Props = {
     achievement: Achievement;
     user: User;
 };
 
-const AchievementCard = ({ user, achievement }: Props) => {
+export const AchievementCard = ({ user, achievement }: Props) => {
     const userAchievement = user.achievements[achievement.id];
     const completedCount = userAchievement.criteriaStatus.reduce(
         (count, curr) => count + (curr ? 1 : 0),
@@ -62,5 +64,3 @@ const AchievementCard = ({ user, achievement }: Props) => {
         </div>
     );
 };
-
-export default AchievementCard;

@@ -1,4 +1,4 @@
-import { auth } from '@/app/api/auth/[...nextauth]/auth';
+import { auth } from '@/lib/auth';
 
 export default async function GamesLayout({
     children,

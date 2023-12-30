@@ -1,8 +1,8 @@
 import { gamesData, users } from '@mocks';
 import { Game } from '@types';
-import GameInfo from './gameInfo';
+import { GameInfo } from './GameInfo';
 
-const GameProgress = () => {
+export const GameProgress = () => {
     const user = users[0]; // TODO: Replace with the actual user
 
     return (
@@ -13,4 +13,3 @@ const GameProgress = () => {
         </div>
     );
 };
-export default GameProgress;

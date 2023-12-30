@@ -68,7 +68,7 @@ export function Navbar({ params: { lang } }: LangParam) {
     }, [isMvp]);
 
     return (
-        <div className='flex flex-col'>
+        <div className='flex flex-col items-center'>
             <Button
                 label={isMvp ? 'MVP' : 'All'}
                 onClick={handleNavPagesToggleClick}
