@@ -8,6 +8,7 @@ export async function getFAQs() {
         const faqs = (await FAQ.find()) as FAQType[];
         return faqs;
     } catch (error) {
+        // eslint-disable-next-line no-console
         console.log(error);
     }
 }
@@ -44,6 +45,7 @@ export const voteFAQ = async (
 
         await FAQ.findByIdAndUpdate(faqId, { votes: votesObject });
     } catch (error) {
+        // eslint-disable-next-line no-console
         console.log(error);
     }
 };

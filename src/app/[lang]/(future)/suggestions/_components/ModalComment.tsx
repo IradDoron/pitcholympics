@@ -100,7 +100,6 @@ export function ModalComment({
         setCurrComment({ ...currComment, content: e.target.value });
         setCurrPost({ ...post, comments: [currComment] });
         sendComment();
-        console.log(currComment);
     }
     function handleCurrReactionChange(e: React.ChangeEvent<HTMLSelectElement>) {
         setCurrReaction(e.target.value as ReactionType);

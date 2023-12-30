@@ -9,13 +9,12 @@ export async function deleteSuggestionPost(postId: string) {
     connectToDB();
     try {
         if (!mongoose.Types.ObjectId.isValid(postId)) {
-            console.log('Invalid postId');
             return;
         }
 
         await SuggestionPost.findByIdAndDelete(postId);
-        console.log('Post deleted successfully');
     } catch (error) {
+        // eslint-disable-next-line no-console
         console.log(error);
     }
 }
@@ -26,6 +25,7 @@ export const getSeggestionPost = async (id: string) => {
         const post = await SuggestionPost.findById(id);
         return post;
     } catch (error) {
+        // eslint-disable-next-line no-console
         console.log(error);
     }
 };
@@ -36,6 +36,7 @@ export async function getSeggestionPosts() {
         const posts = await SuggestionPost.find();
         return posts;
     } catch (error) {
+        // eslint-disable-next-line no-console
         console.log(error);
     }
 }
@@ -60,6 +61,7 @@ export const submitSuggestionPostComment = async (
         const posts = await getSeggestionPost(postId);
         await SuggestionPost.findByIdAndUpdate(commentId, comment);
     } catch (error) {
+        // eslint-disable-next-line no-console
         console.log(error);
     }
 };
@@ -69,6 +71,7 @@ export async function updateSuggestionPost(postId: string, post: PostType) {
     try {
         await SuggestionPost.findByIdAndUpdate(postId, post);
     } catch (error) {
+        // eslint-disable-next-line no-console
         console.log(error);
     }
 }

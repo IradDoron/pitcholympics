@@ -10,7 +10,7 @@ type Props = {
 
 const Page = async ({ params }: Props) => {
     const session = await auth();
-    console.log('session from stats page', session);
+
     const { lang } = params;
 
     if (!session)

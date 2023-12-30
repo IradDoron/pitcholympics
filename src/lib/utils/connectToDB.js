@@ -6,6 +6,7 @@ export const connectToDB = async () => {
     mongoose.set('strictQuery', true);
 
     if (isConnected) {
+        // eslint-disable-next-line no-console
         console.log('MongoDB is already connected');
         return;
     }
@@ -19,8 +20,10 @@ export const connectToDB = async () => {
 
         isConnected = true;
 
+        // eslint-disable-next-line no-console
         console.log('MongoDB connected');
     } catch (error) {
+        // eslint-disable-next-line no-console
         console.log(error);
     }
 };

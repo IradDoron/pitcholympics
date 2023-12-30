@@ -26,7 +26,6 @@ const Page = ({ params: { lang } }: Props) => {
 
     useEffect(() => {
         getAllFAQs();
-        console.log('FAQs', faqs);
     }, []);
     if (!session) {
         return (

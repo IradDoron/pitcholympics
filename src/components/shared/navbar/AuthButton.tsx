@@ -28,7 +28,6 @@ export const AuthButton = ({
     useEffect(() => {
         (async () => {
             const response = await getProviders();
-            console.log('response', response);
             setProviders(response);
         })();
     }, []);

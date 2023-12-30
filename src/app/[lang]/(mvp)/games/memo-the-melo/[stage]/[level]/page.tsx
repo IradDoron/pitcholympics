@@ -83,6 +83,7 @@ const Page = ({ params }: Props) => {
                 throw new Error('Failed to update');
             }
         } catch (error) {
+            // eslint-disable-next-line no-console
             console.log(error);
         }
     };

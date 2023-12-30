@@ -24,7 +24,6 @@ export const LibraryFilter = ({
     };
 
     const handleSearch = () => {
-        console.log('search');
         //search on click or just search on every input and filter change
     };
 

@@ -29,8 +29,6 @@ const Page = ({ params }: Props) => {
 
     const { profile } = dict.app;
 
-    console.log('session', session);
-
     const handleGenderChange = (e: any) => {
         setNewGender(e.target.value);
     };
@@ -77,6 +75,7 @@ const Page = ({ params }: Props) => {
             setNewGender(dbGender);
             setNewLocale(dbLocale);
         } catch (error) {
+            // eslint-disable-next-line no-console
             console.log(error);
         }
     }

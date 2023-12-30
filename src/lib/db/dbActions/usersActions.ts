@@ -8,6 +8,7 @@ export async function getUsesr() {
 
         return users;
     } catch (error) {
+        // eslint-disable-next-line no-console
         console.log(error);
     }
 }
@@ -19,6 +20,7 @@ export async function getUser(userId: string) {
 
         return user;
     } catch (error) {
+        // eslint-disable-next-line no-console
         console.log(error);
     }
 }
@@ -32,6 +34,7 @@ export async function updateUserProfile(
     try {
         await User.findByIdAndUpdate(userId, { gender, locale });
     } catch (error) {
+        // eslint-disable-next-line no-console
         console.log(error);
     }
 }

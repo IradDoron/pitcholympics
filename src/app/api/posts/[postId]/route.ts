@@ -1,4 +1,4 @@
-import { NextRequest } from "next/server";
+import { NextRequest } from 'next/server';
 
 export async function POST(request: NextRequest, { params }: any) {
     try {
@@ -13,9 +13,8 @@ export async function POST(request: NextRequest, { params }: any) {
             },
         );
         const data = await response.json();
-        console.log(data);
     } catch (error) {
+        // eslint-disable-next-line no-console
         console.log(error);
     }
-   
 }

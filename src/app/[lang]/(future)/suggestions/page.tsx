@@ -43,8 +43,8 @@ const Page = () => {
             // @ts-expect-error - Session is not null
             const authorId = session?.user?.id;
             setCurrPost({ ...initCurrPost, authorId });
-            console.log(currPost);
         } catch (error) {
+            // eslint-disable-next-line no-console
             console.log(error);
         }
     }
@@ -60,6 +60,7 @@ const Page = () => {
             const data = await res.json();
             setPosts(data);
         } catch (error) {
+            // eslint-disable-next-line no-console
             console.log(error);
         }
     }
@@ -80,6 +81,7 @@ const Page = () => {
             const authorId = session?.user?.id;
             setCurrPost({ ...initCurrPost, authorId });
         } catch (error) {
+            // eslint-disable-next-line no-console
             console.log(error);
         }
     }
