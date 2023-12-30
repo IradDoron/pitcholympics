@@ -4,14 +4,9 @@ import { Locale } from '@/i18n.config';
 import { Card } from '@core';
 import { CloseIcon, GithubLogo } from '@icons';
 import { UserImage } from '@shared';
-import {
-    ClientSafeProvider,
-    getProviders,
-    signOut,
-    useSession,
-} from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect } from 'react';
 import { MenuItem } from './MenuItem';
 import { MenuSection } from './MenuSection';
 import { TransparentBg } from './TransparentBg';
@@ -27,15 +22,10 @@ export const SettingsMenu = ({ isOpen, setIsOpen, lang }: Props) => {
     const router = useRouter();
     const { data: session } = useSession();
 
-    const [providers, setProviders] = useState<Record<
-        string,
-        ClientSafeProvider
-    > | null>(null);
-
     useEffect(() => {
         (async () => {
-            const response = await getProviders();
-            setProviders(response);
+            // const response = await getProviders();
+            // setProviders(response);
         })();
     }, []);
 

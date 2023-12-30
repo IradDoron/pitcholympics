@@ -18,7 +18,7 @@ const Page = ({ params: { lang } }: Props) => {
     const [faqs, setFAQs] = useState<FAQ[]>([]);
 
     const getAllFAQs = async () => {
-        const url = '/controllers/faq/all-faqs';
+        const url = '/api/faqs';
         const response = await fetch(url);
         const faqs = await response.json();
         setFAQs(faqs);

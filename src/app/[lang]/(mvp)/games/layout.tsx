@@ -1,11 +1,11 @@
-import { getServerSession } from 'next-auth/next';
+import { auth } from '@/app/api/auth/[...nextauth]/auth';
 
 export default async function GamesLayout({
     children,
 }: {
     children: React.ReactNode;
 }) {
-    const session = await getServerSession();
+    const session = await auth();
 
     if (!session) {
         return (

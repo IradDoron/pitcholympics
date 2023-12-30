@@ -10,7 +10,7 @@ import { NavbarLink } from './NavbarLink';
 import { Theme } from './Theme';
 import { MobileNav } from './mobileNav';
 
-export const Navbar = ({ params: { lang } }: LangParam) => {
+export function Navbar({ params: { lang } }: LangParam) {
     const [isSettingsMenuOpen, setIsSettingsMenuOpen] = useState(false);
     const dict = getDictionaryClient(lang);
     const { pages } = dict.shared.navbar;
@@ -73,4 +73,4 @@ export const Navbar = ({ params: { lang } }: LangParam) => {
             </nav>
         </div>
     );
-};
+}

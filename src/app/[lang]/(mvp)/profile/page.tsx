@@ -37,17 +37,14 @@ const Page = ({ params }: Props) => {
     const handleSubmit = async () => {
         try {
             // TODO: fix the session error
-            const res = await fetch(
-                //@ts-ignore
-                `/controllers/users/${session?.user?.id}`,
-                {
-                    method: 'PUT',
-                    headers: {
-                        'Content-type': 'application/json',
-                    },
-                    body: JSON.stringify({ newGender, newLocale }),
-                },
-            );
+            //@ts-ignore
+            const endpoint = `/api/users/${session?.user?.id}`;
+            const requestOptions = {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ newGender, newLocale }),
+            };
+            const res = await fetch(endpoint, requestOptions);
 
             if (!res.ok) {
                 throw new Error('Failed to update');
@@ -60,16 +57,13 @@ const Page = ({ params }: Props) => {
 
     async function setIntialState() {
         try {
-            const res = await fetch(
-                //@ts-ignore
-                `/controllers/users/${session?.user?.id}`,
-                {
-                    method: 'GET',
-                    headers: {
-                        'Content-type': 'application/json',
-                    },
-                },
-            );
+            // @ts-expect-error - session is not null
+            const endpoint = `/api/users/${session?.user?.id}`;
+            const requestOptions = {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' },
+            };
+            const res = await fetch(endpoint, requestOptions);
             if (!res.ok) {
                 throw new Error('Failed to fetch');
             }

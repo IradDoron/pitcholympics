@@ -13,6 +13,7 @@ import {
 import { Post } from './_components/Post';
 
 const initCurrPost: PostType = {
+    _id: '',
     title: '',
     content: '',
     tags: [],
@@ -30,7 +31,7 @@ const Page = () => {
 
     async function sendPost() {
         try {
-            await fetch(`/controllers/suggestions`, {
+            await fetch(`/api/suggestions`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -49,7 +50,8 @@ const Page = () => {
     }
     async function getPosts() {
         try {
-            const res = await fetch(`/controllers/suggestions`, {
+            const url = `/api/suggestions`;
+            const res = await fetch(url, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -64,7 +66,8 @@ const Page = () => {
 
     async function sendComment() {
         try {
-            await fetch(`/controllers/suggestions/`, {
+            const url = `/api/suggestions/${currPost._id}`;
+            await fetch(`/api/suggestions/`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

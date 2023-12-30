@@ -16,7 +16,7 @@ const Page = ({ params: { lang } }: Props) => {
     const router = useRouter();
 
     const submitFAQ = async () => {
-        const url = '/controllers/faq/new-faq';
+        const url = '/api/faqs';
         await fetch(url, {
             method: 'POST',
             headers: {

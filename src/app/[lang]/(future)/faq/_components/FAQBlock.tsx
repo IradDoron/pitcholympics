@@ -28,7 +28,7 @@ export const FAQBlock = ({ faq, lang }: Props) => {
     };
 
     const handleVoteClick = async (value: 1 | -1) => {
-        const url = `/controllers/faq/vote`;
+        const url = `/api/faq/vote`;
         await fetch(url, {
             method: 'PUT',
             headers: {
