@@ -1,13 +1,9 @@
 'use client';
 
-import {
-    ClientSafeProvider,
-    getProviders,
-    signIn,
-    useSession,
-} from 'next-auth/react';
+import { Button } from '@core';
+import { signIn, useSession } from 'next-auth/react';
 import Image from 'next/image';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 
 type Props = {
     isSettingsMenuOpen: boolean;
@@ -19,18 +15,6 @@ export const AuthButton = ({
     setIsSettingsMenuOpen,
 }: Props) => {
     const { data: session } = useSession();
-
-    const [providers, setProviders] = useState<Record<
-        string,
-        ClientSafeProvider
-    > | null>(null);
-
-    useEffect(() => {
-        (async () => {
-            const response = await getProviders();
-            setProviders(response);
-        })();
-    }, []);
 
     if (session?.user) {
         return (
@@ -45,18 +29,5 @@ export const AuthButton = ({
         );
     }
 
-    return (
-        <>
-            {providers &&
-                Object.values(providers).map(provider => (
-                    <button
-                        type='button'
-                        key={provider.name}
-                        onClick={() => signIn(provider.id)}
-                        className='rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover-bg-white hover-text-black text-center text-sm font-inter flex items-center justify-center'>
-                        Sign In
-                    </button>
-                ))}
-        </>
-    );
+    return <Button onClick={() => signIn('google')} label='Sign In' />;
 };

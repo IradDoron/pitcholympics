@@ -44,6 +44,7 @@ export const {
 
                 return true;
             } catch (error) {
+                // eslint-disable-next-line no-console
                 console.log(
                     `Error checking if user exists: ${
                         error instanceof Error ? error.message : error
