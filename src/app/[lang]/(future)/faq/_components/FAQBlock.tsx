@@ -37,7 +37,7 @@ export const FAQBlock = ({ faq, lang }: Props) => {
             body: JSON.stringify({
                 faqId,
                 voteValue: value,
-                // @ts-expect-error - session is not null
+                // Remove the unused '@ts-expect-error' directive
                 userId: session?.user?.id,
             }),
         });

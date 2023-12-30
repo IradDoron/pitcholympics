@@ -1,9 +1,9 @@
+import { auth } from '@/lib/auth';
 import { User } from '@models';
 import { connectToDB } from '@utils';
-import { getServerSession } from 'next-auth';
 
 export async function GET() {
-    const session = await getServerSession();
+    const session = await auth();
     if (!session) return Response.json({ error: 'Not authenticated' });
     await connectToDB();
     const user = await User.findOne({ email: session?.user?.email });

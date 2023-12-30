@@ -106,8 +106,8 @@ export function ModalComment({
     }
 
     useEffect(() => {
-        // @ts-expect-error-error - Session is not null
         const userId = session?.user?.id;
+        if (!userId) return;
         setCurrComment({ ...currComment, authorId: userId });
     }, []);
 

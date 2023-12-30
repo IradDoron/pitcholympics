@@ -40,8 +40,9 @@ const Page = () => {
                     post: currPost,
                 }),
             });
-            // @ts-expect-error - Session is not null
+
             const authorId = session?.user?.id;
+            if (!authorId) return;
             setCurrPost({ ...initCurrPost, authorId });
         } catch (error) {
             // eslint-disable-next-line no-console
@@ -77,8 +78,9 @@ const Page = () => {
                     post: currPost,
                 }),
             });
-            // @ts-expect-error - Session is not null
+
             const authorId = session?.user?.id;
+            if (!authorId) return;
             setCurrPost({ ...initCurrPost, authorId });
         } catch (error) {
             // eslint-disable-next-line no-console
