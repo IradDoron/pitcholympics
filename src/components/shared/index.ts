@@ -15,7 +15,6 @@ export * from './Navbar';
 export * from './NoteStep';
 export * from './PageTitle';
 export * from './PitchButton';
-export * from './ProfileInfo';
 export * from './SettingsMenu';
 export * from './ShopCard';
 export * from './Snackbar';

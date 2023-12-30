@@ -8,15 +8,13 @@ export const UserImage = () => {
 
     if (session?.user) {
         return (
-            <>
-                <Image
-                    className='m-0.5 inline-block rounded-full '
-                    src={session.user.image ?? ''}
-                    alt=''
-                    width={64}
-                    height={64}
-                />
-            </>
+            <Image
+                className='m-0.5 inline-block rounded-full '
+                src={session.user.image ?? ''}
+                alt=''
+                width={64}
+                height={64}
+            />
         );
     }
 };

@@ -1,4 +1,4 @@
-import { Label } from '@/components/shared/ProfileInfo/Label';
+import { Label } from './Label';
 import { SelectInput } from './SelectInput';
 import { TextInput } from './TextInput';
 

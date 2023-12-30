@@ -1,11 +1,13 @@
 'use client';
 
 import { Locale as LocalType } from '@/i18n.config';
-import { Card } from '@core';
-// import { getDictionaryClient, getTimeZone } from '@utils';
+import { Button, Card } from '@core';
+import { UserImage } from '@shared';
+import { getDictionaryClient } from '@utils';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { ProfileInfo } from './_components';
 
 type Gender = 'male' | 'female';
 type Locale = 'HE' | 'EN';
@@ -21,11 +23,13 @@ const Page = ({ params }: Props) => {
     const [newGender, setNewGender] = useState<Gender>();
     const [newLocale, setNewLocale] = useState<Locale>();
     const router = useRouter();
+    const { lang } = params;
 
-    // const dict = getDictionaryClient(params.lang);
-    // const { profile } = dict.app;
+    const dict = getDictionaryClient(lang);
 
-    // const timeZone: string = getTimeZone();
+    const { profile } = dict.app;
+
+    console.log('session', session);
 
     const handleGenderChange = (e: any) => {
         setNewGender(e.target.value);
@@ -57,7 +61,7 @@ const Page = ({ params }: Props) => {
 
     async function setIntialState() {
         try {
-            // @ts-expect-error - session is not null
+            // Removed the unused '@ts-expect-error' directive
             const endpoint = `/api/users/${session?.user?.id}`;
             const requestOptions = {
                 method: 'GET',
@@ -76,10 +80,14 @@ const Page = ({ params }: Props) => {
             console.log(error);
         }
     }
+
+    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
     useEffect(() => {
         setIntialState();
         //@ts-ignore
     }, [session?.user?.id]);
+
     return (
         <div className='flex flex-col items-center justify-center h-full'>
             <Card
@@ -87,7 +95,6 @@ const Page = ({ params }: Props) => {
                 className='flex flex-col items-start p-4 gap-4'
                 shadow='large'
                 style={{ width: '400px' }}>
-                {/*                     
                 <UserImage />
                 <ProfileInfo
                     label={profile.gender}
@@ -117,12 +124,12 @@ const Page = ({ params }: Props) => {
                     inputType='text'
                     value={timeZone}
                 />
+
                 <Button
                     label={profile.submitButton}
                     onClick={handleSubmit}
                     size='medium'
-                /> */}
-                <div>dslfjsa</div>
+                />
             </Card>
         </div>
     );
