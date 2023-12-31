@@ -1,5 +1,7 @@
 import NextAuthProvider from '@/context/SessionProvider';
-import ThemeProvider from '@/context/ThemeProvider';
+// import ThemeProvider from '@/context/ThemeProvider';
+import { ThemeProvider } from '@emotion/react';
+
 import { Locale, i18n } from '@/i18n.config';
 import { Navbar } from '@shared';
 import { getHtmlDirection } from '@utils';
@@ -16,6 +18,13 @@ export async function generateStaticParams() {
     return i18n.locales.map(locale => ({ lang: locale }));
 }
 
+const theme = {
+    palette: {
+        primary: 'green',
+        text: '#fff',
+    },
+};
+
 export default async function RootLayout({
     children,
     params,
@@ -25,7 +34,7 @@ export default async function RootLayout({
 }) {
     return (
         <html lang={params.lang} dir={getHtmlDirection(params.lang)}>
-            <ThemeProvider>
+            <ThemeProvider theme={theme}>
                 <body
                     className={` bg-light-background-default dark:bg-dark-background-default`}>
                     <NextAuthProvider>

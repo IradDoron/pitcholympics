@@ -5,8 +5,6 @@ import {
     MatrixWithId,
     NoteStatus,
 } from '@types';
-import { clsx, type ClassValue } from 'clsx';
-import { twMerge } from 'tailwind-merge';
 
 export const getXpForLevel = (level: number): number => {
     const x = 0.07;
@@ -81,10 +79,6 @@ export const getCurrentTab = (pathname: string) => {
     const tabs = pathname.split('/');
     return tabs[tabs.length - 1];
 };
-
-export function cn(...inputs: ClassValue[]) {
-    return twMerge(clsx(inputs));
-}
 
 export function splitCamelCaseToString(s: string): string {
     return s
