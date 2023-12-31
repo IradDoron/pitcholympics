@@ -12,6 +12,7 @@ export * from './LibraryFilter';
 export * from './MemoBlocksLevel';
 export * from './Menubar';
 export * from './Navbar';
+export * from './NeedToLoggedIn';
 export * from './NoteStep';
 export * from './PageTitle';
 export * from './PitchButton';

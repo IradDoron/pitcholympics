@@ -1,5 +1,6 @@
 import { Locale } from '@/i18n.config';
 import { auth } from '@/lib/auth';
+import { NeedToLoggedIn } from '@shared';
 import { Achievements, GameProgress, StatsSection } from './_components';
 
 type Props = {
@@ -10,17 +11,9 @@ type Props = {
 
 const Page = async ({ params }: Props) => {
     const session = await auth();
-
     const { lang } = params;
 
-    if (!session)
-        return (
-            <div>
-                <p className='text-center text-xl text-light-background-onDefault dark:text-dark-background-onDefault'>
-                    You need to be logged in to see this page
-                </p>
-            </div>
-        );
+    if (!session) return <NeedToLoggedIn />;
 
     return (
         <div>
