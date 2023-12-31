@@ -1,6 +1,5 @@
 'use client';
 
-import { Locale } from '@/i18n.config';
 import { Button } from '@core';
 import { FAQ } from '@types';
 import { useSession } from 'next-auth/react';
@@ -8,10 +7,9 @@ import { useEffect, useState } from 'react';
 
 type Props = {
     faq: FAQ;
-    lang: Locale;
 };
 
-export const FAQBlock = ({ faq, lang }: Props) => {
+export const FAQBlock = ({ faq }: Props) => {
     const { data: session } = useSession();
     const [currentVotes, setCurrentVotes] = useState<
         Record<string, 1 | -1 | 0>
@@ -28,7 +26,7 @@ export const FAQBlock = ({ faq, lang }: Props) => {
     };
 
     const handleVoteClick = async (value: 1 | -1) => {
-        const url = `/api/faq/vote`;
+        const url = `/api/faqs/vote`;
         await fetch(url, {
             method: 'PUT',
             headers: {
