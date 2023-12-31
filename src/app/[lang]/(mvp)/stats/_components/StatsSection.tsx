@@ -10,41 +10,26 @@ import type {
     User,
 } from '@types';
 import { getDictionaryClient } from '@utils';
-import { useEffect } from 'react';
 
 type Props = {
     type: 'resources' | 'gamesStats';
     lang: Locale;
     color: 'primary' | 'secondary' | 'tertiary';
+    user: User;
 };
 
-export const StatsSection = async ({ type, lang, color }: Props) => {
-    let user: User | null = null;
+function countGames(user: User, gameName: GameNames): number {
+    return (
+        user.gamesAnalytics?.reduce((count: number, curr: GameAnalytics) => {
+            if (curr.gameName === gameName) {
+                count += 1;
+            }
+            return count;
+        }, 0) || 0
+    );
+}
 
-    useEffect(() => {
-        async function fetchData() {
-            const data = await fetch(`${process.env.BASE_URL}/api/users/`);
-            user = await data.json();
-        }
-        fetchData();
-    }, []);
-
-    function countGames(user: User, gameName: GameNames): number {
-        return (
-            user?.gamesAnalytics?.reduce(
-                (count: number, curr: GameAnalytics) => {
-                    if (curr.gameName === gameName) {
-                        count += 1;
-                    }
-                    return count;
-                },
-                0,
-            ) || 0
-        );
-    }
-
-    if (!user) return null;
-
+export const StatsSection = ({ type, lang, color, user }: Props) => {
     const stats = {
         resources: { ...(user as User)?.resources },
         gamesStats: {

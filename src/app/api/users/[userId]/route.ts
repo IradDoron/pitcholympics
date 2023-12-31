@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest, { params }: any) {
     const user = await getUser(params.userId);
-    return NextResponse.json({ user }, { status: 200 });
+    return NextResponse.json(user, { status: 200 });
 }
 
 export async function PUT(request: NextRequest, { params }: any) {
