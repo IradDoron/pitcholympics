@@ -34,7 +34,6 @@ const Page = ({ params }: Props) => {
 
     const getUser = async () => {
         const user = await fetchUser();
-        console.log('user', user);
         setUser(user);
     };
 
@@ -62,8 +61,8 @@ const Page = ({ params }: Props) => {
                     user={user}
                 />
             </div>
-            <GameProgress />
-            <Achievements lang={lang} />
+            <GameProgress user={user} />
+            <Achievements />
         </div>
     );
 };
