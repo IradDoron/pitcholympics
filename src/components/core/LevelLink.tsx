@@ -13,30 +13,17 @@ type Props = {
     level: number;
 };
 
-type ButtonProps = {
-    myClasses?: string;
-} & ButtonClasses;
-
-const Button = styled(BaseButton)(
-    ({ theme }) => `
-    ${buttonClasses.root} {
-        min-width: 0;
-        padding: 0;
-        width: 2rem;
-        height: 2rem;
-        border-radius: 50%;
-    }
-    &.locked {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 9999px;
-        width: 1.25rem;
-        height: 1.25rem;
-        text-align: center;
-        color: #ffffff;
-        background-color: #6b7280;
-    }
+const Button = styled(MaterialButton)(
+    ({ theme, color }) => `
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        border-radius: 9999px; 
+        width: 1.25rem; 
+        height: 1.25rem; 
+        text-align: center; 
+        color: #ffffff; 
+        background-color: ${color};
 `,
 );
 
