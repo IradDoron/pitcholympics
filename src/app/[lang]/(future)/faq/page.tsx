@@ -1,19 +1,12 @@
 'use client';
 
-import { Locale } from '@/i18n.config';
 import { Link } from '@core';
 import { FAQ } from '@types';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import { FAQBlock } from './_components';
 
-type Props = {
-    params: {
-        lang: Locale;
-    };
-};
-
-const Page = ({ params: { lang } }: Props) => {
+const Page = () => {
     const { data: session } = useSession();
     const [faqs, setFAQs] = useState<FAQ[]>([]);
 
@@ -27,6 +20,7 @@ const Page = ({ params: { lang } }: Props) => {
     useEffect(() => {
         getAllFAQs();
     }, []);
+
     if (!session) {
         return (
             <div>
@@ -35,15 +29,15 @@ const Page = ({ params: { lang } }: Props) => {
             </div>
         );
     }
+
     return (
         <div>
             <h1>FAQ</h1>
             <Link url='faq/new-question' label='New Question' />
-
             <div>
                 {faqs.map((faq, index) => (
                     <div key={index}>
-                        <FAQBlock faq={faq} lang={lang} />
+                        <FAQBlock faq={faq} />
                     </div>
                 ))}
             </div>

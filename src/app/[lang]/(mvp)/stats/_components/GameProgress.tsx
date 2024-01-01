@@ -1,15 +1,14 @@
-import { gamesData, users } from '@mocks';
-import { Game } from '@types';
-import { GameInfo } from './GameInfo';
+import { User } from '@types';
 
-export const GameProgress = () => {
-    const user = users[0]; // TODO: Replace with the actual user
+type Props = {
+    user: User;
+};
 
+export const GameProgress = ({ user }: Props) => {
+    const { gameProgress } = user;
     return (
         <div className='flex flex-col gap-10 justify-center sm:flex-row'>
-            {gamesData.map((game: Game) => (
-                <GameInfo game={game} key={game.name} user={user} />
-            ))}
+            <pre>{JSON.stringify(gameProgress, null, 2)}</pre>
         </div>
     );
 };
