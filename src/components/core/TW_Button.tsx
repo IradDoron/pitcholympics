@@ -1,4 +1,3 @@
-import { Button as MaterialButton } from '@mui/material';
 import { MouseEventHandler } from 'react';
 
 type BtnSize = 'small' | 'medium' | 'large';

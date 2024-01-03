@@ -1,9 +1,15 @@
+'use client';
+
+import { Button } from '@core';
 import { GameLink } from '@shared';
 import { LangParam } from '@types';
 import Loading from './loading';
+
 const Home = async ({ params }: LangParam) => {
     return (
         <div className='h-full flex flex-col justify-center items-center gap-10 sm:flex-row sm:gap-20'>
+            <Button label='test' onClick={() => {}} />
+
             {params ? (
                 <>
                     <GameLink
