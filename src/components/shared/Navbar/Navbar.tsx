@@ -52,6 +52,7 @@ export function Navbar({ params: { lang } }: LangParam) {
         { url: `/${lang}/suggestions`, label: pages.suggestions },
         { url: `/${lang}/website-analytics`, label: pages.websiteAnalytics },
         { url: `/${lang}/teaching`, label: pages.teaching },
+        { url: `/${lang}/tools`, label: pages.tools },
     ] as NavPage[];
 
     const handleNavPagesToggleClick = () => {

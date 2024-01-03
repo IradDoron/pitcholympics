@@ -139,7 +139,8 @@
                 "stats": "Stats",
                 "suggestions": "Suggestions",
                 "teaching": "Teaching",
-                "websiteAnalytics": "Website Analytics"
+                "websiteAnalytics": "Website Analytics",
+                "tools": "Tools"
             },
             "title": "Page",
             "MobileNav": {
