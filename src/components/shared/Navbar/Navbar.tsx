@@ -72,7 +72,7 @@ export function Navbar({ params: { lang } }: LangParam) {
             <Button
                 label={isMvp ? 'MVP' : 'All'}
                 onClick={handleNavPagesToggleClick}
-                className='w-20 m-auto'
+                size='small'
             />
 
             <div className=' flex flex-row justify-center'>

@@ -3,7 +3,6 @@ import NextAuthProvider from '@/context/SessionProvider';
 import ThemeProvider from '@/context/ThemeProvider';
 import { Locale, i18n } from '@/i18n.config';
 import { lightTheme } from '@/style/themes';
-import { Button } from '@core';
 import { Navbar } from '@shared';
 import { getHtmlDirection } from '@utils';
 import type { Metadata } from 'next';
