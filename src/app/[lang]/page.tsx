@@ -1,5 +1,5 @@
-import { LangParam } from '@/types';
 import { GameLink } from '@shared';
+import { LangParam } from '@types';
 import Loading from './loading';
 const Home = async ({ params }: LangParam) => {
     return (

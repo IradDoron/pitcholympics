@@ -1,12 +1,10 @@
 import NextAuthProvider from '@/context/SessionProvider';
 import ThemeProvider from '@/context/ThemeProvider';
 import { Locale, i18n } from '@/i18n.config';
-import '@/styles/globals.css';
-import { getHtmlDirection } from '@/utils/getHtmlDirection';
 import { Navbar } from '@shared';
+import { getHtmlDirection } from '@utils';
 import type { Metadata } from 'next';
-import Providers from './_components/Providers';
-import GlobalStyles from '@/styles/globalStyles';
+import './globals.css';
 // const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -32,10 +30,7 @@ export default async function RootLayout({
                     className={` bg-light-background-default dark:bg-dark-background-default`}>
                     <NextAuthProvider>
                         <Navbar params={params} />
-                        <Providers>
-                            <GlobalStyles />
-                            {children}
-                        </Providers>
+                        {children}
                     </NextAuthProvider>
                 </body>
             </ThemeProvider>

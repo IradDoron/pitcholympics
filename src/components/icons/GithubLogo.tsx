@@ -1,5 +1,5 @@
-import { IconProps } from '@/types';
-import { ICON_COLORS, ICON_SIZES } from '@/constants';
+import { ICON_COLORS, ICON_SIZES } from '@constants';
+import { IconProps } from '@types';
 
 export const GithubLogo = ({
     color = 'primary',

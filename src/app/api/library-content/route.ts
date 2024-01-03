@@ -1,5 +1,5 @@
-import Post from '@/models/post';
-import { connectToDB } from '@/utils/database';
+import { Post } from '@models';
+import { connectToDB } from '@utils';
 
 export async function GET() {
     // Handle GET request to fetch all posts
@@ -33,8 +33,6 @@ export async function POST(newPost: any) {
             angry: [],
         },
         comments: [],
-        
-        
     });
     //await Post.create(newPost);
 }
