@@ -19,7 +19,7 @@ const nextConfig = {
                     loader: 'file-loader',
                     options: {
                         name: '[name].[ext]',
-                        publicPath: '/_next/sounds/',
+                        publicPath: '/sounds/',
                         outputPath: `${isServer ? '../' : ''}sounds/`,
                     },
                 },

@@ -1,34 +1,33 @@
 'use client';
 
-import { Add, Remove } from '@mui/icons-material';
-import {
-    Box,
-    Button,
-    IconButton,
-    Paper,
-    Slider,
-    TextField,
-    Typography,
-} from '@mui/material';
+import { Center, Column } from '@/components/shared/Layout';
+import { Paper } from '@mui/material';
 import { useEffect, useMemo, useState } from 'react';
-// import beatSound from './beat/beat.mp3';
-// import drumstickSound from './beat/drumsticks.mp3';
+import { Meter, MetronomeSlider, StopStartButton, StrongBeat, Tempo } from './_components';
+import beatSound from '../../../../../../public/sounds/beat.mp3';
+import drumstickSound from '../../../../../../public/sounds/drumsticks.mp3';
 
 const Page = () => {
     const [tempo, setTempo] = useState(150);
-    const [metre, setMetre] = useState('4/4');
+    const [meter, setMeter] = useState('4/4');
     const [strongBeat, setStrongBeat] = useState(2);
     const [currentBeat, setCurrentBeat] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
 
-    const isMetreValid = useMemo(
-        () => new RegExp(/^\d+\/[1-9]\d*$/g).test(metre),
-        [metre],
+    const isMeterValid = useMemo(
+        () => new RegExp(/^\d+\/[1-9]\d*$/g).test(meter),
+        [meter],
     );
-    // const drumstickAudio = useMemo(() => new Audio(drumstickSound), []);
-    // const beatAudio = useMemo(() => new Audio(beatSound), []);
 
-    const handleTempoChange = (_: Event, newValue: number | number[]) => {
+    const [drumstickAudio, setDrumstickAudio] = useState<HTMLAudioElement | null>(null);
+    const [beatAudio, setBeatAudio] = useState<HTMLAudioElement | null>(null);
+
+    useEffect(() => {
+        setDrumstickAudio(new window.Audio(drumstickSound))
+        setBeatAudio(new window.Audio(beatSound))
+    }, []);
+
+    const changeTempo = (_: Event, newValue: number | number[]) => {
         setTempo(newValue as number);
     };
 
@@ -52,40 +51,40 @@ const Page = () => {
         );
     };
 
-    const handleMetreChange = ({
-        target: { value },
-    }: React.ChangeEvent<HTMLInputElement>) => {
-        setMetre(value);
+    const changeMeter = ({ target: { value }, }: React.ChangeEvent<HTMLInputElement>) => {
+        setMeter(value);
     };
 
     const handlePlayStop = () => {
-        if (isMetreValid) {
+        if (isMeterValid) {
             setIsPlaying(isPlaying => !isPlaying);
         }
     };
 
     useEffect(() => {
-        if (!isMetreValid) {
+        if (!isMeterValid) {
             setIsPlaying(false);
         }
-    }, [metre]);
+    }, [meter]);
 
     useEffect(() => {
         let intervalId: NodeJS.Timeout;
         let beat = 0;
 
         if (isPlaying) {
-            const [numerator, denominator] = metre.split('/').map(Number);
+            const [numerator, denominator] = meter.split('/').map(Number);
             const beatDuration = 60000 / tempo;
             const intervalDuration = beatDuration * (numerator / denominator);
 
             intervalId = setInterval(() => {
-                if (beat % strongBeat === 0) {
-                    // drumstickAudio.play();
-                    // drumstickAudio.currentTime = 0;
-                } else {
-                    // beatAudio.play();
-                    // beatAudio.currentTime = 0;
+                if (drumstickAudio && beatAudio) {
+                    if (beat % strongBeat === 0) {
+                        drumstickAudio.play();
+                        drumstickAudio.currentTime = 0;
+                    } else {
+                        beatAudio.play();
+                        beatAudio.currentTime = 0;
+                    }
                 }
 
                 setCurrentBeat(prevBeat => (prevBeat % strongBeat) + 1);
@@ -97,165 +96,23 @@ const Page = () => {
             clearInterval(intervalId);
             setCurrentBeat(0);
         };
-    }, [isPlaying, tempo, strongBeat, metre]);
+    }, [isPlaying, tempo, strongBeat, meter]);
 
     return (
-        <Box
-            sx={{
-                height: 1,
-                width: 1,
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-            }}>
+        <Center sx={{ height: 1, width: 1 }}>
             <Paper sx={{ p: 3, borderRadius: 2 }} elevation={3}>
-                <Box
-                    sx={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        gap: 2,
-                    }}>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                        }}>
-                        <Slider
-                            disabled
-                            size='small'
-                            value={currentBeat}
-                            step={1}
-                            marks
-                            min={1}
-                            max={strongBeat}
-                            sx={{
-                                '&.Mui-disabled': { color: 'black' },
-                                '& .MuiSlider-mark': {
-                                    width: 4,
-                                    height: 4,
-                                    borderRadius: '50%',
-                                    border: '1px solid',
-                                    color: 'red',
-                                },
-                                '& .MuiSlider-thumb': { width: 16, height: 16 },
-                            }}
-                        />
-                        <Box
-                            sx={{
-                                display: 'flex',
-                                gap: 1,
-                                alignItems: 'baseline',
-                            }}>
-                            <Typography sx={{ fontSize: 40 }}>
-                                {tempo}
-                            </Typography>
-                            <Typography sx={{ fontSize: 20 }}>BPM</Typography>
-                        </Box>
-                        <Box
-                            sx={{
-                                display: 'flex',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                gap: 3,
-                                width: '400px',
-                            }}>
-                            <IconButton
-                                onClick={decreaseTempo}
-                                sx={{
-                                    width: 50,
-                                    height: 50,
-                                    color: 'black',
-                                    border: '0.5px solid gray',
-                                }}>
-                                <Remove />
-                            </IconButton>
-                            <Slider
-                                value={tempo}
-                                onChange={handleTempoChange}
-                                min={20}
-                                max={280}
-                            />
-                            <IconButton
-                                onClick={increaseTempo}
-                                sx={{
-                                    width: 50,
-                                    height: 50,
-                                    color: 'black',
-                                    border: '0.5px solid gray',
-                                }}>
-                                <Add />
-                            </IconButton>
-                        </Box>
-                    </Box>
-                    <TextField
-                        variant='standard'
-                        value={metre}
-                        onChange={handleMetreChange}
-                        autoComplete='off'
-                        sx={{ width: 60 }}
-                        placeholder='Metre'
-                        InputProps={{ sx: { fontSize: 20 } }}
-                        inputProps={{ sx: { textAlign: 'center' } }}
-                    />
-                    <Button
-                        variant='contained'
-                        onClick={handlePlayStop}
-                        sx={{
-                            width: 80,
-                            height: 80,
-                            fontSize: 20,
-                            borderRadius: '50%',
-                            transition: 'box-shadow 0.3s ease-in-out',
-                        }}
-                        style={{ textTransform: 'none' }}>
-                        {isPlaying ? 'Stop' : 'Start'}
-                    </Button>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                            gap: 1,
-                        }}>
-                        <Box
-                            sx={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: 3,
-                            }}>
-                            <IconButton
-                                onClick={decreaseStrongBeat}
-                                sx={{
-                                    width: 50,
-                                    height: 50,
-                                    color: 'black',
-                                    border: '0.5px solid gray',
-                                }}>
-                                <Remove />
-                            </IconButton>
-                            <Typography sx={{ fontSize: 35 }}>
-                                {strongBeat}
-                            </Typography>
-                            <IconButton
-                                onClick={increaseStrongBeat}
-                                sx={{
-                                    width: 50,
-                                    height: 50,
-                                    color: 'black',
-                                    border: '0.5px solid gray',
-                                }}>
-                                <Add />
-                            </IconButton>
-                        </Box>
-                        <Typography sx={{ fontSize: 20 }}>
-                            Beats Per Measure
-                        </Typography>
-                    </Box>
-                </Box>
+                <Column sx={{ alignItems: 'center', gap: 2 }}>
+                    <Column sx={{ alignItems: 'center' }}>
+                        <MetronomeSlider currentBeat={currentBeat} strongBeat={strongBeat} />
+                        <Tempo tempo={tempo} decreaseTempo={decreaseTempo}
+                            changeTempo={changeTempo} increaseTempo={increaseTempo} />
+                    </Column>
+                    <Meter meter={meter} changemeter={changeMeter} />
+                    <StopStartButton handlePlayStop={handlePlayStop} isPlaying={isPlaying} />
+                    <StrongBeat strongBeat={strongBeat} decreaseStrongBeat={decreaseStrongBeat} increaseStrongBeat={increaseStrongBeat} />
+                </Column>
             </Paper>
-        </Box>
+        </Center>
     );
 };
 
