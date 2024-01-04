@@ -47,7 +47,7 @@ export const LibraryFilter = ({
                 {Object.keys(filterButtons).map((key, index) => (
                     <Button
                         key={index}
-                        state={filterButtons[key] ? 'clicked' : 'default'}
+                        status={filterButtons[key] ? 'clicked' : 'default'}
                         size='small'
                         label={key}
                         onClick={() => {
