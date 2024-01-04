@@ -6,13 +6,17 @@ import { useButton } from '@mui/base/useButton';
 import { useTheme } from '@mui/system';
 
 type Props = {
-    label: string;
+    label?: string;
     // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-explicit-any
-    onClick: () => void;
+    onClick?: () => void;
     size?: 'small' | 'medium' | 'large';
 };
 
-export const Button = ({ label, onClick, size = 'medium' }: Props) => {
+export const Button = ({
+    label = '',
+    onClick = () => {},
+    size = 'medium',
+}: Props) => {
     const { getRootProps } = useButton();
     const theme = useTheme();
     const color = 'white';
