@@ -103,11 +103,7 @@ const Page = () => {
                 setCurrentTrack={setCurrentTrack}
             />
 
-            <Button
-                label='Add Section'
-                className='w-fit'
-                onClick={handleAddSectionClick}
-            />
+            <Button label='Add Section' onClick={handleAddSectionClick} />
         </div>
     );
 };

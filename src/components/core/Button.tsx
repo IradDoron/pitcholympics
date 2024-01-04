@@ -10,12 +10,16 @@ type Props = {
     // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-explicit-any
     onClick?: () => void;
     size?: 'small' | 'medium' | 'large';
+    status?: 'default' | 'clicked' | 'disabled';
+    cssStyles?: string;
 };
 
 export const Button = ({
     label = '',
     onClick = () => {},
     size = 'medium',
+    cssStyles = '',
+    status = 'default',
 }: Props) => {
     const { getRootProps } = useButton();
     const theme = useTheme();
@@ -34,6 +38,19 @@ export const Button = ({
         }
     };
 
+    const getBackgroundColor = (status: 'default' | 'clicked' | 'disabled') => {
+        switch (status) {
+            case 'default':
+                return theme.palette.primary.main;
+            case 'clicked':
+                return theme.palette.primary.light;
+            case 'disabled':
+                return theme.palette.primary.light;
+            default:
+                return theme.palette.primary.main; // default
+        }
+    };
+
     return (
         <BaseButton
             {...getRootProps()}
@@ -49,6 +66,8 @@ export const Button = ({
                     color: red;
                 }
                 ${getSize(size)}
+                ${getBackgroundColor(status)}
+                ${cssStyles}
             `}
             onClick={onClick}>
             {label}

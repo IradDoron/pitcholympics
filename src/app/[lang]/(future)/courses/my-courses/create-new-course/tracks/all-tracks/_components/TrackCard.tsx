@@ -96,19 +96,10 @@ export const TrackCard = ({
                 </div>
             </Card>
             <div className='flex gap-2'>
-                <Button
-                    label='Add Track'
-                    className='w-fit'
-                    onClick={handleAddTrackClick}
-                />
-                <Button
-                    label='Edit Track'
-                    className='w-fit'
-                    onClick={handleEditTrackClick}
-                />
+                <Button label='Add Track' onClick={handleAddTrackClick} />
+                <Button label='Edit Track' onClick={handleEditTrackClick} />
                 <Button
                     label='Delete Track'
-                    className='w-fit'
                     onClick={() => handleDeleteTrackClick(id)}
                 />
             </div>

@@ -191,14 +191,14 @@ const Page = ({ params }: Props) => {
             <div className='flex flex-row gap-2'>
                 <Button
                     label={startMelody}
-                    state={startMelodyButtonState}
+                    status={startMelodyButtonState}
                     onClick={() =>
                         playMelody(pitches, pitchOptions, currentNote)
                     }
                 />
                 <Button
                     label={checkGuess}
-                    state={checkUserButtonState}
+                    status={checkUserButtonState}
                     onClick={() =>
                         checkUserGuess(userGuess, currentLevel.melody)
                     }
