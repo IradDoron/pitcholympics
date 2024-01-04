@@ -252,21 +252,13 @@ export const TrackLessonEditor = ({
                     onChange={handleCurrnetModuleIdChange}
                 />
             </label>
-            <Button
-                label='Add Module'
-                className='w-fit'
-                onClick={handleAddNewModuleId}
-            />
+            <Button label='Add Module' onClick={handleAddNewModuleId} />
             <ul>
                 {currentLesson.modulesIds.map(moduleId => (
                     <li key={moduleId}>{moduleId}</li>
                 ))}
             </ul>
-            <Button
-                label='Delete Lesson'
-                className='w-fit'
-                onClick={handleDeleteLessonClick}
-            />
+            <Button label='Delete Lesson' onClick={handleDeleteLessonClick} />
         </div>
     );
 };

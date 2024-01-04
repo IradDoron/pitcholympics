@@ -26,9 +26,7 @@ const CreatePost = () => {
                     label='preview content (will be popup window?)'
                     url='/library/library/preview-content'></Link>
                 {/* i think this should be sent to the admin and the admin need to verify it before add it to the database & library */}
-                <Button
-                    label='post'
-                    onClick={() => handleCreatePost()}></Button>
+                <Button label='post' onClick={() => handleCreatePost()} />
             </div>
         </div>
     );

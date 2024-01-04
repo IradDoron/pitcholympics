@@ -1,56 +1,76 @@
-import { Button as MaterialButton } from '@mui/material';
-import { MouseEventHandler } from 'react';
+'use client';
 
-type BtnSize = 'small' | 'medium' | 'large';
+import { css } from '@emotion/css';
+import { Button as BaseButton } from '@mui/base';
+import { useButton } from '@mui/base/useButton';
+import { useTheme } from '@mui/system';
 
 type Props = {
-    label: string;
-    onClick: MouseEventHandler<HTMLButtonElement>;
-    size?: BtnSize;
-    state?: 'default' | 'disabled' | 'clicked';
-    className?: string;
+    label?: string;
+    // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-explicit-any
+    onClick?: () => void;
+    size?: 'small' | 'medium' | 'large';
+    status?: 'default' | 'clicked' | 'disabled';
+    cssStyles?: string;
 };
 
 export const Button = ({
-    label,
-    onClick,
+    label = '',
+    onClick = () => {},
     size = 'medium',
-    state = 'default',
-    className = '',
+    cssStyles = '',
+    status = 'default',
 }: Props) => {
-    const getSize = (size: BtnSize) => {
+    const { getRootProps } = useButton();
+    const theme = useTheme();
+    const color = 'white';
+
+    const getSize = (size: 'small' | 'medium' | 'large') => {
         switch (size) {
             case 'small':
-                return 'px-2 py-1 text-xs';
+                return 'padding: 16px;';
             case 'medium':
-                return 'px-4 py-2 text-base';
+                return 'padding: 24px;';
             case 'large':
-                return 'px-6 py-3 text-xl';
+                return 'padding: 32px;';
             default:
-                return 'px-6 py-3 text-xl';
+                return 'padding: 24px;'; // medium
         }
     };
 
-    const getColor = (state: 'default' | 'disabled' | 'clicked') => {
-        switch (state) {
+    const getBackgroundColor = (status: 'default' | 'clicked' | 'disabled') => {
+        switch (status) {
             case 'default':
-                return 'bg-light-primary-main dark:bg-dark-primary-main text-light-primary-contrastText dark:text-dark-primary-contrastText';
-            case 'disabled':
-                return 'bg-grey-A00 dark:bg-grey-300 text-grey-100 dark:text-dark-background-onDefault cursor-not-allowed';
+                return theme.palette.primary.main;
             case 'clicked':
-                return 'bg-green-A00 dark:bg-green-300 text-light-primary-contrastText dark:text-dark-primary-contrastText';
+                return theme.palette.primary.light;
+            case 'disabled':
+                return theme.palette.primary.light;
             default:
-                return 'bg-light-primary-main dark:bg-dark-primary-main text-light-primary-contrastText dark:text-dark-primary-contrastText';
+                return theme.palette.primary.main; // default
         }
     };
 
-    const buttonSize = getSize(size);
-    const buttonColor = getColor(state);
     return (
-        <button
-            onClick={onClick}
-            className={` shadow-large-light dark:shadow-large-dark rounded-[12px] ${buttonSize} ${buttonColor} ${className}`}>
+        <BaseButton
+            {...getRootProps()}
+            className={css`
+                padding: 32px;
+                background-color: ${theme.palette.primary.main};
+                font-size: 24px;
+                border-radius: 4px;
+                &:hover {
+                    color: ${color};
+                }
+                &:active {
+                    color: red;
+                }
+                ${getSize(size)}
+                ${getBackgroundColor(status)}
+                ${cssStyles}
+            `}
+            onClick={onClick}>
             {label}
-        </button>
+        </BaseButton>
     );
 };

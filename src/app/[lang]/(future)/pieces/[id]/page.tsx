@@ -42,7 +42,7 @@ const Page = ({ params }: Props) => {
                 <div className='flex justify-center gap-4'>
                     {notation.chordsAndLyrics.length > 0 && (
                         <Button
-                            state={
+                            status={
                                 currentTab === 'chords-and-lyrics'
                                     ? 'clicked'
                                     : 'default'
@@ -56,7 +56,7 @@ const Page = ({ params }: Props) => {
 
                     {metadata.lyrics.length > 0 && (
                         <Button
-                            state={
+                            status={
                                 currentTab === 'lyrics' ? 'clicked' : 'default'
                             }
                             onClick={() => handleSetCurrentTab('lyrics')}
@@ -66,7 +66,7 @@ const Page = ({ params }: Props) => {
 
                     {notation.leadSheet.length > 0 && (
                         <Button
-                            state={
+                            status={
                                 currentTab === 'lead-sheet'
                                     ? 'clicked'
                                     : 'default'

@@ -68,12 +68,12 @@ export const FAQBlock = ({ faq }: Props) => {
                 <Button
                     onClick={() => handleVoteClick(1)}
                     label='Up Vote'
-                    state={currentUserVote === 1 ? 'clicked' : 'default'}
+                    status={currentUserVote === 1 ? 'clicked' : 'default'}
                 />
                 <Button
                     onClick={() => handleVoteClick(-1)}
                     label='Down Vote'
-                    state={currentUserVote === -1 ? 'clicked' : 'default'}
+                    status={currentUserVote === -1 ? 'clicked' : 'default'}
                 />
             </div>
             <div className='h-1 bg-black m-2'></div>

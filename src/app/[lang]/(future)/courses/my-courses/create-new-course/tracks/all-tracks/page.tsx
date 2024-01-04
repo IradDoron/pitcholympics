@@ -54,7 +54,6 @@ const Page = ({ params }: Props) => {
             {currentCourse.tracks?.length === 0 && (
                 <Button
                     label='Add First Track'
-                    className='w-fit'
                     onClick={handleAddFirstTrackClick}
                 />
             )}

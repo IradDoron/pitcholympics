@@ -44,7 +44,6 @@ const Page = ({ params }: Props) => {
             <Button
                 label='Create new course'
                 onClick={handleCreateNewCourseClick}
-                className='w-fit'
             />
             <section className='flex gap-4'>
                 {courses.map(course => {

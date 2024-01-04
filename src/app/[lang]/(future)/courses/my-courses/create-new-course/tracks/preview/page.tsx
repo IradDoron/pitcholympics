@@ -56,11 +56,7 @@ const Page = ({ params }: Props) => {
     return (
         <div className='p-8'>
             <Text className='text-xl text-center'>Preview</Text>
-            <Button
-                label='Submit Track'
-                className='w-fit'
-                onClick={handleSubmitTrackClick}
-            />
+            <Button label='Submit Track' onClick={handleSubmitTrackClick} />
         </div>
     );
 };
