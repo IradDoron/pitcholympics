@@ -24,13 +24,13 @@ export const Button = ({
     const getSize = (size: 'small' | 'medium' | 'large') => {
         switch (size) {
             case 'small':
-                return 'padding: 32px;';
+                return 'padding: 16px;';
             case 'medium':
                 return 'padding: 24px;';
             case 'large':
-                return 'padding: 16px;';
+                return 'padding: 32px;';
             default:
-                return 'padding: 24px;';
+                return 'padding: 24px;'; // medium
         }
     };
 
@@ -42,9 +42,6 @@ export const Button = ({
                 background-color: ${theme.palette.primary.main};
                 font-size: 24px;
                 border-radius: 4px;
-                position: relative;
-                border-color: salmon;
-                border-width: 4px;
                 &:hover {
                     color: ${color};
                 }
