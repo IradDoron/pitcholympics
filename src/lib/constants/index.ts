@@ -34,3 +34,7 @@ function setColorsMatrix(): Matrix {
 }
 
 export const colorsTemplateMatrix = setColorsMatrix();
+
+export const THEMES = {
+    
+}

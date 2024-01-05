@@ -9,6 +9,7 @@ import { AuthButton } from './AuthButton';
 import { LocaleSwitcher } from './LocaleSwitcher';
 import { NavbarLink } from './NavbarLink';
 import { Theme } from './Theme';
+import { ThemeToggler } from './ThemeToggler';
 import { MobileNav } from './mobileNav';
 
 export function Navbar({ params: { lang } }: LangParam) {
@@ -75,7 +76,7 @@ export function Navbar({ params: { lang } }: LangParam) {
                 onClick={handleNavPagesToggleClick}
                 size='small'
             />
-
+            <ThemeToggler />
             <div className=' flex flex-row justify-center'>
                 <nav className='flex flex-row p-2 sticky w-full bg-light-background-defaultBlur dark:bg-dark-background-defaultBlur '>
                     <div className='flex justify-self-start px-10 w-fit'>

@@ -1,8 +1,9 @@
+import { ThemeWrapper } from '@/components/shared/ThemeWrapper';
 import { MuiThemeProvider } from '@/context/MuiThemeProvider';
 import NextAuthProvider from '@/context/SessionProvider';
 import ThemeProvider from '@/context/ThemeProvider';
 import { Locale, i18n } from '@/i18n.config';
-import { darkTheme } from '@/style/themes';
+import { darkTheme, lightTheme } from '@/style/themes';
 import { Navbar } from '@shared';
 import { getHtmlDirection } from '@utils';
 import type { Metadata } from 'next';
@@ -29,7 +30,7 @@ export default async function RootLayout({
     return (
         <html lang={params.lang} dir={getHtmlDirection(params.lang)}>
             <ThemeProvider>
-                <MuiThemeProvider theme={darkTheme}>
+                <ThemeWrapper>
                     <body
                         className={` bg-light-background-default dark:bg-dark-background-default`}>
                         <NextAuthProvider>
@@ -38,7 +39,7 @@ export default async function RootLayout({
                             {children}
                         </NextAuthProvider>
                     </body>
-                </MuiThemeProvider>
+                </ThemeWrapper>
             </ThemeProvider>
         </html>
     );
