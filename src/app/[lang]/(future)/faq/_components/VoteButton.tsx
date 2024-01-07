@@ -23,7 +23,7 @@ export const VoteButton = ({ state, onClick, label }: Props) => {
         <CoreButton
             onClick={onClick}
             label={label}
-            cssStyles={`background-color: ${getBackgroundColor(state)};`}
+            styles={`background-color: ${getBackgroundColor(state)};`}
         />
     );
 };
