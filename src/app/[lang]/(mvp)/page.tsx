@@ -1,5 +1,3 @@
-'use client';
-
 import { GameLink } from '@shared';
 import { LangParam } from '@types';
 import Loading from './loading';
