@@ -1,7 +1,7 @@
 'use client';
 
 import { ThemeContext } from '@/context/ThemeContext';
-import { Button } from '@mui/material';
+import { Button } from '@core';
 import React, { useContext } from 'react';
 
 export const ThemeToggler = () => {
@@ -15,10 +15,9 @@ export const ThemeToggler = () => {
             {themes.map(theme => (
                 <Button
                     key={theme}
-                    variant='contained'
-                    onClick={() => setThemeName(theme)}>
-                    {theme}
-                </Button>
+                    onClick={() => setThemeName(theme)}
+                    label={theme}
+                />
             ))}
         </div>
     );
