@@ -1,25 +1,19 @@
 'use client';
 
+import { MuiThemeProvider } from '@/context';
 import { ThemeContext } from '@/context/ThemeContext';
-import { darkTheme, lightTheme } from '@/style/themes';
-import { ThemeProvider } from '@mui/material/styles';
-import { useContext, useState } from 'react';
-
-const themes = {
-    light: lightTheme,
-    dark: darkTheme,
-};
+import { useState } from 'react';
 
 type Props = {
     children: React.ReactNode;
 };
 
 export const ThemeWrapper = ({ children }: Props) => {
-    const [theme, setTheme] = useState('light');
-    const { theme } = useContext(ThemeContext);
+    const [themeName, setThemeName] = useState('light');
+
     return (
-        <ThemeContext.Provider value={{ theme }}>
-            <ThemeProvider theme={themes[theme]}>{children}</ThemeProvider>
+        <ThemeContext.Provider value={{ themeName, setThemeName }}>
+            <MuiThemeProvider>{children}</MuiThemeProvider>
         </ThemeContext.Provider>
     );
 };

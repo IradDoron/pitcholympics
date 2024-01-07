@@ -1,9 +1,11 @@
-import { createContext } from 'react';
+import { Dispatch, SetStateAction, createContext } from 'react';
 
 type ContextType = {
-    theme: 'light' | 'dark';
+    themeName: string;
+    setThemeName: Dispatch<SetStateAction<string>>;
 };
 
 export const ThemeContext = createContext<ContextType>({
-    theme: 'light',
+    themeName: 'light',
+    setThemeName: () => {},
 });

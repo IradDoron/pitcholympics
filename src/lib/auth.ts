@@ -26,22 +26,28 @@ export const {
             return session;
         },
         async signIn({ account, profile, user, credentials }) {
+            await connectToDB();
             try {
-                await connectToDB();
-
                 // check if user already exists
                 const userExists = await User.findOne({
                     email: profile?.email,
                 });
 
-                // if not, create a new document and save user in MongoDB
-                if (!userExists) {
-                    await User.create({
-                        email: profile?.email,
-                        username: profile?.name?.replace(' ', '').toLowerCase(),
-                    });
+                // if yes, return true
+                if (userExists) {
+                    return true;
                 }
 
+                // if not, create a new user
+                const newUser = new User({
+                    email: profile?.email,
+                    username: profile?.email,
+                }) as typeof User;
+
+                // save the new user
+                await User.create(newUser);
+
+                // return true
                 return true;
             } catch (error) {
                 // eslint-disable-next-line no-console
