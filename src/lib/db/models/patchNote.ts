@@ -1,52 +1,44 @@
 import { Schema, model, models } from 'mongoose';
 
 const PatchNoteSchema = new Schema({
-    patchNumber: {
+    version: {
         type: String,
-        unique: [true, 'Patch is unique'],
-        required: [true, 'PatchNumber is required'],
+        unique: [true, 'Version is unique'],
+        required: [true, 'Version is required'],
     },
     authorId: {
         type: String,
-        unique: [true, 'authorId is unique'],
         required: [true, 'authorId is required'],
     },
-    intro: {
-        type: String,
-        required: [true, 'intro is required'],
+    introSection: {
+        paragraphs: {
+            type: [String],
+            required: [true, 'Intro paragraphs are required'],
+        },
     },
     contentSections: {
-        type: {
-            featuresIntro: {
-                type: String,
+        type: [
+            {
+                title: {
+                    type: String,
+                    required: true,
+                },
+                content: {
+                    type: [
+                        {
+                            title: {
+                                type: String,
+                                required: true,
+                            },
+                            list: {
+                                type: [String],
+                            },
+                        },
+                    ],
+                },
             },
-            featuresChanges: {
-                type: [String],
-            },
-        },
-    },
-    bugFixed: {
-        type: {
-            bugFixedIntro: {
-                type: String,
-            },
-            bugFixedChanges: {
-                type: [String],
-            },
-        },
-    },
-    Adjustments: {
-        type: {
-            buffs: {
-                type: [String],
-            },
-            nerfs: {
-                type: [String],
-            },
-            adjustment: {
-                type: [String],
-            },
-        },
+        ],
+        required: [true, 'Content sections are required'],
     },
 });
 
