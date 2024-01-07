@@ -19,8 +19,8 @@ const page = () => {
             />
             <IntroCard
                 paragraphs={patchNote.introSection.paragraphs}
-                authorImage={session?.user?.image ? session?.user?.image : ''}
-                authorName={session?.user?.name ? session?.user?.name : ''}
+                authorImage={session?.user?.image || ''}
+                authorName={session?.user?.name || ''}
             />
 
             <div className='flex flex-col box-border w-full m-auto px-[60px] text-left'>
