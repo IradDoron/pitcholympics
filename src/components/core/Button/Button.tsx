@@ -2,7 +2,6 @@
 
 import { css, cx } from '@emotion/css';
 import { Button as BaseButton } from '@mui/base';
-import { useButton } from '@mui/base/useButton';
 import { useTheme } from '@mui/system';
 import * as utils from './utils';
 
@@ -21,13 +20,10 @@ export const Button = ({
     styles = '',
     status = 'default',
 }: Props) => {
-    const { getRootProps } = useButton();
     const theme = useTheme();
-    const rootProps = getRootProps();
 
     return (
         <BaseButton
-            {...rootProps}
             className={cx(
                 utils.getBaseStyles(theme),
                 utils.getSize(size),

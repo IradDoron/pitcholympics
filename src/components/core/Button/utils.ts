@@ -52,7 +52,8 @@ export const getBackground = (
             `;
         case 'disabled':
             return css`
-                background-color: ${theme.palette.primary.light};
+                background-color: grey;
+                cursor: not-allowed;
             `;
         default: // default
             return css`

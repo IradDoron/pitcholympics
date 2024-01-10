@@ -17,6 +17,8 @@ export const ThemeToggler = () => {
                     key={theme}
                     onClick={() => setThemeName(theme)}
                     label={theme}
+                    size='large'
+                    status='disabled'
                 />
             ))}
         </div>
