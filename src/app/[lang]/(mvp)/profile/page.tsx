@@ -2,6 +2,7 @@
 
 import { Locale as LocalType } from '@/i18n.config';
 import { Button, Card } from '@core';
+import { css } from '@emotion/css';
 import { UserImage } from '@shared';
 import { getDictionaryClient } from '@utils';
 import { useSession } from 'next-auth/react';
@@ -90,10 +91,14 @@ const Page = ({ params }: Props) => {
     return (
         <div className='flex flex-col items-center justify-center h-full'>
             <Card
-                color='primary'
-                className='flex flex-col items-start p-4 gap-4'
-                shadow='large'
-                style={{ width: '400px' }}>
+                styles={css`
+                    display: flex;
+                    padding: 1rem;
+                    flex-direction: column;
+                    gap: 1rem;
+                    align-items: flex-start;
+                    width: 400px;
+                `}>
                 <UserImage />
                 <ProfileInfo
                     label={profile.gender}
