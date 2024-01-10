@@ -1,6 +1,7 @@
 'use client';
 
 import { Card } from '@core';
+import { css } from '@emotion/css';
 import { useState } from 'react';
 import { MenubarItem, Props as MenubarItemProps } from './MenubarItem';
 
@@ -16,7 +17,9 @@ export const Menubar = ({ items, isOpenFromParent }: Props) => {
 
     return (
         <Card
-            className={`${isOpen ? 'absolute' : 'hidden'}`}
+            styles={css`
+                position: ${isOpen ? 'absolute' : 'hidden'};
+            `}
             onClick={handleToggle}>
             <div className='flex flex-col gap-4'>
                 {items.map((item, index) => {

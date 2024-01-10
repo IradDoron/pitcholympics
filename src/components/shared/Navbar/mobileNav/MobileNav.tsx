@@ -1,5 +1,6 @@
 import { Card } from '@/components/core';
 import { Locale } from '@/i18n.config';
+import { css } from '@emotion/css';
 import { CloseIcon } from '@icons';
 import { useState } from 'react';
 import { MobileNavContent } from './MobileNavContent';
@@ -21,8 +22,14 @@ export const MobileNav = ({ lang }: Props) => {
             <MobileNavTrigger setOpen={setIsOpen} />
             <div className={`${isOpen ? 'block' : 'hidden'}`}>
                 <Card
-                    className='w-screen h-screen z-50 fixed top-0 end-0 '
-                    color='primary'>
+                    styles={css`
+                        width: 100vw;
+                        height: 100vh;
+                        z-index: 50;
+                        position: fixed;
+                        top: 0px;
+                        inset-inline-end: 0px;
+                    `}>
                     <CloseIcon
                         onClick={handleClose}
                         className='absolute top-2 end-2 cursor-pointer'

@@ -2,6 +2,7 @@
 
 import { Locale } from '@/i18n.config';
 import { Card } from '@core';
+import { css } from '@emotion/css';
 import { CloseIcon, GithubLogo } from '@icons';
 import { UserImage } from '@shared';
 import { signOut, useSession } from 'next-auth/react';
@@ -47,8 +48,21 @@ export const SettingsMenu = ({ isOpen, setIsOpen, lang }: Props) => {
 
     return (
         <Card
-            className=' w-screen h-screen fixed top-0 end-0 sm:absolute sm:top-20 sm:end-6 sm:max-w-[360px] sm:h-fit flex flex-col'
-            shadow='large'
+            styles={css`
+                display: flex;
+                position: fixed;
+                top: 0;
+                flex-direction: column;
+                width: 100vw;
+                height: 100vh;
+
+                @media (min-width: 640px) {
+                    position: absolute;
+                    top: 5rem;
+                    height: fit-content;
+                    max-width: 360px;
+                }
+            `}
             onClick={handleCardClick}>
             <CloseIcon
                 onClick={() => setIsOpen(false)}

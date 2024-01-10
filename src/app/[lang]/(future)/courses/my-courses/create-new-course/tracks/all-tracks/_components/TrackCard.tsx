@@ -87,7 +87,7 @@ export const TrackCard = ({
 
     return (
         <div>
-            <Card className='flex flex-col p-4 min-w-full min-h-[150px] border-4'>
+            <Card>
                 <div className='flex flex-col items-start'>
                     <Text>Title: {title}</Text>
                     <Text>Main Subject: {mainSubject}</Text>
