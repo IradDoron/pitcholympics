@@ -3,7 +3,8 @@ import { Card as MaterialCard } from '@mui/material';
 
 type Props = {
     children?: React.ReactNode;
-    onClick?: () => void;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-unused-vars
+    onClick?: (() => void) | ((e: any) => void);
     styles?: string;
 };
 
