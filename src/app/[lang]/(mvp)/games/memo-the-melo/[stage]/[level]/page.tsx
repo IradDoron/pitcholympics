@@ -209,27 +209,3 @@ const Page = ({ params }: Props) => {
 };
 
 export default Page;
-
-//  <Button
-
-/* <Button
-    label='Debug Win'
-    onClick={() =>
-        checkUserGuess(currentLevel.melody, currentLevel.melody)
-    }
-/> */
-
-//                 label='Debug Win'
-//                 onClick={() =>
-//                     checkUserGuess(currentLevel.melody, currentLevel.melody)
-//                 }
-//             />
-//             <Button
-//                 label='Debug Lose'
-//                 onClick={() =>
-//                     checkUserGuess(
-//                         currentLevel.melody,
-//                         new Array(currentLevel.melody.length).fill(0),
-//                     )
-//                 }
-//             />
