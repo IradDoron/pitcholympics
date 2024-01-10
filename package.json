@@ -37,7 +37,6 @@
         "tone": "^14.7.77",
         "uuid": "^9.0.1",
         "zustand": "^4.4.7",
-        "@emotion/styled": "^11.11.0",
         "@mui/icons-material": "^5.15.2"
     },
     "devDependencies": {
