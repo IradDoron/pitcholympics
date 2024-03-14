@@ -8,6 +8,7 @@ export const patchNoteDictionary: Record<string, PatchNote> = {
             paragraphs: [
                 'In an effort to simplify the Career Stats tab in the client...',
                 'In an effort to simplify the Career Stats tab in the client...',
+                'In an effort to simplify paragraphs',
             ],
         },
         contentSecions: [
